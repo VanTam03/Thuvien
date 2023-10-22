@@ -10,10 +10,6 @@ import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author KHP2T
- */
 public class KetNoiSQL {
     public static String databaseName = "QuanLyThuVien";
 
@@ -28,6 +24,7 @@ public class KetNoiSQL {
 
         } catch (Exception ex) {
             Logger.getLogger(KetNoiSQL.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Connected to SQL server in catch");
             return null;
 
         }
