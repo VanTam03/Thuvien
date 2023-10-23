@@ -1,6 +1,6 @@
-﻿CREATE DATABASE [QuanLyThuVien]
-USE [QuanLyThuVien]
-Go
+﻿--CREATE DATABASE [QuanLyThuVien]
+--USE [QuanLyThuVien]
+--Go
 ALTER DATABASE [QuanLyThuVien] SET COMPATIBILITY_LEVEL = 150
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
