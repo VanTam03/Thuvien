@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//password máy Trâm: duckg0946945409
 
 public class KetNoiSQL {
     public static String databaseName = "QuanLyThuVien";
@@ -18,7 +19,7 @@ public class KetNoiSQL {
         try {
             Class.forName(url);
             String dbUrl = "jdbc:jtds:sqlserver://localhost:1433/" + databaseName;
-            return DriverManager.getConnection(dbUrl, "sa", "100903");
+            return DriverManager.getConnection(dbUrl, "sa", "duckg0946945409");
 
             // return DriverManager.getConnection(dbUrl,user, pass);
 
