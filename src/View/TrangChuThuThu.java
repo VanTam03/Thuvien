@@ -72,20 +72,20 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel91 = new javax.swing.JLabel();
         gioitinhnam16 = new javax.swing.JRadioButton();
         gioitinhnu16 = new javax.swing.JRadioButton();
-        sdt2 = new javax.swing.JTextField();
+        sdtDocGiaField = new javax.swing.JTextField();
         matKhauField = new javax.swing.JTextField();
-        themmoidg2 = new javax.swing.JButton();
-        updatedg2 = new javax.swing.JButton();
+        themDocGiaBtn = new javax.swing.JButton();
+        suaDocGiaBtn = new javax.swing.JButton();
         khoatk8 = new javax.swing.JButton();
         ngaysinh2 = new javax.swing.JTextField();
         mokhoa3 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel92 = new javax.swing.JLabel();
         khoatk9 = new javax.swing.JButton();
-        Hc_maTheLoai3 = new javax.swing.JComboBox<>();
+        theLoaiField = new javax.swing.JComboBox<>();
         jLabel127 = new javax.swing.JLabel();
         jLabel128 = new javax.swing.JLabel();
-        emailDocgia3 = new javax.swing.JTextField();
+        emailDocGiaField = new javax.swing.JTextField();
         tenDocGiaField = new javax.swing.JTextField();
         maDocGiaField = new javax.swing.JTextField();
         hanDungField = new javax.swing.JTextField();
@@ -3777,7 +3777,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField H_tomTat2;
     private javax.swing.JComboBox<String> Hc_maDM2;
     private javax.swing.JComboBox<String> Hc_maTheLoai2;
-    private javax.swing.JComboBox<String> Hc_maTheLoai3;
+    private javax.swing.JComboBox<String> theLoaiField;
     private javax.swing.JLabel K_tieuDe15;
     private javax.swing.JLabel K_tieuDe16;
     private javax.swing.JLabel K_tieuDe17;
@@ -3821,7 +3821,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_chucNangThongKe6;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
-    private javax.swing.JTextField emailDocgia3;
+    private javax.swing.JTextField emailDocGiaField;
     private javax.swing.ButtonGroup gioitinhbtngroup;
     private javax.swing.JRadioButton gioitinhnam16;
     private javax.swing.JRadioButton gioitinhnam17;
@@ -3940,7 +3940,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JButton mokhoa4;
     private javax.swing.JTextField ngaysinh2;
     private javax.swing.JTabbedPane quanlyttdg2;
-    private javax.swing.JTextField sdt2;
+    private javax.swing.JTextField sdtDocGiaField;
     private javax.swing.JTextField soLuongField;
     private javax.swing.JTable tableDocgia2;
     private javax.swing.JTable tableDocgia3;
@@ -3954,7 +3954,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField tenDocGiaField;
     private javax.swing.JTextField tenLoaiField;
     private javax.swing.JTextField textboxsearch2;
-    private javax.swing.JButton themmoidg2;
+    private javax.swing.JButton themDocGiaBtn;
     private javax.swing.JButton themmoidg3;
     private javax.swing.JTextField thoiGianField;
     private javax.swing.JPanel timkiem2;
@@ -3974,7 +3974,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField txt_timkiemDMSach27;
     private javax.swing.JTextField txt_timkiemDMSach28;
     private javax.swing.JTextField txt_timkiemDMSach29;
-    private javax.swing.JButton updatedg2;
+    private javax.swing.JButton suaDocGiaBtn;
     private javax.swing.JButton updatedg3;
     // End of variables declaration//GEN-END:variables
 }
