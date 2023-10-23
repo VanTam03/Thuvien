@@ -91,12 +91,19 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         mokhoa4 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel137 = new javax.swing.JLabel();
-        khoatk13 = new javax.swing.JButton();
         jLabel139 = new javax.swing.JLabel();
         thoiGianField = new javax.swing.JTextField();
         maLoaiField = new javax.swing.JTextField();
         soLuongField = new javax.swing.JTextField();
         tenLoaiField = new javax.swing.JTextField();
+        jLabel138 = new javax.swing.JLabel();
+        tenLoaiField1 = new javax.swing.JTextField();
+        jLabel140 = new javax.swing.JLabel();
+        tenLoaiField2 = new javax.swing.JTextField();
+        jLabel141 = new javax.swing.JLabel();
+        thoiGianField1 = new javax.swing.JTextField();
+        tenLoaiField3 = new javax.swing.JTextField();
+        jLabel142 = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel31 = new javax.swing.JPanel();
@@ -247,13 +254,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         gioitinhnam21 = new javax.swing.JRadioButton();
         gioitinhnu21 = new javax.swing.JRadioButton();
         btnK_themPM40 = new javax.swing.JButton();
-        Panel_DanhSachPM19 = new javax.swing.JPanel();
-        K_tieuDe20 = new javax.swing.JLabel();
-        btnK_themPM41 = new javax.swing.JButton();
-        txt_timkiemDMSach29 = new javax.swing.JTextField();
-        gioitinhnam22 = new javax.swing.JRadioButton();
-        gioitinhnu22 = new javax.swing.JRadioButton();
-        btnK_themPM42 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang chủ dành cho Thủ thư");
@@ -271,6 +271,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/choice.png"))); // NOI18N
         jButton1.setText("Đăng xuất");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -624,13 +625,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel131.setForeground(new java.awt.Color(0, 0, 0));
         jLabel131.setText("Mã phân loại:");
 
         jLabel132.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel132.setForeground(new java.awt.Color(0, 0, 0));
         jLabel132.setText("Số lượng sách:");
 
         themmoidg3.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        themmoidg3.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg3.setText("Thêm mới");
         themmoidg3.addActionListener(new java.awt.event.ActionListener() {
@@ -641,6 +645,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         updatedg3.setBackground(new java.awt.Color(255, 204, 204));
         updatedg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        updatedg3.setForeground(new java.awt.Color(0, 0, 0));
         updatedg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg3.setText("Sửa ");
         updatedg3.addActionListener(new java.awt.event.ActionListener() {
@@ -651,6 +656,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         mokhoa4.setBackground(new java.awt.Color(255, 204, 204));
         mokhoa4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        mokhoa4.setForeground(new java.awt.Color(0, 0, 0));
         mokhoa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         mokhoa4.setText("Làm mới");
         mokhoa4.addActionListener(new java.awt.event.ActionListener() {
@@ -660,19 +666,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         });
 
         jLabel137.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel137.setForeground(new java.awt.Color(0, 0, 0));
         jLabel137.setText("Tên phân loại:");
 
-        khoatk13.setBackground(new java.awt.Color(255, 204, 204));
-        khoatk13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
-        khoatk13.setText("Hổ trợ tìm kiếm");
-        khoatk13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                khoatk13ActionPerformed(evt);
-            }
-        });
-
         jLabel139.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel139.setForeground(new java.awt.Color(0, 0, 0));
         jLabel139.setText("Thời gian mượn:");
 
         thoiGianField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -693,6 +691,46 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
+        jLabel138.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel138.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel138.setText("Ngày mở thẻ:");
+
+        tenLoaiField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        tenLoaiField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenLoaiField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel140.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel140.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel140.setText("Hạn dùng thẻ:");
+
+        tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        tenLoaiField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenLoaiField2ActionPerformed(evt);
+            }
+        });
+
+        jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel141.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel141.setText("Giá tiền mở thẻ:");
+
+        thoiGianField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+
+        tenLoaiField3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        tenLoaiField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenLoaiField3ActionPerformed(evt);
+            }
+        });
+
+        jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel142.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel142.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
+        jLabel142.setText("Hỗ trợ tìm kiếm:");
+
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
         jPanel40.setLayout(jPanel40Layout);
         jPanel40Layout.setHorizontalGroup(
@@ -704,69 +742,94 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         .addComponent(jSeparator7))
                     .addGroup(jPanel40Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
-                                .addComponent(themmoidg3)
-                                .addGap(52, 52, 52)
-                                .addComponent(updatedg3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(136, 136, 136)
-                                .addComponent(khoatk13, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                                .addComponent(mokhoa4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89))
-                            .addGroup(jPanel40Layout.createSequentialGroup()
+                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel40Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel137)
-                                    .addComponent(jLabel131))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(maLoaiField)
-                                    .addComponent(tenLoaiField))
-                                .addGap(37, 37, 37)
+                                    .addGroup(jPanel40Layout.createSequentialGroup()
+                                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel137, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel131)
+                                            .addComponent(jLabel138))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(tenLoaiField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                            .addComponent(tenLoaiField1)
+                                            .addComponent(maLoaiField)))
+                                    .addGroup(jPanel40Layout.createSequentialGroup()
+                                        .addComponent(jLabel140)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tenLoaiField3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(105, 105, 105)
                                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(thoiGianField)
-                                    .addComponent(soLuongField))
-                                .addGap(72, 72, 72))
-                            .addComponent(jScrollPane25))))
+                                    .addComponent(soLuongField)
+                                    .addComponent(thoiGianField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel40Layout.createSequentialGroup()
+                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addComponent(jLabel142)
+                                .addGap(18, 18, 18)
+                                .addComponent(tenLoaiField2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(153, 153, 153)
+                                .addComponent(themmoidg3)
+                                .addGap(18, 18, 18)
+                                .addComponent(updatedg3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(mokhoa4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)))))
                 .addContainerGap())
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel40Layout.createSequentialGroup()
                         .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel131)
                             .addComponent(maLoaiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel137)
-                            .addComponent(tenLoaiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tenLoaiField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel138)
+                            .addComponent(tenLoaiField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel40Layout.createSequentialGroup()
                         .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel132)
                             .addComponent(soLuongField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel139)
-                            .addComponent(thoiGianField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(129, 129, 129)
+                            .addComponent(thoiGianField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel141)
+                            .addComponent(thoiGianField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel140)
+                    .addComponent(tenLoaiField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(themmoidg3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatedg3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mokhoa4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(themmoidg3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(updatedg3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(khoatk13, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(tenLoaiField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel142))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -876,6 +939,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btnH_themSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_themSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnH_themSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_themSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnH_themSach2.setText("Thêm");
         btnH_themSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -886,6 +950,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btnH_suaSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_suaSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnH_suaSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_suaSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btnH_suaSach2.setText("Sửa ");
         btnH_suaSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -896,6 +961,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btnH_luuSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_luuSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnH_luuSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_luuSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btnH_luuSach2.setText("Xem tình trạng sách");
         btnH_luuSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -906,6 +972,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_lamMoiSach2.setBackground(new java.awt.Color(255, 204, 204));
         btn_lamMoiSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_lamMoiSach2.setForeground(new java.awt.Color(0, 0, 0));
         btn_lamMoiSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         btn_lamMoiSach2.setText("Làm mới");
         btn_lamMoiSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -938,6 +1005,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         khoatk10.setBackground(new java.awt.Color(255, 204, 204));
         khoatk10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        khoatk10.setForeground(new java.awt.Color(0, 0, 0));
         khoatk10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
         khoatk10.setText("Xóa");
         khoatk10.addActionListener(new java.awt.event.ActionListener() {
@@ -948,6 +1016,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         khoatk11.setBackground(new java.awt.Color(255, 204, 204));
         khoatk11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        khoatk11.setForeground(new java.awt.Color(0, 0, 0));
         khoatk11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         khoatk11.setText("Hổ trợ tìm kiếm");
         khoatk11.addActionListener(new java.awt.event.ActionListener() {
@@ -1117,13 +1186,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jScrollPane19.setViewportView(tbl_DMSach4);
 
         jLabel105.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel105.setForeground(new java.awt.Color(0, 0, 0));
         jLabel105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel105.setText("Thông tin danh mục Sách:");
 
         jLabel106.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
         jLabel106.setText("Mã danh mục:");
 
         jLabel107.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 0, 0));
         jLabel107.setText("Tên danh mục:");
 
         txt_maDMSach4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1133,6 +1205,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_ThemDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach6.setText("Thêm");
         btn_ThemDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1143,6 +1216,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_LuuDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach6.setText("Lưu");
         btn_LuuDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1153,6 +1227,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_SuaDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach6.setText("Sửa");
         btn_SuaDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1175,6 +1250,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_lammoi6.setBackground(new java.awt.Color(255, 204, 204));
         btn_lammoi6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_lammoi6.setForeground(new java.awt.Color(0, 0, 0));
         btn_lammoi6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lammoi.png"))); // NOI18N
         btn_lammoi6.setText("Làm mới");
         btn_lammoi6.setEnabled(false);
@@ -1279,13 +1355,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jScrollPane20.setViewportView(tbl_DMSach5);
 
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(0, 0, 0));
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel109.setText("Thông tin thể loại Sách:");
 
         jLabel110.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel110.setForeground(new java.awt.Color(0, 0, 0));
         jLabel110.setText("Mã thể loại:");
 
         jLabel111.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(0, 0, 0));
         jLabel111.setText("Tên thể loại:");
 
         txt_maDMSach5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1295,6 +1374,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_ThemDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach7.setText("Thêm");
         btn_ThemDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1305,6 +1385,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_LuuDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach7.setText("Lưu");
         btn_LuuDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1315,6 +1396,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_SuaDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach7.setText("Sửa");
         btn_SuaDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1337,6 +1419,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_lammoi7.setBackground(new java.awt.Color(255, 204, 204));
         btn_lammoi7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_lammoi7.setForeground(new java.awt.Color(0, 0, 0));
         btn_lammoi7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lammoi.png"))); // NOI18N
         btn_lammoi7.setText("Làm mới");
         btn_lammoi7.setEnabled(false);
@@ -1425,19 +1508,23 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel34.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel113.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(0, 0, 0));
         jLabel113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel113.setText("Thông tin tác giả:");
 
         jLabel114.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(0, 0, 0));
         jLabel114.setText("Mã tác giả:");
 
         jLabel115.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel115.setForeground(new java.awt.Color(0, 0, 0));
         jLabel115.setText("Tên tác giả:");
 
         txt_tenDMSach12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         btn_ThemDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach8.setText("Thêm");
         btn_ThemDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1448,6 +1535,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_LuuDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach8.setText("Lưu");
         btn_LuuDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1458,6 +1546,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btn_SuaDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach8.setText("Sửa");
         btn_SuaDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1490,6 +1579,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         });
 
         jLabel117.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel117.setForeground(new java.awt.Color(0, 0, 0));
         jLabel117.setText("Số lượng sách:");
 
         txt_tenDMSach13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1596,11 +1686,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         Panel_DanhSachPM14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        K_tieuDe15.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe15.setText("CÁC PHIẾU MƯỢN ĐÃ ĐĂNG KÝ");
 
         btnK_themPM31.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM31.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM31.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM31.setText("Xem chi tiết");
         btnK_themPM31.addActionListener(new java.awt.event.ActionListener() {
@@ -1620,15 +1712,18 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         gioitinhnam17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhbtngroup.add(gioitinhnam17);
         gioitinhnam17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        gioitinhnam17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam17.setText("Theo tên độc giả");
 
         gioitinhnu17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhbtngroup.add(gioitinhnu17);
         gioitinhnu17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        gioitinhnu17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu17.setText("Theo mã phiếu mượn");
 
         btnK_themPM32.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM32.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM32.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM32.setText("Quản lý phiếu mượn");
         btnK_themPM32.addActionListener(new java.awt.event.ActionListener() {
@@ -1654,28 +1749,28 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         Panel_DanhSachPM14.setLayout(Panel_DanhSachPM14Layout);
         Panel_DanhSachPM14Layout.setHorizontalGroup(
             Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_DanhSachPM14Layout.createSequentialGroup()
-                .addContainerGap(645, Short.MAX_VALUE)
-                .addComponent(btnK_themPM32, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(btnK_themPM31)
-                .addGap(29, 29, 29))
             .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
                 .addGroup(Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
                         .addGap(316, 316, 316)
                         .addComponent(K_tieuDe15, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
-                                .addComponent(txt_timkiemDMSach24, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(gioitinhnam17)
-                                .addGap(38, 38, 38)
-                                .addComponent(gioitinhnu17)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnK_themPM32)
+                            .addGap(35, 35, 35)
+                            .addComponent(btnK_themPM31))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_DanhSachPM14Layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addGroup(Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(Panel_DanhSachPM14Layout.createSequentialGroup()
+                                    .addComponent(txt_timkiemDMSach24, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(49, 49, 49)
+                                    .addComponent(gioitinhnam17)
+                                    .addGap(38, 38, 38)
+                                    .addComponent(gioitinhnu17))))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         Panel_DanhSachPM14Layout.setVerticalGroup(
             Panel_DanhSachPM14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1702,11 +1797,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         Panel_DanhSachPM15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        K_tieuDe16.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe16.setText("DANH SÁCH CÁC PHIẾU NHẬP");
 
         btnK_themPM33.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM33.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM33.setText("Xem chi tiết");
         btnK_themPM33.addActionListener(new java.awt.event.ActionListener() {
@@ -1725,6 +1822,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         btnK_themPM34.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM34.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM34.setText("Quản lý phiếu mượn");
         btnK_themPM34.addActionListener(new java.awt.event.ActionListener() {
@@ -1750,23 +1848,23 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         Panel_DanhSachPM15.setLayout(Panel_DanhSachPM15Layout);
         Panel_DanhSachPM15Layout.setHorizontalGroup(
             Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_DanhSachPM15Layout.createSequentialGroup()
-                .addContainerGap(645, Short.MAX_VALUE)
-                .addComponent(btnK_themPM34, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(btnK_themPM33)
-                .addGap(29, 29, 29))
             .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
                 .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
                         .addGap(316, 316, 316)
                         .addComponent(K_tieuDe16, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_timkiemDMSach25, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnK_themPM34, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnK_themPM33))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Panel_DanhSachPM15Layout.createSequentialGroup()
+                            .addGap(98, 98, 98)
+                            .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_timkiemDMSach25, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         Panel_DanhSachPM15Layout.setVerticalGroup(
             Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1904,6 +2002,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel36.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jLabel118.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel118.setForeground(new java.awt.Color(0, 0, 0));
         jLabel118.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel118.setText("Lựa chọn: ");
 
@@ -1948,7 +2047,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1958,8 +2057,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbb_chucNangThongKe6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
                 .addComponent(jLabel119)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1969,6 +2068,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel37.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel120.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel120.setForeground(new java.awt.Color(0, 0, 0));
         jLabel120.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel120.setText("Lựa chọn:");
 
@@ -2010,7 +2110,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cbb_chucNangThongKe7, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2031,6 +2131,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel122.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel122.setForeground(new java.awt.Color(0, 0, 0));
         jLabel122.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel122.setText("Lựa chọn:");
 
@@ -2067,7 +2168,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         .addComponent(jLabel122)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbb_chucNangThongKe8, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2123,6 +2224,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(255, 204, 204));
         jButton13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setText("Tìm kiếm");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2414,111 +2516,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         jTPK_QuanLyPM5.addTab("Danh sách phiếu mượn", Panel_DanhSachPM18);
 
-        Panel_DanhSachPM19.setBackground(new java.awt.Color(255, 255, 204));
-        Panel_DanhSachPM19.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-
-        K_tieuDe20.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        K_tieuDe20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
-        K_tieuDe20.setText("CÁC PHIẾU MƯỢN ĐÃ ĐĂNG KÝ");
-
-        btnK_themPM41.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_themPM41.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
-        btnK_themPM41.setText("Xem chi tiết");
-        btnK_themPM41.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_themPM41btnK_themPM1ActionPerformed(evt);
-            }
-        });
-
-        txt_timkiemDMSach29.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txt_timkiemDMSach29.setText("Tìm kiếm");
-        txt_timkiemDMSach29.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_timkiemDMSach29txt_timkiemDMSach3KeyReleased(evt);
-            }
-        });
-
-        gioitinhnam22.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhbtngroup.add(gioitinhnam22);
-        gioitinhnam22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnam22.setText("Theo tên độc giả");
-
-        gioitinhnu22.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhbtngroup.add(gioitinhnu22);
-        gioitinhnu22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnu22.setText("Theo mã phiếu mượn");
-
-        btnK_themPM42.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_themPM42.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
-        btnK_themPM42.setText("Quản lý phiếu mượn");
-        btnK_themPM42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_themPM42btnK_themPM2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Panel_DanhSachPM19Layout = new javax.swing.GroupLayout(Panel_DanhSachPM19);
-        Panel_DanhSachPM19.setLayout(Panel_DanhSachPM19Layout);
-        Panel_DanhSachPM19Layout.setHorizontalGroup(
-            Panel_DanhSachPM19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_DanhSachPM19Layout.createSequentialGroup()
-                .addGap(316, 316, 316)
-                .addComponent(K_tieuDe20, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_DanhSachPM19Layout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
-                .addGroup(Panel_DanhSachPM19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Panel_DanhSachPM19Layout.createSequentialGroup()
-                        .addComponent(btnK_themPM42, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnK_themPM41))
-                    .addGroup(Panel_DanhSachPM19Layout.createSequentialGroup()
-                        .addComponent(txt_timkiemDMSach29, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(gioitinhnam22)
-                        .addGap(37, 37, 37)
-                        .addComponent(gioitinhnu22)
-                        .addGap(228, 228, 228)))
-                .addGap(29, 29, 29))
-        );
-        Panel_DanhSachPM19Layout.setVerticalGroup(
-            Panel_DanhSachPM19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_DanhSachPM19Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(K_tieuDe20, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Panel_DanhSachPM19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_timkiemDMSach29, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gioitinhnam22)
-                    .addComponent(gioitinhnu22))
-                .addGap(170, 170, 170)
-                .addGroup(Panel_DanhSachPM19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnK_themPM42)
-                    .addComponent(btnK_themPM41))
-                .addGap(30, 30, 30))
-        );
-
         javax.swing.GroupLayout jPK_QuanLyPhieuMuon5Layout = new javax.swing.GroupLayout(jPK_QuanLyPhieuMuon5);
         jPK_QuanLyPhieuMuon5.setLayout(jPK_QuanLyPhieuMuon5Layout);
         jPK_QuanLyPhieuMuon5Layout.setHorizontalGroup(
             jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPK_QuanLyPhieuMuon5Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Panel_DanhSachPM19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
         );
         jPK_QuanLyPhieuMuon5Layout.setVerticalGroup(
             jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
-            .addGroup(jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPK_QuanLyPhieuMuon5Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Panel_DanhSachPM19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTP_main2.addTab(" QUẢN LÝ MƯỢN TRẢ ", new javax.swing.ImageIcon(getClass().getResource("/Images/exchange.png")), jPK_QuanLyPhieuMuon5); // NOI18N
@@ -2527,7 +2533,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTP_main2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1432, Short.MAX_VALUE)
+            .addComponent(jTP_main2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1432, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2807,18 +2813,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnK_themPM40btnK_themPM2ActionPerformed
 
-    private void btnK_themPM41btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM41btnK_themPM1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnK_themPM41btnK_themPM1ActionPerformed
-
-    private void txt_timkiemDMSach29txt_timkiemDMSach3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timkiemDMSach29txt_timkiemDMSach3KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_timkiemDMSach29txt_timkiemDMSach3KeyReleased
-
-    private void btnK_themPM42btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM42btnK_themPM2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnK_themPM42btnK_themPM2ActionPerformed
-
     private void jTP_main2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTP_main2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTP_main2MouseClicked
@@ -2847,10 +2841,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mokhoa4ActionPerformed
 
-    private void khoatk13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk13ActionPerformed
-
     private void maLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maLoaiFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_maLoaiFieldActionPerformed
@@ -2858,6 +2848,18 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private void tenLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tenLoaiFieldActionPerformed
+
+    private void tenLoaiField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField1ActionPerformed
+
+    private void tenLoaiField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField2ActionPerformed
+
+    private void tenLoaiField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField3ActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -2886,13 +2888,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JLabel K_tieuDe17;
     private javax.swing.JLabel K_tieuDe18;
     private javax.swing.JLabel K_tieuDe19;
-    private javax.swing.JLabel K_tieuDe20;
     private javax.swing.JPanel Panel_DanhSachPM14;
     private javax.swing.JPanel Panel_DanhSachPM15;
     private javax.swing.JPanel Panel_DanhSachPM16;
     private javax.swing.JPanel Panel_DanhSachPM17;
     private javax.swing.JPanel Panel_DanhSachPM18;
-    private javax.swing.JPanel Panel_DanhSachPM19;
     private javax.swing.JButton btnH_luuSach2;
     private javax.swing.JButton btnH_suaSach2;
     private javax.swing.JButton btnH_themSach2;
@@ -2906,8 +2906,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JButton btnK_themPM38;
     private javax.swing.JButton btnK_themPM39;
     private javax.swing.JButton btnK_themPM40;
-    private javax.swing.JButton btnK_themPM41;
-    private javax.swing.JButton btnK_themPM42;
     private javax.swing.JButton btn_LuuDMSach6;
     private javax.swing.JButton btn_LuuDMSach7;
     private javax.swing.JButton btn_LuuDMSach8;
@@ -2931,13 +2929,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JRadioButton gioitinhnam19;
     private javax.swing.JRadioButton gioitinhnam20;
     private javax.swing.JRadioButton gioitinhnam21;
-    private javax.swing.JRadioButton gioitinhnam22;
     private javax.swing.JRadioButton gioitinhnu16;
     private javax.swing.JRadioButton gioitinhnu17;
     private javax.swing.JRadioButton gioitinhnu19;
     private javax.swing.JRadioButton gioitinhnu20;
     private javax.swing.JRadioButton gioitinhnu21;
-    private javax.swing.JRadioButton gioitinhnu22;
     private javax.swing.JTextField hanDungField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
@@ -2975,7 +2971,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel137;
+    private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
+    private javax.swing.JLabel jLabel140;
+    private javax.swing.JLabel jLabel141;
+    private javax.swing.JLabel jLabel142;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel6;
@@ -3033,7 +3033,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
-    private javax.swing.JButton khoatk13;
     private javax.swing.JButton khoatk8;
     private javax.swing.JButton khoatk9;
     private javax.swing.JTextField maDocGiaField;
@@ -3056,10 +3055,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTable tbl_DMSach5;
     private javax.swing.JTextField tenDocGiaField;
     private javax.swing.JTextField tenLoaiField;
+    private javax.swing.JTextField tenLoaiField1;
+    private javax.swing.JTextField tenLoaiField2;
+    private javax.swing.JTextField tenLoaiField3;
     private javax.swing.JTextField textboxsearch2;
     private javax.swing.JButton themmoidg2;
     private javax.swing.JButton themmoidg3;
     private javax.swing.JTextField thoiGianField;
+    private javax.swing.JTextField thoiGianField1;
     private javax.swing.JPanel timkiem2;
     private javax.swing.JTextField txt_maDMSach4;
     private javax.swing.JTextField txt_maDMSach5;
@@ -3076,7 +3079,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField txt_timkiemDMSach26;
     private javax.swing.JTextField txt_timkiemDMSach27;
     private javax.swing.JTextField txt_timkiemDMSach28;
-    private javax.swing.JTextField txt_timkiemDMSach29;
     private javax.swing.JButton updatedg2;
     private javax.swing.JButton updatedg3;
     // End of variables declaration//GEN-END:variables
