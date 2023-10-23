@@ -76,13 +76,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         matKhauField = new javax.swing.JTextField();
         themDocGiaBtn = new javax.swing.JButton();
         suaDocGiaBtn = new javax.swing.JButton();
-        khoatk8 = new javax.swing.JButton();
-        ngaysinh2 = new javax.swing.JTextField();
-        mokhoa3 = new javax.swing.JButton();
+        resetDGBtn = new javax.swing.JButton();
+        ngaySinhDGField = new javax.swing.JTextField();
+        xoaDocGiaBtn = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel92 = new javax.swing.JLabel();
         khoatk9 = new javax.swing.JButton();
-        theLoaiField = new javax.swing.JComboBox<>();
+        String[] options = {"Học Sinh - Sinh Viên", "Cán Bộ Giảng Viên"};
+        theLoaiDGField = new javax.swing.JComboBox<>(options);
         jLabel127 = new javax.swing.JLabel();
         jLabel128 = new javax.swing.JLabel();
         emailDocGiaField = new javax.swing.JTextField();
@@ -367,7 +368,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
                                 maDocGiaField.setText((String) tableDocgia2.getValueAt(lineSelect, 0));
                                 tenDocGiaField.setText((String) tableDocgia2.getValueAt(lineSelect, 1));
-                                theLoaiField.setSelectedItem((String) tableDocgia2.getValueAt(lineSelect, 2));
+                                theLoaiDGField.setSelectedItem((String) tableDocgia2.getValueAt(lineSelect, 2));
 
                                 matKhauField.setText((String) tableDocgia2.getValueAt(lineSelect, 3));
                                 sdtDocGiaField.setText((String) tableDocgia2.getValueAt(lineSelect, 4));
@@ -451,7 +452,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         dg.setTenTaiKhoan(maDocGiaField.getText());
                                         dg.setMatKhau(matKhauField.getText());
                                         dg.setTenNguoiDung(tenDocGiaField.getText());
-                                        dg.setLoaiTK(theLoaiField.getSelectedItem().toString());
+                                        dg.setLoaiTK(theLoaiDGField.getSelectedItem().toString());
                                         dg.setEmail(emailDocGiaField.getText());
                                         if (gioitinhnam16.isSelected()) {
                                                 dg.setGioiTinh("Nam");
@@ -496,7 +497,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         dg.setTenTaiKhoan(maDocGiaField.getText());
                                         dg.setMatKhau(matKhauField.getText());
                                         dg.setTenNguoiDung(tenDocGiaField.getText());
-                                        dg.setLoaiTK(theLoaiField.getSelectedItem().toString());
+                                        dg.setLoaiTK(theLoaiDGField.getSelectedItem().toString());
                                         dg.setEmail(emailDocGiaField.getText());
                                         if (gioitinhnam16.isSelected()) {
                                                 dg.setGioiTinh("Nam");
@@ -555,11 +556,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         }
                 });
 
-                resetBtn.setBackground(new java.awt.Color(255, 204, 204));
-                resetBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-                resetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
-                resetBtn.setText("Làm mới");
-                resetBtn.addActionListener(new java.awt.event.ActionListener() {
+                resetDGBtn.setBackground(new java.awt.Color(255, 204, 204));
+                resetDGBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+                resetDGBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
+                resetDGBtn.setText("Làm mới");
+                resetDGBtn.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 resetDG();
                         }
@@ -578,10 +579,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         }
                 });
 
-                theLoaiField.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                theLoaiField.addActionListener(new java.awt.event.ActionListener() {
+                theLoaiDGField.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                theLoaiDGField.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                theLoaiFieldActionPerformed(evt);
+                                theLoaiDGFieldActionPerformed(evt);
                         }
                 });
 
@@ -649,7 +650,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                                                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                                                                                                                                                                 100,
                                                                                                                                                                                                 Short.MAX_VALUE)
-                                                                                                                                                                                .addComponent(resetBtn,
+                                                                                                                                                                                .addComponent(resetDGBtn,
                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                                                                                                 151,
                                                                                                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -732,7 +733,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                                                                                                                                                                 .addComponent(
                                                                                                                                                                                                                                 sdtDocGiaField)
                                                                                                                                                                                                                 .addComponent(
-                                                                                                                                                                                                                                theLoaiField,
+                                                                                                                                                                                                                                theLoaiDGField,
                                                                                                                                                                                                                                 0,
                                                                                                                                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                                                                                                                                 Short.MAX_VALUE)
@@ -814,7 +815,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                                 .addGroup(jPanel29Layout
                                                                                                 .createParallelGroup(
                                                                                                                 javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                .addComponent(theLoaiField,
+                                                                                                .addComponent(theLoaiDGField,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -836,7 +837,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(jPanel29Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(resetBtn,
+                                                                                .addComponent(resetDGBtn,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 41,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3451,7 +3452,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 sdtDocGiaField.setText("");
                 ngaySinhDGField.setText("");
                 emailDocGiaField.setText("");
-                theLoaiField.setSelectedItem("");
+                theLoaiDGField.setSelectedItem("");
                 hanDungField.setText("");
         }
 
@@ -3496,9 +3497,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 // TODO add your handling code here:
         }// GEN-LAST:event_ngaySinhDGFieldKeyPressed
 
-        private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_resetBtnActionPerformed
+        private void resetDGBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_resetDGBtnActionPerformed
                 // TODO add your handling code here:
-        }// GEN-LAST:event_resetBtnActionPerformed
+        }// GEN-LAST:event_resetDGBtnActionPerformed
 
         private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk9ActionPerformed
                 // TODO add your handling code here:
@@ -3720,9 +3721,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 // TODO add your handling code here:
         }// GEN-LAST:event_jTP_main2MouseClicked
 
-        private void theLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_theLoaiFieldActionPerformed
+        private void theLoaiDGFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_theLoaiDGFieldActionPerformed
                 // TODO add your handling code here:
-        }// GEN-LAST:event_theLoaiFieldActionPerformed
+        }// GEN-LAST:event_theLoaiDGFieldActionPerformed
 
         private void emailDocGiaFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_emailDocGiaFieldActionPerformed
                 // TODO add your handling code here:
@@ -3777,7 +3778,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField H_tomTat2;
     private javax.swing.JComboBox<String> Hc_maDM2;
     private javax.swing.JComboBox<String> Hc_maTheLoai2;
-    private javax.swing.JComboBox<String> theLoaiField;
+    private javax.swing.JComboBox<String> theLoaiDGField;
     private javax.swing.JLabel K_tieuDe15;
     private javax.swing.JLabel K_tieuDe16;
     private javax.swing.JLabel K_tieuDe17;
@@ -3931,14 +3932,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
     private javax.swing.JButton khoatk13;
-    private javax.swing.JButton khoatk8;
+    private javax.swing.JButton resetDGBtn;
     private javax.swing.JButton khoatk9;
     private javax.swing.JTextField maDocGiaField;
     private javax.swing.JTextField maLoaiField;
     private javax.swing.JTextField matKhauField;
-    private javax.swing.JButton mokhoa3;
+    private javax.swing.JButton xoaDocGiaBtn;
     private javax.swing.JButton mokhoa4;
-    private javax.swing.JTextField ngaysinh2;
+    private javax.swing.JTextField ngaySinhDGField;
     private javax.swing.JTabbedPane quanlyttdg2;
     private javax.swing.JTextField sdtDocGiaField;
     private javax.swing.JTextField soLuongField;
