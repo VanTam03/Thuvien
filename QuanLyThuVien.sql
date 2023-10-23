@@ -1,6 +1,6 @@
-﻿CREATE DATABASE [QuanLyThuVien]
-USE [QuanLyThuVien]
-Go
+﻿--CREATE DATABASE [QuanLyThuVien]
+--USE [QuanLyThuVien]
+--Go
 ALTER DATABASE [QuanLyThuVien] SET COMPATIBILITY_LEVEL = 150
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -170,7 +170,7 @@ CREATE TABLE [dbo].[TaiKhoan](
 	[ngaySinh] [date] NULL,
 	[gioiTinh] [nvarchar](3) NULL,
 	[email] [varchar](100) NULL,
-	[sdt] [char](11) NULL,
+	[sdt] [char](10) NULL,
 	[trangThai] [int] NOT NULL,
 	[soLuongMuon] [int] NULL,
 PRIMARY KEY CLUSTERED 
