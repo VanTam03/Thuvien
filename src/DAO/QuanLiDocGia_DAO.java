@@ -12,7 +12,7 @@ public class QuanLiDocGia_DAO {
   KetNoiSQL connect = new KetNoiSQL();
   ArrayList<TaiKhoan> dsDG = new ArrayList<>();
 
-  //tồn tại -> false
+  //kiểm tra mã tài khoản đã tồn tại chưa
   public boolean checkMaTaiKhoan(String maTaiKhoan){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -23,7 +23,7 @@ public class QuanLiDocGia_DAO {
       rs = ps.executeQuery();
       if (rs.next()) {
         int count = rs.getInt(1); // Lấy kết quả đếm
-        if(count == 0) return true;
+        if(count == 0) return true; //không tồn tại mã tại khoản
       }
     }catch(Exception e){
       e.printStackTrace();

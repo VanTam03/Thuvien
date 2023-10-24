@@ -4,11 +4,31 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Model.TaiKhoan;
 import Model.PhanLoaiThe;
 
 public class QLDG_PhanLoai_DAO {
   KetNoiSQL connect = new KetNoiSQL();
   ArrayList<PhanLoaiThe> dsLoaiThe = new ArrayList<>();
+
+  //kiểm tra mã tài khoản đã tồn tại chưa
+  public boolean checkMaThe(String maThe){
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    
+    try{
+      String sql = "select Count(*) FROM LoaiThe WHERE maLoaiThe="+maThe;
+      ps = connect.getConnection().prepareStatement(sql);
+      rs = ps.executeQuery();
+      if (rs.next()) {
+        int count = rs.getInt(1); // Lấy kết quả đếm
+        if(count == 0) return true; //không tồn tại mã tại khoản
+      }
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+    return false;
+  }
 
   public ArrayList dsLoaiThe(){
     PreparedStatement ps = null;
@@ -27,7 +47,7 @@ public class QLDG_PhanLoai_DAO {
         loaiThe.setHanDungThe(rs.getString("hanSuDung"));
         loaiThe.setSoLuongSachMuon(rs.getInt("soSachDuocMuon"));
         loaiThe.setThoiGianMuonToiDa(rs.getInt("thoiGianDuocMuonToiDa"));
-        loaiThe.setGiaTienGiaHan("giaTienGiaHan");
+        loaiThe.setGiaTienGiaHan(rs.getString("giaTienGiaHan"));
 
         dsLoaiThe.add(loaiThe);
       }
@@ -41,18 +61,30 @@ public class QLDG_PhanLoai_DAO {
     String sql = "insert into LoaiThe values(?,?,?,?,?,?,?)";
     try{
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
-      ps.setString(0, loaiThe.getMaLoaiThe());
-      ps.setString(1, loaiThe.getTenLoaiThe());
-      ps.setString(2, loaiThe.getNgayMoThe());
-      ps.setString(3, loaiThe.getHanDungThe());
-      ps.setInt(4, loaiThe.getSoLuongSachMuon());
-      ps.setInt(5, loaiThe.getThoiGianMuonToiDa());
-      ps.setString(6, loaiThe.getGiaTienGiaHan());
+      ps.setString(1, loaiThe.getMaLoaiThe());
+      ps.setString(2, loaiThe.getTenLoaiThe());
+      ps.setString(3, loaiThe.getNgayMoThe());
+      ps.setString(4, loaiThe.getHanDungThe());
+      ps.setInt(5, loaiThe.getSoLuongSachMuon());
+      ps.setInt(6, loaiThe.getThoiGianMuonToiDa());
+      ps.setString(7, loaiThe.getGiaTienGiaHan());
 
       return ps.executeUpdate()>0;
     }catch(Exception e){
       e.printStackTrace();
     }
     return false;
+  }
+
+  public String tenLoaiThe(String maLoaiThe){
+    if(maLoaiThe.equals("")) return "";
+    ArrayList<TaiKhoan> dstk = new QuanLiDocGia_DAO().dsDOCGIA();
+    for (TaiKhoan tk : dstk) {
+      String ten = tk.getTenTaiKhoan().replaceAll("\\s","");
+      if(ten.equals(maLoaiThe)){
+        return tk.getLoaiTK();
+      }
+    }
+    return "";
   }
 }
