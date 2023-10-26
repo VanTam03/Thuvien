@@ -5,10 +5,6 @@
  */
 package View;
 
-/**
- *
- * @author KHP2T
- */
 public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
