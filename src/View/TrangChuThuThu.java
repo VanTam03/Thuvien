@@ -1151,7 +1151,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
                 H_maSach2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
                 H_maSach2.setForeground(new java.awt.Color(255, 0, 0));
-                H_maSach2.setEnabled(false);
+                H_maSach2.setEnabled(true);
 
                 jLabel94.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
                 jLabel94.setForeground(new java.awt.Color(102, 51, 0));
