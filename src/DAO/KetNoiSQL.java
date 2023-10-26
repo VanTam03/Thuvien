@@ -19,7 +19,7 @@ public class KetNoiSQL {
         try {
             Class.forName(url);
             String dbUrl = "jdbc:jtds:sqlserver://localhost:1433/" + databaseName;
-            return DriverManager.getConnection(dbUrl, "sa", "duckg0946945409");
+            return DriverManager.getConnection(dbUrl, "sa", "100903");
 
             // return DriverManager.getConnection(dbUrl,user, pass);
 
