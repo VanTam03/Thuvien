@@ -68,7 +68,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         quanlyttdg2 = new javax.swing.JTabbedPane();
         jPanel29 = new javax.swing.JPanel();
         jScrollPane17 = new javax.swing.JScrollPane();
-        tableDSDG = new javax.swing.JTable();
+        tableDocgia2 = new javax.swing.JTable();
         jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
@@ -77,21 +77,21 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel91 = new javax.swing.JLabel();
         gioitinhnam16 = new javax.swing.JRadioButton();
         gioitinhnu16 = new javax.swing.JRadioButton();
-        sdtDocGiaField = new javax.swing.JTextField();
+        sdt2 = new javax.swing.JTextField();
         matKhauField = new javax.swing.JTextField();
-        themDocGiaBtn = new javax.swing.JButton();
+        themmoidg2 = new javax.swing.JButton();
         suaDocGiaBtn = new javax.swing.JButton();
-        xoaDocGiaBtn = new javax.swing.JButton();
-        ngaySinhDGField = new javax.swing.JTextField();
-        resetDGBtn = new javax.swing.JButton();
+        khoatk8 = new javax.swing.JButton();
+        ngaysinh2 = new javax.swing.JTextField();
+        mokhoa3 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel92 = new javax.swing.JLabel();
         khoatk9 = new javax.swing.JButton();
         String[] options = {"Học Sinh - Sinh Viên", "Cán Bộ Giảng Viên"};
-        theLoaiField = new javax.swing.JComboBox<>(options);
+        Hc_maTheLoai3 = new javax.swing.JComboBox<>(options);
         jLabel127 = new javax.swing.JLabel();
         jLabel128 = new javax.swing.JLabel();
-        emailDocGiaField = new javax.swing.JTextField();
+        emailDocgia3 = new javax.swing.JTextField();
         tenDocGiaField = new javax.swing.JTextField();
         maDocGiaField = new javax.swing.JTextField();
         hanDungField = new javax.swing.JTextField();
@@ -353,17 +353,17 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
                 "Ngày sinh", "Email",
                 "Giới tính", "So luong muon" };
-        tableDSDG.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tableDSDG.setModel(new javax.swing.table.DefaultTableModel(columnNames, 0));
+        tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(columnNames, 0));
 
-        tableDSDG.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableDSDGMouseClicked(evt);
+                tableDocgia2MouseClicked(evt);
             }
         });
-        loadTableDocGia(tableDSDG);
+        loadTableDocGia(tableDocgia2);
 
-        jScrollPane17.setViewportView(tableDSDG);
+        jScrollPane17.setViewportView(tableDocgia2);
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel86.setForeground(new java.awt.Color(0, 0, 0));
@@ -401,31 +401,31 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         gioitinhnu16.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu16.setText("Nữ");
 
-        sdtDocGiaField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        sdtDocGiaField.addKeyListener(new java.awt.event.KeyAdapter() {
+        sdt2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        sdt2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                sdtDocGiaFieldKeyPressed(evt);
+                sdt2KeyPressed(evt);
             }
 
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                sdtDocGiaFieldKeyReleased(evt);
+                sdt2KeyReleased(evt);
             }
 
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                sdtDocGiaFieldKeyTyped(evt);
+                sdt2KeyTyped(evt);
             }
         });
 
         matKhauField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
-        themDocGiaBtn.setBackground(new java.awt.Color(255, 204, 204));
-        themDocGiaBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        themDocGiaBtn.setForeground(new java.awt.Color(0, 0, 0));
-        themDocGiaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
-        themDocGiaBtn.setText("Thêm mới");
-        themDocGiaBtn.addActionListener(new java.awt.event.ActionListener() {
+        themmoidg2.setBackground(new java.awt.Color(255, 204, 204));
+        themmoidg2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        themmoidg2.setForeground(new java.awt.Color(0, 0, 0));
+        themmoidg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
+        themmoidg2.setText("Thêm mới");
+        themmoidg2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themDocGiaBtnActionPerformed(evt);
+                themmoidg2ActionPerformed(evt);
             }
         });
 
@@ -440,37 +440,37 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
-        xoaDocGiaBtn.setBackground(new java.awt.Color(255, 204, 204));
-        xoaDocGiaBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        xoaDocGiaBtn.setForeground(new java.awt.Color(0, 0, 0));
-        xoaDocGiaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
-        xoaDocGiaBtn.setText("Xóa");
-        xoaDocGiaBtn.addActionListener(new java.awt.event.ActionListener() {
+        khoatk8.setBackground(new java.awt.Color(255, 204, 204));
+        khoatk8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        khoatk8.setForeground(new java.awt.Color(0, 0, 0));
+        khoatk8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
+        khoatk8.setText("Xóa");
+        khoatk8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xoaDocGiaBtnActionPerformed(evt);
+                khoatk8ActionPerformed(evt);
             }
         });
 
-        ngaySinhDGField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        ngaySinhDGField.addFocusListener(new java.awt.event.FocusAdapter() {
+        ngaysinh2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        ngaysinh2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                ngaySinhDGFieldFocusLost(evt);
+                ngaysinh2FocusLost(evt);
             }
         });
-        ngaySinhDGField.addKeyListener(new java.awt.event.KeyAdapter() {
+        ngaysinh2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ngaySinhDGFieldKeyPressed(evt);
+                ngaysinh2KeyPressed(evt);
             }
         });
 
-        resetDGBtn.setBackground(new java.awt.Color(255, 204, 204));
-        resetDGBtn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        resetDGBtn.setForeground(new java.awt.Color(0, 0, 0));
-        resetDGBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
-        resetDGBtn.setText("Làm mới");
-        resetDGBtn.addActionListener(new java.awt.event.ActionListener() {
+        mokhoa3.setBackground(new java.awt.Color(255, 204, 204));
+        mokhoa3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        mokhoa3.setForeground(new java.awt.Color(0, 0, 0));
+        mokhoa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
+        mokhoa3.setText("Làm mới");
+        mokhoa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetDGBtnActionPerformed(evt);
+                mokhoa3ActionPerformed(evt);
             }
         });
 
@@ -489,10 +489,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
-        theLoaiField.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        theLoaiField.addActionListener(new java.awt.event.ActionListener() {
+        Hc_maTheLoai3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Hc_maTheLoai3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                theLoaiFieldActionPerformed(evt);
+                Hc_maTheLoai3ActionPerformed(evt);
             }
         });
 
@@ -504,10 +504,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel128.setForeground(new java.awt.Color(0, 0, 0));
         jLabel128.setText("Hạn dùng:");
 
-        emailDocGiaField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        emailDocGiaField.addActionListener(new java.awt.event.ActionListener() {
+        emailDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        emailDocgia3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailDocGiaFieldActionPerformed(evt);
+                emailDocgia3ActionPerformed(evt);
             }
         });
 
@@ -536,14 +536,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                         .addGroup(
                                                                                 javax.swing.GroupLayout.Alignment.TRAILING,
                                                                                 jPanel29Layout.createSequentialGroup()
-                                                                                        .addComponent(themDocGiaBtn)
+                                                                                        .addComponent(themmoidg2)
                                                                                         .addGap(52, 52, 52)
                                                                                         .addComponent(suaDocGiaBtn,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 111,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                         .addGap(47, 47, 47)
-                                                                                        .addComponent(xoaDocGiaBtn,
+                                                                                        .addComponent(khoatk8,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 121,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -555,7 +555,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                                         .addPreferredGap(
                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                                                                 100, Short.MAX_VALUE)
-                                                                                        .addComponent(resetDGBtn,
+                                                                                        .addComponent(mokhoa3,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 151,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,16 +632,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                                                 false)
                                                                                                         .addComponent(
-                                                                                                                ngaySinhDGField)
+                                                                                                                ngaysinh2)
                                                                                                         .addComponent(
-                                                                                                                sdtDocGiaField)
+                                                                                                                sdt2)
                                                                                                         .addComponent(
-                                                                                                                theLoaiField,
+                                                                                                                Hc_maTheLoai3,
                                                                                                                 0,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 Short.MAX_VALUE)
                                                                                                         .addComponent(
-                                                                                                                emailDocGiaField,
+                                                                                                                emailDocgia3,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 310,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -655,7 +655,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel86)
                                         .addComponent(jLabel89)
-                                        .addComponent(sdtDocGiaField, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        .addComponent(sdt2, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(maDocGiaField, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -666,7 +666,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         .addGroup(jPanel29Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabel91)
-                                                .addComponent(ngaySinhDGField, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(ngaysinh2, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel29Layout
@@ -680,7 +680,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         .addGroup(jPanel29Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabel127)
-                                                .addComponent(emailDocGiaField, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(emailDocgia3, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel29Layout
@@ -698,7 +698,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         .addComponent(jLabel88)
                                         .addGroup(jPanel29Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(theLoaiField, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(Hc_maTheLoai3, javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLabel90)))
@@ -713,15 +713,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resetDGBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                                        .addComponent(mokhoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel29Layout
                                                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(themDocGiaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                                                .addComponent(themmoidg2, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(suaDocGiaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(xoaDocGiaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
+                                                .addComponent(khoatk8, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(khoatk9, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3166,10 +3166,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         matKhauField.setText("");
         tenDocGiaField.setText("");
         gioitinhbtngroup.clearSelection();
-        sdtDocGiaField.setText("");
-        ngaySinhDGField.setText("");
-        emailDocGiaField.setText("");
-        theLoaiField.setSelectedItem("");
+        sdt2.setText("");
+        ngaysinh2.setText("");
+        emailDocgia3.setText("");
+        Hc_maTheLoai3.setSelectedItem("");
         hanDungField.setText("");
     }
 
@@ -3178,20 +3178,20 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         this.setVisible(false);
     }// GEN-LAST:event_jButton1ActionPerformed
 
-    private void tableDSDGMouseClicked(java.awt.event.MouseEvent evt) {
-        tableDSDG.setRowSelectionAllowed(true);
-        int lineSelect = tableDSDG.getSelectedRow();
+    private void tableDocgia2MouseClicked(java.awt.event.MouseEvent evt) {
+        tableDocgia2.setRowSelectionAllowed(true);
+        int lineSelect = tableDocgia2.getSelectedRow();
 
-        maDocGiaField.setText((String) tableDSDG.getValueAt(lineSelect, 0));
-        tenDocGiaField.setText((String) tableDSDG.getValueAt(lineSelect, 1));
-        theLoaiField.setSelectedItem((String) tableDSDG.getValueAt(lineSelect, 2));
+        maDocGiaField.setText((String) tableDocgia2.getValueAt(lineSelect, 0));
+        tenDocGiaField.setText((String) tableDocgia2.getValueAt(lineSelect, 1));
+        Hc_maTheLoai3.setSelectedItem((String) tableDocgia2.getValueAt(lineSelect, 2));
 
-        matKhauField.setText((String) tableDSDG.getValueAt(lineSelect, 3));
-        sdtDocGiaField.setText((String) tableDSDG.getValueAt(lineSelect, 4));
-        ngaySinhDGField.setText((String) tableDSDG.getValueAt(lineSelect, 5));
-        emailDocGiaField.setText((String) tableDSDG.getValueAt(lineSelect, 6));
+        matKhauField.setText((String) tableDocgia2.getValueAt(lineSelect, 3));
+        sdt2.setText((String) tableDocgia2.getValueAt(lineSelect, 4));
+        ngaysinh2.setText((String) tableDocgia2.getValueAt(lineSelect, 5));
+        emailDocgia3.setText((String) tableDocgia2.getValueAt(lineSelect, 6));
 
-        String gioiTinh = tableDSDG.getValueAt(lineSelect, 7).toString();
+        String gioiTinh = tableDocgia2.getValueAt(lineSelect, 7).toString();
         if (gioiTinh.equals("Nam")) {
             gioitinhnam16.setSelected(true);
         } else
@@ -3199,23 +3199,23 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         hanDungField.setText(new QuanLiDocGia_DAO().hanDungThe(maDocGiaField.getText()));
     }
 
-    private void themDocGiaBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    private void themmoidg2ActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || emailDocGiaField.getText().equals("") || sdtDocGiaField.getText().equals("")) {
+                || emailDocgia3.getText().equals("") || sdt2.getText().equals("")) {
             JOptionPane.showMessageDialog((JOptionPane.getRootFrame()), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (!new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Đã Tồn Tại!");
-        } else if (!isValidGmail(emailDocGiaField.getText())) {
+        } else if (!isValidGmail(emailDocgia3.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dạng Email!");
-        } else if (!isValidPhoneNumber(sdtDocGiaField.getText())) {
+        } else if (!isValidPhoneNumber(sdt2.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dạng Số Điện Thoại!");
         } else {
             TaiKhoan dg = new TaiKhoan();
             dg.setTenTaiKhoan(maDocGiaField.getText());
             dg.setMatKhau(matKhauField.getText());
             dg.setTenNguoiDung(tenDocGiaField.getText());
-            dg.setLoaiTK(theLoaiField.getSelectedItem().toString());
-            dg.setEmail(emailDocGiaField.getText());
+            dg.setLoaiTK(Hc_maTheLoai3.getSelectedItem().toString());
+            dg.setEmail(emailDocgia3.getText());
             if (gioitinhnam16.isSelected()) {
                 dg.setGioiTinh("Nam");
             } else if (gioitinhnu16.isSelected()) {
@@ -3223,38 +3223,38 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             } else {
                 dg.setGioiTinh("");
             }
-            dg.setNgaySinh(ngaySinhDGField.getText());
-            dg.setSdt(sdtDocGiaField.getText());
+            dg.setNgaySinh(ngaysinh2.getText());
+            dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
             dg.setSoLuongMuon(0);
 
             if (new QuanLiDocGia_DAO().Add_DG(dg)) {
-                loadTableDocGia(tableDSDG);
+                loadTableDocGia(tableDocgia2);
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Thêm Thành Công!");
                 resetDG();
             } else {
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Thêm Lỗi");
             }
         }
-    }// GEN-LAST:event_themDocGiaBtnActionPerformed
+    }// GEN-LAST:event_themmoidg2ActionPerformed
 
     private void suaDocGiaBtnActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || emailDocGiaField.getText().equals("") || sdtDocGiaField.getText().equals("")) {
+                || emailDocgia3.getText().equals("") || sdt2.getText().equals("")) {
             JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
-        } else if (!isValidGmail(emailDocGiaField.getText())) {
+        } else if (!isValidGmail(emailDocgia3.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dạng Email!");
-        } else if (!isValidPhoneNumber(sdtDocGiaField.getText())) {
+        } else if (!isValidPhoneNumber(sdt2.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dạng Số Điện Thoại!");
         } else {
             TaiKhoan dg = new TaiKhoan();
             dg.setTenTaiKhoan(maDocGiaField.getText());
             dg.setMatKhau(matKhauField.getText());
             dg.setTenNguoiDung(tenDocGiaField.getText());
-            dg.setLoaiTK(theLoaiField.getSelectedItem().toString());
-            dg.setEmail(emailDocGiaField.getText());
+            dg.setLoaiTK(Hc_maTheLoai3.getSelectedItem().toString());
+            dg.setEmail(emailDocgia3.getText());
             if (gioitinhnam16.isSelected()) {
                 dg.setGioiTinh("Nam");
             } else if (gioitinhnu16.isSelected()) {
@@ -3262,13 +3262,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             } else {
                 dg.setGioiTinh("");
             }
-            dg.setNgaySinh(ngaySinhDGField.getText());
-            dg.setSdt(sdtDocGiaField.getText());
+            dg.setNgaySinh(ngaysinh2.getText());
+            dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
             dg.setSoLuongMuon(0);
 
             if (new QuanLiDocGia_DAO().update_DG(dg)) {
-                loadTableDocGia(tableDSDG);
+                loadTableDocGia(tableDocgia2);
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Sủa Thành Công!");
                 resetDG();
             } else {
@@ -3277,15 +3277,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
     }
 
-    private void xoaDocGiaBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    private void khoatk8ActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || emailDocGiaField.getText().equals("") || sdtDocGiaField.getText().equals("")) {
+                || emailDocgia3.getText().equals("") || sdt2.getText().equals("")) {
             JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
         } else {
             if (new QuanLiDocGia_DAO().delete_DG(maDocGiaField.getText())) {
-                loadTableDocGia(tableDSDG);
+                loadTableDocGia(tableDocgia2);
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Xóa Thành Công!");
                 resetDG();
             } else {
@@ -3294,31 +3294,31 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
     }
 
-    private void resetDGBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    private void mokhoa3ActionPerformed(java.awt.event.ActionEvent evt) {
         resetDG();
     }
 
     // ===================================== Quản lí độc giả ============================
     
-    private void sdtDocGiaFieldKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdtDocGiaFieldKeyPressed
+    private void sdt2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdt2KeyPressed
         // TODO add your handling code here:
-    }// GEN-LAST:event_sdtDocGiaFieldKeyPressed
+    }// GEN-LAST:event_sdt2KeyPressed
 
-    private void sdtDocGiaFieldKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdtDocGiaFieldKeyReleased
+    private void sdt2KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdt2KeyReleased
         // TODO add your handling code here:
-    }// GEN-LAST:event_sdtDocGiaFieldKeyReleased
+    }// GEN-LAST:event_sdt2KeyReleased
 
-    private void sdtDocGiaFieldKeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdtDocGiaFieldKeyTyped
+    private void sdt2KeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_sdt2KeyTyped
         // TODO add your handling code here:
-    }// GEN-LAST:event_sdtDocGiaFieldKeyTyped
+    }// GEN-LAST:event_sdt2KeyTyped
 
-    private void ngaySinhDGFieldFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_ngaySinhDGFieldFocusLost
+    private void ngaysinh2FocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_ngaysinh2FocusLost
         // TODO add your handling code here:
-    }// GEN-LAST:event_ngaySinhDGFieldFocusLost
+    }// GEN-LAST:event_ngaysinh2FocusLost
 
-    private void ngaySinhDGFieldKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_ngaySinhDGFieldKeyPressed
+    private void ngaysinh2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_ngaysinh2KeyPressed
         // TODO add your handling code here:
-    }// GEN-LAST:event_ngaySinhDGFieldKeyPressed
+    }// GEN-LAST:event_ngaysinh2KeyPressed
 
     private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk9ActionPerformed
         // TODO add your handling code here:
@@ -3540,13 +3540,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }// GEN-LAST:event_jTP_main2MouseClicked
 
-    private void theLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_theLoaiFieldActionPerformed
+    private void Hc_maTheLoai3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maTheLoai3ActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_theLoaiFieldActionPerformed
+    }// GEN-LAST:event_Hc_maTheLoai3ActionPerformed
 
-    private void emailDocGiaFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_emailDocGiaFieldActionPerformed
+    private void emailDocgia3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_emailDocgia3ActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_emailDocGiaFieldActionPerformed
+    }// GEN-LAST:event_emailDocgia3ActionPerformed
 
     //===================== Phân loại thẻ ======================
     //sự kiện click table
@@ -3681,7 +3681,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField H_tomTat2;
     private javax.swing.JComboBox<String> Hc_maDM2;
     private javax.swing.JComboBox<String> Hc_maTheLoai2;
-    private javax.swing.JComboBox<String> theLoaiField;
+    private javax.swing.JComboBox<String> Hc_maTheLoai3;
     private javax.swing.JLabel K_tieuDe15;
     private javax.swing.JLabel K_tieuDe16;
     private javax.swing.JLabel K_tieuDe17;
@@ -3721,7 +3721,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_chucNangThongKe6;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
-    private javax.swing.JTextField emailDocGiaField;
+    private javax.swing.JTextField emailDocgia3;
     private javax.swing.ButtonGroup gioitinhbtngroup;
     private javax.swing.JRadioButton gioitinhnam16;
     private javax.swing.JRadioButton gioitinhnam17;
@@ -3832,18 +3832,18 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
-    private javax.swing.JButton xoaDocGiaBtn;
+    private javax.swing.JButton khoatk8;
     private javax.swing.JButton khoatk9;
     private javax.swing.JTextField maDocGiaField;
     private javax.swing.JTextField maLoaiField;
     private javax.swing.JTextField matKhauField;
-    private javax.swing.JButton resetDGBtn;
+    private javax.swing.JButton mokhoa3;
     private javax.swing.JButton mokhoa4;
-    private javax.swing.JTextField ngaySinhDGField;
+    private javax.swing.JTextField ngaysinh2;
     private javax.swing.JTabbedPane quanlyttdg2;
-    private javax.swing.JTextField sdtDocGiaField;
+    private javax.swing.JTextField sdt2;
     private javax.swing.JTextField soLuongField;
-    private javax.swing.JTable tableDSDG;
+    private javax.swing.JTable tableDocgia2;
     private javax.swing.JTable tableDocgia3;
     private javax.swing.JTable tableSearchSach2;
     private javax.swing.JTable tabletkbandoc2;
@@ -3858,7 +3858,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField tenLoaiField2;
     private javax.swing.JTextField tenLoaiField3;
     private javax.swing.JTextField textboxsearch2;
-    private javax.swing.JButton themDocGiaBtn;
+    private javax.swing.JButton themmoidg2;
     private javax.swing.JButton themmoidg3;
     private javax.swing.JTextField thoiGianField;
     private javax.swing.JTextField thoiGianField1;
