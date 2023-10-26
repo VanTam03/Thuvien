@@ -6,6 +6,7 @@
 package View;
 
 import DAO.KhoSach_DAO;
+import DAO.Sach_DAO;
 import DTO.KhoSach;
 import DTO.Sach;
 //import Service.Sach_Service;
@@ -45,15 +46,14 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         defaultTableModel_Sach.addColumn("Mã sách");
         defaultTableModel_Sach.addColumn("Tên sách");
         defaultTableModel_Sach.addColumn("Số lượng còn");
-        // setTableData_Sach(sachService.getDSSach());
+        setTableData_Sach(Sach_DAO.getInstance().selectAll());
 
     }
 
     private void setTableData_Sach(List<Sach> listSach) {
         for (Sach sach : listSach) {
             KhoSach khoSach = KhoSach_DAO.getInstance().selectById(sach.getMaSach());
-            defaultTableModel_Sach
-                    .addRow(new Object[] { sach.getMaSach(), sach.getTenSach(), khoSach.getSoLuongCon() });
+            defaultTableModel_Sach.addRow(new Object[] { sach.getMaSach(), sach.getTenSach(), khoSach.getSoLuongCon() });
         }
     }
 
@@ -338,12 +338,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
     private void btnK_refreshSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_refreshSachActionPerformed
         // TODO add your handling code here:
         txtK_timKiemSach.setText("");
-        defaultTableModel_Sach.setRowCount(0);
-        defaultTableModel_Sach.setColumnCount(0);
-        defaultTableModel_Sach.addColumn("Mã sách");
-        defaultTableModel_Sach.addColumn("Tên sách");
-        defaultTableModel_Sach.addColumn("Số lượng còn");
-        // setTableData_Sach(sachService.getDSSach());
+        timkiemSach("");
 
     }// GEN-LAST:event_btnK_refreshSachActionPerformed
 
