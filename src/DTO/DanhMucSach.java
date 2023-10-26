@@ -1,31 +1,32 @@
 package DTO;
 
 public class DanhMucSach {
-    private String maDanhmucSach, tenDanhmucSach;
+    private String maDM;
+    private String tenDM;
 
+
+    public DanhMucSach(String maDM, String tenDM) {
+        this.maDM = maDM;
+        this.tenDM = tenDM;
+    }
     public DanhMucSach() {
-
+        maDM="";
     }
 
-    public DanhMucSach(String maDanhmucSach, String tenDanhmucSach) {
-        this.maDanhmucSach = maDanhmucSach;
-        this.tenDanhmucSach = tenDanhmucSach;
+    public String getMaDM() {
+        return maDM;
     }
 
-    public String getMaDanhmucSach() {
-        return maDanhmucSach;
+    public String getTenDM() {
+        return tenDM;
     }
 
-    public void setMaDanhmucSach(String maDanhmucSach) {
-        this.maDanhmucSach = maDanhmucSach;
+    public void setMaDM(String maDM) {
+        this.maDM = maDM;
     }
 
-    public String getTenDanhmucSach() {
-        return tenDanhmucSach;
-    }
-
-    public void setTenDanhmucSach(String tenDanhmucSach) {
-        this.tenDanhmucSach = tenDanhmucSach;
+    public void setTenDM(String tenDM) {
+        this.tenDM = tenDM;
     }
 
 }

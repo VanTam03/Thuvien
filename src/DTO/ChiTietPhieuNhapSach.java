@@ -1,39 +1,37 @@
 package DTO;
 
 public class ChiTietPhieuNhapSach {
-    private String maPhieunhap;
+    private String maPhieuNhap;
     private String maSach;
     private String tenSach;
-    private String maTacgia;
-    private String maTheloai;
+    private String maTacGia;
+    private String maTheLoai;
     private String NXB;
-    private int namXuatban;
-    private int soLuongnhap;
-    private float giaNhap;
+    private int namXuatBan;
+    private int soLuongNhap;
+    private double giaNhap;
 
     public ChiTietPhieuNhapSach() {
-
     }
 
-    public ChiTietPhieuNhapSach(String maPhieunhap, String maSach, String tenSach, String maTacgia, String maTheloai,
-            String NXB, int namXuatban, int soLuongnhap, float giaNhap) {
-        this.maPhieunhap = maPhieunhap;
+    public ChiTietPhieuNhapSach(String maPhieuNhap, String maSach, String tenSach, String maTacGia, String maTheLoai, String NXB, int namXuatBan, int soLuongNhap, double giaNhap) {
+        this.maPhieuNhap = maPhieuNhap;
         this.maSach = maSach;
         this.tenSach = tenSach;
-        this.maTacgia = maTacgia;
-        this.maTheloai = maTheloai;
+        this.maTacGia = maTacGia;
+        this.maTheLoai = maTheLoai;
         this.NXB = NXB;
-        this.namXuatban = namXuatban;
-        this.soLuongnhap = soLuongnhap;
+        this.namXuatBan = namXuatBan;
+        this.soLuongNhap = soLuongNhap;
         this.giaNhap = giaNhap;
     }
 
-    public String getMaPhieunhap() {
-        return maPhieunhap;
+    public String getMaPhieuNhap() {
+        return maPhieuNhap;
     }
 
-    public void setMaPhieunhap(String maPhieunhap) {
-        this.maPhieunhap = maPhieunhap;
+    public void setMaPhieuNhap(String maPhieuNhap) {
+        this.maPhieuNhap = maPhieuNhap;
     }
 
     public String getMaSach() {
@@ -52,52 +50,67 @@ public class ChiTietPhieuNhapSach {
         this.tenSach = tenSach;
     }
 
-    public String getMaTacgia() {
-        return maTacgia;
+    public String getMaTacGia() {
+        return maTacGia;
     }
 
-    public void setMaTacgia(String maTacgia) {
-        this.maTacgia = maTacgia;
+    public void setMaTacGia(String maTacGia) {
+        this.maTacGia = maTacGia;
     }
 
-    public String getMaTheloai() {
-        return maTheloai;
+    public String getMaTheLoai() {
+        return maTheLoai;
     }
 
-    public void setMaTheloai(String maTheloai) {
-        this.maTheloai = maTheloai;
+    public void setMaTheLoai(String maTheLoai) {
+        this.maTheLoai = maTheLoai;
     }
 
     public String getNXB() {
         return NXB;
     }
 
-    public void setNXB(String nXB) {
-        NXB = nXB;
+    public void setNXB(String NXB) {
+        this.NXB = NXB;
     }
 
-    public int getNamXuatban() {
-        return namXuatban;
+    public int getNamXuatBan() {
+        return namXuatBan;
     }
 
-    public void setNamXuatban(int namXuatban) {
-        this.namXuatban = namXuatban;
+    public void setNamXuatBan(int namXuatBan) {
+        this.namXuatBan = namXuatBan;
     }
 
-    public int getSoLuongnhap() {
-        return soLuongnhap;
+    public int getSoLuongNhap() {
+        return soLuongNhap;
     }
 
-    public void setSoLuongnhap(int soLuongnhap) {
-        this.soLuongnhap = soLuongnhap;
+    public void setSoLuongNhap(int soLuongNhap) {
+        this.soLuongNhap = soLuongNhap;
     }
 
-    public float getGiaNhap() {
+    public double getGiaNhap() {
         return giaNhap;
     }
 
-    public void setGiaNhap(float giaNhap) {
+    public void setGiaNhap(double giaNhap) {
         this.giaNhap = giaNhap;
+    }
+
+    @Override
+    public String toString() {
+        return "ChiTietPhieuNhapSach{" +
+                "maPhieuNhap='" + maPhieuNhap + '\'' +
+                ", maSach='" + maSach + '\'' +
+                ", tenSach='" + tenSach + '\'' +
+                ", maTacGia='" + maTacGia + '\'' +
+                ", maTheLoai='" + maTheLoai + '\'' +
+                ", NXB='" + NXB + '\'' +
+                ", namXuatBan='" + namXuatBan + '\'' +
+                ", soLuongNhap=" + soLuongNhap +
+                ", giaNhap=" + giaNhap +
+                '}';
     }
 
 }

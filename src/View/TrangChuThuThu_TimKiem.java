@@ -5,31 +5,66 @@
  */
 package View;
 
-import DAO.KetNoiSQL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.RowFilter;
+import DAO.KhoSach_DAO;
+import DTO.KhoSach;
+import DTO.Sach;
+import Service.Sach_Service;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import java.util.List;
 
 /**
  *
  * @author nguye
  */
 public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form TimKiem
      */
+    DefaultTableModel defaultTableModel_Sach;
+    Sach_Service sachService;
+
     public TrangChuThuThu_TimKiem() {
         initComponents();
+        sachService = new Sach_Service();
+        defaultTableModel_Sach = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        tblK_Sach.setModel(defaultTableModel_Sach);
+
+        tblK_Sach.setCellSelectionEnabled(true);
+        tblK_banDoc.setCellSelectionEnabled(true);
+
+        defaultTableModel_Sach.addColumn("Mã sách");
+        defaultTableModel_Sach.addColumn("Tên sách");
+        defaultTableModel_Sach.addColumn("Số lượng còn");
+        setTableData_Sach(sachService.getDSSach());
+
     }
 
-    
+    private void setTableData_Sach(List<Sach> listSach) {
+        for (Sach sach : listSach) {
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(sach.getMaSach());
+            defaultTableModel_Sach.addRow(new Object[]{sach.getMaSach(), sach.getTenSach(), khoSach.getSoLuongCon()});
+        }
+    }
+
+    private void timkiemSach(String query) {
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<DefaultTableModel>(defaultTableModel_Sach);
+        tblK_Sach.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
+
+    }
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -270,27 +305,36 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
 
     private void btnK_timSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_timSachActionPerformed
         // TODO add your handling code here:
-        
+        String query = txtK_timKiemSach.getText();
+        timkiemSach(query);
+
     }//GEN-LAST:event_btnK_timSachActionPerformed
 
     private void btnK_timBanDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_timBanDocActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnK_timBanDocActionPerformed
 
     private void btnK_refreshSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_refreshSachActionPerformed
         // TODO add your handling code here:
-        
+        txtK_timKiemSach.setText("");
+        defaultTableModel_Sach.setRowCount(0);
+        defaultTableModel_Sach.setColumnCount(0);
+        defaultTableModel_Sach.addColumn("Mã sách");
+        defaultTableModel_Sach.addColumn("Tên sách");
+        defaultTableModel_Sach.addColumn("Số lượng còn");
+        setTableData_Sach(sachService.getDSSach());
+
     }//GEN-LAST:event_btnK_refreshSachActionPerformed
 
     private void btnK_refreshBanDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_refreshBanDocActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnK_refreshBanDocActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -300,7 +344,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

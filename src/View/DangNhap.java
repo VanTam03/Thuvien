@@ -6,16 +6,6 @@
 package View;
 
 
-import DAO.KetNoiSQL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author KHP2T
