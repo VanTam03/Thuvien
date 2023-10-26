@@ -2,17 +2,21 @@ package DTO;
 
 public class KhoSach {
     private String maSach;
-    private int tongSoluong, soLuongcon, soLuongsachhong;
+    private int tongSoLuong;
+    private int soLuongCon;
+    private int soLuongSachHong;
 
     public KhoSach() {
-
+        maSach = "";
     }
-
-    public KhoSach(String maSach, int tongSoluong, int soLuongcon, int soLuongsachhong) {
+    public KhoSach(String maSach) {
         this.maSach = maSach;
-        this.tongSoluong = tongSoluong;
-        this.soLuongcon = soLuongcon;
-        this.soLuongsachhong = soLuongsachhong;
+    }
+    public KhoSach(String maSach, int tongSoLuong, int soLuongCon, int soLuongSachHong) {
+        this.maSach = maSach;
+        this.tongSoLuong = tongSoLuong;
+        this.soLuongCon = soLuongCon;
+        this.soLuongSachHong = soLuongSachHong;
     }
 
     public String getMaSach() {
@@ -23,28 +27,28 @@ public class KhoSach {
         this.maSach = maSach;
     }
 
-    public int getTongSoluong() {
-        return tongSoluong;
+    public int getTongSoLuong() {
+        return tongSoLuong;
     }
 
-    public void setTongSoluong(int tongSoluong) {
-        this.tongSoluong = tongSoluong;
+    public void setTongSoLuong(int tongSoLuong) {
+        this.tongSoLuong = tongSoLuong;
     }
 
-    public int getSoLuongcon() {
-        return soLuongcon;
+    public int getSoLuongCon() {
+        return soLuongCon;
     }
 
-    public void setSoLuongcon(int soLuongcon) {
-        this.soLuongcon = soLuongcon;
+    public void setSoLuongCon(int soLuongCon) {
+        this.soLuongCon = soLuongCon;
     }
 
-    public int getSoLuongsachhong() {
-        return soLuongsachhong;
+    public int getSoLuongSachHong() {
+        return soLuongSachHong;
     }
 
-    public void setSoLuongsachhong(int soLuongsachhong) {
-        this.soLuongsachhong = soLuongsachhong;
+    public void setSoLuongSachHong(int soLuongSachHong) {
+        this.soLuongSachHong = soLuongSachHong;
     }
 
 }

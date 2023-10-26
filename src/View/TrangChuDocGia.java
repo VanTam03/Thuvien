@@ -5,22 +5,6 @@
  */
 package View;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableRowSorter;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.ResultSet;
-import DAO.KetNoiSQL;
-
 /**
  *
  * @author Windows 10
@@ -388,10 +372,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
-        
 
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

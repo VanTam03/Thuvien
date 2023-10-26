@@ -1,33 +1,37 @@
 package DTO;
 
 public class TacGia {
-    private String maTacgia, tenTacgia;
+    private String maTacGia;
+    private String tenTacGia;
     private int soSach;
 
-    public TacGia() {
-
-    }
-
-    public TacGia(String maTacgia, String tenTacgia, int soSach) {
-        this.maTacgia = maTacgia;
-        this.tenTacgia = tenTacgia;
+    public TacGia(String maTacGia, String tenTacGia, int soSach) {
+        this.maTacGia = maTacGia;
+        this.tenTacGia = tenTacGia;
         this.soSach = soSach;
     }
-
-    public String getMaTacgia() {
-        return maTacgia;
+    public TacGia(String maTacGia) {
+        this.maTacGia = maTacGia;
     }
 
-    public void setMaTacgia(String maTacgia) {
-        this.maTacgia = maTacgia;
+    public TacGia() {
+        maTacGia="";
     }
 
-    public String getTenTacgia() {
-        return tenTacgia;
+    public String getMaTacGia() {
+        return maTacGia;
     }
 
-    public void setTenTacgia(String tenTacgia) {
-        this.tenTacgia = tenTacgia;
+    public void setMaTacGia(String maTacGia) {
+        this.maTacGia = maTacGia;
+    }
+
+    public String getTenTacGia() {
+        return tenTacGia;
+    }
+
+    public void setTenTacGia(String tenTacGia) {
+        this.tenTacGia = tenTacGia;
     }
 
     public int getSoSach() {

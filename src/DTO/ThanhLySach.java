@@ -1,31 +1,35 @@
 package DTO;
 
+import java.time.LocalDate;
+
 public class ThanhLySach {
-    private String maThanhlysach, maSach, lyDothanhly, ngayThanhly, ghiChu;
-    private int soLuongsachhong;
-    private float tongTienthanhly;
+    private String maThanhLySach;
+    private String maSach;
+    private int soLuongSachHong;
+    private String lyDoThanhLy;
+    private LocalDate ngayThanhLy;
+    private String ghiChu;
+    private double tongTienThanhLy;
 
     public ThanhLySach() {
-
     }
 
-    public ThanhLySach(String maThanhlysach, String maSach, String lyDothanhly, String ngayThanhly, String ghiChu,
-            int soLuongsachhong, float tongTienthanhly) {
-        this.maThanhlysach = maThanhlysach;
+    public ThanhLySach(String maThanhLySach, String maSach, int soLuongSachHong, String lyDoThanhLy, LocalDate ngayThanhLy, String ghiChu, double tongTienThanhLy) {
+        this.maThanhLySach = maThanhLySach;
         this.maSach = maSach;
-        this.lyDothanhly = lyDothanhly;
-        this.ngayThanhly = ngayThanhly;
+        this.soLuongSachHong = soLuongSachHong;
+        this.lyDoThanhLy = lyDoThanhLy;
+        this.ngayThanhLy = ngayThanhLy;
         this.ghiChu = ghiChu;
-        this.soLuongsachhong = soLuongsachhong;
-        this.tongTienthanhly = tongTienthanhly;
+        this.tongTienThanhLy = tongTienThanhLy;
     }
 
-    public String getMaThanhlysach() {
-        return maThanhlysach;
+    public String getMaThanhLySach() {
+        return maThanhLySach;
     }
 
-    public void setMaThanhlysach(String maThanhlysach) {
-        this.maThanhlysach = maThanhlysach;
+    public void setMaThanhLySach(String maThanhLySach) {
+        this.maThanhLySach = maThanhLySach;
     }
 
     public String getMaSach() {
@@ -36,20 +40,28 @@ public class ThanhLySach {
         this.maSach = maSach;
     }
 
-    public String getLyDothanhly() {
-        return lyDothanhly;
+    public int getSoLuongSachHong() {
+        return soLuongSachHong;
     }
 
-    public void setLyDothanhly(String lyDothanhly) {
-        this.lyDothanhly = lyDothanhly;
+    public void setSoLuongSachHong(int soLuongSachHong) {
+        this.soLuongSachHong = soLuongSachHong;
     }
 
-    public String getNgayThanhly() {
-        return ngayThanhly;
+    public String getLyDoThanhLy() {
+        return lyDoThanhLy;
     }
 
-    public void setNgayThanhly(String ngayThanhly) {
-        this.ngayThanhly = ngayThanhly;
+    public void setLyDoThanhLy(String lyDoThanhLy) {
+        this.lyDoThanhLy = lyDoThanhLy;
+    }
+
+    public LocalDate getNgayThanhLy() {
+        return ngayThanhLy;
+    }
+
+    public void setNgayThanhLy(LocalDate ngayThanhLy) {
+        this.ngayThanhLy = ngayThanhLy;
     }
 
     public String getGhiChu() {
@@ -60,20 +72,26 @@ public class ThanhLySach {
         this.ghiChu = ghiChu;
     }
 
-    public int getSoLuongsachhong() {
-        return soLuongsachhong;
+    public double getTongTienThanhLy() {
+        return tongTienThanhLy;
     }
 
-    public void setSoLuongsachhong(int soLuongsachhong) {
-        this.soLuongsachhong = soLuongsachhong;
+    public void setTongTienThanhLy(double tongTienThanhLy) {
+        this.tongTienThanhLy = tongTienThanhLy;
     }
 
-    public float getTongTienthanhly() {
-        return tongTienthanhly;
+    @Override
+    public String toString() {
+        return "ThanhLySach{" +
+                "maThanhLySach='" + maThanhLySach + '\'' +
+                ", maSach='" + maSach + '\'' +
+                ", soLuongSachHong=" + soLuongSachHong +
+                ", lyDoThanhLy='" + lyDoThanhLy + '\'' +
+                ", ngayThanhLy=" + ngayThanhLy +
+                ", ghiChu='" + ghiChu + '\'' +
+                ", tongTienThanhLy=" + tongTienThanhLy +
+                '}';
     }
 
-    public void setTongTienthanhly(float tongTienthanhly) {
-        this.tongTienthanhly = tongTienthanhly;
-    }
 
 }

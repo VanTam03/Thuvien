@@ -6,12 +6,10 @@
 package View;
 
 import DAO.KetNoiSQL;
+
 import java.awt.Font;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 /**
