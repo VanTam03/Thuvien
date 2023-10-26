@@ -8,7 +8,7 @@ package View;
 import DAO.KhoSach_DAO;
 import DTO.KhoSach;
 import DTO.Sach;
-import Service.Sach_Service;
+//import Service.Sach_Service;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,11 +25,11 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
      * Creates new form TimKiem
      */
     DefaultTableModel defaultTableModel_Sach;
-    Sach_Service sachService;
+//    Sach_Service sachService;
 
     public TrangChuThuThu_TimKiem() {
         initComponents();
-        sachService = new Sach_Service();
+//        sachService = new Sach_Service();
         defaultTableModel_Sach = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -45,7 +45,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         defaultTableModel_Sach.addColumn("Mã sách");
         defaultTableModel_Sach.addColumn("Tên sách");
         defaultTableModel_Sach.addColumn("Số lượng còn");
-        setTableData_Sach(sachService.getDSSach());
+//        setTableData_Sach(sachService.getDSSach());
 
     }
 
@@ -323,7 +323,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         defaultTableModel_Sach.addColumn("Mã sách");
         defaultTableModel_Sach.addColumn("Tên sách");
         defaultTableModel_Sach.addColumn("Số lượng còn");
-        setTableData_Sach(sachService.getDSSach());
+//        setTableData_Sach(sachService.getDSSach());
 
     }//GEN-LAST:event_btnK_refreshSachActionPerformed
 
