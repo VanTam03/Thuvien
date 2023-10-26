@@ -12,10 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
-/**
- *
- * @author PHUOC
- */
+
 public class TrangChuChinh extends javax.swing.JFrame {
 
    
