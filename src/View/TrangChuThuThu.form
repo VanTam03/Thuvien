@@ -139,7 +139,7 @@
         <Component class="javax.swing.JLabel" name="jLabel29">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/logo-truong-250.png"/>
+              <Image iconType="3" name="/Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png"/>
             </Property>
           </Properties>
         </Component>
