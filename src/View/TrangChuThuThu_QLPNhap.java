@@ -68,11 +68,13 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         btnExport = new javax.swing.JButton();
         btnK_suaPM = new javax.swing.JButton();
         btnK_lamMoiSach1 = new javax.swing.JButton();
+        DelBtn1 = new javax.swing.JButton();
         jPK_btnQLS = new javax.swing.JPanel();
         btnK_themMaSach = new javax.swing.JButton();
         btnK_lamMoiSach = new javax.swing.JButton();
         btnK_luuMaSach = new javax.swing.JButton();
         btnK_suaPM1 = new javax.swing.JButton();
+        DelBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblK_kq = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -320,7 +322,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                         .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbK_maPM3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                            .addComponent(lbK_maPM3, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                                 .addComponent(lbK_maSach1)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -440,34 +442,52 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
+        DelBtn1.setBackground(new java.awt.Color(255, 204, 204));
+        DelBtn1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        DelBtn1.setForeground(new java.awt.Color(0, 0, 0));
+        DelBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/xoa.png"))); // NOI18N
+        DelBtn1.setText("Xóa");
+        DelBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelBtn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPK_btnQLPMLayout = new javax.swing.GroupLayout(jPK_btnQLPM);
         jPK_btnQLPM.setLayout(jPK_btnQLPMLayout);
         jPK_btnQLPMLayout.setHorizontalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(btnK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
+                        .addComponent(btnK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnK_suaPM, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
+                        .addComponent(btnK_luuPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnK_suaPM, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnK_luuPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnExport)
-                .addGap(18, 18, 18)
-                .addComponent(btnK_lamMoiSach1)
-                .addContainerGap())
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnK_lamMoiSach1)
+                    .addComponent(DelBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPK_btnQLPMLayout.setVerticalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnK_luuPM)
-                    .addComponent(btnK_suaPM)
-                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnK_themPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnK_suaPM)
+                    .addComponent(DelBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnK_luuPM)
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnK_lamMoiSach1))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         jPK_btnQLS.setBackground(new java.awt.Color(204, 204, 255));
@@ -518,31 +538,48 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
+        DelBtn.setBackground(new java.awt.Color(255, 204, 204));
+        DelBtn.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        DelBtn.setForeground(new java.awt.Color(0, 0, 0));
+        DelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/xoa.png"))); // NOI18N
+        DelBtn.setText("Xóa");
+        DelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPK_btnQLSLayout = new javax.swing.GroupLayout(jPK_btnQLS);
         jPK_btnQLS.setLayout(jPK_btnQLSLayout);
         jPK_btnQLSLayout.setHorizontalGroup(
             jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_btnQLSLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnK_themMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnK_themMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnK_luuMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnK_suaPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnK_luuMaSach)
-                .addGap(18, 18, 18)
-                .addComponent(btnK_lamMoiSach)
-                .addGap(27, 27, 27))
+                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPK_btnQLSLayout.createSequentialGroup()
+                        .addComponent(btnK_suaPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnK_lamMoiSach))
+                .addGap(132, 132, 132))
         );
         jPK_btnQLSLayout.setVerticalGroup(
             jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLSLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnK_luuMaSach)
-                    .addComponent(btnK_lamMoiSach)
                     .addComponent(btnK_themMaSach)
-                    .addComponent(btnK_suaPM1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                    .addComponent(btnK_suaPM1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnK_luuMaSach)
+                    .addComponent(btnK_lamMoiSach))
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout jPK_buttonLayout = new javax.swing.GroupLayout(jPK_button);
@@ -552,13 +589,16 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             .addGroup(jPK_buttonLayout.createSequentialGroup()
                 .addComponent(jPK_btnQLPM, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPK_buttonLayout.setVerticalGroup(
             jPK_buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPK_btnQLPM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+            .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_buttonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPK_btnQLPM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPK_qlPMLayout = new javax.swing.GroupLayout(jPK_qlPM);
@@ -644,7 +684,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -728,6 +768,14 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private void btnK_lamMoiSach1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiSach1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnK_lamMoiSach1ActionPerformed
+
+    private void DelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelBtnActionPerformed
+
+    }//GEN-LAST:event_DelBtnActionPerformed
+
+    private void DelBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DelBtn1ActionPerformed
    
     /**
      * @param args the command line arguments
@@ -796,6 +844,8 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DelBtn;
+    private javax.swing.JButton DelBtn1;
     private javax.swing.JTextField ImportField;
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnK_chonMaSach;
