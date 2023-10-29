@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="20" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../../Downloads_D/Programs/jcalendar-1.4/lib/jcalendar-1.4.jar!/" />
@@ -16,7 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11.jar!/" />
@@ -71,8 +71,51 @@
           <root url="jar://$MODULE_DIR$/../../../../Downloads_D/Programs/poi-bin-5.2.3/poi-javadoc-5.2.3.jar!/" />
         </JAVADOC>
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../../../../Downloads_D/Programs/poi-bin-5.2.3/ooxml-lib" recursive="false" />
         <jarDirectory url="file://$MODULE_DIR$" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../../../Downloads_D/Programs/poi-bin-5.2.3/ooxml-lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="poi-bin-5.2" level="application" />
+    <orderEntry type="library" name="poi-bin-5.21" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre8-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/jcalendar-1.4/lib/jcalendar-1.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/jcalendar-1.4/lib/jgoodies-common-1.2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/jcalendar-1.4/lib/jgoodies-looks-2.4.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Programs/jcalendar-1.4/lib/junit-4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Compressed/jcalendar-1.4.zip!/doc/api" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../../../Downloads_D/Compressed/jcalendar-1.4.zip!/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../../../../Downloads_D/Programs/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

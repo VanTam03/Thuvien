@@ -5,6 +5,11 @@
  */
 package View;
 
+import DAO.PhieuNhapSach_DAO;
+import DTO.PhieuNhapSach;
+
+import javax.swing.*;
+
 /**
  *
  * @author nguye
@@ -620,18 +625,45 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
+        txtK_maPM_1.setEnabled(false);
+        txtK_ghiChu.setEnabled(false);
+        txtK_maSach.setEnabled(false);
+        txtK_maSach7.setEnabled(false);
+        txtK_maSach6.setEnabled(false);
+        txtK_maSach5.setEnabled(false);
+        txtK_maSach3.setEnabled(false);
+        txtK_maSach2.setEnabled(false);
+        txtK_maSach1.setEnabled(false);
+        txtK_maPM_2.setEnabled(false);
+        btnK_luuPM.setEnabled(false);
+        btnK_luuMaSach.setEnabled(false);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnK_themPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPMActionPerformed
-        
+        txtK_maPM_1.setEnabled(true);
+        txtK_ghiChu.setEnabled(true);
+        btnK_luuPM.setEnabled(true);
     }//GEN-LAST:event_btnK_themPMActionPerformed
 
     private void btnK_luuPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuPMActionPerformed
-        
-        
+        if (txtK_maPM_1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu nhập.");
+        }else{
+            PhieuNhapSach phieuNhapSach = new PhieuNhapSach();
+            phieuNhapSach.setMaPhieuNhap(txtK_maPM_1.getText());
+            phieuNhapSach.setMaNhaCungCap(txtK_ghiChu.getText());
+            //phieuNhapSach.setNgayNhap();
+            if (PhieuNhapSach_DAO.getInstance().add(phieuNhapSach)>0){
+                JOptionPane.showMessageDialog(null, "Thêm phiếu nhập thành công!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Thêm phiếu nhập thất bại!");
+            }
+            btnK_luuMaSachActionPerformed(evt);
+        }
+
     }//GEN-LAST:event_btnK_luuPMActionPerformed
 
     private void tblK_kqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblK_kqMouseClicked
@@ -643,11 +675,23 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnK_suaPMActionPerformed
 
     private void btnK_lamMoiPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiPMActionPerformed
-        
+        txtK_maPM_1.setText("");
+        txtK_ghiChu.setText("");
+        txtK_maPM_1.setEnabled(false);
+        txtK_ghiChu.setEnabled(false);
+        btnK_luuPM.setEnabled(false);
     }//GEN-LAST:event_btnK_lamMoiPMActionPerformed
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themMaSachActionPerformed
-        
+        txtK_maSach.setEnabled (true);
+        txtK_maSach7.setEnabled(true);
+        txtK_maSach6.setEnabled(true);
+        txtK_maSach5.setEnabled(true);
+        txtK_maSach3.setEnabled(true);
+        txtK_maSach2.setEnabled(true);
+        txtK_maSach1.setEnabled(true);
+        txtK_maPM_2.setEnabled (true);
+        btnK_luuMaSach.setEnabled(true);
     }//GEN-LAST:event_btnK_themMaSachActionPerformed
 
     private void cbbK_maPMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbK_maPMItemStateChanged
@@ -661,7 +705,25 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnK_luuMaSachActionPerformed
 
     private void btnK_lamMoiSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiSachActionPerformed
-        
+        txtK_maSach.setText("");
+        txtK_maSach7.setText("");
+        txtK_maSach6.setText("");
+        txtK_maSach5.setText("");
+        txtK_maSach3.setText("");
+        txtK_maSach2.setText("");
+        txtK_maSach1.setText("");
+        txtK_maPM_2.setText("");
+        txtK_maPM_1.setText("");
+        txtK_ghiChu.setText("");
+        txtK_maSach.setEnabled(false);
+        txtK_maSach7.setEnabled(false);
+        txtK_maSach6.setEnabled(false);
+        txtK_maSach5.setEnabled(false);
+        txtK_maSach3.setEnabled(false);
+        txtK_maSach2.setEnabled(false);
+        txtK_maSach1.setEnabled(false);
+        txtK_maPM_2.setEnabled(false);
+        btnK_luuMaSach.setEnabled(false);
     }//GEN-LAST:event_btnK_lamMoiSachActionPerformed
 
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
