@@ -298,8 +298,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 });
 
                 jLabel29.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/Images/logo-truong-250.png"))); // NOI18N
-                
+                                getClass().getResource("/Images/logo-truong-250.png"))); // NOI18N
 
                 jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
                 jLabel37.setForeground(new java.awt.Color(0, 0, 102));
@@ -537,11 +536,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 jLabel143.setText("Tìm kiếm:");
 
                 timKiemDG.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-                // timKiemDG.addActionListener(new java.awt.event.ActionListener() {
-                // public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timKiemDG.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
                 // timKiemDGActionPerformed(evt);
-                // }
-                // });
+                }
+                });
 
                 javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
                 jPanel29.setLayout(jPanel29Layout);
