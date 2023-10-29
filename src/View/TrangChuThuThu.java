@@ -345,8 +345,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 });
 
                 jLabel29.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/Images/logo-truong-250.png"))); // NOI18N
-
+                                getClass().getResource("/Images/logo-truong-250.png"))); // NOI18N
 
                 jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
                 jLabel37.setForeground(new java.awt.Color(0, 0, 102));
