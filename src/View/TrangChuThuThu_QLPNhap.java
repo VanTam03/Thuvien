@@ -40,7 +40,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         lbK_maCB = new javax.swing.JLabel();
         lbK_ngayMuon = new javax.swing.JLabel();
         txtK_ghiChu = new javax.swing.JTextField();
-        cbbK_maCB = new javax.swing.JComboBox<>();
+        ImportField = new javax.swing.JTextField();
         jPK_themMaSach = new javax.swing.JPanel();
         txtK_maPM_2 = new javax.swing.JTextField();
         lbK_maPM2 = new javax.swing.JLabel();
@@ -64,14 +64,15 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         jPK_button = new javax.swing.JPanel();
         jPK_btnQLPM = new javax.swing.JPanel();
         btnK_themPM = new javax.swing.JButton();
-        btnK_suaPM = new javax.swing.JButton();
-        btnK_lamMoiPM = new javax.swing.JButton();
         btnK_luuPM = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
+        btnK_suaPM = new javax.swing.JButton();
+        btnK_lamMoiSach1 = new javax.swing.JButton();
         jPK_btnQLS = new javax.swing.JPanel();
         btnK_themMaSach = new javax.swing.JButton();
         btnK_lamMoiSach = new javax.swing.JButton();
-        btnK_xoaMaSach = new javax.swing.JButton();
         btnK_luuMaSach = new javax.swing.JButton();
+        btnK_suaPM1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblK_kq = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -118,7 +119,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_tieuDeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPK_tieuDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbK_tieuDe, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(lbK_tieuDe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnK_veTrangTruoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -129,14 +130,17 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         jPK_themPM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lbK_maPM1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maPM1.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maPM1.setText("Mã phiếu nhập:");
 
         txtK_maPM_1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maCB.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lbK_maCB.setText("Mã cán bộ:");
+        lbK_maCB.setForeground(new java.awt.Color(0, 0, 0));
+        lbK_maCB.setText("Ngày nhập:");
 
         lbK_ngayMuon.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_ngayMuon.setForeground(new java.awt.Color(0, 0, 0));
         lbK_ngayMuon.setText("Nhà cung cấp:");
 
         txtK_ghiChu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -146,7 +150,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
-        cbbK_maCB.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        ImportField.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPK_themPMLayout = new javax.swing.GroupLayout(jPK_themPM);
         jPK_themPM.setLayout(jPK_themPMLayout);
@@ -154,38 +158,40 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themPMLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPK_themPMLayout.createSequentialGroup()
-                        .addComponent(lbK_ngayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtK_ghiChu))
+                .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPK_themPMLayout.createSequentialGroup()
                         .addComponent(lbK_maCB, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(cbbK_maCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(48, 48, 48))
                     .addGroup(jPK_themPMLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lbK_maPM1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtK_maPM_1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(261, 261, 261))
+                        .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbK_ngayMuon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPK_themPMLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lbK_maPM1)))
+                        .addGap(29, 29, 29)))
+                .addGap(7, 7, 7)
+                .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ImportField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(txtK_maPM_1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(txtK_ghiChu))
+                .addGap(234, 234, 234))
         );
         jPK_themPMLayout.setVerticalGroup(
             jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themPMLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbK_maPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtK_maPM_1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbbK_maCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbK_maCB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbK_maCB, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ImportField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtK_ghiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbK_ngayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77))
         );
 
         jPK_themMaSach.setBackground(new java.awt.Color(204, 204, 255));
@@ -199,11 +205,13 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         });
 
         lbK_maPM2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maPM2.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maPM2.setText("Tên sách:");
 
         txtK_maSach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach.setText("Mã sách:");
 
         btnK_chonMaSach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -215,6 +223,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         });
 
         lbK_maPM3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maPM3.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maPM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/open-book.png"))); // NOI18N
         lbK_maPM3.setText("Mã phiếu nhập:");
 
@@ -231,16 +240,19 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         });
 
         lbK_maSach1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach1.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach1.setText("Mã tác giả:");
 
         txtK_maSach1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach2.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach2.setText("Mã thể loại:");
 
         txtK_maSach2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach3.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach3.setText("Nhà xuất bản:");
 
         txtK_maSach3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -251,16 +263,19 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         });
 
         lbK_maSach5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach5.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach5.setText("Năm xuất bản:");
 
         txtK_maSach5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach6.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach6.setText("Số lượng:");
 
         txtK_maSach6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbK_maSach7.setForeground(new java.awt.Color(0, 0, 0));
         lbK_maSach7.setText("Giá nhập:");
 
         txtK_maSach7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -304,23 +319,20 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                                        .addComponent(lbK_maSach)
-                                        .addGap(95, 95, 95))
-                                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                         .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbK_maPM3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lbK_maPM3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                                             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                                 .addComponent(lbK_maSach1)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGap(178, 178, 178)
+                                        .addComponent(lbK_maSach7)
+                                        .addGap(38, 38, 38))
                                     .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                                        .addComponent(txtK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbK_maSach)
+                                        .addGap(95, 95, 95)
+                                        .addComponent(txtK_maSach)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lbK_maSach5))
-                                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                                        .addGap(170, 170, 170)
-                                        .addComponent(lbK_maSach7)))
+                                        .addComponent(lbK_maSach5)))
                                 .addGap(7, 7, 7)))
                         .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -333,43 +345,38 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbK_maPM3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbbK_maPM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbK_maPM2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maPM_2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maSach6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbK_maSach6))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbK_maSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maSach7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbK_maSach7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbK_maSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtK_maSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtK_maSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbK_maSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(btnK_chonMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtK_maSach5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbK_maSach5))
-                        .addGap(175, 175, 175))))
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maPM3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbK_maPM, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbK_maSach5)
+                    .addComponent(txtK_maSach5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maPM2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maPM_2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbK_maSach6))
+                .addGap(6, 6, 6)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbK_maSach7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbK_maSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK_maSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(btnK_chonMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         jPK_button.setBackground(new java.awt.Color(255, 255, 204));
@@ -380,6 +387,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         btnK_themPM.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_themPM.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM.setText("Thêm");
         btnK_themPM.addActionListener(new java.awt.event.ActionListener() {
@@ -388,28 +396,9 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
-        btnK_suaPM.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_suaPM.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnK_suaPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
-        btnK_suaPM.setText("Sửa");
-        btnK_suaPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_suaPMActionPerformed(evt);
-            }
-        });
-
-        btnK_lamMoiPM.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_lamMoiPM.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnK_lamMoiPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
-        btnK_lamMoiPM.setText("Làm mới");
-        btnK_lamMoiPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_lamMoiPMActionPerformed(evt);
-            }
-        });
-
         btnK_luuPM.setBackground(new java.awt.Color(255, 204, 204));
         btnK_luuPM.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_luuPM.setForeground(new java.awt.Color(0, 0, 0));
         btnK_luuPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btnK_luuPM.setText("Lưu");
         btnK_luuPM.addActionListener(new java.awt.event.ActionListener() {
@@ -418,32 +407,67 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
+        btnExport.setBackground(new java.awt.Color(255, 204, 204));
+        btnExport.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnExport.setForeground(new java.awt.Color(0, 0, 0));
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/R_pixian_ai.png"))); // NOI18N
+        btnExport.setText("Xuất");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
+        btnK_suaPM.setBackground(new java.awt.Color(255, 204, 204));
+        btnK_suaPM.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_suaPM.setForeground(new java.awt.Color(0, 0, 0));
+        btnK_suaPM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
+        btnK_suaPM.setText("Sửa");
+        btnK_suaPM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnK_suaPMActionPerformed(evt);
+            }
+        });
+
+        btnK_lamMoiSach1.setBackground(new java.awt.Color(255, 204, 204));
+        btnK_lamMoiSach1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_lamMoiSach1.setForeground(new java.awt.Color(0, 0, 0));
+        btnK_lamMoiSach1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
+        btnK_lamMoiSach1.setText("Làm mới");
+        btnK_lamMoiSach1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnK_lamMoiSach1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPK_btnQLPMLayout = new javax.swing.GroupLayout(jPK_btnQLPM);
         jPK_btnQLPM.setLayout(jPK_btnQLPMLayout);
         jPK_btnQLPMLayout.setHorizontalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(btnK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnK_suaPM, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnK_luuPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(btnK_lamMoiPM)
+                .addGap(18, 18, 18)
+                .addComponent(btnExport)
+                .addGap(18, 18, 18)
+                .addComponent(btnK_lamMoiSach1)
                 .addContainerGap())
         );
         jPK_btnQLPMLayout.setVerticalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnK_suaPM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnK_luuPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnK_lamMoiPM))
-                    .addComponent(btnK_themPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnK_luuPM)
+                    .addComponent(btnK_suaPM)
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnK_themPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnK_lamMoiSach1))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPK_btnQLS.setBackground(new java.awt.Color(204, 204, 255));
@@ -452,6 +476,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         btnK_themMaSach.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themMaSach.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_themMaSach.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themMaSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btnK_themMaSach.setText("Thêm");
         btnK_themMaSach.addActionListener(new java.awt.event.ActionListener() {
@@ -462,6 +487,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         btnK_lamMoiSach.setBackground(new java.awt.Color(255, 204, 204));
         btnK_lamMoiSach.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_lamMoiSach.setForeground(new java.awt.Color(0, 0, 0));
         btnK_lamMoiSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         btnK_lamMoiSach.setText("Làm mới");
         btnK_lamMoiSach.addActionListener(new java.awt.event.ActionListener() {
@@ -470,23 +496,25 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
-        btnK_xoaMaSach.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_xoaMaSach.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnK_xoaMaSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/xoa.png"))); // NOI18N
-        btnK_xoaMaSach.setText("Xóa");
-        btnK_xoaMaSach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_xoaMaSachActionPerformed(evt);
-            }
-        });
-
         btnK_luuMaSach.setBackground(new java.awt.Color(255, 204, 204));
         btnK_luuMaSach.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_luuMaSach.setForeground(new java.awt.Color(0, 0, 0));
         btnK_luuMaSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btnK_luuMaSach.setText("Lưu");
         btnK_luuMaSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnK_luuMaSachActionPerformed(evt);
+            }
+        });
+
+        btnK_suaPM1.setBackground(new java.awt.Color(255, 204, 204));
+        btnK_suaPM1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnK_suaPM1.setForeground(new java.awt.Color(0, 0, 0));
+        btnK_suaPM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
+        btnK_suaPM1.setText("Sửa");
+        btnK_suaPM1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnK_suaPM1ActionPerformed(evt);
             }
         });
 
@@ -497,13 +525,13 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_btnQLSLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnK_themMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnK_xoaMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnK_suaPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnK_luuMaSach)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnK_lamMoiSach)
-                .addGap(41, 41, 41))
+                .addGap(27, 27, 27))
         );
         jPK_btnQLSLayout.setVerticalGroup(
             jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,8 +540,8 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnK_luuMaSach)
                     .addComponent(btnK_lamMoiSach)
-                    .addComponent(btnK_xoaMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnK_themMaSach))
+                    .addComponent(btnK_themMaSach)
+                    .addComponent(btnK_suaPM1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
 
@@ -524,13 +552,13 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             .addGroup(jPK_buttonLayout.createSequentialGroup()
                 .addComponent(jPK_btnQLPM, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPK_buttonLayout.setVerticalGroup(
             jPK_buttonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPK_btnQLPM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPK_btnQLS, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPK_qlPMLayout = new javax.swing.GroupLayout(jPK_qlPM);
@@ -616,7 +644,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -641,10 +669,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private void btnK_suaPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPMActionPerformed
         
     }//GEN-LAST:event_btnK_suaPMActionPerformed
-
-    private void btnK_lamMoiPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiPMActionPerformed
-        
-    }//GEN-LAST:event_btnK_lamMoiPMActionPerformed
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themMaSachActionPerformed
         
@@ -676,11 +700,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblK_CTPMMouseClicked
 
-    private void btnK_xoaMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_xoaMaSachActionPerformed
-        
-        
-    }//GEN-LAST:event_btnK_xoaMaSachActionPerformed
-
     private void txtK_ghiChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtK_ghiChuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtK_ghiChuActionPerformed
@@ -697,6 +716,18 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private void txtK_maPM_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtK_maPM_2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtK_maPM_2ActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExportActionPerformed
+
+    private void btnK_suaPM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPM1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_suaPM1ActionPerformed
+
+    private void btnK_lamMoiSach1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiSach1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_lamMoiSach1ActionPerformed
    
     /**
      * @param args the command line arguments
@@ -765,17 +796,18 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ImportField;
+    private javax.swing.JButton btnExport;
     private javax.swing.JButton btnK_chonMaSach;
-    private javax.swing.JButton btnK_lamMoiPM;
     private javax.swing.JButton btnK_lamMoiSach;
+    private javax.swing.JButton btnK_lamMoiSach1;
     private javax.swing.JButton btnK_luuMaSach;
     private javax.swing.JButton btnK_luuPM;
     private javax.swing.JButton btnK_suaPM;
+    private javax.swing.JButton btnK_suaPM1;
     private javax.swing.JButton btnK_themMaSach;
     private javax.swing.JButton btnK_themPM;
     private javax.swing.JButton btnK_veTrangTruoc;
-    private javax.swing.JButton btnK_xoaMaSach;
-    private javax.swing.JComboBox<String> cbbK_maCB;
     private javax.swing.JComboBox<String> cbbK_maPM;
     private javax.swing.JPanel jPK_btnQLPM;
     private javax.swing.JPanel jPK_btnQLS;
