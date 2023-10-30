@@ -269,7 +269,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/choice.png"))); // NOI18N
         jButton1.setText("Đăng xuất");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -278,14 +277,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png"))); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("QUẢN LÝ THƯ VIỆN");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText(" TRƯỜNG ĐẠI HỌC SÀI GÒN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -361,37 +356,29 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane17.setViewportView(tableDocgia2);
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel86.setForeground(new java.awt.Color(0, 0, 0));
         jLabel86.setText("Mã độc giả:");
 
         jLabel87.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel87.setForeground(new java.awt.Color(0, 0, 0));
         jLabel87.setText("Tên độc giả:");
 
         jLabel88.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(0, 0, 0));
         jLabel88.setText("Giới tính:");
 
         jLabel89.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(0, 0, 0));
         jLabel89.setText("Số điện thoại:");
 
         jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(0, 0, 0));
         jLabel90.setText("Phân loại");
 
         jLabel91.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel91.setForeground(new java.awt.Color(0, 0, 0));
         jLabel91.setText("Ngày sinh");
 
         gioitinhnam16.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnam16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnam16.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam16.setText("Nam");
 
         gioitinhnu16.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnu16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnu16.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu16.setText("Nữ");
 
         sdt2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -411,7 +398,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         themmoidg2.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        themmoidg2.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg2.setText("Thêm mới");
         themmoidg2.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +408,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         updatedg2.setBackground(new java.awt.Color(255, 204, 204));
         updatedg2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        updatedg2.setForeground(new java.awt.Color(0, 0, 0));
         updatedg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg2.setText("Sửa ");
         updatedg2.addActionListener(new java.awt.event.ActionListener() {
@@ -433,7 +418,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk8.setBackground(new java.awt.Color(255, 204, 204));
         khoatk8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk8.setForeground(new java.awt.Color(0, 0, 0));
         khoatk8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
         khoatk8.setText("Xóa");
         khoatk8.addActionListener(new java.awt.event.ActionListener() {
@@ -456,7 +440,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         mokhoa3.setBackground(new java.awt.Color(255, 204, 204));
         mokhoa3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        mokhoa3.setForeground(new java.awt.Color(0, 0, 0));
         mokhoa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         mokhoa3.setText("Làm mới");
         mokhoa3.addActionListener(new java.awt.event.ActionListener() {
@@ -466,12 +449,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel92.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel92.setForeground(new java.awt.Color(0, 0, 0));
         jLabel92.setText("Mật khẩu:");
 
         khoatk9.setBackground(new java.awt.Color(255, 204, 204));
         khoatk9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk9.setForeground(new java.awt.Color(0, 0, 0));
         khoatk9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         khoatk9.setText("Hổ trợ tìm kiếm");
         khoatk9.addActionListener(new java.awt.event.ActionListener() {
@@ -488,11 +469,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel127.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel127.setForeground(new java.awt.Color(0, 0, 0));
         jLabel127.setText("Email:");
 
         jLabel128.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel128.setForeground(new java.awt.Color(0, 0, 0));
         jLabel128.setText("Hạn dùng:");
 
         emailDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -645,16 +624,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel131.setForeground(new java.awt.Color(0, 0, 0));
         jLabel131.setText("Mã phân loại:");
 
         jLabel132.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel132.setForeground(new java.awt.Color(0, 0, 0));
         jLabel132.setText("Số lượng sách:");
 
         themmoidg3.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        themmoidg3.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg3.setText("Thêm mới");
         themmoidg3.addActionListener(new java.awt.event.ActionListener() {
@@ -665,7 +641,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         updatedg3.setBackground(new java.awt.Color(255, 204, 204));
         updatedg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        updatedg3.setForeground(new java.awt.Color(0, 0, 0));
         updatedg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg3.setText("Sửa ");
         updatedg3.addActionListener(new java.awt.event.ActionListener() {
@@ -676,7 +651,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         mokhoa4.setBackground(new java.awt.Color(255, 204, 204));
         mokhoa4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        mokhoa4.setForeground(new java.awt.Color(0, 0, 0));
         mokhoa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         mokhoa4.setText("Làm mới");
         mokhoa4.addActionListener(new java.awt.event.ActionListener() {
@@ -686,11 +660,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel137.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel137.setForeground(new java.awt.Color(0, 0, 0));
         jLabel137.setText("Tên phân loại:");
 
         jLabel139.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel139.setForeground(new java.awt.Color(0, 0, 0));
         jLabel139.setText("Thời gian mượn:");
 
         thoiGianField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -712,7 +684,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel138.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel138.setForeground(new java.awt.Color(0, 0, 0));
         jLabel138.setText("Ngày mở thẻ:");
 
         tenLoaiField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -723,7 +694,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel140.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel140.setForeground(new java.awt.Color(0, 0, 0));
         jLabel140.setText("Hạn dùng thẻ:");
 
         tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -734,7 +704,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel141.setForeground(new java.awt.Color(0, 0, 0));
         jLabel141.setText("Giá tiền mở thẻ:");
 
         thoiGianField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -747,7 +716,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel142.setForeground(new java.awt.Color(0, 0, 0));
         jLabel142.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         jLabel142.setText("Hỗ trợ tìm kiếm:");
 
@@ -793,7 +761,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel40Layout.createSequentialGroup()
-                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel142)
                                 .addGap(18, 18, 18)
                                 .addComponent(tenLoaiField2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -953,7 +921,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btnH_themSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_themSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnH_themSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_themSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnH_themSach2.setText("Thêm");
         btnH_themSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -964,7 +931,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btnH_suaSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_suaSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnH_suaSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_suaSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btnH_suaSach2.setText("Sửa ");
         btnH_suaSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -975,7 +941,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btnH_luuSach2.setBackground(new java.awt.Color(255, 204, 204));
         btnH_luuSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnH_luuSach2.setForeground(new java.awt.Color(0, 0, 0));
         btnH_luuSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btnH_luuSach2.setText("Xem tình trạng sách");
         btnH_luuSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -986,7 +951,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_lamMoiSach2.setBackground(new java.awt.Color(255, 204, 204));
         btn_lamMoiSach2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_lamMoiSach2.setForeground(new java.awt.Color(0, 0, 0));
         btn_lamMoiSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         btn_lamMoiSach2.setText("Làm mới");
         btn_lamMoiSach2.addActionListener(new java.awt.event.ActionListener() {
@@ -1019,7 +983,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk10.setBackground(new java.awt.Color(255, 204, 204));
         khoatk10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk10.setForeground(new java.awt.Color(0, 0, 0));
         khoatk10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
         khoatk10.setText("Xóa");
         khoatk10.addActionListener(new java.awt.event.ActionListener() {
@@ -1030,7 +993,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk11.setBackground(new java.awt.Color(255, 204, 204));
         khoatk11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk11.setForeground(new java.awt.Color(0, 0, 0));
         khoatk11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         khoatk11.setText("Hổ trợ tìm kiếm");
         khoatk11.addActionListener(new java.awt.event.ActionListener() {
@@ -1202,16 +1164,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane19.setViewportView(tbl_DMSach4);
 
         jLabel105.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
-        jLabel105.setForeground(new java.awt.Color(0, 0, 0));
         jLabel105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel105.setText("Thông tin danh mục Sách:");
 
         jLabel106.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
         jLabel106.setText("Mã danh mục:");
 
         jLabel107.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(0, 0, 0));
         jLabel107.setText("Tên danh mục:");
 
         txt_maDMSach4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1221,7 +1180,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_ThemDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_ThemDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach6.setText("Thêm");
         btn_ThemDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1232,7 +1190,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_LuuDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach6.setText("Lưu");
         btn_LuuDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1243,7 +1200,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_SuaDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach6.setText("Sửa");
         btn_SuaDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1266,7 +1222,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_lammoi6.setBackground(new java.awt.Color(255, 204, 204));
         btn_lammoi6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_lammoi6.setForeground(new java.awt.Color(0, 0, 0));
         btn_lammoi6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lammoi.png"))); // NOI18N
         btn_lammoi6.setText("Làm mới");
         btn_lammoi6.setEnabled(false);
@@ -1371,16 +1326,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane20.setViewportView(tbl_DMSach5);
 
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 0, 0));
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel109.setText("Thông tin thể loại Sách:");
 
         jLabel110.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel110.setForeground(new java.awt.Color(0, 0, 0));
         jLabel110.setText("Mã thể loại:");
 
         jLabel111.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel111.setForeground(new java.awt.Color(0, 0, 0));
         jLabel111.setText("Tên thể loại:");
 
         txt_maDMSach5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1390,7 +1342,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_ThemDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_ThemDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach7.setText("Thêm");
         btn_ThemDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1401,7 +1352,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_LuuDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach7.setText("Lưu");
         btn_LuuDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1412,7 +1362,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_SuaDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach7.setText("Sửa");
         btn_SuaDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1435,7 +1384,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_lammoi7.setBackground(new java.awt.Color(255, 204, 204));
         btn_lammoi7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_lammoi7.setForeground(new java.awt.Color(0, 0, 0));
         btn_lammoi7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lammoi.png"))); // NOI18N
         btn_lammoi7.setText("Làm mới");
         btn_lammoi7.setEnabled(false);
@@ -1524,23 +1472,19 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel34.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel113.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
-        jLabel113.setForeground(new java.awt.Color(0, 0, 0));
         jLabel113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel113.setText("Thông tin tác giả:");
 
         jLabel114.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel114.setForeground(new java.awt.Color(0, 0, 0));
         jLabel114.setText("Mã tác giả:");
 
         jLabel115.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel115.setForeground(new java.awt.Color(0, 0, 0));
         jLabel115.setText("Tên tác giả:");
 
         txt_tenDMSach12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         btn_ThemDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_ThemDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach8.setText("Thêm");
         btn_ThemDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1551,7 +1495,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_LuuDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach8.setText("Lưu");
         btn_LuuDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1562,7 +1505,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btn_SuaDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach8.setText("Sửa");
         btn_SuaDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1595,7 +1537,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel117.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel117.setForeground(new java.awt.Color(0, 0, 0));
         jLabel117.setText("Số lượng sách:");
 
         txt_tenDMSach13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1686,7 +1627,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 751, Short.MAX_VALUE)
+            .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
         );
 
         jTP_main2.addTab("          QUẢN LÝ SÁCH  ", new javax.swing.ImageIcon(getClass().getResource("/Images/books.png")), jPanel30); // NOI18N
@@ -1702,13 +1643,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         Panel_DanhSachPM14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        K_tieuDe15.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe15.setText("CÁC PHIẾU MƯỢN ĐÃ ĐĂNG KÝ");
 
         btnK_themPM31.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM31.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM31.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM31.setText("Xem chi tiết");
         btnK_themPM31.addActionListener(new java.awt.event.ActionListener() {
@@ -1727,17 +1666,14 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         gioitinhnam17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnam17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnam17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam17.setText("Theo tên độc giả");
 
         gioitinhnu17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnu17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnu17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu17.setText("Theo mã phiếu mượn");
 
         btnK_themPM32.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM32.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM32.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM32.setText("Quản lý phiếu mượn");
         btnK_themPM32.addActionListener(new java.awt.event.ActionListener() {
@@ -1811,13 +1747,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         Panel_DanhSachPM15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        K_tieuDe16.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe16.setText("DANH SÁCH CÁC PHIẾU TRẢ");
 
         btnK_themPM33.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM33.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM33.setText("Xem chi tiết");
         btnK_themPM33.addActionListener(new java.awt.event.ActionListener() {
@@ -1828,7 +1762,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btnK_themPM34.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM34.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM34.setText("Quản lý phiếu trả");
         btnK_themPM34.addActionListener(new java.awt.event.ActionListener() {
@@ -2090,7 +2023,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel36.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jLabel118.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel118.setForeground(new java.awt.Color(0, 0, 0));
         jLabel118.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel118.setText("Lựa chọn: ");
 
@@ -2156,7 +2088,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel37.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel120.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel120.setForeground(new java.awt.Color(0, 0, 0));
         jLabel120.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel120.setText("Lựa chọn:");
 
@@ -2219,7 +2150,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel122.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel122.setForeground(new java.awt.Color(0, 0, 0));
         jLabel122.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel122.setText("Lựa chọn:");
 
@@ -2312,7 +2242,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(255, 204, 204));
         jButton13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setText("Tìm kiếm");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2452,7 +2381,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         themmoidg4.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        themmoidg4.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg4.setText("Thêm");
         themmoidg4.addActionListener(new java.awt.event.ActionListener() {
@@ -2463,7 +2391,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         updatedg4.setBackground(new java.awt.Color(255, 204, 204));
         updatedg4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        updatedg4.setForeground(new java.awt.Color(0, 0, 0));
         updatedg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg4.setText("Sửa ");
         updatedg4.addActionListener(new java.awt.event.ActionListener() {
@@ -2474,7 +2401,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk12.setBackground(new java.awt.Color(255, 204, 204));
         khoatk12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk12.setForeground(new java.awt.Color(0, 0, 0));
         khoatk12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
         khoatk12.setText("Xóa");
         khoatk12.addActionListener(new java.awt.event.ActionListener() {
@@ -2512,7 +2438,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel134.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel134.setForeground(new java.awt.Color(0, 0, 0));
         jLabel134.setText("Mã độc giả:");
 
         maDocGiaField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -2520,30 +2445,24 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         matKhauField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         jLabel144.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel144.setForeground(new java.awt.Color(0, 0, 0));
         jLabel144.setText("Mật khẩu:");
 
         jLabel145.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel145.setForeground(new java.awt.Color(0, 0, 0));
         jLabel145.setText("Tên độc giả:");
 
         tenDocGiaField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         jLabel136.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel136.setForeground(new java.awt.Color(0, 0, 0));
         jLabel136.setText("Hạn dùng:");
 
         jLabel143.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel143.setForeground(new java.awt.Color(0, 0, 0));
         jLabel143.setText("Phí duy trì:");
 
         jLabel146.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel146.setForeground(new java.awt.Color(0, 0, 0));
         jLabel146.setText("Trạng thái:");
 
         khoatk13.setBackground(new java.awt.Color(255, 204, 204));
         khoatk13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk13.setForeground(new java.awt.Color(0, 0, 0));
         khoatk13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/password.png"))); // NOI18N
         khoatk13.setText("Khóa");
         khoatk13.addActionListener(new java.awt.event.ActionListener() {
@@ -2554,7 +2473,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk14.setBackground(new java.awt.Color(255, 204, 204));
         khoatk14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        khoatk14.setForeground(new java.awt.Color(0, 0, 0));
         khoatk14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/man.png"))); // NOI18N
         khoatk14.setText("Mở Khóa");
         khoatk14.addActionListener(new java.awt.event.ActionListener() {
@@ -2684,7 +2602,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(255, 204, 204));
         jButton14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
         jButton14.setText("Tìm kiếm");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2722,7 +2639,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Tên sách", "Tác giả", "Nhà sản xuất", "Số lượng"
+
             }
         ));
         jScrollPane26.setViewportView(tableSearchSach3);
@@ -2797,7 +2714,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTP_main2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1432, Short.MAX_VALUE)
+            .addComponent(jTP_main2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1432, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
