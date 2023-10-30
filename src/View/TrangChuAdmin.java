@@ -2836,7 +2836,7 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     K_tieuDe4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
     K_tieuDe4.setForeground(new java.awt.Color(0, 0, 0));
     K_tieuDe4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
-    K_tieuDe4.setText("Chi Tiết Phiếu Xuất");
+    K_tieuDe4.setText("Phiếu Xuất");
 
     maSachLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
     maSachLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -2996,50 +2996,49 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     PhieuXuatTab4Layout.setHorizontalGroup(
         PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
+            .addGap(49, 49, 49)
             .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                    .addGap(411, 411, 411)
-                    .addComponent(K_tieuDe4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                    .addGap(49, 49, 49)
                     .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                            .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(soLuongField5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                                            .addComponent(maThanhLyLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(maThanhLyField4))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PhieuXuatTab4Layout.createSequentialGroup()
-                                            .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(maSachLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tenSachLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(maSachField4, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                                .addComponent(tenSachField3)))))
-                                .addComponent(soLuongLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(95, 95, 95)
+                        .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(soLuongField5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                                    .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(giaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tongTienLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(ghiChuLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(maThanhLyLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(maThanhLyField4))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PhieuXuatTab4Layout.createSequentialGroup()
+                                    .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(maSachLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tenSachLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ghiChuField3)
-                                        .addComponent(giaField4)
-                                        .addComponent(tongTienField4, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))
-                                .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
-                                    .addComponent(ngayThanhlyLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ngayThanhlyField3)))))))
+                                        .addComponent(maSachField4, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                        .addComponent(tenSachField3)))))
+                        .addComponent(soLuongLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(95, 95, 95)
+                    .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
+                            .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(giaLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tongTienLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ghiChuLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(ghiChuField3)
+                                .addComponent(giaField4)
+                                .addComponent(tongTienField4, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)))
+                        .addGroup(PhieuXuatTab4Layout.createSequentialGroup()
+                            .addComponent(ngayThanhlyLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ngayThanhlyField3)))))
             .addContainerGap(97, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PhieuXuatTab4Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(K_tieuDe4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(396, 396, 396))
     );
     PhieuXuatTab4Layout.setVerticalGroup(
         PhieuXuatTab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3660,19 +3659,13 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JComboBox<String> Hc_maTheLoai2;
     private javax.swing.JComboBox<String> Hc_maTheLoai3;
     private javax.swing.JComboBox<String> Hc_maTheLoai6;
-    private javax.swing.JLabel K_tieuDe;
-    private javax.swing.JLabel K_tieuDe1;
     private javax.swing.JLabel K_tieuDe15;
     private javax.swing.JLabel K_tieuDe16;
-    private javax.swing.JLabel K_tieuDe2;
     private javax.swing.JLabel K_tieuDe4;
     private javax.swing.JRadioButton LockRadioBtn;
     private javax.swing.JPanel Panel_DanhSachPM14;
     private javax.swing.JPanel Panel_DanhSachPM15;
     private javax.swing.JComboBox<String> PhanLoaiTraCuu;
-    private javax.swing.JPanel PhieuXuatTab;
-    private javax.swing.JPanel PhieuXuatTab1;
-    private javax.swing.JPanel PhieuXuatTab2;
     private javax.swing.JPanel PhieuXuatTab4;
     private javax.swing.JPanel QuanLyKho;
     private javax.swing.JTabbedPane QuanLyTKhoan;
@@ -3704,21 +3697,9 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
     private javax.swing.JTextField emailDocgia3;
-    private javax.swing.JTextField ghiChuField;
-    private javax.swing.JTextField ghiChuField1;
-    private javax.swing.JTextField ghiChuField2;
     private javax.swing.JTextField ghiChuField3;
-    private javax.swing.JLabel ghiChuLabel;
-    private javax.swing.JLabel ghiChuLabel1;
-    private javax.swing.JLabel ghiChuLabel2;
     private javax.swing.JLabel ghiChuLabel3;
-    private javax.swing.JTextField giaField;
-    private javax.swing.JTextField giaField1;
-    private javax.swing.JTextField giaField2;
     private javax.swing.JTextField giaField4;
-    private javax.swing.JLabel giaLabel;
-    private javax.swing.JLabel giaLabel1;
-    private javax.swing.JLabel giaLabel2;
     private javax.swing.JLabel giaLabel3;
     private javax.swing.JRadioButton gioitinhnam16;
     private javax.swing.JRadioButton gioitinhnam17;
@@ -3832,10 +3813,7 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane27;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane30;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -3846,9 +3824,6 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable7;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
@@ -3860,45 +3835,21 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JTextField maDocGiaField;
     private javax.swing.JTextField maDocGiaField3;
     private javax.swing.JTextField maLoaiField;
-    private javax.swing.JTextField maSachField;
-    private javax.swing.JTextField maSachField1;
-    private javax.swing.JTextField maSachField2;
     private javax.swing.JTextField maSachField4;
-    private javax.swing.JLabel maSachLabel;
-    private javax.swing.JLabel maSachLabel1;
-    private javax.swing.JLabel maSachLabel2;
     private javax.swing.JLabel maSachLabel4;
-    private javax.swing.JTextField maThanhLyField;
-    private javax.swing.JTextField maThanhLyField1;
-    private javax.swing.JTextField maThanhLyField2;
     private javax.swing.JTextField maThanhLyField4;
-    private javax.swing.JLabel maThanhLyLabel;
-    private javax.swing.JLabel maThanhLyLabel1;
-    private javax.swing.JLabel maThanhLyLabel2;
     private javax.swing.JLabel maThanhLyLabel4;
     private javax.swing.JTextField matKhauField;
     private javax.swing.JTextField matKhauField3;
     private javax.swing.JButton mokhoa3;
     private javax.swing.JButton mokhoa4;
-    private javax.swing.JTextField ngayThanhlyField;
-    private javax.swing.JTextField ngayThanhlyField1;
-    private javax.swing.JTextField ngayThanhlyField2;
     private javax.swing.JTextField ngayThanhlyField3;
-    private javax.swing.JLabel ngayThanhlyLabel;
-    private javax.swing.JLabel ngayThanhlyLabel1;
-    private javax.swing.JLabel ngayThanhlyLabel2;
     private javax.swing.JLabel ngayThanhlyLabel3;
     private javax.swing.JTextField ngaysinh2;
     private javax.swing.JTabbedPane quanlyttdg2;
     private javax.swing.JTextField sdt2;
     private javax.swing.JTextField soLuongField;
-    private javax.swing.JTextField soLuongField1;
-    private javax.swing.JTextField soLuongField2;
-    private javax.swing.JTextField soLuongField3;
     private javax.swing.JTextField soLuongField5;
-    private javax.swing.JLabel soLuongLabel;
-    private javax.swing.JLabel soLuongLabel1;
-    private javax.swing.JLabel soLuongLabel2;
     private javax.swing.JLabel soLuongLabel3;
     private javax.swing.JTable tableDocgia2;
     private javax.swing.JTable tableDocgia3;
@@ -3918,13 +3869,7 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JTextField tenLoaiField1;
     private javax.swing.JTextField tenLoaiField2;
     private javax.swing.JTextField tenLoaiField3;
-    private javax.swing.JTextField tenSachField;
-    private javax.swing.JTextField tenSachField1;
-    private javax.swing.JTextField tenSachField2;
     private javax.swing.JTextField tenSachField3;
-    private javax.swing.JLabel tenSachLabel;
-    private javax.swing.JLabel tenSachLabel1;
-    private javax.swing.JLabel tenSachLabel2;
     private javax.swing.JLabel tenSachLabel3;
     private javax.swing.JTextField textboxsearch13;
     private javax.swing.JTextField textboxsearch14;
@@ -3938,13 +3883,7 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JTextField thoiGianField;
     private javax.swing.JTextField thoiGianField1;
     private javax.swing.JPanel timkiem2;
-    private javax.swing.JTextField tongTienField;
-    private javax.swing.JTextField tongTienField1;
-    private javax.swing.JTextField tongTienField2;
     private javax.swing.JTextField tongTienField4;
-    private javax.swing.JLabel tongTienLabel;
-    private javax.swing.JLabel tongTienLabel1;
-    private javax.swing.JLabel tongTienLabel2;
     private javax.swing.JLabel tongTienLabel3;
     private javax.swing.JTextField txt_maDMSach4;
     private javax.swing.JTextField txt_maDMSach5;
