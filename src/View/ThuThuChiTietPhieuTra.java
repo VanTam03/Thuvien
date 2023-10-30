@@ -54,7 +54,6 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         btnK_veTrangTruoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1430, 645));
 
         Panel_ChiTietPM.setBackground(new java.awt.Color(255, 255, 204));
         Panel_ChiTietPM.setPreferredSize(new java.awt.Dimension(1080, 740));
@@ -421,7 +420,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1430, Short.MAX_VALUE)
+            .addGap(0, 1080, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -440,26 +439,6 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tblK_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblK_ChiTietMouseClicked
-
-    }//GEN-LAST:event_tblK_ChiTietMouseClicked
-
-    private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-
-    }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
-
-    private void btnK_suaChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaChiTietActionPerformed
-
-    }//GEN-LAST:event_btnK_suaChiTietActionPerformed
-
-    private void btnK_luuChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuChiTietActionPerformed
-
-    }//GEN-LAST:event_btnK_luuChiTietActionPerformed
-
-    private void btnK_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiActionPerformed
-
-    }//GEN-LAST:event_btnK_lamMoiActionPerformed
 
     private void textboxsearch5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch5ActionPerformed
         // TODO add your handling code here:
@@ -556,6 +535,26 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     private void textboxsearch12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch12KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_textboxsearch12KeyTyped
+
+    private void btnK_suaChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaChiTietActionPerformed
+
+    }//GEN-LAST:event_btnK_suaChiTietActionPerformed
+
+    private void btnK_luuChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuChiTietActionPerformed
+
+    }//GEN-LAST:event_btnK_luuChiTietActionPerformed
+
+    private void btnK_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiActionPerformed
+
+    }//GEN-LAST:event_btnK_lamMoiActionPerformed
+
+    private void tblK_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblK_ChiTietMouseClicked
+
+    }//GEN-LAST:event_tblK_ChiTietMouseClicked
+
+    private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
+
+    }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     /**
      * @param args the command line arguments
