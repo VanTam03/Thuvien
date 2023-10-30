@@ -165,7 +165,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_tenDangNhapActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_tenDangNhapKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_DangNhap">
@@ -204,9 +203,10 @@
               <Font name="Times New Roman" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
+              <StringArray count="3">
                 <StringItem index="0" value="&#x110;&#x1ed9;c gi&#x1ea3;"/>
                 <StringItem index="1" value="Th&#x1ee7; th&#x1b0;"/>
+                <StringItem index="2" value="Admin"/>
               </StringArray>
             </Property>
             <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
