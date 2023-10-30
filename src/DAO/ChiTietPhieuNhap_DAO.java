@@ -143,7 +143,7 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
     }
 
     @Override
-    public List selectAll() {
+    public List<ChiTietPhieuNhapSach> selectAll() {
         List<ChiTietPhieuNhapSach> rowSelected = new ArrayList<ChiTietPhieuNhapSach>();
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM dbo.[ChiTietPhieuNhapSach]");
@@ -168,7 +168,31 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
         }
         return rowSelected;
     }
-
+    public List<ChiTietPhieuNhapSach> selectAllById(String maPhieuNhap) {
+        List<ChiTietPhieuNhapSach> result = new ArrayList<ChiTietPhieuNhapSach>();
+        String sql = "SELECT * FROM dbo.[ChiTietPhieuNhapSach] WHERE maPhieuNhap ='"+maPhieuNhap+"'";
+        try (Connection conn = KetNoiSQL.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery())  {
+            if (rs.next()) {
+                do {
+                    String maSach = rs.getString("maSach");
+                    String tenSach = rs.getString("tenSach");
+                    String maTacGia = rs.getString("maTacGia");
+                    String maTheLoai = rs.getString("maTheLoai");
+                    String NXB = rs.getString("NXB");
+                    int namXuatBan = rs.getInt("namXuatBan");
+                    int soLuongNhap = rs.getInt("soLuongNhap");
+                    double giaTienSach = rs.getDouble("giaNhap");
+                    ChiTietPhieuNhapSach book = new ChiTietPhieuNhapSach(maPhieuNhap, maSach, tenSach, maTacGia, maTheLoai, NXB, namXuatBan, soLuongNhap, giaTienSach);
+                    result.add(book);
+                } while (rs.next());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
     @Override
     public ChiTietPhieuNhapSach selectById(String maPhieuNhap) {
         ChiTietPhieuNhapSach result = new ChiTietPhieuNhapSach();
@@ -195,4 +219,5 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
         }
         return result;
     }
+
 }

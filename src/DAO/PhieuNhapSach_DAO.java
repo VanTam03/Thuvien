@@ -118,10 +118,9 @@
      }
      public void XuatExcelPhieuNhap(String maPhieuNhap){
          PhieuNhapSach phieuNhapSach = PhieuNhapSach_DAO.getInstance().selectById(maPhieuNhap);
-         ChiTietPhieuNhapSach chiTietPhieuNhapSach = ChiTietPhieuNhap_DAO.getInstance().selectById(maPhieuNhap);
+         List<ChiTietPhieuNhapSach> ListChiTietPhieuNhapSach = ChiTietPhieuNhap_DAO.getInstance().selectAllById(maPhieuNhap);
          XWPFDocument document = new XWPFDocument();
 
-         // Thêm logo cho header
          XWPFParagraph logo = document.createParagraph();
          XWPFRun logoRun = logo.createRun();
          logoRun.setFontSize(8);
@@ -147,48 +146,66 @@
          infoRun.addBreak();
          infoRun.setText("Mã phiếu nhập: " + phieuNhapSach.getMaPhieuNhap());
          infoRun.addBreak();
-
+         infoRun.setText("Mã nhà cung cấp: " + phieuNhapSach.getMaNhaCungCap());
+         infoRun.addBreak();
          LocalDate localDate = phieuNhapSach.getNgayNhap();
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
          String ngayNhap = localDate.format(formatter);
          infoRun.setText("Ngày nhập sách: " + ngayNhap);
          infoRun.addBreak();
-         infoRun.addBreak();
 
-         infoRun.setText("- Mã nhà cung cấp: " + phieuNhapSach.getMaNhaCungCap());
-         infoRun.addBreak();
-         infoRun.setText("- Mã Sách: " + chiTietPhieuNhapSach.getMaSach());
-         infoRun.addBreak();
-         infoRun.setText("- Tên Sách: " + chiTietPhieuNhapSach.getTenSach());
-         infoRun.addBreak();
-         infoRun.setText("- Mã tác giả: " + chiTietPhieuNhapSach.getMaTacGia());
-         infoRun.addBreak();
-         infoRun.setText("- Mã thể loại: " + chiTietPhieuNhapSach.getMaTheLoai());
-         infoRun.addBreak();
-         infoRun.setText("- Nhà xuất bản: " + chiTietPhieuNhapSach.getNXB());
-         infoRun.addBreak();
-         infoRun.setText("- Năm xuất bản: " + chiTietPhieuNhapSach.getNamXuatBan());
-         infoRun.addBreak();
-
-         XWPFParagraph info2 = document.createParagraph();
-         XWPFRun infoRun2 = info2.createRun();
-         infoRun2.setText("Số Lượng nhập: " + chiTietPhieuNhapSach.getSoLuongNhap() + " (sách)");
-         infoRun2.addBreak();
-         infoRun2.setText("Giá nhập: " + chiTietPhieuNhapSach.getGiaNhap() + " VND");
-         infoRun2.addBreak();
-         document.getParagraphs().forEach(p -> {
-             p.setBorderTop(Borders.SINGLE);
-             p.setBorderBottom(Borders.SINGLE);
-             p.setBorderLeft(Borders.SINGLE);
-             p.setBorderRight(Borders.SINGLE);
-         });
+        // Bang thong tin chi tiet
+         XWPFTable table = document.createTable();
+         XWPFTableRow tableRow = table.getRow(0);
+         tableRow.getCell(0).setText("STT");
+         tableRow.createCell().setText("Mã Sách");
+         tableRow.createCell().setText("Tên Sách");
+         tableRow.createCell().setText("Mã Tác Giả");
+         tableRow.createCell().setText("Mã Thể Loại");
+         tableRow.createCell().setText("Nhà Xuất Bản");
+         tableRow.createCell().setText("Năm Xuất Bản");
+         tableRow.createCell().setText("Số Lượng Nhập");
+         tableRow.createCell().setText("Giá Nhập");
+         XWPFTableRow dataRow0 = table.createRow();
+         dataRow0.getCell(0).setText("A");
+         dataRow0.getCell(1).setText("B");
+         dataRow0.getCell(2).setText("C");
+         dataRow0.getCell(3).setText("D");
+         dataRow0.getCell(4).setText("E");
+         dataRow0.getCell(5).setText("F");
+         dataRow0.getCell(6).setText("G");
+         dataRow0.getCell(7).setText("1");
+         dataRow0.getCell(8).setText("2");
+         int dem=1;
+         int tongSL=0;
+         double tongTien=0;
+         for (ChiTietPhieuNhapSach chiTietPhieuNhapSach:ListChiTietPhieuNhapSach){
+             XWPFTableRow dataRow = table.createRow();
+             dataRow.getCell(0).setText(String.valueOf(dem));
+             dataRow.getCell(1).setText(chiTietPhieuNhapSach.getMaSach());
+             dataRow.getCell(2).setText(chiTietPhieuNhapSach.getTenSach());
+             dataRow.getCell(3).setText(chiTietPhieuNhapSach.getMaTacGia());
+             dataRow.getCell(4).setText(chiTietPhieuNhapSach.getMaTheLoai());
+             dataRow.getCell(5).setText(chiTietPhieuNhapSach.getNXB());
+             dataRow.getCell(6).setText(String.valueOf(chiTietPhieuNhapSach.getNamXuatBan()));
+             dataRow.getCell(7).setText(String.valueOf(chiTietPhieuNhapSach.getSoLuongNhap()));
+             dataRow.getCell(8).setText(String.valueOf(chiTietPhieuNhapSach.getGiaNhap()));
+             tongSL+=chiTietPhieuNhapSach.getSoLuongNhap();
+             tongTien+=chiTietPhieuNhapSach.getGiaNhap();
+             dem++;
+         }
+         XWPFTableRow dataRow = table.createRow();
+         dataRow.getCell(1).setText("TỔNG: ");
+         dataRow.getCell(7).setText(String.valueOf(tongSL));
+         dataRow.getCell(8).setText(String.valueOf(tongTien));
 
          XWPFParagraph footer = document.createParagraph();
          XWPFRun footerRun = footer.createRun();
          footerRun.setFontSize(11);
-         footerRun.setText("Nhân viên giao hàng            Nhân viên Thủ Kho");
          footerRun.addBreak();
-         footerRun.setText("(ký tên)                        (ký tên)           .");
+         footerRun.setText("Nhân viên Thủ Kho");
+         footerRun.addBreak();
+         footerRun.setText("    (ký tên)");
          footerRun.addBreak();
          footerRun.addBreak();
          footerRun.addBreak();
@@ -212,23 +229,4 @@
  }
 
 
- //Bang thong tin chi tiet
- //        XWPFTable table = document.createTable();
- //        XWPFTableRow tableRow = table.getRow(0);
- //        tableRow.getCell(0).setText("Mã Sách");
- //        tableRow.createCell().setText("Tên Sách");
- //        tableRow.createCell().setText("Mã Tác Giả");
- //        tableRow.createCell().setText("Mã Thể Loại");
- //        tableRow.createCell().setText("Nhà Xuất Bản");
- //        tableRow.createCell().setText("Năm Xuất Bản");
- //       // tableRow.createCell().setText("Số Lượng Nhập");
- //        //tableRow.createCell().setText("Giá Nhập");
- //
- //        XWPFTableRow dataRow = table.createRow();
- //
- //        dataRow.getCell(0).setText(maPhieuNhap);
- //        dataRow.getCell(1).setText(chiTietPhieuNhapSach.getTenSach());
- //        dataRow.getCell(2).setText(chiTietPhieuNhapSach.getMaTacGia());
- //        dataRow.getCell(3).setText(chiTietPhieuNhapSach.getMaTheLoai());
- //        dataRow.getCell(4).setText(chiTietPhieuNhapSach.getNXB());
- //        dataRow.getCell(5).setText(String.valueOf(chiTietPhieuNhapSach.getNamXuatBan()));
+
