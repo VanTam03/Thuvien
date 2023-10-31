@@ -27,6 +27,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -45,8 +49,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
-        gioitinhnam16 = new javax.swing.JRadioButton();
-        gioitinhnu16 = new javax.swing.JRadioButton();
         sdt2 = new javax.swing.JTextField();
         matKhauField = new javax.swing.JTextField();
         themmoidg2 = new javax.swing.JButton();
@@ -64,6 +66,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         tenDocGiaField = new javax.swing.JTextField();
         maDocGiaField = new javax.swing.JTextField();
         hanDungField = new javax.swing.JTextField();
+        radioNamAdmin = new javax.swing.JRadioButton();
+        radioNuAdmin = new javax.swing.JRadioButton();
         jPanel40 = new javax.swing.JPanel();
         jScrollPane25 = new javax.swing.JScrollPane();
         tableDocgia3 = new javax.swing.JTable();
@@ -408,16 +412,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel91.setForeground(new java.awt.Color(0, 0, 0));
         jLabel91.setText("Ngày sinh");
 
-        gioitinhnam16.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhnam16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnam16.setForeground(new java.awt.Color(0, 0, 0));
-        gioitinhnam16.setText("Nam");
-
-        gioitinhnu16.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhnu16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnu16.setForeground(new java.awt.Color(0, 0, 0));
-        gioitinhnu16.setText("Nữ");
-
         sdt2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         sdt2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -532,6 +526,18 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         hanDungField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
+        radioNamAdmin.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(radioNamAdmin);
+        radioNamAdmin.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        radioNamAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        radioNamAdmin.setText("Nam");
+
+        radioNuAdmin.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(radioNuAdmin);
+        radioNuAdmin.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        radioNuAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        radioNuAdmin.setText("Nữ");
+
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
@@ -562,11 +568,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                         .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel29Layout.createSequentialGroup()
                                                 .addComponent(jLabel88)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(gioitinhnam16)
-                                                .addGap(37, 37, 37)
-                                                .addComponent(gioitinhnu16)
-                                                .addGap(625, 625, 625))
+                                                .addGap(106, 106, 106)
+                                                .addComponent(radioNamAdmin)
+                                                .addGap(44, 44, 44)
+                                                .addComponent(radioNuAdmin)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(jPanel29Layout.createSequentialGroup()
                                                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel87)
@@ -623,9 +629,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(gioitinhnam16)
-                        .addComponent(gioitinhnu16))
-                    .addComponent(jLabel88)
+                        .addComponent(jLabel88)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioNamAdmin)
+                            .addComponent(radioNuAdmin)))
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Hc_maTheLoai3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel90)))
@@ -3693,6 +3700,10 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JButton btn_lammoi7;
     private javax.swing.JButton btn_lammoi8;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe6;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
@@ -3701,10 +3712,8 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JLabel ghiChuLabel3;
     private javax.swing.JTextField giaField4;
     private javax.swing.JLabel giaLabel3;
-    private javax.swing.JRadioButton gioitinhnam16;
     private javax.swing.JRadioButton gioitinhnam17;
     private javax.swing.JRadioButton gioitinhnam22;
-    private javax.swing.JRadioButton gioitinhnu16;
     private javax.swing.JRadioButton gioitinhnu17;
     private javax.swing.JRadioButton gioitinhnu22;
     private javax.swing.JTextField hanDungField;
@@ -3847,6 +3856,8 @@ PhanLoaiTraCuu.addItemListener(new java.awt.event.ItemListener() {
     private javax.swing.JLabel ngayThanhlyLabel3;
     private javax.swing.JTextField ngaysinh2;
     private javax.swing.JTabbedPane quanlyttdg2;
+    private javax.swing.JRadioButton radioNamAdmin;
+    private javax.swing.JRadioButton radioNuAdmin;
     private javax.swing.JTextField sdt2;
     private javax.swing.JTextField soLuongField;
     private javax.swing.JTextField soLuongField5;
