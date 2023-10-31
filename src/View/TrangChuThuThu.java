@@ -7,7 +7,7 @@ import Model.DanhSachLoaiThe;
 import Model.DanhSachTaiKhoan;
 import Model.PhanLoaiThe;
 import Model.TaiKhoan;
-import org.apache.poi.ss.formula.functions.T;
+// import org.apache.poi.ss.formula.functions.T;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -896,11 +896,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 thoiGianField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
                 tenLoaiField3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-                tenLoaiField3.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                tenLoaiField3ActionPerformed(evt);
-                        }
-                });
 
                 jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
                 jLabel142.setForeground(new java.awt.Color(0, 0, 0));
