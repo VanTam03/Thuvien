@@ -1,15 +1,15 @@
 package DTO;
 
 public class QuanLy {
-    private String maQuanly, tenQuanly, matKhau, diaChi, SDT, Email, ngaySinh;
-    private int gioiTinh, trangThai;
+    private String maQuanly, tenQuanly, matKhau, diaChi, SDT, Email, ngaySinh, gioiTinh;
+    private int trangThai;
 
     public QuanLy() {
 
     }
 
-    public QuanLy(String maQuanly, String tenQuanly, String matKhau, int gioiTinh, int trangThai, String diaChi,
-            String Email, String ngaySinh, String SDT) {
+    public QuanLy(String maQuanly,  String matKhau,String tenQuanly, String ngaySinh, String gioiTinh, String diaChi,
+            String SDT, String Email , int trangThai) {
         this.maQuanly = maQuanly;
         this.tenQuanly = tenQuanly;
         this.matKhau = matKhau;
@@ -77,11 +77,11 @@ public class QuanLy {
         this.ngaySinh = ngaySinh;
     }
 
-    public int getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

@@ -1,16 +1,16 @@
 package DTO;
 
 public class TaiKhoan {
-    private String maTaikhoan, matKhau, tenNguoidung, ngaySinh, Email, SDT;
-    private int gioiTinh, trangThai, soLuongmuon;
+    private String maTaikhoan, matKhau, loaitaikhoan, tenNguoidung, ngaySinh, Email, SDT, gioiTinh;
+    private int  trangThai, soLuongmuon;
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String maTaikhoan, String matKhau, int gioiTinh, int trangThai, int soLuongmuon,
-            String tenNguoidung, String ngaySinh, String Email, String SDT) {
+    public TaiKhoan(String maTaikhoan, String matKhau, String loaitaikhoan, String tenNguoidung, String ngaySinh, String gioitinh, String email, String sdt, int trangThai, int soLuongmuon) {
         this.maTaikhoan = maTaikhoan;
         this.matKhau = matKhau;
+        this.loaitaikhoan = loaitaikhoan;
         this.tenNguoidung = tenNguoidung;
         this.ngaySinh = ngaySinh;
         this.Email = Email;
@@ -19,6 +19,16 @@ public class TaiKhoan {
         this.trangThai = trangThai;
         this.soLuongmuon = soLuongmuon;
     }
+
+    public String getLoaitaikhoan() {
+        return loaitaikhoan;
+    }
+
+    public void setLoaitaikhoan(String loaitaikhoan) {
+        this.loaitaikhoan = loaitaikhoan;
+    }
+
+    
 
     public String getMaTaikhoan() {
         return maTaikhoan;
@@ -68,11 +78,11 @@ public class TaiKhoan {
         SDT = sDT;
     }
 
-    public int getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
