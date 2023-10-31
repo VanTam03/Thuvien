@@ -53,7 +53,57 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         public TrangChuThuThu() {
                 initComponents();
+                loadmaDanhMuc();
+                loadmaTheLoai();
+                //  loadmaTacGia();
         }
+        public void loadmaTheLoai(){
+                defaultTableModel_TL = new DefaultTableModel(){
+                        @Override
+                        public boolean isCellEditable(int row, int column){
+                                return false;
+                        }
+                };
+                tbl_DMSach5.setModel(defaultTableModel_TL);
+                defaultTableModel_TL.addColumn("Mã thể loại");
+                defaultTableModel_TL.addColumn("Tên thể loại");
+                List <TheLoai> theLoais = TheLoai_DAO.getInstance().selectAll();
+                for (TheLoai tl : theLoais){
+                        defaultTableModel_TL.addRow(new Object[]{tl.getMaTheLoai(), tl.getTenTheLoai()});
+                }
+        }
+
+        public void loadmaDanhMuc(){
+                defaultTableModel_DM = new DefaultTableModel(){
+                        @Override
+                        public boolean isCellEditable(int row, int column){
+                                return false;
+                        }
+                };
+                tbl_DMSach4.setModel(defaultTableModel_DM);
+                defaultTableModel_DM.addColumn("Mã danh mục");
+                defaultTableModel_DM.addColumn("Tên danh mục");
+                List <DanhMucSach> danhMucSach = DanhMucSach_DAO.getInstance().selectAll();
+                for (DanhMucSach dms : danhMucSach){
+                        defaultTableModel_DM.addRow(new Object[]{dms.getMaDM(), dms.getTenDM()});
+                }
+        }
+//    public void loadmaTacGia(){
+//        defaultTableModel_TG = new DefaultTableModel(){
+//            @Override
+//            public boolean isCellEditable(int row, int column){
+//                return false;
+//            }
+//        };
+//       // tbl_DMSach4.setModel(defaultTableModel_DM);
+//        defaultTableModel_TG.addColumn("Mã tác giả");
+//        defaultTableModel_TG.addColumn("Tên tác giả");
+//        defaultTableModel_TG.addColumn("Số lượng sách");
+//        List <TacGia> tacGia = TacGia_DAO.getInstance().selectAll();
+//        for (TacGia tg : tacGia){
+//            defaultTableModel_TG.addRow(new Object[]{tg.getMaTacGia(), tg.getTenTacGia(), tg.getSoSach()});
+//        }
+//    }
 
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -291,8 +341,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         }
                 });
 
-                jLabel29.setIcon(new javax.swing.ImageIcon(
-                                getClass().getResource("/Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png"))); // NOI18N
+//                jLabel29.setIcon(new javax.swing.ImageIcon(
+//                                getClass().getResource("Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png"))); // NOI18N
 
                 jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
                 jLabel37.setForeground(new java.awt.Color(0, 0, 102));
@@ -896,6 +946,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 thoiGianField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
                 tenLoaiField3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+                tenLoaiField3.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                               //tenLoaiField3ActionPerformed(evt);
+                        }
+                });
 
                 jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
                 jLabel142.setForeground(new java.awt.Color(0, 0, 0));
@@ -3473,6 +3528,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 return matcher.matches();
         }
 
+
         // kiểm tra định dạng sdt
         public static boolean isValidPhoneNumber(String phoneNumber) {
                 // Sử dụng biểu thức chính quy để kiểm tra định dạng số điện thoại (di động Việt
@@ -4036,7 +4092,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, "Thêm thất bại!");
                                 }
                         }
-                        // loadmaTheLoai();
+                        loadmaTheLoai();
                         btn_lammoi8ActionPerformed(evt);
                 }
 
