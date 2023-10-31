@@ -3428,6 +3428,38 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
+        public void loadmaTheLoai() {
+                defaultTableModel_TL = new DefaultTableModel() {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                                return false;
+                        }
+                };
+                tbl_DMSach5.setModel(defaultTableModel_TL);
+                defaultTableModel_TL.addColumn("Mã thể loại");
+                defaultTableModel_TL.addColumn("Tên thể loại");
+                List<TheLoai> theLoais = TheLoai_DAO.getInstance().selectAll();
+                for (TheLoai tl : theLoais) {
+                        defaultTableModel_TL.addRow(new Object[] { tl.getMaTheLoai(), tl.getTenTheLoai() });
+                }
+        }
+
+        public void loadmaDanhMuc() {
+                defaultTableModel_DM = new DefaultTableModel() {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                                return false;
+                        }
+                };
+                tbl_DMSach4.setModel(defaultTableModel_DM);
+                defaultTableModel_DM.addColumn("Mã danh mục");
+                defaultTableModel_DM.addColumn("Tên danh mục");
+                List<DanhMucSach> danhMucSach = DanhMucSach_DAO.getInstance().selectAll();
+                for (DanhMucSach dms : danhMucSach) {
+                        defaultTableModel_DM.addRow(new Object[] { dms.getMaDM(), dms.getTenDM() });
+                }
+        }
+
         private void AuthManagerTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_AuthManagerTableMouseClicked
                 // TODO add your handling code here:
         }// GEN-LAST:event_AuthManagerTableMouseClicked
