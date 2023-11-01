@@ -294,7 +294,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel34)
                         .addComponent(textboxsearch8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
@@ -307,7 +307,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+            .addGap(0, 289, Short.MAX_VALUE)
         );
 
         btnK_suaChiTiet.setBackground(new java.awt.Color(255, 204, 204));
@@ -393,7 +393,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                         .addComponent(btnK_suaChiTiet)
                         .addGap(18, 18, 18)
                         .addComponent(btnK_lamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap(440, Short.MAX_VALUE))))
         );
         Panel_ChiTietPMLayout.setVerticalGroup(
             Panel_ChiTietPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +406,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                     .addComponent(btnK_lamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(Panel_ChiTietPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_ChiTietPMLayout.createSequentialGroup()
-                        .addGap(1, 68, Short.MAX_VALUE)
+                        .addGap(1, 109, Short.MAX_VALUE)
                         .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Panel_ChiTietPMLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
