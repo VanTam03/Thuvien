@@ -276,7 +276,6 @@
                                                                   <Component id="radioNamAdmin" min="-2" max="-2" attributes="0"/>
                                                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                                                   <Component id="radioNuAdmin" min="-2" max="-2" attributes="0"/>
-                                                                  <EmptySpace max="32767" attributes="0"/>
                                                               </Group>
                                                               <Group type="102" alignment="0" attributes="0">
                                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -355,12 +354,10 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel88" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                                              <Component id="radioNamAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="radioNuAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="radioNamAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="radioNuAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jLabel88" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="Hc_maTheLoai3" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel90" alignment="3" min="-2" max="-2" attributes="0"/>
