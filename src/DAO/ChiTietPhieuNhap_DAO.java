@@ -158,7 +158,7 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
                     String NXB = rs.getString("NXB");
                     int namXuatBan = rs.getInt("namXuatBan");
                     int soLuongNhap = rs.getInt("soLuongNhap");
-                    double giaTienSach = rs.getDouble("giaTienSach");
+                    double giaTienSach = rs.getDouble("giaNhap");
                     ChiTietPhieuNhapSach book = new ChiTietPhieuNhapSach(maPhieuNhap, maSach, tenSach, maTacGia, maTheLoai, NXB, namXuatBan, soLuongNhap, giaTienSach);
                     rowSelected.add(book);
                 } while (rs.next());

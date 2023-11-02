@@ -4,17 +4,30 @@
  */
 package View;
 
+import DAO.*;
+import DTO.*;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+
 /**
  *
  * @author 1
  */
 public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
-
+    DefaultTableModel defaultTableModel_PN;
+    DefaultTableModel defaultTableModel_CTPN;
     /**
      * Creates new form TrangChuThuThu_QLPNhap
      */
     public TrangChuThuThu_QLPNhap() {
         initComponents();
+        loadmaPhieuNhap();
+        loadChiTietTPhieuNhap();
     }
 
     /**
@@ -139,7 +152,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         ngayXuatCungCap.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ngayXuatCungCap.setForeground(new java.awt.Color(0, 0, 0));
-        ngayXuatCungCap.setText("Ngày cung cấp:");
+        ngayXuatCungCap.setText("Mã nhà cung cấp:");
 
         ngayXuatField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
@@ -635,7 +648,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Mã phiếu xuất", "Ngày nhập", "Ngày cung cấp"
+                "Mã phiếu nhập", "Ngày nhập", "Mã nhà cung cấp"
             }
         ));
         jScrollPane3.setViewportView(jTable1);
@@ -715,10 +728,61 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
+       // maPhieuXuatField.setEnabled(false);
+        ngayXuatField1.setEnabled(false);
+        maSachField.setEnabled(false);
+        maTGiaFiedl.setEnabled(false);
+        soLuongField.setEnabled(false);
+        tenSachField.setEnabled(false);
+        tenTGiaField.setEnabled(false);
+        GNhapField.setEnabled(false);
+        nxbField.setEnabled(false);
+        namXBField.setEnabled(false);
+        btnK_luuPN.setEnabled(false);
+        btnK_luuMaSach.setEnabled(false);
+        tongTienField.setEnabled(false);
+        maTLoaiField.setEnabled(false);
+        ngayXuatField.setEnabled(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void loadmaPhieuNhap() {
+        defaultTableModel_PN = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable1.setModel(defaultTableModel_PN);
+        defaultTableModel_PN.addColumn("Mã phiếu nhập");
+        defaultTableModel_PN.addColumn("Ngày nhập");
+        defaultTableModel_PN.addColumn("Mã nhà cung cấp");
+        List<PhieuNhapSach> phieuNhapSach = PhieuNhapSach_DAO.getInstance().selectAll();
+        for (PhieuNhapSach pns : phieuNhapSach) {
+            defaultTableModel_PN.addRow(new Object[] { pns.getMaPhieuNhap(), pns.getNgayNhap(), pns.getMaNhaCungCap() });
+        }
+    }
+    public void loadChiTietTPhieuNhap() {
+        defaultTableModel_CTPN = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable2.setModel(defaultTableModel_CTPN);
+        defaultTableModel_CTPN.addColumn("Mã phiếu nhập");
+        defaultTableModel_CTPN.addColumn("Mã sách");
+        defaultTableModel_CTPN.addColumn("Tên sách");
+        defaultTableModel_CTPN.addColumn("Mã tác giả");
+        defaultTableModel_CTPN.addColumn("Mã thể loại");
+        defaultTableModel_CTPN.addColumn("Nhà xuất bản");
+        defaultTableModel_CTPN.addColumn("Năm xuất bản");
+        defaultTableModel_CTPN.addColumn("Số lượng");
+        defaultTableModel_CTPN.addColumn("Giá nhập");
+        List<ChiTietPhieuNhapSach> chiTietPhieuNhapSaches = ChiTietPhieuNhap_DAO.getInstance().selectAll();
+        for (ChiTietPhieuNhapSach ctpns : chiTietPhieuNhapSaches) {
+            defaultTableModel_CTPN.addRow(new Object[] { ctpns.getMaPhieuNhap(), ctpns.getMaSach(), ctpns.getTenSach(), ctpns.getMaTacGia(), ctpns.getMaTheLoai(), ctpns.getNXB(), ctpns.getNamXuatBan(), ctpns.getSoLuongNhap(), ctpns.getGiaNhap()});
+        }
+    }
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
 
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
@@ -772,35 +836,147 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_tongTienFieldActionPerformed
 
     private void btnK_themPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPNActionPerformed
-
+        maPhieuXuatField.setEnabled(true);
+        ngayXuatField1.setEnabled(true);
+        ngayXuatField.setEnabled(true);
+        btnK_luuPN.setEnabled(true);
+       // btnK_themPN.setEnabled(false);
+        btnK_suaPN.setEnabled(false);
+        DelBtnNhap.setEnabled(false);
     }//GEN-LAST:event_btnK_themPNActionPerformed
 
     private void btnK_luuPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuPNActionPerformed
-
+        if (maPhieuXuatField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu nhập.");
+        }else{
+            PhieuNhapSach phieuNhapSach = new PhieuNhapSach();
+            phieuNhapSach.setMaPhieuNhap(maPhieuXuatField.getText());
+            phieuNhapSach.setMaNhaCungCap(ngayXuatField1.getText());
+            String dateString = ngayXuatField.getText();
+            try {
+                if (!dateString.trim().isEmpty()) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate localDate = LocalDate.parse(dateString, formatter);
+                    phieuNhapSach.setNgayNhap(localDate);
+                }
+            } catch (DateTimeParseException e) {
+                //System.out.println("Lỗi: Chuỗi không hợp lệ để chuyển đổi thành LocalDate.");
+                JOptionPane.showMessageDialog(null, "LỖI: Ngày nhập \n Vui lòng nhập theo định dạng: yyyy-MM-dd");
+            }
+            if (btnK_themPN.isEnabled()){
+                if (PhieuNhapSach_DAO.getInstance().add(phieuNhapSach)>0){
+                    JOptionPane.showMessageDialog(null, "Thêm phiếu nhập thành công!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Thêm phiếu nhập thất bại!");
+                }
+            } else if (btnK_suaPN.isEnabled()) {
+                if (PhieuNhapSach_DAO.getInstance().update(phieuNhapSach)>0){
+                    JOptionPane.showMessageDialog(null, "Sửa phiếu nhập thành công!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Sửa phiếu nhập thất bại!");
+                }
+            }else if (DelBtnNhap.isEnabled()){
+                if (PhieuNhapSach_DAO.getInstance().delete(maPhieuXuatField.getText())>0){
+                    JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thành công!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thất bại!");
+                }
+            }
+            btnRefreshPNActionPerformed(evt);
+        }
     }//GEN-LAST:event_btnK_luuPNActionPerformed
 
     private void btnExportPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportPNActionPerformed
         // TODO add your handling code here:
+        if (maPhieuXuatField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu nhập.");
+        }else{
+            String url = JOptionPane.showInputDialog("Nhập đường dẫn lưu file: ");
+            if (PhieuNhapSach_DAO.getInstance().XuatExcelPhieuNhap(maPhieuXuatField.getText(), url)>0){
+                JOptionPane.showMessageDialog(null, "Đã xuất file!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Xuất file thất bại! \n Vui lòng kiểm tra đường dẫn.");
+            }
+        }
+
     }//GEN-LAST:event_btnExportPNActionPerformed
 
     private void btnK_suaPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPNActionPerformed
-
+        maPhieuXuatField.setEnabled(true);
+        ngayXuatField1.setEnabled(true);
+        ngayXuatField.setEnabled(true);
+        btnK_luuPN.setEnabled(true);
+        btnK_themPN.setEnabled(false);
+       // btnK_suaPN.setEnabled(false);
+        DelBtnNhap.setEnabled(false);
     }//GEN-LAST:event_btnK_suaPNActionPerformed
 
     private void btnRefreshPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPNActionPerformed
         // TODO add your handling code here:
+        maPhieuXuatField.setText("");
+        ngayXuatField1.setText("");
+        ngayXuatField.setText("");
+       // maPhieuXuatField.setEnabled(false);
+        ngayXuatField1.setEnabled(false);
+        btnK_luuPN.setEnabled(false);
+        ngayXuatField.setEnabled(false);
+        btnK_themPN.setEnabled(true);
+        btnK_suaPN.setEnabled(true);
+        DelBtnNhap.setEnabled(true);
     }//GEN-LAST:event_btnRefreshPNActionPerformed
 
     private void DelBtnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelBtnNhapActionPerformed
         // TODO add your handling code here:
+        maPhieuXuatField.setEnabled(true);
+        ngayXuatField1.setEnabled(true);
+        ngayXuatField.setEnabled(true);
+        btnK_luuPN.setEnabled(true);
+        btnK_themPN.setEnabled(false);
+        btnK_suaPN.setEnabled(false);
+        //DelBtnNhap.setEnabled(false);
+
     }//GEN-LAST:event_DelBtnNhapActionPerformed
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themMaSachActionPerformed
-
+        maSachField.setEnabled (true);
+        maTGiaFiedl.setEnabled(true);
+        soLuongField.setEnabled(true);
+        tenSachField.setEnabled(true);
+        tenTGiaField.setEnabled(true);
+        GNhapField.setEnabled(true);
+        nxbField.setEnabled(true);
+        namXBField.setEnabled (true);
+        btnK_luuMaSach.setEnabled(true);
+        tongTienField.setEnabled(true);
+        maTLoaiField.setEnabled(true);
+        btnK_themMaSach.setEnabled(false);
     }//GEN-LAST:event_btnK_themMaSachActionPerformed
 
     private void btnK_lamMoiPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiPNActionPerformed
-
+        maSachField.setText("");
+        maTGiaFiedl.setText("");
+        soLuongField.setText("");
+        tenSachField.setText("");
+        tenTGiaField.setText("");
+        GNhapField.setText("");
+        nxbField.setText("");
+        namXBField.setText("");
+        tongTienField.setText("");
+        maPhieuXuatField.setText("");
+        ngayXuatField1.setText("");
+        maTLoaiField.setText("");
+        maSachField.setEnabled(false);
+        maTGiaFiedl.setEnabled(false);
+        soLuongField.setEnabled(false);
+        tenSachField.setEnabled(false);
+        tenTGiaField.setEnabled(false);
+        GNhapField.setEnabled(false);
+        nxbField.setEnabled(false);
+        namXBField.setEnabled(false);
+        btnK_luuMaSach.setEnabled(false);
+        tongTienField.setEnabled(false);
+        maTLoaiField.setEnabled(false);
+        btnK_themMaSach.setEnabled(true);
     }//GEN-LAST:event_btnK_lamMoiPNActionPerformed
 
     private void btnK_luuMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuMaSachActionPerformed
