@@ -40,11 +40,12 @@ public class Sach {
         this.tinhTrangSach = tinhTrangSach;
         this.tomTatND = tomTatND;
     }
-    public Sach (String maSach, String tenSach, String maTacGia, String maTheLoai, String nxb, int namXuatBan) {
+    public Sach (String maSach, String tenSach, String maTacGia, String tenTacGia, String maTheLoai, String nxb, int namXuatBan) {
         this.maSach = maSach;
         this.tenSach = tenSach;
         this.maTheLoai = maTheLoai;
         this.maTacGia = maTacGia;
+        this.tenTacGia = tenTacGia;
         this.NXB = nxb;
         this.namXuatBan = namXuatBan;
     }

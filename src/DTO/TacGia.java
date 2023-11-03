@@ -10,8 +10,9 @@ public class TacGia {
         this.tenTacGia = tenTacGia;
         this.soSach = soSach;
     }
-    public TacGia(String maTacGia) {
+    public TacGia(String maTacGia, String tenTacGia) {
         this.maTacGia = maTacGia;
+        this.tenTacGia = tenTacGia;
     }
 
     public TacGia() {

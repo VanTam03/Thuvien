@@ -3,7 +3,12 @@ import DTO.ChiTietPhieuNhapSach;
 import DTO.KhoSach;
 import DTO.Sach;
 import DTO.TacGia;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,8 +50,7 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
 
             if (rowsAffected == 1){
                 themSachVaoKho (maSach, soLuongNhap);
-                themVaoTacGia (maTacGia);
-                themVaoThongTinSach (maSach, tenSach, maTacGia, maTheLoai, NXB, namXuatBan);
+                //themVaoThongTinSach (maSach, tenSach, maTacGia, maTheLoai, NXB, namXuatBan);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -54,13 +58,13 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
         return rowsAffected;
     }
 
-    private void themVaoTacGia(String maTacGia) {
+    public void themVaoTacGia(String maTacGia, String tenTacGia) {
         String sql = "SELECT * FROM dbo.[TacGia] WHERE maTacGia ='"+maTacGia+"'";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery())  {
             if (!rs.next()) {
-                TacGia tacGia = new TacGia (maTacGia);
+                TacGia tacGia = new TacGia (maTacGia, tenTacGia);
                 TacGia_DAO.getInstance().add(tacGia);
             }
 
@@ -69,13 +73,13 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
         }
     }
 
-    private void themVaoThongTinSach(String maSach, String tenSach, String maTacGia, String maTheLoai, String nxb, int namXuatBan) {
+    public void themVaoThongTinSach(String maSach, String tenSach, String maTacGia, String tenTacGia, String maTheLoai, String nxb, int namXuatBan) {
         String sql = "SELECT * FROM dbo.[ThongTinSach] WHERE maSach ='"+maSach+"'";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery())  {
             if (!rs.next()) {
-                Sach sach = new Sach(maSach, tenSach, maTacGia, maTheLoai, nxb, namXuatBan);
+                Sach sach = new Sach(maSach, tenSach, maTacGia, tenTacGia, maTheLoai, nxb, namXuatBan);
                 Sach_DAO.getInstance().add(sach);
             }
 
@@ -84,7 +88,7 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
         }
     }
 
-    private void themSachVaoKho(String maSach, int soLuong) {
+    public void themSachVaoKho(String maSach, int soLuong) {
         String sql = "SELECT * FROM dbo.[KhoSach] WHERE maSach ='"+maSach+"'";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
@@ -218,6 +222,39 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
             e.printStackTrace();
         }
         return result;
+    }
+
+    public int importExcel(String url){
+        try {
+            FileInputStream fis = new FileInputStream(url);
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
+            for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                Row row = sheet.getRow(rowIndex);
+                if (row != null) {
+                    String maPhieuNhap = row.getCell(0).getStringCellValue();
+                    String maSach = row.getCell(1).getStringCellValue();
+                    String tenSach = row.getCell(2).getStringCellValue();
+                    String maTacGia = row.getCell(3).getStringCellValue();
+                    String tenTacGia = row.getCell(4).getStringCellValue();
+                    String maTheLoai = row.getCell(5).getStringCellValue();
+                    String nxb = row.getCell(6).getStringCellValue();
+                    int namXuatBan = (int) row.getCell(7).getNumericCellValue();
+                    int soLuongNhap = (int) row.getCell(8).getNumericCellValue();
+                    double giaNhap = row.getCell(9).getNumericCellValue();
+                    themVaoTacGia(maTacGia, tenTacGia);
+                    ChiTietPhieuNhapSach chiTietPhieuNhapSach = new ChiTietPhieuNhapSach(maPhieuNhap, maSach, tenSach, maTacGia, maTheLoai, nxb, namXuatBan, soLuongNhap, giaNhap);
+                    add(chiTietPhieuNhapSach);
+                    themVaoThongTinSach (maSach, tenSach, maTacGia, tenTacGia, maTheLoai, nxb, namXuatBan);
+                }
+            }
+
+            fis.close();
+            workbook.close();
+        } catch (Exception e) {
+            return 0;
+        }
+        return 1;
     }
 
 }
