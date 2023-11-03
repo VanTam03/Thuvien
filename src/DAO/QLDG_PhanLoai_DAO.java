@@ -87,4 +87,28 @@ public class QLDG_PhanLoai_DAO {
     }
     return "";
   }
+
+  public ArrayList timKiem(String ndung){
+    ArrayList<PhanLoaiThe> dsthe = new ArrayList<>();
+    try {
+      String sql= "SELECT * FROM LoaiThe WHERE maLoaiThe LIKE '%"+ndung+"%' or tenLoaiThe LIKE '%"+ndung+"%'";
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+         PhanLoaiThe loaiThe = new PhanLoaiThe();
+        loaiThe.setMaLoaiThe(rs.getString("maLoaiThe"));
+        loaiThe.setTenLoaiThe(rs.getString("tenLoaiThe"));
+        loaiThe.setNgayMoThe(rs.getString("ngayMoThe"));
+        loaiThe.setHanDungThe(rs.getString("hanSuDung"));
+        loaiThe.setSoLuongSachMuon(rs.getInt("soSachDuocMuon"));
+        loaiThe.setThoiGianMuonToiDa(rs.getInt("thoiGianDuocMuonToiDa"));
+        loaiThe.setGiaTienGiaHan(rs.getString("giaTienGiaHan"));
+
+        dsthe.add(loaiThe);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return dsthe;
+  }
 }
