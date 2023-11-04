@@ -9,8 +9,7 @@ import Model.PhanLoaiThe;
 import Model.TaiKhoan;
 import org.apache.poi.ss.formula.functions.T;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,8 +53,21 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         public TrangChuThuThu() {
                 initComponents();
                 loadmaDanhMuc();
-                loadmaTheLoai();
+                loadComboBoxTheLoai();
+                loadComboBoxDanhMuc();
+              //  loadmaTheLoai();
                 // loadmaTacGia();
+        }
+
+        private void loadComboBoxDanhMuc() {
+                List <DanhMucSach> DanhMuc = DanhMucSach_DAO.getInstance().selectAll();
+                for (DanhMucSach dm : DanhMuc){
+                        Hc_maDM2.addItem(dm.getMaDM());
+                }
+        }
+
+        private void loadComboBoxTheLoai() {
+
         }
 
         // public void loadmaTacGia(){
@@ -3742,11 +3754,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                 sach.setGiaTienSach(Double.parseDouble(H_soLuongCon2.getText()));
                                 sach.setTomTatND(H_tomTat2.getText());
                                 // sach.setAnh(H_linkAnh.getText());
+                                KhoSach khoSach = new KhoSach(H_tenSach2.getText(), 0, 0, 0);
+                                KhoSach_DAO.getInstance().add(khoSach);
                                 if (Sach_DAO.getInstance().add(sach) > 0) {
                                         JOptionPane.showMessageDialog(null, "Đã thêm dữ liệu của sách.");
                                 } else {
                                         JOptionPane.showMessageDialog(null,
-                                                        "Thêm sách thất bại! \n Hãy kiểm tra lại mã sách, có thể mã sách chưa có trong kho sách!");
+                                                        "Thêm sách thất bại! \n Hãy kiểm tra lại mã sách.");
                                 }
                         }
                         refresh();
@@ -3758,7 +3772,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 if (H_tenSach2.getText().trim().equals("") || H_tenTheLoai2.getText().trim().equals("")
                                 || H_tenDM2.getText().trim().equals("") || H_namXB2.getText().trim().equals("")
                                 || H_nhaXB2.getText().trim().equals("")) {
-                        JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn xóa!");
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa!");
                 } else {
                         int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không?");
                         if (x == JOptionPane.NO_OPTION) {
@@ -3791,6 +3805,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         private void btn_lamMoiSach2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_lamMoiSach2ActionPerformed
                 // TODO add your handling code here:
+                H_tenSach2.setText("");
+                H_tenSach3.setText("");
+                H_soLuongCon2.setText("");
+                H_namXB2.setText("");
+                H_tacGia5.setText("");
+                H_tacGia4.setText("");
+                H_nhaXB2.setText("");
+                H_tomTat2.setText("");
 
         }// GEN-LAST:event_btn_lamMoiSach2ActionPerformed
 
@@ -3828,10 +3850,27 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         private void khoatk10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk10ActionPerformed
                 // TODO add your handling code here:
+                if (H_tenSach2.getText().trim().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn mã sách muốn xóa!");
+                } else {
+                        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa ?");
+                        if (x == JOptionPane.NO_OPTION) {
+                                return;
+                        } else {
+                                if (Sach_DAO.getInstance().delete(H_tenSach2.getText())>0){
+                                        JOptionPane.showMessageDialog(null, "Xóa thành công.");
+                                }else{
+                                        JOptionPane.showMessageDialog(null, "Xóa sách thất bại! \n Hãy kiểm tra lại mã sách.");
+                                }
+                        }
+                }
         }// GEN-LAST:event_khoatk10ActionPerformed
 
         private void khoatk11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk11ActionPerformed
                 // TODO add your handling code here:
+                new TrangChuThuThu_TimKiem().setVisible(true);
+                this.setVisible(false);
+
         }// GEN-LAST:event_khoatk11ActionPerformed
 
         private void tbl_DMSach4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbl_DMSach4MouseClicked

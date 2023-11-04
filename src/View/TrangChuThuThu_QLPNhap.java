@@ -9,6 +9,7 @@ import DTO.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.time.LocalDate;
@@ -680,15 +681,16 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+               
             },
             new String [] {
-                "Mã phiếu nhập", "Mã sách", "Tên sách", "Mã tác giả", "Tên tác giẩ", "Mã thể loại", "Nhà xuất bản", "Năm xuất bản", "Giá nhập", "Số lượng", "Tổng tiền"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPK_qlPMLayout = new javax.swing.GroupLayout(jPK_qlPM);
@@ -842,7 +844,20 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
 
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable2MouseClicked
+        int selectedRow = jTable2.getSelectedRow();
+        maSachField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 1)));
+        tenSachField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 2)));
+        maTGiaFiedl.setText(String.valueOf(jTable2.getValueAt(selectedRow, 3)));
+        maTLoaiField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 4)));
+        nxbField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 5)));
+        namXBField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 6)));
+        soLuongField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 7)));
+        GNhapField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 8)));
+        TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
+        tenTGiaField.setText(tacGia.getTenTacGia());
 
+    }
     private void tenSachFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenSachFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tenSachFieldActionPerformed
@@ -867,6 +882,8 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
     private void maTGiaFiedlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maTGiaFiedlActionPerformed
         // TODO add your handling code here:
+       TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
+       tenTGiaField.setText(tacGia.getTenTacGia());
     }//GEN-LAST:event_maTGiaFiedlActionPerformed
 
     private void tenTGiaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenTGiaFieldActionPerformed
@@ -954,10 +971,14 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu nhập.");
         }else{
             String url = JOptionPane.showInputDialog("Nhập đường dẫn lưu file: ");
-            if (PhieuNhapSach_DAO.getInstance().XuatExcelPhieuNhap(maPhieuXuatField.getText(), url)>0){
-                JOptionPane.showMessageDialog(null, "Đã xuất file!");
+            if (url.equals("")){
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đường dẫn lưu file.");
             }else{
-                JOptionPane.showMessageDialog(null, "Xuất file thất bại! \n Vui lòng kiểm tra đường dẫn.");
+                if (PhieuNhapSach_DAO.getInstance().XuatExcelPhieuNhap(maPhieuXuatField.getText(), url)>0){
+                    JOptionPane.showMessageDialog(null, "Đã xuất file!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Xuất file thất bại! \n Vui lòng kiểm tra đường dẫn.");
+                }
             }
         }
 
