@@ -75,8 +75,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         soLuongField = new javax.swing.JTextField();
         labelGiaNhap = new javax.swing.JLabel();
         GNhapField = new javax.swing.JTextField();
-        labelTongTien = new javax.swing.JLabel();
-        tongTienField = new javax.swing.JTextField();
         jPK_button = new javax.swing.JPanel();
         jPK_btnQLPM = new javax.swing.JPanel();
         btnK_themPN = new javax.swing.JButton();
@@ -156,7 +154,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         ngayXuatCungCap.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ngayXuatCungCap.setForeground(new java.awt.Color(0, 0, 0));
-        ngayXuatCungCap.setText("Mã nhà cung cấp:");
+        ngayXuatCungCap.setText("Ngày cung cấp:");
 
         ngayXuatField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
@@ -171,11 +169,11 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                     .addComponent(maPhieunhapLabel)
                     .addComponent(ngayXuatCungCap))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ngayXuatField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(maPhieuXuatField, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ngayXuatField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(maPhieuXuatField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ngayXuatField1))
-                .addGap(138, 138, 138))
+                .addGap(177, 177, 177))
         );
         jPK_themPMLayout.setVerticalGroup(
             jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,28 +211,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         maSachField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maSachFieldActionPerformed(evt);
-            }
-        });
-        maSachField.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                // Không làm gì
-            }
-            @Override
-            public void focusLost(FocusEvent e) {
-                Sach sach = Sach_DAO.getInstance().selectById(maSachField.getText());
-                tenSachField.setText(sach.getTenSach());
-            }
-        });
-        maTGiaFiedl.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                // Không làm gì
-            }
-            @Override
-            public void focusLost(FocusEvent e) {
-                TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
-                tenTGiaField.setText(tacGia.getTenTacGia());
             }
         });
 
@@ -336,17 +312,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         });
 
-        labelTongTien.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        labelTongTien.setForeground(new java.awt.Color(0, 0, 0));
-        labelTongTien.setText("Tổng tiền:");
-
-        tongTienField.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        tongTienField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tongTienFieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPK_themMaSachLayout = new javax.swing.GroupLayout(jPK_themMaSach);
         jPK_themMaSach.setLayout(jPK_themMaSachLayout);
         jPK_themMaSachLayout.setHorizontalGroup(
@@ -383,7 +348,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                                         .addComponent(maTGiaFiedl, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(labelTenTGia)))))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 25, Short.MAX_VALUE)
                         .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                                 .addComponent(labelMaTLoai)
@@ -395,16 +360,14 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                                     .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(tenSachField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                                         .addComponent(tenTGiaField, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelTongTien)
                                     .addComponent(labelNXuatBan)
                                     .addComponent(labelNgayXBan))))
                         .addGap(18, 18, 18)
                         .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(namXBField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nxbField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tongTienField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nxbField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(191, 191, 191))))
         );
         jPK_themMaSachLayout.setVerticalGroup(
@@ -437,9 +400,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                     .addComponent(labelSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(soLuongField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelGiaNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GNhapField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tongTienField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(GNhapField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -674,23 +635,22 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Mã phiếu nhập", "Ngày nhập", "Mã nhà cung cấp"
+                "Mã phiếu xuất", "Ngày nhập", "Ngày cung cấp"
             }
         ));
         jScrollPane3.setViewportView(jTable1);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-               
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
+                "Mã phiếu nhập", "Mã sách", "Tên sách", "Mã tác giả", "Tên tác giẩ", "Mã thể loại", "Nhà xuất bản", "Năm xuất bản", "Giá nhập", "Số lượng", "Tổng tiền"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
         jScrollPane4.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPK_qlPMLayout = new javax.swing.GroupLayout(jPK_qlPM);
@@ -710,7 +670,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                             .addComponent(jPK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 429, Short.MAX_VALUE))))
                 .addGap(24, 24, 24)
                 .addGroup(jPK_qlPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPK_btnQLS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)
+                    .addComponent(jPK_btnQLS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1128, Short.MAX_VALUE)
                     .addComponent(jPK_themMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPK_qlPMLayout.createSequentialGroup()
                         .addComponent(jScrollPane4)
@@ -755,21 +715,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-       // maPhieuXuatField.setEnabled(false);
-        ngayXuatField1.setEnabled(false);
-        maSachField.setEnabled(false);
-        maTGiaFiedl.setEnabled(false);
-        soLuongField.setEnabled(false);
-        tenSachField.setEnabled(false);
-        tenTGiaField.setEnabled(false);
-        GNhapField.setEnabled(false);
-        nxbField.setEnabled(false);
-        namXBField.setEnabled(false);
-        btnK_luuPN.setEnabled(false);
-        btnK_luuMaSach.setEnabled(false);
-        tongTienField.setEnabled(false);
-        maTLoaiField.setEnabled(false);
-        ngayXuatField.setEnabled(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void loadmaPhieuNhap() {
@@ -910,10 +856,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GNhapFieldActionPerformed
 
-    private void tongTienFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tongTienFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tongTienFieldActionPerformed
-
     private void btnK_themPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPNActionPerformed
         maPhieuXuatField.setEnabled(true);
         ngayXuatField1.setEnabled(true);
@@ -1030,7 +972,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         nxbField.setEnabled(true);
         namXBField.setEnabled (true);
         btnK_luuMaSach.setEnabled(true);
-        tongTienField.setEnabled(true);
         maTLoaiField.setEnabled(true);
        // btnK_themMaSach.setEnabled(false);
         btnK_suaPN1.setEnabled(false);
@@ -1046,7 +987,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         GNhapField.setText("");
         nxbField.setText("");
         namXBField.setText("");
-        tongTienField.setText("");
         maTLoaiField.setText("");
         maSachField.setEnabled(false);
         maTGiaFiedl.setEnabled(false);
@@ -1057,7 +997,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         nxbField.setEnabled(false);
         namXBField.setEnabled(false);
         btnK_luuMaSach.setEnabled(false);
-        tongTienField.setEnabled(false);
+   
         maTLoaiField.setEnabled(false);
         btnK_themMaSach.setEnabled(true);
         btnK_suaPN1.setEnabled(true);
@@ -1124,7 +1064,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         nxbField.setEnabled(true);
         namXBField.setEnabled (true);
         btnK_luuMaSach.setEnabled(true);
-        tongTienField.setEnabled(true);
+      
         maTLoaiField.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
        // btnK_suaPN1.setEnabled(false);
@@ -1141,7 +1081,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         nxbField.setEnabled(true);
         namXBField.setEnabled (true);
         btnK_luuMaSach.setEnabled(true);
-        tongTienField.setEnabled(true);
+       
         maTLoaiField.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
         btnK_suaPN1.setEnabled(false);
@@ -1229,7 +1169,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private javax.swing.JLabel labelSoLuong;
     private javax.swing.JLabel labelTenTGia;
     private javax.swing.JLabel labelTensach;
-    private javax.swing.JLabel labelTongTien;
     private javax.swing.JLabel lbK_tieuDe;
     private javax.swing.JLabel maPhieuNhapLabelIcon;
     private javax.swing.JTextField maPhieuXuatField;
@@ -1246,6 +1185,5 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private javax.swing.JTextField soLuongField;
     private javax.swing.JTextField tenSachField;
     private javax.swing.JTextField tenTGiaField;
-    private javax.swing.JTextField tongTienField;
     // End of variables declaration//GEN-END:variables
 }

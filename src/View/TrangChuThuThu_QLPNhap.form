@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -136,7 +136,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPK_btnQLS" alignment="1" pref="1113" max="32767" attributes="0"/>
+                      <Component id="jPK_btnQLS" alignment="1" pref="1128" max="32767" attributes="0"/>
                       <Component id="jPK_themMaSach" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jScrollPane4" max="32767" attributes="0"/>
@@ -195,12 +195,12 @@
                           <Component id="ngayXuatCungCap" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ngayXuatField" alignment="1" pref="249" max="32767" attributes="0"/>
-                          <Component id="maPhieuXuatField" alignment="1" max="32767" attributes="0"/>
-                          <Component id="ngayXuatField1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="ngayXuatField" alignment="0" pref="210" max="32767" attributes="0"/>
+                          <Component id="maPhieuXuatField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ngayXuatField1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -341,7 +341,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="25" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="labelMaTLoai" min="-2" max="-2" attributes="0"/>
@@ -356,9 +356,8 @@
                                               <Component id="tenTGiaField" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="14" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelTongTien" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelNXuatBan" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelNgayXBan" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -368,7 +367,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="namXBField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
                                   <Component id="nxbField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <Component id="tongTienField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                           </Group>
@@ -410,8 +408,6 @@
                           <Component id="soLuongField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="labelGiaNhap" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="GNhapField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="labelTongTien" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="tongTienField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="82" max="32767" attributes="0"/>
                   </Group>
@@ -637,27 +633,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GNhapFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="labelTongTien">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="tongTienField">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tongTienFieldActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

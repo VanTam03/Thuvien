@@ -173,7 +173,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         txt_tenDMSach13 = new javax.swing.JTextField();
         txt_tenDMSach14 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        QLTGiaTable = new javax.swing.JTable();
         jPK_QuanLyPhieuMuon4 = new javax.swing.JPanel();
         jTPK_QuanLyPM4 = new javax.swing.JTabbedPane();
         Panel_DanhSachPM14 = new javax.swing.JPanel();
@@ -276,6 +276,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/choice.png"))); // NOI18N
         jButton1.setText("Đăng xuất");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -287,9 +288,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SGU.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("QUẢN LÝ THƯ VIỆN");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText(" TRƯỜNG ĐẠI HỌC SÀI GÒN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -365,21 +368,27 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane17.setViewportView(tableDocgia2);
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(0, 0, 0));
         jLabel86.setText("Mã độc giả:");
 
         jLabel87.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(0, 0, 0));
         jLabel87.setText("Tên độc giả:");
 
         jLabel88.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel88.setForeground(new java.awt.Color(0, 0, 0));
         jLabel88.setText("Giới tính:");
 
         jLabel89.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(0, 0, 0));
         jLabel89.setText("Số điện thoại:");
 
         jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(0, 0, 0));
         jLabel90.setText("Phân loại");
 
         jLabel91.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel91.setForeground(new java.awt.Color(0, 0, 0));
         jLabel91.setText("Ngày sinh");
 
         gioitinhnam16.setBackground(new java.awt.Color(255, 255, 204));
@@ -409,6 +418,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         themmoidg2.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        themmoidg2.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg2.setText("Thêm mới");
         themmoidg2.addActionListener(new java.awt.event.ActionListener() {
@@ -419,6 +429,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         updatedg2.setBackground(new java.awt.Color(255, 204, 204));
         updatedg2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        updatedg2.setForeground(new java.awt.Color(0, 0, 0));
         updatedg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg2.setText("Sửa ");
         updatedg2.addActionListener(new java.awt.event.ActionListener() {
@@ -429,6 +440,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         khoatk8.setBackground(new java.awt.Color(255, 204, 204));
         khoatk8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        khoatk8.setForeground(new java.awt.Color(0, 0, 0));
         khoatk8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
         khoatk8.setText("Xóa");
         khoatk8.addActionListener(new java.awt.event.ActionListener() {
@@ -451,6 +463,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         mokhoa3.setBackground(new java.awt.Color(255, 204, 204));
         mokhoa3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        mokhoa3.setForeground(new java.awt.Color(0, 0, 0));
         mokhoa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         mokhoa3.setText("Làm mới");
         mokhoa3.addActionListener(new java.awt.event.ActionListener() {
@@ -460,10 +473,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel92.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(0, 0, 0));
         jLabel92.setText("Mật khẩu:");
 
         khoatk9.setBackground(new java.awt.Color(255, 204, 204));
         khoatk9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        khoatk9.setForeground(new java.awt.Color(0, 0, 0));
         khoatk9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         khoatk9.setText("Hổ trợ tìm kiếm");
         khoatk9.addActionListener(new java.awt.event.ActionListener() {
@@ -480,9 +495,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel127.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel127.setForeground(new java.awt.Color(0, 0, 0));
         jLabel127.setText("Email:");
 
         jLabel128.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel128.setForeground(new java.awt.Color(0, 0, 0));
         jLabel128.setText("Hạn dùng:");
 
         emailDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -646,13 +663,16 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel131.setForeground(new java.awt.Color(0, 0, 0));
         jLabel131.setText("Mã phân loại:");
 
         jLabel132.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel132.setForeground(new java.awt.Color(0, 0, 0));
         jLabel132.setText("Số lượng sách:");
 
         themmoidg3.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        themmoidg3.setForeground(new java.awt.Color(0, 0, 0));
         themmoidg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         themmoidg3.setText("Thêm mới");
         themmoidg3.addActionListener(new java.awt.event.ActionListener() {
@@ -663,6 +683,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         updatedg3.setBackground(new java.awt.Color(255, 204, 204));
         updatedg3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        updatedg3.setForeground(new java.awt.Color(0, 0, 0));
         updatedg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         updatedg3.setText("Sửa ");
         updatedg3.addActionListener(new java.awt.event.ActionListener() {
@@ -682,9 +703,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel137.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel137.setForeground(new java.awt.Color(0, 0, 0));
         jLabel137.setText("Tên phân loại:");
 
         jLabel139.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel139.setForeground(new java.awt.Color(0, 0, 0));
         jLabel139.setText("Thời gian mượn:");
 
         thoiGianField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -706,6 +729,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel138.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel138.setForeground(new java.awt.Color(0, 0, 0));
         jLabel138.setText("Ngày mở thẻ:");
 
         tenLoaiField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -716,6 +740,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel140.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel140.setForeground(new java.awt.Color(0, 0, 0));
         jLabel140.setText("Hạn dùng thẻ:");
 
         tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -726,6 +751,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel141.setForeground(new java.awt.Color(0, 0, 0));
         jLabel141.setText("Giá tiền mở thẻ:");
 
         thoiGianField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -738,6 +764,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel142.setForeground(new java.awt.Color(0, 0, 0));
         jLabel142.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searching.png"))); // NOI18N
         jLabel142.setText("Hỗ trợ tìm kiếm:");
 
@@ -1186,13 +1213,16 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane19.setViewportView(tbl_DMSach4);
 
         jLabel105.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel105.setForeground(new java.awt.Color(0, 0, 0));
         jLabel105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel105.setText("Thông tin danh mục Sách:");
 
         jLabel106.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
         jLabel106.setText("Mã danh mục:");
 
         jLabel107.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(0, 0, 0));
         jLabel107.setText("Tên danh mục:");
 
         txt_maDMSach4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1202,6 +1232,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_ThemDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach6.setText("Thêm");
         btn_ThemDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1212,6 +1243,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach6.setText("Lưu");
         btn_LuuDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1222,6 +1254,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach6.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach6.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach6.setText("Sửa");
         btn_SuaDMSach6.addActionListener(new java.awt.event.ActionListener() {
@@ -1348,13 +1381,16 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jScrollPane20.setViewportView(tbl_DMSach5);
 
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(0, 0, 0));
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel109.setText("Thông tin thể loại Sách:");
 
         jLabel110.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel110.setForeground(new java.awt.Color(0, 0, 0));
         jLabel110.setText("Mã thể loại:");
 
         jLabel111.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(0, 0, 0));
         jLabel111.setText("Tên thể loại:");
 
         txt_maDMSach5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1364,6 +1400,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_ThemDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach7.setText("Thêm");
         btn_ThemDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1374,6 +1411,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach7.setText("Lưu");
         btn_LuuDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1384,6 +1422,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach7.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach7.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach7.setText("Sửa");
         btn_SuaDMSach7.addActionListener(new java.awt.event.ActionListener() {
@@ -1494,19 +1533,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel34.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel113.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(0, 0, 0));
         jLabel113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel113.setText("Thông tin tác giả:");
 
         jLabel114.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(0, 0, 0));
         jLabel114.setText("Mã tác giả:");
 
         jLabel115.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel115.setForeground(new java.awt.Color(0, 0, 0));
         jLabel115.setText("Tên tác giả:");
 
         txt_tenDMSach12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         btn_ThemDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_ThemDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_ThemDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_ThemDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/them.png"))); // NOI18N
         btn_ThemDMSach8.setText("Thêm");
         btn_ThemDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1517,6 +1560,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_LuuDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_LuuDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_LuuDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_LuuDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/luu.png"))); // NOI18N
         btn_LuuDMSach8.setText("Lưu");
         btn_LuuDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1527,6 +1571,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btn_SuaDMSach8.setBackground(new java.awt.Color(255, 204, 204));
         btn_SuaDMSach8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_SuaDMSach8.setForeground(new java.awt.Color(0, 0, 0));
         btn_SuaDMSach8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exchange1.png"))); // NOI18N
         btn_SuaDMSach8.setText("Sửa");
         btn_SuaDMSach8.addActionListener(new java.awt.event.ActionListener() {
@@ -1559,24 +1604,25 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel117.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel117.setForeground(new java.awt.Color(0, 0, 0));
         jLabel117.setText("Số lượng sách:");
 
         txt_tenDMSach13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         txt_tenDMSach14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        QLTGiaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã tác giả", "Tên tác giả", "Số lượng sách"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(QLTGiaTable);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -1595,9 +1641,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                             .addComponent(txt_tenDMSach12, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_tenDMSach13, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_tenDMSach14, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
-                        .addContainerGap(182, Short.MAX_VALUE)
+                        .addContainerGap(252, Short.MAX_VALUE)
                         .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                                 .addComponent(jLabel113)
@@ -1616,23 +1662,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel34Layout.createSequentialGroup()
                         .addComponent(txt_timkiemDMSach23, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel116))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addComponent(jLabel116)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
-                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel34Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
                         .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_timkiemDMSach23, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel116))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel34Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addComponent(jLabel113)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1683,11 +1729,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         Panel_DanhSachPM14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe15.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        K_tieuDe15.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe15.setText("CÁC PHIẾU MƯỢN ĐÃ ĐĂNG KÝ");
 
         btnK_themPM31.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM31.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM31.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM31.setText("Xem chi tiết");
         btnK_themPM31.addActionListener(new java.awt.event.ActionListener() {
@@ -1706,14 +1754,17 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         gioitinhnam17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnam17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        gioitinhnam17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam17.setText("Theo tên độc giả");
 
         gioitinhnu17.setBackground(new java.awt.Color(255, 255, 204));
         gioitinhnu17.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        gioitinhnu17.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu17.setText("Theo mã phiếu mượn");
 
         btnK_themPM32.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM32.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM32.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM32.setText("Quản lý phiếu mượn");
         btnK_themPM32.addActionListener(new java.awt.event.ActionListener() {
@@ -1787,11 +1838,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         Panel_DanhSachPM15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
         K_tieuDe16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        K_tieuDe16.setForeground(new java.awt.Color(0, 0, 0));
         K_tieuDe16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bill.png"))); // NOI18N
         K_tieuDe16.setText("DANH SÁCH CÁC PHIẾU TRẢ");
 
         btnK_themPM33.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM33.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM33.setText("Xem chi tiết");
         btnK_themPM33.addActionListener(new java.awt.event.ActionListener() {
@@ -1802,6 +1855,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         btnK_themPM34.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnK_themPM34.setForeground(new java.awt.Color(0, 0, 0));
         btnK_themPM34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
         btnK_themPM34.setText("Quản lý phiếu trả");
         btnK_themPM34.addActionListener(new java.awt.event.ActionListener() {
@@ -1812,13 +1866,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã sách", "Tên sách", "Tình trạng", "Ngày thực trả", "Tiền phạt"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -1969,6 +2023,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel36.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jLabel118.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel118.setForeground(new java.awt.Color(0, 0, 0));
         jLabel118.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel118.setText("Lựa chọn: ");
 
@@ -2034,6 +2089,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel37.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel120.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel120.setForeground(new java.awt.Color(0, 0, 0));
         jLabel120.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel120.setText("Lựa chọn:");
 
@@ -2096,6 +2152,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel38.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel122.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel122.setForeground(new java.awt.Color(0, 0, 0));
         jLabel122.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
         jLabel122.setText("Lựa chọn:");
 
@@ -2336,7 +2393,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         khoatk18.setBackground(new java.awt.Color(255, 204, 204));
         khoatk18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         khoatk18.setForeground(new java.awt.Color(0, 0, 0));
-        khoatk18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/block-user.png"))); // NOI18N
+        khoatk18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
         khoatk18.setText("Làm mới");
         khoatk18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2389,11 +2446,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel179.setText("Giới tính:");
 
         gioitinhnam22.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup3.add(gioitinhnam22);
         gioitinhnam22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnam22.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam22.setText("Nam");
 
         gioitinhnu22.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup3.add(gioitinhnu22);
         gioitinhnu22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnu22.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu22.setText("Nữ");
@@ -2523,8 +2582,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
         timkiem4Layout.setVerticalGroup(
             timkiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, timkiem4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(timkiem4Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(timkiem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textboxsearch14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel173)
@@ -2571,7 +2630,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                     .addComponent(khoatk20, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPK_QuanLyTaiKhoanLayout = new javax.swing.GroupLayout(jPK_QuanLyTaiKhoan);
@@ -2584,7 +2643,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
         jPK_QuanLyTaiKhoanLayout.setVerticalGroup(
             jPK_QuanLyTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 515, Short.MAX_VALUE)
             .addGroup(jPK_QuanLyTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(timkiem4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2616,6 +2675,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(255, 204, 204));
         jButton14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(0, 0, 0));
         jButton14.setText("Tìm kiếm");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2755,65 +2815,361 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void themmoidg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themmoidg6ActionPerformed
+    private void jTP_main2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTP_main2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_themmoidg6ActionPerformed
+    }//GEN-LAST:event_jTP_main2MouseClicked
 
-    private void updatedg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg6ActionPerformed
+    private void jComboBox10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox10ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_updatedg6ActionPerformed
+    }//GEN-LAST:event_jComboBox10ItemStateChanged
 
-    private void khoatk18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk18ActionPerformed
+    private void jComboBox9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox9ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk18ActionPerformed
+    }//GEN-LAST:event_jComboBox9ItemStateChanged
 
-    private void khoatk19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk19ActionPerformed
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk19ActionPerformed
+    }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void khoatk20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk20ActionPerformed
+    private void textboxsearch3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch3KeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk20ActionPerformed
+    }//GEN-LAST:event_textboxsearch3KeyTyped
 
-    private void textboxsearch16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch16ActionPerformed
+    private void textboxsearch3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch3KeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch16ActionPerformed
+    }//GEN-LAST:event_textboxsearch3KeyReleased
 
-    private void textboxsearch16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch16KeyReleased
+    private void textboxsearch3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch16KeyReleased
+    }//GEN-LAST:event_textboxsearch3ActionPerformed
 
-    private void textboxsearch16KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch16KeyTyped
+    private void textboxsearch15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch15KeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch16KeyTyped
-
-    private void Hc_maTheLoai6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hc_maTheLoai6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Hc_maTheLoai6ActionPerformed
-
-    private void textboxsearch14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch14ActionPerformed
-
-    private void textboxsearch14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch14KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch14KeyReleased
-
-    private void textboxsearch14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch14KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch14KeyTyped
-
-    private void textboxsearch15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch15ActionPerformed
+    }//GEN-LAST:event_textboxsearch15KeyTyped
 
     private void textboxsearch15KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch15KeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_textboxsearch15KeyReleased
 
-    private void textboxsearch15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch15KeyTyped
+    private void textboxsearch15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch15ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch15KeyTyped
+    }//GEN-LAST:event_textboxsearch15ActionPerformed
+
+    private void textboxsearch14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch14KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch14KeyTyped
+
+    private void textboxsearch14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch14KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch14KeyReleased
+
+    private void textboxsearch14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch14ActionPerformed
+
+    private void Hc_maTheLoai6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hc_maTheLoai6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hc_maTheLoai6ActionPerformed
+
+    private void textboxsearch16KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch16KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch16KeyTyped
+
+    private void textboxsearch16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch16KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch16KeyReleased
+
+    private void textboxsearch16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch16ActionPerformed
+
+    private void khoatk20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk20ActionPerformed
+
+    private void khoatk19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk19ActionPerformed
+
+    private void khoatk18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk18ActionPerformed
+
+    private void updatedg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatedg6ActionPerformed
+
+    private void themmoidg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themmoidg6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_themmoidg6ActionPerformed
+
+    private void jComboBox8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox8ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox8ItemStateChanged
+
+    private void jComboBox7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox7ItemStateChanged
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void textboxsearch2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch2KeyTyped
+
+    private void textboxsearch2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch2KeyReleased
+
+    private void textboxsearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textboxsearch2ActionPerformed
+
+    private void cbb_chucNangThongKe7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_chucNangThongKe7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbb_chucNangThongKe7ItemStateChanged
+
+    private void cbb_chucNangThongKe6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_chucNangThongKe6ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbb_chucNangThongKe6ItemStateChanged
+
+    private void H_tenSach8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H_tenSach8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_H_tenSach8ActionPerformed
+
+    private void H_tenSach6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H_tenSach6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_H_tenSach6ActionPerformed
+
+    private void H_tenSach5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H_tenSach5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_H_tenSach5ActionPerformed
+
+    private void btnK_themPM34btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM34btnK_themPM2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_themPM34btnK_themPM2ActionPerformed
+
+    private void btnK_themPM33btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM33btnK_themPM1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_themPM33btnK_themPM1ActionPerformed
+
+    private void btnK_themPM32btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM32btnK_themPM2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_themPM32btnK_themPM2ActionPerformed
+
+    private void txt_timkiemDMSach24txt_timkiemDMSach3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timkiemDMSach24txt_timkiemDMSach3KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_timkiemDMSach24txt_timkiemDMSach3KeyReleased
+
+    private void btnK_themPM31btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPM31btnK_themPM1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnK_themPM31btnK_themPM1ActionPerformed
+
+    private void btn_lammoi8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lammoi8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_lammoi8ActionPerformed
+
+    private void txt_timkiemDMSach23KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timkiemDMSach23KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_timkiemDMSach23KeyReleased
+
+    private void btn_SuaDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaDMSach8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SuaDMSach8ActionPerformed
+
+    private void btn_LuuDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuuDMSach8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_LuuDMSach8ActionPerformed
+
+    private void btn_ThemDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemDMSach8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ThemDMSach8ActionPerformed
+
+    private void btn_lammoi7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lammoi7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_lammoi7ActionPerformed
+
+    private void txt_timkiemDMSach22KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timkiemDMSach22KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_timkiemDMSach22KeyReleased
+
+    private void btn_SuaDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaDMSach7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SuaDMSach7ActionPerformed
+
+    private void btn_LuuDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuuDMSach7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_LuuDMSach7ActionPerformed
+
+    private void btn_ThemDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemDMSach7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ThemDMSach7ActionPerformed
+
+    private void tbl_DMSach5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DMSach5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_DMSach5MouseClicked
+
+    private void btn_lammoi6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lammoi6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_lammoi6ActionPerformed
+
+    private void txt_timkiemDMSach21KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timkiemDMSach21KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_timkiemDMSach21KeyReleased
+
+    private void btn_SuaDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaDMSach6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SuaDMSach6ActionPerformed
+
+    private void btn_LuuDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuuDMSach6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_LuuDMSach6ActionPerformed
+
+    private void btn_ThemDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemDMSach6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ThemDMSach6ActionPerformed
+
+    private void tbl_DMSach4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_DMSach4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_DMSach4MouseClicked
+
+    private void H_tenSach3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H_tenSach3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_H_tenSach3ActionPerformed
+
+    private void khoatk11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk11ActionPerformed
+
+    private void khoatk10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk10ActionPerformed
+
+    private void Hc_maDM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hc_maDM2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hc_maDM2ActionPerformed
+
+    private void Hc_maTheLoai2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hc_maTheLoai2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hc_maTheLoai2ActionPerformed
+
+    private void btn_lamMoiSach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lamMoiSach2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_lamMoiSach2ActionPerformed
+
+    private void btnH_luuSach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH_luuSach2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnH_luuSach2ActionPerformed
+
+    private void btnH_suaSach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH_suaSach2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnH_suaSach2ActionPerformed
+
+    private void btnH_themSach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH_themSach2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnH_themSach2ActionPerformed
+
+    private void tblH_Sach2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblH_Sach2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblH_Sach2MouseClicked
+
+    private void H_soLuongCon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H_soLuongCon2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_H_soLuongCon2ActionPerformed
+
+    private void tenLoaiField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField3ActionPerformed
+
+    private void tenLoaiField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField2ActionPerformed
+
+    private void tenLoaiField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiField1ActionPerformed
+
+    private void tenLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenLoaiFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenLoaiFieldActionPerformed
+
+    private void maLoaiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maLoaiFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maLoaiFieldActionPerformed
+
+    private void mokhoa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mokhoa4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mokhoa4ActionPerformed
+
+    private void updatedg3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatedg3ActionPerformed
+
+    private void themmoidg3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themmoidg3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_themmoidg3ActionPerformed
+
+    private void tableDocgia3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDocgia3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableDocgia3MouseClicked
+
+    private void emailDocgia3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailDocgia3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailDocgia3ActionPerformed
+
+    private void Hc_maTheLoai3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Hc_maTheLoai3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hc_maTheLoai3ActionPerformed
+
+    private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk9ActionPerformed
+
+    private void mokhoa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mokhoa3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mokhoa3ActionPerformed
+
+    private void ngaysinh2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ngaysinh2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ngaysinh2KeyPressed
+
+    private void ngaysinh2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngaysinh2FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ngaysinh2FocusLost
+
+    private void khoatk8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_khoatk8ActionPerformed
+
+    private void updatedg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatedg2ActionPerformed
+
+    private void themmoidg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themmoidg2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_themmoidg2ActionPerformed
+
+    private void sdt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sdt2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sdt2KeyTyped
+
+    private void sdt2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sdt2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sdt2KeyReleased
+
+    private void sdt2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sdt2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sdt2KeyPressed
+
+    private void tableDocgia2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDocgia2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableDocgia2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
                 // TODO add your handling code here:
@@ -3251,6 +3607,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel K_tieuDe16;
     private javax.swing.JPanel Panel_DanhSachPM14;
     private javax.swing.JPanel Panel_DanhSachPM15;
+    private javax.swing.JTable QLTGiaTable;
     private javax.swing.JPanel QuanLyKho;
     private javax.swing.JButton btnH_luuSach2;
     private javax.swing.JButton btnH_suaSach2;
@@ -3405,7 +3762,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
     private javax.swing.JButton khoatk18;
