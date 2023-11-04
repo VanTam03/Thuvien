@@ -26,6 +26,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -510,11 +512,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         hanDungField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         radioNamAdmin.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(radioNamAdmin);
         radioNamAdmin.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         radioNamAdmin.setForeground(new java.awt.Color(0, 0, 0));
         radioNamAdmin.setText("Nam");
 
         radioNuAdmin.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(radioNuAdmin);
         radioNuAdmin.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         radioNuAdmin.setForeground(new java.awt.Color(0, 0, 0));
         radioNuAdmin.setText("Nữ");
@@ -2438,11 +2442,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel179.setText("Giới tính:");
 
         gioitinhnam22.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup2.add(gioitinhnam22);
         gioitinhnam22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnam22.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam22.setText("Nam");
 
         gioitinhnu22.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup2.add(gioitinhnu22);
         gioitinhnu22.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnu22.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu22.setText("Nữ");
@@ -3242,6 +3248,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btn_lammoi6;
     private javax.swing.JButton btn_lammoi7;
     private javax.swing.JButton btn_lammoi8;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe6;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
