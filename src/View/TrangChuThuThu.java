@@ -60,8 +60,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
 
         private void loadComboBoxDanhMuc() {
-                List <DanhMucSach> DanhMuc = DanhMucSach_DAO.getInstance().selectAll();
-                for (DanhMucSach dm : DanhMuc){
+                List<DanhMucSach> DanhMuc = DanhMucSach_DAO.getInstance().selectAll();
+                for (DanhMucSach dm : DanhMuc) {
                         Hc_maDM2.addItem(dm.getMaDM());
                 }
         }
@@ -327,9 +327,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         }
                 });
 
-                // jLabel29.setIcon(new javax.swing.ImageIcon(
-                // getClass().getResource("Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png")));
-                // // NOI18N
+                jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SGU.png"))); // NOI18N
 
                 jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
                 jLabel37.setForeground(new java.awt.Color(0, 0, 102));
@@ -1314,7 +1312,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                 Hc_maDM2ActionPerformed(evt);
                         }
                 });
-
 
                 khoatk10.setBackground(new java.awt.Color(255, 204, 204));
                 khoatk10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -3483,7 +3480,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 defaultTableModel_TL.addColumn("Tên thể loại");
                 List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectTheLoaiAll();
                 for (PhanLoaiSach tl : theLoais) {
-                        defaultTableModel_TL.addRow(new Object[] {tl.getMaTheloai(), tl.getTenTheloai() });
+                        defaultTableModel_TL.addRow(new Object[] { tl.getMaTheloai(), tl.getTenTheloai() });
                 }
         }
 
@@ -3820,7 +3817,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         }// GEN-LAST:event_btn_lamMoiSach2ActionPerformed
 
-
         private void Hc_maDM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maDM2ActionPerformed
                 // TODO add your handling code here:
                 String sql = "SELECT tenDMSach FROM DanhMucSach WHERE maDMSach = ?";
@@ -3836,8 +3832,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         e.printStackTrace();
                 }
         }// GEN-LAST:event_Hc_maDM2ActionPerformed
+
         private void Hc_maTheLoai2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maDM2ActionPerformed
-                PhanLoaiSach phanLoaiSach = PhanLoaiSach_DAO.getInstance().selectById((String) Hc_maTheLoai2.getSelectedItem());
+                PhanLoaiSach phanLoaiSach = PhanLoaiSach_DAO.getInstance()
+                                .selectById((String) Hc_maTheLoai2.getSelectedItem());
                 H_tenTheLoai2.setText(phanLoaiSach.getTenTheloai());
         }
 
@@ -3850,10 +3848,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         if (x == JOptionPane.NO_OPTION) {
                                 return;
                         } else {
-                                if (Sach_DAO.getInstance().delete(H_tenSach2.getText())>0){
+                                if (Sach_DAO.getInstance().delete(H_tenSach2.getText()) > 0) {
                                         JOptionPane.showMessageDialog(null, "Xóa thành công.");
-                                }else{
-                                        JOptionPane.showMessageDialog(null, "Xóa sách thất bại! \n Hãy kiểm tra lại mã sách.");
+                                } else {
+                                        JOptionPane.showMessageDialog(null,
+                                                        "Xóa sách thất bại! \n Hãy kiểm tra lại mã sách.");
                                 }
                         }
                 }
