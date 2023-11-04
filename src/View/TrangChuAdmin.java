@@ -4,6 +4,17 @@
  */
 package View;
 
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import DAO.QuanLy_DAO;
+import DTO.QuanLy;
+import Model.DanhSachQuanLy;
+import Model.check;
+
 /**
  *
  * @author 1
@@ -2359,10 +2370,18 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             new Object [][] {
 
             },
-            new String [] {
-                "Mã độc giả", "Tên độc giả", "Mật khẩu", "Trạng thái", "Hạn dùng","Phí duy trì"}
-        ));
+            new String[] {
+                "Mã Quản Lý", "Mật Khẩu", "Tên Quản Lý", "Số Điện Thoại", "Giới Tính", "Ngày Sinh", "Email",
+                "Địa Chỉ", "Trạng thái", "Quyền" }));
+
         jScrollPane30.setViewportView(tableSearchSach7);
+        tableSearchSach7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSearchSach7MouseClicked(evt);
+            }
+        });
+
+        loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
 
         themmoidg6.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -2811,6 +2830,230 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
+    //======================== Tài Khoản Quản Lý Header ======================
+
+     //sự kiện click bảng
+     private void tableSearchSach7MouseClicked(java.awt.event.MouseEvent evt){
+        int lineSelect = tableSearchSach7.getSelectedRow();
+        textboxsearch14.setText(tableSearchSach7.getValueAt(lineSelect, 0).toString().trim());
+        textboxsearch15.setText(tableSearchSach7.getValueAt(lineSelect, 1).toString());
+        Hc_maTheLoai6.setSelectedItem(tableSearchSach7.getValueAt(lineSelect, 2).toString());
+        matKhauField3.setText(tableSearchSach7.getValueAt(lineSelect, 3).toString().trim());
+        String gioiTinh = tableSearchSach7.getValueAt(lineSelect, 4).toString();
+        if (gioiTinh.equals("Nam")) {
+                gioitinhnam22.setSelected(true);
+        } else
+                gioitinhnu22.setSelected(true);
+        textboxsearch16.setText(tableSearchSach7.getValueAt(lineSelect, 5).toString());
+        tenDocGiaField5.setText(tableSearchSach7.getValueAt(lineSelect, 6).toString().trim());
+        tenDocGiaField6.setText(tableSearchSach7.getValueAt(lineSelect, 7).toString());
+
+        int trangThai = Integer.parseInt(tableSearchSach7.getValueAt(lineSelect, 8).toString());
+        if(trangThai == 0) {
+                khoatk20.setEnabled(true);
+                khoatk19.setEnabled(false);
+        }
+        else{
+                khoatk20.setEnabled(false);
+                khoatk19.setEnabled(true);
+        }
+    }
+
+
+        //load bảng tài khoản quản lý
+    private void loadTaiKhoanQuanLy(JTable tb, DanhSachQuanLy dsql){
+        String[] nameColumn ={"Mã Quản Lý", "Mật Khẩu", "Tên Quản Lý", "Số Điện Thoại", "Giới Tính", "Ngày Sinh", "Email", "Địa Chỉ", "Trạng thái", "Quyền"};
+
+        DefaultTableModel faut = new DefaultTableModel();
+        for(String col : nameColumn){
+                faut.addColumn(col);
+        }
+        faut.setRowCount(0);
+        for (QuanLy ql : dsql.getDsQuanLy()){
+                Vector t = new Vector<>();
+                t.add(ql.getMaQuanly());
+                t.add(ql.getMatKhau());
+                t.add(ql.getTenQuanly());
+                t.add(ql.getSDT());
+                t.add(ql.getGioiTinh());
+                t.add(ql.getNgaySinh());
+                t.add(ql.getEmail());
+                t.add(ql.getDiaChi());
+                t.add(ql.getTrangThai());
+
+                faut.addRow(t);
+        }
+        tb.setModel(faut);
+    }
+
+    //làm mới quản lý
+    public void resetQuanLy(){
+        textboxsearch14.setText("");
+        Hc_maTheLoai3.setSelectedItem("Admin");
+        textboxsearch15.setText("");
+        //giới tính
+        textboxsearch16.setText("");
+        matKhauField3.setText("");
+        tenDocGiaField5.setText("");
+        tenDocGiaField6.setText("");
+
+        khoatk19.setEnabled(true);
+        khoatk20.setEnabled(true);
+
+    }
+
+
+//thêm quản lý
+    private void themmoidg6ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (textboxsearch14.getText().equals("") || textboxsearch15.getText().equals("")
+                || matKhauField3.getText().equals("")) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đủ Thông Tin!");
+        } else if (!new check().isDateValid(textboxsearch16.getText())){
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Ngày Theo Định Dạng 'yyyy-mm-dd'!");
+        } else if (!new QuanLy_DAO().checkMaQuanLy(textboxsearch14.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Quản Lý Đã Tồn Tại!");
+        } else if (!new check().isValidGmail(tenDocGiaField5.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Đúng Định Dạng Email!");
+        } else if (!new check().isValidPhoneNumber(matKhauField3.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Đúng Định Dạng Số Điện Thoại!");
+        }else{
+            int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắc Chắn Muốn Thêm Tài Khoản!");
+            if(x==JOptionPane.NO_OPTION){
+                return;
+            }
+            QuanLy ql = new QuanLy();
+            ql.setMaQuanly(textboxsearch14.getText());
+            ql.setMatKhau(textboxsearch15.getText());
+            ql.setTenQuanly(Hc_maTheLoai6.getSelectedItem().toString());
+            if (gioitinhnam22.isSelected()) {
+                ql.setGioiTinh("Nam");
+            } else if (gioitinhnu22.isSelected()) {
+                    ql.setGioiTinh("Nữ");
+            } else {
+                    ql.setGioiTinh("");
+            }
+            ql.setNgaySinh(textboxsearch16.getText());
+            ql.setSDT(matKhauField3.getText());
+            ql.setEmail(tenDocGiaField5.getText());
+            ql.setDiaChi(tenDocGiaField6.getText());
+            ql.setTrangThai(1);
+
+            if(new QuanLy_DAO().themQuanLy(ql)){
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Thêm Thành Công!");
+                resetQuanLy();
+                loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
+            } else {
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Thêm Lỗi");
+            }
+        }
+    }
+
+
+    
+    //sửa quản lý
+    private void updatedg6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updatedg6ActionPerformed
+        if (textboxsearch14.getText().equals("") || textboxsearch15.getText().equals("")
+                || matKhauField3.getText().equals("")) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đủ Thông Tin!");
+        } else if (!new check().isDateValid(textboxsearch16.getText())){
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Ngày Theo Định Dạng 'yyyy-mm-dd'!");
+        } else if (new QuanLy_DAO().checkMaQuanLy(textboxsearch14.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Quản Lý Không Tồn Tại!");
+        } else if (!new check().isValidGmail(tenDocGiaField5.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Đúng Định Dạng Email!");
+        } else if (!new check().isValidPhoneNumber(matKhauField3.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
+                    "Vui Lòng Nhập Đúng Định Dạng Số Điện Thoại!");
+        }else{
+            int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắc Chắn Muốn Sửa Tài Khoản!");
+            if(x==JOptionPane.NO_OPTION){
+                return;
+            }
+            QuanLy ql = new QuanLy();
+            ql.setMaQuanly(textboxsearch14.getText());
+            ql.setMatKhau(textboxsearch15.getText());
+            ql.setTenQuanly(Hc_maTheLoai6.getSelectedItem().toString());
+            if (gioitinhnam22.isSelected()) {
+                ql.setGioiTinh("Nam");
+            } else if (gioitinhnu22.isSelected()) {
+                    ql.setGioiTinh("Nữ");
+            } else {
+                    ql.setGioiTinh("");
+            }
+            ql.setNgaySinh(textboxsearch16.getText());
+            ql.setSDT(matKhauField3.getText());
+            ql.setEmail(tenDocGiaField5.getText());
+            ql.setDiaChi(tenDocGiaField6.getText());
+            ql.setTrangThai(1);
+            
+            if(new QuanLy_DAO().suaQuanLy(ql)){
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Sửa Thành Công!");
+                resetQuanLy();
+                loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
+
+            } else {
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Sửa Lỗi");
+            }
+        }
+    }
+
+    
+    //làm mới quản lý
+    private void khoatk18ActionPerformed(java.awt.event.ActionEvent evt) {
+        resetQuanLy();
+    }
+
+        //khóa quản lý
+        private void khoatk19ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk19ActionPerformed
+                if (textboxsearch14.getText().equals("")) {
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Mã Quản Lý!");
+                }else if (new QuanLy_DAO().checkMaQuanLy(textboxsearch14.getText())) {
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Quản Lý Không Tồn Tại!");
+                } else{
+                    int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắc Chắn Muốn Khóa Tài Khoản!");
+                    if(x==JOptionPane.NO_OPTION){
+                        return;
+                    }
+                    else if(new QuanLy_DAO().khoaTKQL(textboxsearch14.getText())){
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Khóa Thành Công!");
+                        resetQuanLy();
+                        loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
+                    }else {
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Khóa Lỗi");
+                    }
+                }
+            }
+        
+            //mở khóa quản lý
+            private void khoatk20ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk20ActionPerformed
+                if (textboxsearch14.getText().equals("")) {
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Mã Quản Lý!");
+                }else if (new QuanLy_DAO().checkMaQuanLy(textboxsearch14.getText())) {
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Quản Lý Không Tồn Tại!");
+                } else{
+                    int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắc Chắn Muốn Mở Khóa Tài Khoản!");
+                    if(x==JOptionPane.NO_OPTION){
+                        return;
+                    }
+                    else if(new QuanLy_DAO().moKhoa(textboxsearch14.getText())){
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mở Khóa Thành Công!");
+                        resetQuanLy();
+                        loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
+                    }else {
+                        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mở Khóa Lỗi");
+                    }
+                }
+            }
+
+    //======================== Tài Khoản Quản Lý end ======================
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -3078,26 +3321,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void jComboBox8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox8ItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox8ItemStateChanged
-
-    private void themmoidg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themmoidg6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_themmoidg6ActionPerformed
-
-    private void updatedg6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updatedg6ActionPerformed
-
-    private void khoatk18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk18ActionPerformed
-
-    private void khoatk19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk19ActionPerformed
-
-    private void khoatk20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khoatk20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_khoatk20ActionPerformed
 
     private void textboxsearch16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch16ActionPerformed
         // TODO add your handling code here:
