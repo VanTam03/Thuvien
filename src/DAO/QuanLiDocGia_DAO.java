@@ -130,5 +130,32 @@ public class QuanLiDocGia_DAO {
     }
     return "";
   }
+  public ArrayList timKiem(String ndung){
+    ArrayList<TaiKhoan> dstk = new ArrayList<>();
+    try {
+      String sql= "SELECT * FROM TaiKhoan WHERE maTaiKhoan LIKE '%"+ndung+"%' or tenNguoiDung LIKE '%"+ndung+"%'";
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+        TaiKhoan dg = new TaiKhoan();
+        dg.setTenTaiKhoan(rs.getString("maTaiKhoan"));
+        dg.setTenNguoiDung(rs.getString("tenNguoiDung"));
+        dg.setLoaiTK(rs.getString("loaiTaiKhoan"));
+        dg.setMatKhau(rs.getString("matKhau"));
+        dg.setGioiTinh(rs.getString("gioiTinh"));
+        dg.setEmail(rs.getString("email"));
+        dg.setNgaySinh(rs.getString("ngaySinh"));
+        dg.setSdt(rs.getString("sdt"));
+        dg.setSoLuongMuon(rs.getInt("soLuongMuon"));
+        dg.setTrangThai(rs.getInt("trangThai"));
+        dg.setLoaiTK(rs.getString("loaiTaiKhoan"));
+        
+        dstk.add(dg);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return dstk;
+  }
 }
 
