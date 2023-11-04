@@ -55,7 +55,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 loadmaDanhMuc();
                 loadComboBoxTheLoai();
                 loadComboBoxDanhMuc();
-              //  loadmaTheLoai();
+                loadmaTheLoai();
                 // loadmaTacGia();
         }
 
@@ -67,7 +67,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
 
         private void loadComboBoxTheLoai() {
-
+                List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectTheLoaiAll();
+                for (PhanLoaiSach tl : theLoais) {
+                        Hc_maTheLoai2.addItem(tl.getMaTheloai());
+                }
         }
 
         // public void loadmaTacGia(){
@@ -1311,6 +1314,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                                 Hc_maDM2ActionPerformed(evt);
                         }
                 });
+
 
                 khoatk10.setBackground(new java.awt.Color(255, 204, 204));
                 khoatk10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -3477,9 +3481,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 tbl_DMSach5.setModel(defaultTableModel_TL);
                 defaultTableModel_TL.addColumn("Mã thể loại");
                 defaultTableModel_TL.addColumn("Tên thể loại");
-                List<TheLoai> theLoais = TheLoai_DAO.getInstance().selectAll();
-                for (TheLoai tl : theLoais) {
-                        defaultTableModel_TL.addRow(new Object[] { tl.getMaTheLoai(), tl.getTenTheLoai() });
+                List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectTheLoaiAll();
+                for (PhanLoaiSach tl : theLoais) {
+                        defaultTableModel_TL.addRow(new Object[] {tl.getMaTheloai(), tl.getTenTheloai() });
                 }
         }
 
@@ -3816,21 +3820,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         }// GEN-LAST:event_btn_lamMoiSach2ActionPerformed
 
-        private void Hc_maTheLoai2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maTheLoai2ActionPerformed
-                // TODO add your handling code here:
-                String sql = "SELECT tenTheLoai FROM TheLoai WHERE maTheLoai = ?";
-                try (Connection conn = KetNoiSQL.getConnection()) {
-                        String maTheLoaiString = (String) Hc_maTheLoai2.getSelectedItem();
-                        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                        preparedStatement.setString(1, maTheLoaiString);
-                        ResultSet rs = preparedStatement.executeQuery();
-                        if (rs.next()) {
-                                H_tenTheLoai2.setText(rs.getString("tenTheLoai"));
-                        }
-                } catch (Exception e) {
-                        e.printStackTrace();
-                }
-        }// GEN-LAST:event_Hc_maTheLoai2ActionPerformed
 
         private void Hc_maDM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maDM2ActionPerformed
                 // TODO add your handling code here:
@@ -3847,6 +3836,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         e.printStackTrace();
                 }
         }// GEN-LAST:event_Hc_maDM2ActionPerformed
+        private void Hc_maTheLoai2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maDM2ActionPerformed
+                PhanLoaiSach phanLoaiSach = PhanLoaiSach_DAO.getInstance().selectById((String) Hc_maTheLoai2.getSelectedItem());
+                H_tenTheLoai2.setText(phanLoaiSach.getTenTheloai());
+        }
 
         private void khoatk10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk10ActionPerformed
                 // TODO add your handling code here:
