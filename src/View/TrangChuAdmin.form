@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup5">
-    </Component>
-  </NonVisualComponents>
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -35,8 +23,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" max="32767" attributes="0"/>
-          <Component id="jPanel2" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -160,7 +148,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTP_main2" alignment="1" pref="1432" max="32767" attributes="0"/>
+              <Component id="jTP_main2" alignment="1" pref="1431" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -277,7 +265,7 @@
                                                           <Component id="khoatk8" min="-2" pref="121" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                                           <Component id="khoatk9" min="-2" pref="210" max="-2" attributes="0"/>
-                                                          <EmptySpace pref="100" max="32767" attributes="0"/>
+                                                          <EmptySpace pref="99" max="32767" attributes="0"/>
                                                           <Component id="mokhoa3" min="-2" pref="151" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                                       </Group>
@@ -371,7 +359,7 @@
                                           <Component id="radioNamAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="radioNuAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel88" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel88" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="Hc_maTheLoai3" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel90" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -738,9 +726,6 @@
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="ff" red="ff" type="rgb"/>
                             </Property>
-                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                              <ComponentRef name="buttonGroup1"/>
-                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="20" style="0"/>
                             </Property>
@@ -754,9 +739,6 @@
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                              <ComponentRef name="buttonGroup1"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="20" style="0"/>
@@ -1262,12 +1244,12 @@
                                                               <Component id="H_tenTheLoai2" alignment="0" max="32767" attributes="0"/>
                                                               <Component id="Hc_maTheLoai2" alignment="0" max="32767" attributes="0"/>
                                                               <Component id="H_soLuongCon2" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
-                                                              <Component id="H_tenSach2" min="-2" pref="267" max="-2" attributes="0"/>
-                                                              <Component id="H_tenSach3" min="-2" pref="267" max="-2" attributes="0"/>
+                                                              <Component id="H_tenSach2" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
+                                                              <Component id="H_tenSach3" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
-                                                  <EmptySpace pref="115" max="32767" attributes="0"/>
+                                                  <EmptySpace pref="114" max="32767" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jLabel96" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       <Component id="jLabel97" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1285,7 +1267,7 @@
                                                   <Component id="khoatk10" min="-2" pref="121" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="btnH_luuSach2" min="-2" pref="241" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1832,7 +1814,7 @@
                                       </Group>
                                       <Component id="jScrollPane19" alignment="1" min="-2" pref="482" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="73" max="32767" attributes="0"/>
+                                  <EmptySpace pref="72" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2095,10 +2077,10 @@
                                                   <Component id="txt_tenDMSach11" min="-2" pref="279" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace pref="81" max="32767" attributes="0"/>
+                                          <EmptySpace pref="80" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="179" max="32767" attributes="0"/>
+                                          <EmptySpace pref="178" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel109" min="-2" max="-2" attributes="0"/>
@@ -2416,13 +2398,13 @@
                                   </Group>
                                   <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="txt_timkiemDMSach23" min="-2" pref="345" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel116" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane3" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -2433,7 +2415,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="txt_timkiemDMSach23" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                               <Component id="jLabel116" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2441,7 +2423,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jScrollPane3" min="-2" pref="307" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabel113" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2698,7 +2680,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTPK_QuanLyPM4" alignment="0" pref="1127" max="32767" attributes="0"/>
+                      <Component id="jTPK_QuanLyPM4" alignment="0" pref="1126" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -2771,7 +2753,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="62" max="32767" attributes="0"/>
+                                  <EmptySpace pref="61" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2935,7 +2917,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
@@ -2966,8 +2948,8 @@
                                                       </Group>
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel149" min="-2" pref="129" max="-2" attributes="0"/>
-                                                          <Component id="jLabel150" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel149" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                                                          <Component id="jLabel150" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2984,7 +2966,7 @@
                                           <Component id="K_tieuDe16" min="-2" pref="432" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                                  <EmptySpace pref="44" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2995,7 +2977,7 @@
                                   <Component id="K_tieuDe16" min="-2" pref="46" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel135" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="H_tenSach4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3006,7 +2988,7 @@
                                               <Component id="H_tenSach5" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel149" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="H_tenSach7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3014,7 +2996,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel150" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="H_tenSach8" min="-2" max="-2" attributes="0"/>
+                                              <Component id="H_tenSach8" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -3106,35 +3088,6 @@
                                     <Column editable="true" title="Ng&#xe0;y th&#x1ef1;c tr&#x1ea3;" type="java.lang.Object"/>
                                     <Column editable="true" title="Ti&#x1ec1;n ph&#x1ea1;t" type="java.lang.Object"/>
                                   </Table>
-                                </Property>
-                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                                  <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                  </TableColumnModel>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -3575,7 +3528,7 @@
                                           <Component id="cbb_chucNangThongKe8" min="-2" pref="352" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="112" max="32767" attributes="0"/>
+                                  <EmptySpace pref="111" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3691,7 +3644,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1127" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1126" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="timkiem2" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -3739,7 +3692,7 @@
                                               <Component id="jComboBox7" alignment="0" min="-2" pref="247" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="382" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="381" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3937,7 +3890,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1127" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1126" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="timkiem4" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -4029,7 +3982,7 @@
                                           </Group>
                                           <Component id="khoatk20" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="114" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -4260,9 +4213,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="ff" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroup3"/>
-                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="20" style="0"/>
                         </Property>
@@ -4276,9 +4226,6 @@
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                          <ComponentRef name="buttonGroup3"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="20" style="0"/>
@@ -4430,7 +4377,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1127" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1126" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="timkiem3" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -4475,7 +4422,7 @@
                                       <Component id="jComboBox9" alignment="0" min="-2" pref="247" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="388" max="32767" attributes="0"/>
+                              <EmptySpace pref="387" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
