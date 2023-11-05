@@ -45,6 +45,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        new QuanLiDocGia_DAO().khoaQuaHan();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
@@ -365,12 +366,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         quanlyttdg2.setForeground(new java.awt.Color(0, 0, 153));
         quanlyttdg2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
 
         tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
-                "Ngày sinh", "Email", "Giới tính", "So luong muon" };
+                "Ngày sinh", "Email", "Giới tính", "Số Lượng Mượn", "Trạng Thái" };
         tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(columnNames, 0));
         tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -463,6 +465,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 ngaysinh2KeyPressed(evt);
             }
         });
+        
 
         mokhoa3.setBackground(new java.awt.Color(255, 204, 204));
         mokhoa3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -491,7 +494,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         Hc_maTheLoai3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        Hc_maTheLoai3 = new JComboBox<>(new QuanLiDocGia_DAO().tenLoaiThe());
+        // Hc_maTheLoai3 = new JComboBox<>(new QuanLiDocGia_DAO().tenLoaiThe());
+        String[] tenTheLoai = {"Cán Bộ Giảng Viên", "Học Sinh - Sinh Viên"};
+        Hc_maTheLoai3 = new JComboBox<>(tenTheLoai);
 
         jLabel127.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel127.setForeground(new java.awt.Color(0, 0, 0));
@@ -513,6 +518,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         maDocGiaField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         hanDungField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        hanDungField.setEditable(false);
 
         radioNamAdmin.setBackground(new java.awt.Color(255, 255, 204));
         buttonGroup1.add(radioNamAdmin);
@@ -735,6 +741,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                 .addContainerGap()));
 
         quanlyttdg2.addTab("Quản lý Độc giả", jPanel29);
+        quanlyttdg2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
+                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+            }
+        });
 
         jPanel40.setBackground(new java.awt.Color(255, 255, 204));
         String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ", "Ngày mở thẻ", "Hạn dùng thẻ",
@@ -844,8 +856,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                loadTableLoaiThe(tableDocgia3,
-                        new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
             }
         });
 
@@ -3795,7 +3806,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     public void loadTableDocGia(JTable tb, DanhSachTaiKhoan dg) {
         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
                 "Ngày sinh", "Email",
-                "Giới tính", "SoLuongMuon" };
+                "Giới tính", "SoLuongMuon", "Trạng Thái" };
         DefaultTableModel fault = new DefaultTableModel();
         for (String col : columnNames) {
             fault.addColumn(col);
@@ -3814,6 +3825,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             t.add(tk.getEmail());
             t.add(tk.getGioiTinh());
             t.add(tk.getSoLuongMuon());
+            t.add(tk.getTrangThai());
             fault.addRow(t);
         }
         tb.setModel(fault);
@@ -3839,6 +3851,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         } else
             radioNuAdmin.setSelected(true);
         hanDungField.setText(new QuanLiDocGia_DAO().hanDungThe(maDocGiaField.getText()));
+        //số lượng mượn column 8
+        if (Integer.parseInt(tableDocgia2.getValueAt(lineSelect, 9).toString()) == 0){
+                khoatk8.setEnabled(false);
+        }else{
+                khoatk8.setEnabled(true);
+        }
     }
 
     // làm mới độc giả
@@ -3852,6 +3870,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         emailDocgia3.setText("");
         Hc_maTheLoai3.setSelectedItem("");
         hanDungField.setText("");
+
+        khoatk8.setEnabled(true);
     }
 
     // làm mới độc gải
@@ -3956,9 +3976,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     // khóa độc giả
     private void khoatk8ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || emailDocgia3.getText().equals("") || sdt2.getText().equals("")) {
-            JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Đủ Thông Tin!");
+        if (maDocGiaField.getText().equals("")) {
+            JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Mã Độc Giả!");
         } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
         } else {
@@ -3971,6 +3990,30 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 resetDG();
             } else {
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Khóa Lỗi!");
+            }
+        }
+    }
+
+    //gia hạn loại thẻ độc giả
+    private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (maDocGiaField.getText().equals("")) {
+            JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Mã Độc Giả!");
+        } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
+        } else if(new QLDG_PhanLoai_DAO().checkMaThe(maDocGiaField.getText())) {
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Tạo Thẻ Độc Giả!");
+        } else {
+            int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắn Chắn Gia Hạn Thẻ Độc Giả!");
+            if (x == JOptionPane.NO_OPTION) return;
+            x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Chắn Chắn Đã Thu Phí Gia Hạn Thẻ: " + new QuanLiDocGia_DAO().phiGiaHan(maDocGiaField.getText()));
+            if (x == JOptionPane.NO_OPTION)
+                return;
+            if (new QuanLiDocGia_DAO().giaHan_DG(maDocGiaField.getText()) && new QuanLiDocGia_DAO().giaHan_DG_LoaiThe(maDocGiaField.getText())) {
+                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Gia Hạn Thành Công!");
+                resetDG();
+            } else {
+                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Gia Hạn Lỗi!");
             }
         }
     }
@@ -4001,9 +4044,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }// GEN-LAST:event_ngaysinh2KeyPressed
 
-    private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk9ActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_khoatk9ActionPerformed
 
     private void Hc_maTheLoai3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maTheLoai3ActionPerformed
         // TODO add your handling code here:

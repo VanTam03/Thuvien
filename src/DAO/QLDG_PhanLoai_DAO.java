@@ -11,7 +11,7 @@ public class QLDG_PhanLoai_DAO {
   KetNoiSQL connect = new KetNoiSQL();
   ArrayList<PhanLoaiThe> dsLoaiThe = new ArrayList<>();
 
-  //kiểm tra mã tài khoản đã tồn tại chưa
+  //kiểm tra mã thẻ đã tồn tại chưa
   public boolean checkMaThe(String maThe){
     PreparedStatement ps = null;
     ResultSet rs = null;
