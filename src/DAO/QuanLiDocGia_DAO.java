@@ -3,45 +3,73 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import Model.TaiKhoan;
 
 public class QuanLiDocGia_DAO {
-  
+
   KetNoiSQL connect = new KetNoiSQL();
   ArrayList<TaiKhoan> dsDG = new ArrayList<>();
 
-  //kiểm tra mã tài khoản đã tồn tại chưa
-  public boolean checkMaTaiKhoan(String maTaiKhoan){
+  // kiểm tra mã tài khoản đã tồn tại chưa
+  public boolean checkMaTaiKhoan(String maTaiKhoan) {
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
-    try{
-      String sql = "select Count(*) FROM TAIKHOAN WHERE maTaiKhoan="+maTaiKhoan;
+
+    try {
+      String sql = "select Count(*) FROM TAIKHOAN WHERE maTaiKhoan=" + maTaiKhoan;
       ps = connect.getConnection().prepareStatement(sql);
       rs = ps.executeQuery();
       if (rs.next()) {
         int count = rs.getInt(1); // Lấy kết quả đếm
-        if(count == 0) return true; //không tồn tại mã tại khoản
+        if (count == 0)
+          return true; // không tồn tại mã tài khoản
       }
-    }catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return false;
   }
 
-  public ArrayList dsDOCGIA(){
+  public String[] tenLoaiThe() {
+    String[] names = null; // Khởi tạo mảng là null
+    int index = 0;
+    try {
+      String sql = "SELECT DISTINCT tenLoaiThe FROM LoaiThe";
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+
+      // Đếm số lượng dòng kết quả để biết kích thước của mảng
+      int rowCount = 0;
+      ArrayList<String> dsTemp = new ArrayList<>();
+      while (rs.next()) {
+        rowCount++;
+        dsTemp.add(rs.getString("tenLoaiThe").toString());
+      }
+      
+      names = new String[rowCount]; // Khởi tạo mảng với kích thước đã biết
+
+      for(String name : dsTemp) {
+        names[index++] = name;
+      }
+    } catch (Exception e) {
+      e.printStackTrace(); // Xử lý ngoại lệ
+    }
+    return names;
+  }
+
+  public ArrayList dsDOCGIA() {
 
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
-    try{
-      String sql = "select* FROM TAIKHOAN WHERE trangThai=1";
+
+    try {
+      String sql = "select* FROM TAIKHOAN";
       ps = connect.getConnection().prepareStatement(sql);
       rs = ps.executeQuery();
-      
-      while(rs.next()){
+
+      while (rs.next()) {
         TaiKhoan dg = new TaiKhoan();
         dg.setTenTaiKhoan(rs.getString("maTaiKhoan"));
         dg.setTenNguoiDung(rs.getString("tenNguoiDung"));
@@ -54,18 +82,18 @@ public class QuanLiDocGia_DAO {
         dg.setSoLuongMuon(rs.getInt("soLuongMuon"));
         dg.setTrangThai(rs.getInt("trangThai"));
         dg.setLoaiTK(rs.getString("loaiTaiKhoan"));
-        //tên loại thẻ, hạn dùng thẻ
+        // tên loại thẻ, hạn dùng thẻ
         dsDG.add(dg);
       }
-    } catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return dsDG;
-  } 
+  }
 
-  public boolean Add_DG(TaiKhoan tk){
-    String sql="insert into TAIKHOAN values (?,?,?,?,?,?,?,?,?,?)";
-    try{
+  public boolean Add_DG(TaiKhoan tk) {
+    String sql = "insert into TAIKHOAN values (?,?,?,?,?,?,?,?,?,?)";
+    try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, tk.getTenTaiKhoan());
       ps.setString(2, tk.getMatKhau());
@@ -78,16 +106,16 @@ public class QuanLiDocGia_DAO {
       ps.setInt(9, tk.getTrangThai());
       ps.setInt(10, tk.getSoLuongMuon());
 
-      return ps.executeUpdate()>0;
-    }catch(Exception e){
+      return ps.executeUpdate() > 0;
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return false;
   }
 
-  public boolean update_DG(TaiKhoan tk){
+  public boolean update_DG(TaiKhoan tk) {
     String sql = "update TAIKHOAN set matKhau=?, loaiTaiKhoan=?, tenNguoiDung=?, ngaySinh=?, gioiTinh=?, email=?, sdt=?, soLuongMuon=? where maTaiKhoan=?";
-    try{
+    try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, tk.getMatKhau());
       ps.setString(2, tk.getLoaiTK());
@@ -99,36 +127,35 @@ public class QuanLiDocGia_DAO {
       ps.setInt(8, tk.getSoLuongMuon());
       ps.setString(9, tk.getTenTaiKhoan());
 
-      return ps.executeUpdate()>0;
-    }catch (Exception e){
+      return ps.executeUpdate() > 0;
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return false;
   }
 
-  public boolean delete_DG(String maTK){
-    String sql = "update TAIKHOAN set trangThai=0 where maTaiKhoan='"+maTK+"'";
-    try{
+  public boolean delete_DG(String maTK) {
+    String sql = "update TAIKHOAN set trangThai=0 where maTaiKhoan='" + maTK + "'";
+    try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
-      return ps.executeUpdate()>0;
-    }catch(Exception e){
+      return ps.executeUpdate() > 0;
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return false;
   }
 
-  public String hanDungThe(String maLoaiThe){
-    String sql = "select hanSuDung from LoaiThe where maLoaiThe="+maLoaiThe;
-    try{
+  public String hanDungThe(String maLoaiThe) {
+    String sql = "select hanSuDung from LoaiThe where maLoaiThe=" + maLoaiThe;
+    try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
-      if(rs.next()){
+      if (rs.next()) {
         return rs.getString("hanSuDung");
       }
-    }catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return "";
   }
 }
-
