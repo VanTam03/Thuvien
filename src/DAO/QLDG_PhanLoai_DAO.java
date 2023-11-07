@@ -11,7 +11,7 @@ public class QLDG_PhanLoai_DAO {
   KetNoiSQL connect = new KetNoiSQL();
   ArrayList<PhanLoaiThe> dsLoaiThe = new ArrayList<>();
 
-  //kiểm tra mã tài khoản đã tồn tại chưa
+  //kiểm tra mã thẻ đã tồn tại chưa
   public boolean checkMaThe(String maThe){
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -76,6 +76,25 @@ public class QLDG_PhanLoai_DAO {
     return false;
   }
 
+  public boolean update_LoaiThe(PhanLoaiThe loaiThe){
+    String sql = "update LoaiThe set tenLoaiThe=?,  ngayMoThe=?, hanSuDung=?, soSachDuocMuon=?, thoiGianDuocMuonToiDa=?, giaTienGiaHan=? where maLoaiThe=?";
+    try{
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ps.setString(1, loaiThe.getTenLoaiThe());
+      ps.setString(2, loaiThe.getNgayMoThe());
+      ps.setString(3, loaiThe.getHanDungThe());
+      ps.setInt(4, loaiThe.getSoLuongSachMuon());
+      ps.setInt(5, loaiThe.getThoiGianMuonToiDa());
+      ps.setString(6, loaiThe.getGiaTienGiaHan());
+      ps.setString(7, loaiThe.getMaLoaiThe());
+
+      return ps.executeUpdate()>0;
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+    return false;
+  }
+
   public String tenLoaiThe(String maLoaiThe){
     if(maLoaiThe.equals("")) return "";
     ArrayList<TaiKhoan> dstk = new QuanLiDocGia_DAO().dsDOCGIA();
@@ -86,5 +105,29 @@ public class QLDG_PhanLoai_DAO {
       }
     }
     return "";
+  }
+
+  public ArrayList timKiem(String ndung){
+    ArrayList<PhanLoaiThe> dsthe = new ArrayList<>();
+    try {
+      String sql= "SELECT * FROM LoaiThe WHERE maLoaiThe LIKE '%"+ndung+"%' or tenLoaiThe LIKE '%"+ndung+"%'";
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+         PhanLoaiThe loaiThe = new PhanLoaiThe();
+        loaiThe.setMaLoaiThe(rs.getString("maLoaiThe"));
+        loaiThe.setTenLoaiThe(rs.getString("tenLoaiThe"));
+        loaiThe.setNgayMoThe(rs.getString("ngayMoThe"));
+        loaiThe.setHanDungThe(rs.getString("hanSuDung"));
+        loaiThe.setSoLuongSachMuon(rs.getInt("soSachDuocMuon"));
+        loaiThe.setThoiGianMuonToiDa(rs.getInt("thoiGianDuocMuonToiDa"));
+        loaiThe.setGiaTienGiaHan(rs.getString("giaTienGiaHan"));
+
+        dsthe.add(loaiThe);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return dsthe;
   }
 }

@@ -348,8 +348,8 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
     }// GEN-LAST:event_btnK_refreshBanDocActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
+        new TrangChuThuThu().setVisible(true);
         this.setVisible(false);
-
     }// GEN-LAST:event_jButton1ActionPerformed
 
     /**

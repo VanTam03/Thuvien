@@ -1,18 +1,22 @@
 package DTO;
 
 public class PhanLoaiSach {
-    private String maTheloai, tenTheloai, NXB, maTacgia, tenTacgia;
+    private String maTheloai;
+    private String NXB;
+    private String maTacgia;
+    private String tenTacgia;
+    private String tenTheloai;
 
     public PhanLoaiSach() {
 
     }
 
-    public PhanLoaiSach(String maTheloai, String tenTheloai, String NXB, String maTacgia, String tenTacgia) {
-        this.maTacgia = maTheloai;
-        this.tenTheloai = tenTheloai;
+    public PhanLoaiSach(String maTheloai, String NXB, String maTacgia, String tenTacgia, String tenTheloai) {
+        this.maTheloai = maTheloai;
         this.NXB = NXB;
         this.maTacgia = maTacgia;
         this.tenTacgia = tenTacgia;
+        this.tenTheloai = tenTheloai;
     }
 
     public String getMaTheloai() {

@@ -116,7 +116,7 @@
          }
          return result;
      }
-     public void XuatExcelPhieuNhap(String maPhieuNhap){
+     public int XuatExcelPhieuNhap(String maPhieuNhap, String url){
          PhieuNhapSach phieuNhapSach = PhieuNhapSach_DAO.getInstance().selectById(maPhieuNhap);
          List<ChiTietPhieuNhapSach> ListChiTietPhieuNhapSach = ChiTietPhieuNhap_DAO.getInstance().selectAllById(maPhieuNhap);
          XWPFDocument document = new XWPFDocument();
@@ -217,13 +217,15 @@
          XWPFRun dateStampRun = dateStamp.createRun();
          dateStampRun.setText("Ngày in: " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
-         // Lưu tệp Word
-         File f = new File("D://PhieuNhapSach.doc");
-         try (FileOutputStream fos = new FileOutputStream(f)) {
+         String fileName = "PhieuNhapSach.doc"; // Tên tệp Word
+         File destFile = new File(url, fileName);
+         try (FileOutputStream fos = new FileOutputStream(destFile)) {
              document.write(fos);
          } catch (Exception e) {
-             e.printStackTrace();
+             //e.printStackTrace();
+             return 0;
          }
+         return 1;
      }
 
  }
