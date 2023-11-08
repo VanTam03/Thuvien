@@ -136,7 +136,19 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
     @Override
     public int delete(String maPhieuNhap) {
         int rowsAffected =0;
-        String sql = "DELETE FROM dbo.[ChiTietPhieuNhapSach] WHERE maSach ='"+maPhieuNhap+"'";
+        String sql = "DELETE FROM dbo.[ChiTietPhieuNhapSach] WHERE maPhieuNhap ='"+maPhieuNhap+"'";
+        try (Connection conn = KetNoiSQL.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            rowsAffected = pst.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return rowsAffected;
+    }
+
+    public int delete(String maPhieuNhap, String maSach) {
+        int rowsAffected =0;
+        String sql = "DELETE FROM dbo.[ChiTietPhieuNhapSach] WHERE maPhieuNhap ='"+maPhieuNhap+"' AND maSach='"+maSach+"'";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             rowsAffected = pst.executeUpdate();
