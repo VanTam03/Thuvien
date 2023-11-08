@@ -715,6 +715,16 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -790,19 +800,46 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
 
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable2MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        comboBoxMaPNhap.setSelectedItem((String) jTable1.getValueAt(selectedRow, 0));
+        maPhieuXuatField.setEnabled(true);
+        ngayXuatField1.setEnabled(true);
+        ngayXuatField.setEnabled(true);
+        btnK_luuPN.setEnabled(true);
+        btnK_themPN.setEnabled(false);
+        DelBtnNhap.setEnabled(false);
+    }// GEN-LAST:event_QLTGiaTableMouseClicked
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
+        // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
-        maSachField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 1)));
-        tenSachField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 2)));
-        maTGiaFiedl.setText(String.valueOf(jTable2.getValueAt(selectedRow, 3)));
-        maTLoaiField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 4)));
-        nxbField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 5)));
+        maSachField.setText((String) jTable2.getValueAt(selectedRow, 1));
+        tenSachField.setText((String) jTable2.getValueAt(selectedRow, 2));
+        maTGiaFiedl.setText((String) jTable2.getValueAt(selectedRow, 3));
+        maTLoaiField.setText((String) jTable2.getValueAt(selectedRow, 4));
+        nxbField.setText((String) jTable2.getValueAt(selectedRow, 5));
         namXBField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 6)));
         soLuongField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 7)));
         GNhapField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 8)));
-        TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
+        TacGia tacGia = TacGia_DAO.getInstance().selectById((String) jTable2.getValueAt(selectedRow, 3));
         tenTGiaField.setText(tacGia.getTenTacGia());
+        maSachField.setEnabled (true);
+        maTGiaFiedl.setEnabled(true);
+        soLuongField.setEnabled(true);
+        tenSachField.setEnabled(true);
+        tenTGiaField.setEnabled(true);
+        GNhapField.setEnabled(true);
+        nxbField.setEnabled(true);
+        namXBField.setEnabled (true);
+        btnK_luuMaSach.setEnabled(true);
 
+        maTLoaiField.setEnabled(true);
+        btnK_themMaSach.setEnabled(false);
+        // btnK_suaPN1.setEnabled(false);
+        DelBtn.setEnabled(false);
     }
     private void tenSachFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenSachFieldActionPerformed
         // TODO add your handling code here:
@@ -904,6 +941,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 }
             }
             btnRefreshPNActionPerformed(evt);
+            loadmaPhieuNhap();
         }
     }//GEN-LAST:event_btnK_luuPNActionPerformed
 
@@ -1006,51 +1044,60 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
     private void btnK_luuMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuMaSachActionPerformed
         // TODO add your handling code here:
-        ChiTietPhieuNhapSach chiTietPhieuNhapSach = new ChiTietPhieuNhapSach();
-        try{
-            chiTietPhieuNhapSach.setNamXuatBan(Integer.valueOf(namXBField.getText()));
-            chiTietPhieuNhapSach.setSoLuongNhap(Integer.valueOf(soLuongField.getText()));
-            chiTietPhieuNhapSach.setGiaNhap(Double.valueOf(GNhapField.getText()));
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Năm xuất bản, số lượng nhập, giá nhập: Vui lòng điền đúng định dạng số.");
-        }
-        if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") || maTGiaFiedl.getText().equals("") || soLuongField.getText().equals("") ||
-                tenSachField.getText().equals("") || tenTGiaField.getText().equals("") || GNhapField.getText().equals("") || nxbField.getText().equals("") || namXBField.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin.");
-        } else{
-            ChiTietPhieuNhap_DAO chiTietPhieuNhap_dao = new ChiTietPhieuNhap_DAO();
-            chiTietPhieuNhap_dao.themVaoTacGia(maTGiaFiedl.getText(), tenTGiaField.getText());
-
-            chiTietPhieuNhapSach.setMaPhieuNhap((String) comboBoxMaPNhap.getSelectedItem());
-            chiTietPhieuNhapSach.setMaSach(maSachField.getText());
-            chiTietPhieuNhapSach.setTenSach(tenSachField.getText());
-            chiTietPhieuNhapSach.setMaTacGia(maTGiaFiedl.getText());
-            chiTietPhieuNhapSach.setMaTheLoai(maTLoaiField.getText());
-            chiTietPhieuNhapSach.setNXB(nxbField.getText());
-
-            if (btnK_themPN.isEnabled()) {
-                if (ChiTietPhieuNhap_DAO.getInstance().add(chiTietPhieuNhapSach) > 0) {
-                    JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thành công!");
-                    chiTietPhieuNhap_dao.themVaoThongTinSach(maSachField.getText(), tenSachField.getText(), maTGiaFiedl.getText(), tenTGiaField.getText(), maTLoaiField.getText(), nxbField.getText(), Integer.parseInt(namXBField.getText()));
-                } else {
-                    JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thất bại!");
-                }
-            } else if (btnK_suaPN.isEnabled()) {
-                if (ChiTietPhieuNhap_DAO.getInstance().update(chiTietPhieuNhapSach) > 0) {
-                    JOptionPane.showMessageDialog(null, "Sửa chi tiết phiếu nhập thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Sửa chi tiết phiếu nhập thất bại!");
-                }
-            } else if (DelBtnNhap.isEnabled()) {
-                if (ChiTietPhieuNhap_DAO.getInstance().delete((String) comboBoxMaPNhap.getSelectedItem()) > 0) {
+        if (DelBtnNhap.isEnabled()) {
+            if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") ){
+                JOptionPane.showMessageDialog(null, "Vui Lòng nhập mã phiếu nhập và mã sách.");
+            }else{
+                if (ChiTietPhieuNhap_DAO.getInstance().delete((String) comboBoxMaPNhap.getSelectedItem(), maSachField.getText()) > 0) {
                     JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thành công!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thất bại!");
                 }
             }
-            DelBtnActionPerformed (evt);
+
         }
+        else{
+            ChiTietPhieuNhapSach chiTietPhieuNhapSach = new ChiTietPhieuNhapSach();
+            try{
+                chiTietPhieuNhapSach.setNamXuatBan(Integer.valueOf(namXBField.getText()));
+                chiTietPhieuNhapSach.setSoLuongNhap(Integer.valueOf(soLuongField.getText()));
+                chiTietPhieuNhapSach.setGiaNhap(Double.valueOf(GNhapField.getText()));
+            }
+            catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Năm xuất bản, số lượng nhập, giá nhập: Vui lòng điền đúng định dạng số.");
+            }
+            if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") || maTGiaFiedl.getText().equals("") || soLuongField.getText().equals("") ||
+                    tenSachField.getText().equals("") || tenTGiaField.getText().equals("") || GNhapField.getText().equals("") || nxbField.getText().equals("") || namXBField.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin.");
+            } else{
+                ChiTietPhieuNhap_DAO chiTietPhieuNhap_dao = new ChiTietPhieuNhap_DAO();
+                chiTietPhieuNhap_dao.themVaoTacGia(maTGiaFiedl.getText(), tenTGiaField.getText());
+
+                chiTietPhieuNhapSach.setMaPhieuNhap((String) comboBoxMaPNhap.getSelectedItem());
+                chiTietPhieuNhapSach.setMaSach(maSachField.getText());
+                chiTietPhieuNhapSach.setTenSach(tenSachField.getText());
+                chiTietPhieuNhapSach.setMaTacGia(maTGiaFiedl.getText());
+                chiTietPhieuNhapSach.setMaTheLoai(maTLoaiField.getText());
+                chiTietPhieuNhapSach.setNXB(nxbField.getText());
+
+                if (btnK_themPN.isEnabled()) {
+                    if (ChiTietPhieuNhap_DAO.getInstance().add(chiTietPhieuNhapSach) > 0) {
+                        JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thành công!");
+                        chiTietPhieuNhap_dao.themVaoThongTinSach(maSachField.getText(), tenSachField.getText(), maTGiaFiedl.getText(), tenTGiaField.getText(), maTLoaiField.getText(), nxbField.getText(), Integer.parseInt(namXBField.getText()));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thất bại!");
+                    }
+                } else if (btnK_suaPN.isEnabled()) {
+                    if (ChiTietPhieuNhap_DAO.getInstance().update(chiTietPhieuNhapSach) > 0) {
+                        JOptionPane.showMessageDialog(null, "Sửa chi tiết phiếu nhập thành công!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Sửa chi tiết phiếu nhập thất bại!");
+                    }
+                }
+            }
+        }
+        loadChiTietTPhieuNhap();
+        DelBtnActionPerformed (evt);
     }//GEN-LAST:event_btnK_luuMaSachActionPerformed
 
     private void btnK_suaPN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPN1ActionPerformed
