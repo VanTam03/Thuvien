@@ -3868,6 +3868,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void btnQLPNbtnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQLPNbtnK_themPM2ActionPerformed
         // TODO add your handling code here:
+        new TrangChuThuThu_QLPNhap().setVisible(true);
+        this.setVisible(false);
     }// GEN-LAST:event_btnQLPNbtnK_themPM2ActionPerformed
 
     private void btnK_themPM35btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM35btnK_themPM1ActionPerformed
