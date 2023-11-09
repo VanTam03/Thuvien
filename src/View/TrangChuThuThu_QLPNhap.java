@@ -8,6 +8,8 @@ import DAO.*;
 import DTO.*;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.FocusEvent;
@@ -243,6 +245,31 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         maTGiaFiedl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maTGiaFiedlActionPerformed(evt);
+            }
+        });
+        maTGiaFiedl.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateDestinationTextField();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateDestinationTextField();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateDestinationTextField();
+            }
+
+            private void updateDestinationTextField() {
+                try{
+                    TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
+                    tenTGiaField.setText(tacGia.getTenTacGia());
+                }catch (Exception e){
+
+                }
             }
         });
 
@@ -798,7 +825,8 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }
 
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-
+        new TrangChuThuThu().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
@@ -1005,7 +1033,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         maTGiaFiedl.setEnabled(true);
         soLuongField.setEnabled(true);
         tenSachField.setEnabled(true);
-        tenTGiaField.setEnabled(true);
+        tenTGiaField.setEnabled(false);
         GNhapField.setEnabled(true);
         nxbField.setEnabled(true);
         namXBField.setEnabled (true);
@@ -1044,7 +1072,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
     private void btnK_luuMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuMaSachActionPerformed
         // TODO add your handling code here:
-        if (DelBtnNhap.isEnabled()) {
+        if (DelBtn.isEnabled()) {
             if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") ){
                 JOptionPane.showMessageDialog(null, "Vui Lòng nhập mã phiếu nhập và mã sách.");
             }else{
@@ -1120,16 +1148,16 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
     private void DelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelBtnActionPerformed
         maSachField.setEnabled (true);
-        maTGiaFiedl.setEnabled(true);
-        soLuongField.setEnabled(true);
-        tenSachField.setEnabled(true);
-        tenTGiaField.setEnabled(true);
-        GNhapField.setEnabled(true);
-        nxbField.setEnabled(true);
-        namXBField.setEnabled (true);
+//        maTGiaFiedl.setEnabled(true);
+//        soLuongField.setEnabled(true);
+//        tenSachField.setEnabled(true);
+//        tenTGiaField.setEnabled(true);
+//        GNhapField.setEnabled(true);
+//        nxbField.setEnabled(true);
+//        namXBField.setEnabled (true);
         btnK_luuMaSach.setEnabled(true);
        
-        maTLoaiField.setEnabled(true);
+   //     maTLoaiField.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
         btnK_suaPN1.setEnabled(false);
         //DelBtn.setEnabled(false);

@@ -112,19 +112,20 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
     @Override
     public int update(ChiTietPhieuNhapSach chiTietPhieuNhapSach) {
         int rowsAffected=0;
-        String sql = "UPDATE dbo.[ChiTietPhieuNhapSach] SET maSach = ? , tenSach = ?, " +
-                "maTacGia = ? , maTheLoai = ?, NXB = ?, namXuatBan = ?, soLuongNhap = ?, giaNhap = ? WHERE maPhieuNhap = ?";
+        String sql = "UPDATE dbo.[ChiTietPhieuNhapSach] SET tenSach = ?, " +
+                "maTacGia = ? , maTheLoai = ?, NXB = ?, namXuatBan = ?, soLuongNhap = ?, giaNhap = ? WHERE maPhieuNhap = ? AND maSach = ?";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, chiTietPhieuNhapSach.getMaSach());
-            pst.setString(2, chiTietPhieuNhapSach.getTenSach());
-            pst.setString(3, chiTietPhieuNhapSach.getMaTacGia());
-            pst.setString(4, chiTietPhieuNhapSach.getMaTheLoai());
-            pst.setString(5, chiTietPhieuNhapSach.getNXB());
-            pst.setInt(6, chiTietPhieuNhapSach.getNamXuatBan());
-            pst.setInt(7, chiTietPhieuNhapSach.getSoLuongNhap());
-            pst.setDouble(8, chiTietPhieuNhapSach.getGiaNhap());
-            pst.setString(9, chiTietPhieuNhapSach.getMaPhieuNhap());
+
+            pst.setString(1, chiTietPhieuNhapSach.getTenSach());
+            pst.setString(2, chiTietPhieuNhapSach.getMaTacGia());
+            pst.setString(3, chiTietPhieuNhapSach.getMaTheLoai());
+            pst.setString(4, chiTietPhieuNhapSach.getNXB());
+            pst.setInt(5, chiTietPhieuNhapSach.getNamXuatBan());
+            pst.setInt(6, chiTietPhieuNhapSach.getSoLuongNhap());
+            pst.setDouble(7, chiTietPhieuNhapSach.getGiaNhap());
+            pst.setString(8, chiTietPhieuNhapSach.getMaPhieuNhap());
+            pst.setString(9, chiTietPhieuNhapSach.getMaSach());
             rowsAffected = pst.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
