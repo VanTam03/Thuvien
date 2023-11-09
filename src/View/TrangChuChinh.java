@@ -61,7 +61,8 @@ public class TrangChuChinh extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        textArea1 = new java.awt.TextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -114,19 +115,25 @@ public class TrangChuChinh extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
-        textArea1.setFont(new java.awt.Font("Times New Roman", 0, 21)); // NOI18N
-        textArea1.setForeground(new java.awt.Color(0, 51, 153));
-        textArea1.setText("** Phần mềm quản lý thư viện – trường Đại học Sư phạm Kỹ thuật - Đại học Đà Nẵng có nhiệm vụ đáp ứng \nnhu cầu thông tin phục vụ công tác học tập,giảng dạy và nghiên cứu khoa học cho cán bộ, giảng viên,\nsinh viên và các nhà nghiên cứu của Đại học Đà Nẵng. Hệ thống thư viện được phát triển trên phần mềm\ncông nghệ hiện đại của thế giới với Mục lục thư mục chung.\n\n** Mục lục chung của hệ thống thư viện cung cấp nguồn tài nguyên thông tin với hơn 200.000 nhan\nđề / 800.000 tài liệu bản in (bao gồm sách, ấn phẩm nhiều kỳ, luận văn, luận án, báo cáo khoa học và các\ntài liệu bản in khác); các cơ sở dữ liệu; tài liệu số và tài liệu điện tử hiệncó tại Đại học Đà Nẵng.\n\nBên cạnh đó, mạng mục lục (UD – ALNET) còn kết nối tìm kiếm đến một cơ sở dữ liệu xuất bản trực tuyến, \ntích hợp trên quy mô lớn chỉ mục trong môi trường điện toán đám mây, bao phủ hàng trăm triệu tài nguyên\nđiện tử toàn văn như các bài báo, tạp chí khoa học, sách điện tử, kỷ yếu hội nghị khoa học, báo cáo kỹ thuật,\nluận văn … được thu hoạch từ các nhà xuất bản, từ kho số truy cập mở trực tuyến của hàng trăm trường đại \nhọc trên thế giới.\n\n**Mục lục thư viện chung này cho phép người dùng tìm kiếm tất cả các tài liệu sẵn có từ nhiều thư viện \nkhác nhau trong hệ thống trên cùng một giao diện thông qua một hộp tìm kiếm duy nhất (OneSearch).\n\nHộp tìm kiếm duy nhất (OneSearch) sẽ là một công cụ tuyệt vời để bạn tìm kiếm tài nguyên học tập,\ngiảng dạy và nghiên cứu nếu bạn muốn:\n- Tìm kiếm một nhan đề tài liệu bản in cụ thể, bất kể đó là sách hay một bài báo nghiên cứu sẵn có.\n- Tìm kiếm kết hợp cả sách, bài báo, tài liệu số, cơ sở dữ liệu … theo một chủ đề nào đó hoặc đơn giản\n là bạn khởi đầu cho một nghiên cứu.\n\nHệ thống quản lý thư viện Trường Đại học Sư phạm Kỹ thuật hy vọng sẽ làm hài long quý Bạn đọc!\n");
+        jTextPane1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jTextPane1.setText("** Phần mềm quản lý thư viện – trường Đại học Sài Gòn có nhiệm vụ đáp ứng  nhu cầu thông tin phục vụ công tác học tập,giảng dạy và nghiên cứu khoa học cho cán bộ, giảng viên, sinh viên và các nhà nghiên cứu của trường. Hệ thống thư viện được phát triển trên phần mềm công nghệ hiện đại của thế giới với Mục lục thư mục chung.  ** Mục lục chung của hệ thống thư viện cung cấp nguồn tài nguyên thông tin với hơn 200.000 nhan đề / 800.000 tài liệu bản in (bao gồm sách, ấn phẩm nhiều kỳ, luận văn, luận án, báo cáo khoa học và các tài liệu bản in khác); các cơ sở dữ liệu; tài liệu số và tài liệu điện tử hiện có.  Bên cạnh đó, mạng mục lục (UD – ALNET) còn kết nối tìm kiếm đến một cơ sở dữ liệu xuất bản trực tuyến,  tích hợp trên quy mô lớn chỉ mục trong môi trường điện toán đám mây, bao phủ hàng trăm triệu tài nguyên điện tử toàn văn như các bài báo, tạp chí khoa học, sách điện tử, kỷ yếu hội nghị khoa học, báo cáo kỹ thuật, luận văn … được thu hoạch từ các nhà xuất bản, từ kho số truy cập mở trực tuyến của hàng trăm trường đại  học trên thế giới.  **Mục lục thư viện chung này cho phép người dùng tìm kiếm tất cả các tài liệu sẵn có từ nhiều thư viện  khác nhau trong hệ thống trên cùng một giao diện thông qua một hộp tìm kiếm duy nhất (OneSearch).  Hộp tìm kiếm duy nhất (OneSearch) sẽ là một công cụ tuyệt vời để bạn tìm kiếm tài nguyên học tập, giảng dạy và nghiên cứu nếu bạn muốn: - Tìm kiếm một nhan đề tài liệu bản in cụ thể, bất kể đó là sách hay một bài báo nghiên cứu sẵn có. - Tìm kiếm kết hợp cả sách, bài báo, tài liệu số, cơ sở dữ liệu … theo một chủ đề nào đó hoặc đơn giản  là bạn khởi đầu cho một nghiên cứu. ");
+        jScrollPane1.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textArea1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textArea1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("TRANG CHỦ CHÍNH            ", new javax.swing.ImageIcon(getClass().getResource("/Images/research.png")), jPanel2); // NOI18N
@@ -480,12 +487,15 @@ public class TrangChuChinh extends javax.swing.JFrame {
         jTabbedPane1.addTab("HÌNH ẢNH THƯ VIỆN         ", new javax.swing.ImageIcon(getClass().getResource("/Images/books.png")), jPanel4); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("QUẢN LÝ THƯ VIỆN");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
-        jLabel2.setText(" TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT - ĐẠI HỌC ĐÀ NẴNG");
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText(" TRƯỜNG ĐẠI HỌC SÀI GÒN");
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
         jButton1.setText("Đăng nhập");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -494,26 +504,24 @@ public class TrangChuChinh extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo-truong-250.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/177f4c0bc18ca7917d45f9c49bb47e98_pixian_ai.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1353, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(248, 248, 248))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(302, 302, 302)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 8, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -525,15 +533,19 @@ public class TrangChuChinh extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -660,13 +672,14 @@ public class TrangChuChinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTable tableSearchSach;
-    private java.awt.TextArea textArea1;
     private javax.swing.JTextField textboxsearch;
     // End of variables declaration//GEN-END:variables
 }
