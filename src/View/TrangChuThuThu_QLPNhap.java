@@ -156,7 +156,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
 
         ngayXuatCungCap.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ngayXuatCungCap.setForeground(new java.awt.Color(0, 0, 0));
-        ngayXuatCungCap.setText("Ngày cung cấp:");
+        ngayXuatCungCap.setText("Nhà cung cấp:");
 
         ngayXuatField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
@@ -245,31 +245,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         maTGiaFiedl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maTGiaFiedlActionPerformed(evt);
-            }
-        });
-        maTGiaFiedl.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                updateDestinationTextField();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                updateDestinationTextField();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                updateDestinationTextField();
-            }
-
-            private void updateDestinationTextField() {
-                try{
-                    TacGia tacGia = TacGia_DAO.getInstance().selectById(maTGiaFiedl.getText());
-                    tenTGiaField.setText(tacGia.getTenTacGia());
-                }catch (Exception e){
-
-                }
             }
         });
 
@@ -742,16 +717,6 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
