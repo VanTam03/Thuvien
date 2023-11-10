@@ -64,7 +64,7 @@ public class ChiTietPhieuNhap_DAO implements DAO_Interface<ChiTietPhieuNhapSach>
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery())  {
             if (!rs.next()) {
-                TacGia tacGia = new TacGia (maTacGia, tenTacGia);
+                TacGia tacGia = new TacGia (maTacGia, tenTacGia, 1);
                 TacGia_DAO.getInstance().add(tacGia);
             }
 
