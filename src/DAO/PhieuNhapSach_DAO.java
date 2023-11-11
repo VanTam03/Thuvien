@@ -67,6 +67,7 @@
 
      @Override
      public int delete(String maPhieuNhap) {
+         ChiTietPhieuNhap_DAO.getInstance().delete(maPhieuNhap);
          int rowsAffected = 0;
          String sql = "DELETE FROM dbo.[PhieuNhapSach] WHERE maPhieuNhap = ?";
          try (Connection conn = KetNoiSQL.getConnection();

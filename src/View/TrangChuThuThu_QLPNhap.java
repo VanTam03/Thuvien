@@ -833,12 +833,12 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
         comboBoxMaPNhap.setSelectedItem((String) jTable1.getValueAt(selectedRow, 0));
-        maPhieuXuatField.setEnabled(true);
-        ngayXuatField1.setEnabled(true);
-        ngayXuatField.setEnabled(true);
-        btnK_luuPN.setEnabled(true);
-        btnK_themPN.setEnabled(false);
-        DelBtnNhap.setEnabled(false);
+//        maPhieuXuatField.setEnabled(true);
+//        ngayXuatField1.setEnabled(true);
+//        ngayXuatField.setEnabled(true);
+//        btnK_luuPN.setEnabled(true);
+//        btnK_themPN.setEnabled(false);
+//        DelBtnNhap.setEnabled(false);
     }// GEN-LAST:event_QLTGiaTableMouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
@@ -854,20 +854,20 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
         GNhapField.setText(String.valueOf(jTable2.getValueAt(selectedRow, 8)));
         TacGia tacGia = TacGia_DAO.getInstance().selectById((String) jTable2.getValueAt(selectedRow, 3));
         tenTGiaField.setText(tacGia.getTenTacGia());
-        maSachField.setEnabled (true);
-        maTGiaFiedl.setEnabled(true);
-        soLuongField.setEnabled(true);
-        tenSachField.setEnabled(true);
-        tenTGiaField.setEnabled(true);
-        GNhapField.setEnabled(true);
-        nxbField.setEnabled(true);
-        namXBField.setEnabled (true);
-        btnK_luuMaSach.setEnabled(true);
-
-        maTLoaiField.setEnabled(true);
-        btnK_themMaSach.setEnabled(false);
-        // btnK_suaPN1.setEnabled(false);
-        DelBtn.setEnabled(false);
+//        maSachField.setEnabled (true);
+//        maTGiaFiedl.setEnabled(true);
+//        soLuongField.setEnabled(true);
+//        tenSachField.setEnabled(true);
+//        tenTGiaField.setEnabled(true);
+//        GNhapField.setEnabled(true);
+//        nxbField.setEnabled(true);
+//        namXBField.setEnabled (true);
+//        btnK_luuMaSach.setEnabled(true);
+//
+//        maTLoaiField.setEnabled(true);
+//        btnK_themMaSach.setEnabled(false);
+//        // btnK_suaPN1.setEnabled(false);
+//        DelBtn.setEnabled(false);
     }
     private void tenSachFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenSachFieldActionPerformed
         // TODO add your handling code here:
@@ -922,7 +922,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_GNhapFieldActionPerformed
 
     private void btnK_themPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPNActionPerformed
-        maPhieuXuatField.setEnabled(true);
+        maPhieuXuatField.setEnabled(false);
         ngayXuatField1.setEnabled(true);
         ngayXuatField.setEnabled(true);
         btnK_luuPN.setEnabled(true);
@@ -932,7 +932,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnK_themPNActionPerformed
 
     private void btnK_luuPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuPNActionPerformed
-        if (maPhieuXuatField.getText().equals("")){
+        if (maPhieuXuatField.getText().equals("") && (btnK_suaPN.isEnabled() || DelBtnNhap.isEnabled())){
             JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu nhập.");
         }else{
             PhieuNhapSach phieuNhapSach = new PhieuNhapSach();
@@ -962,10 +962,15 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Sửa phiếu nhập thất bại!");
                 }
             }else if (DelBtnNhap.isEnabled()){
-                if (PhieuNhapSach_DAO.getInstance().delete(maPhieuXuatField.getText())>0){
-                    JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thành công!");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thất bại!");
+                int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    if (PhieuNhapSach_DAO.getInstance().delete(maPhieuXuatField.getText())>0){
+                        JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thành công!");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thất bại!");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Hủy xóa.");
                 }
             }
             btnRefreshPNActionPerformed(evt);
@@ -1076,10 +1081,16 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") ){
                 JOptionPane.showMessageDialog(null, "Vui Lòng nhập mã phiếu nhập và mã sách.");
             }else{
-                if (ChiTietPhieuNhap_DAO.getInstance().delete((String) comboBoxMaPNhap.getSelectedItem(), maSachField.getText()) > 0) {
-                    JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thành công!");
+
+                int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    if (ChiTietPhieuNhap_DAO.getInstance().delete((String) comboBoxMaPNhap.getSelectedItem(), maSachField.getText()) > 0) {
+                        JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thành công!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thất bại!");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Xóa chi tiết phiếu nhập thất bại!");
+                    JOptionPane.showMessageDialog(null, "Hủy xóa.");
                 }
             }
 
