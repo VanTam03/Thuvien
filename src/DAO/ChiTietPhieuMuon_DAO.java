@@ -3,10 +3,8 @@ package DAO;
 import DTO.ChiTietPhieuMuon;
 import DTO.PhieuMuon;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +22,8 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, chiTietPhieuMuon.getMaPhieumuon());
             pst.setString(2, chiTietPhieuMuon.getMaSach());
-            pst.setString(3, chiTietPhieuMuon.getNgayThuctra());
-            pst.setString(4, chiTietPhieuMuon.getTienPhat());
+            pst.setDate(3, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            pst.setDouble(4, chiTietPhieuMuon.getTienPhat());
             pst.setString(5, chiTietPhieuMuon.getTinhTrangSach());
             rowsAffected = pst.executeUpdate();
         } catch (Exception e) {
@@ -43,8 +41,12 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
         String sql = "UPDATE dbo.[ChiTietPhieuMuon] SET ngayThucTra = ?, tienPhat = ?, tinhTrangSach = ? WHERE maPhieuMuon = ? AND maSach = ?";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, chiTietPhieuMuon.getNgayThuctra());
-            pst.setString(2, chiTietPhieuMuon.getTienPhat());
+            try{
+                pst.setDate(1, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            }catch (Exception e){
+                pst.setNull(1, Types.DATE);
+            }
+            pst.setDouble(2, chiTietPhieuMuon.getTienPhat());
             pst.setString(3, chiTietPhieuMuon.getTinhTrangSach());
             pst.setString(4, chiTietPhieuMuon.getMaPhieumuon());
             pst.setString(5, chiTietPhieuMuon.getMaSach());
@@ -97,8 +99,12 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
             while (rs.next()) {
                 String maPhieumuon = rs.getString("maPhieumuon");
                 String maSach = rs.getString("maSach");
-                String ngayThuctra = rs.getString("ngayThuctra");
-                String tienPhat = rs.getString("tienPhat");
+                LocalDate ngayThuctra = null;
+                try{
+                    ngayThuctra = rs.getDate("ngayThuctra").toLocalDate();
+                }catch (Exception e){
+                }
+                Double tienPhat = rs.getDouble("tienPhat");
                 String tinhTrangSach = rs.getString("tinhTrangSach");
                 ChiTietPhieuMuon chiTietPhieuMuon = new ChiTietPhieuMuon(maPhieumuon, maSach, ngayThuctra, tienPhat, tinhTrangSach);
                 rowSelected.add(chiTietPhieuMuon);
@@ -120,8 +126,8 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
             if (rs.next()) {
                 result.setMaPhieumuon(rs.getString("maPhieumuon"));
                 result.setMaSach(rs.getString("maSach"));
-                result.setNgayThuctra(rs.getString("ngayThuctra"));
-                result.setTienPhat(rs.getString("tienPhat"));
+                result.setNgayThuctra(rs.getDate("ngayThuctra").toLocalDate());
+                result.setTienPhat(rs.getDouble("tienPhat"));
                 result.setTinhTrangSach(rs.getString("tinhTrangSach"));
             }
         } catch (Exception e) {
@@ -139,8 +145,10 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String maSach = rs.getString("maSach");
-                String ngayThuctra = rs.getString("ngayThuctra");
-                String tienPhat = rs.getString("tienPhat");
+                java.sql.Date sqlDate = rs.getDate("ngayThuctra");
+                LocalDate ngayThuctra = LocalDate.now();
+                if (sqlDate!=null ) {ngayThuctra = sqlDate.toLocalDate();}
+                Double tienPhat = rs.getDouble("tienPhat");
                 String tinhTrangSach = rs.getString("tinhTrangSach");
                 ChiTietPhieuMuon chiTietPhieuMuon = new ChiTietPhieuMuon(maPhieumuon, maSach, ngayThuctra, tienPhat, tinhTrangSach);
                 result.add(chiTietPhieuMuon);

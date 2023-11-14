@@ -748,7 +748,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
 //        btnK_xoaMaSach.setEnabled(false);
     }
     private void btnK_themPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themPMActionPerformed
-        txtK_maPM_1.setEnabled(false);
+        txtK_maPM_1.setEnabled(true);
         txtK_maTK.setEnabled(true);
         txtK_ngayMuon.setEnabled(true);
         fieldNgayTra.setEnabled(true);
@@ -867,6 +867,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Thêm phiếu chi tiết mượn thất bại!");
                 }
             } else if (btnK_suaPM1.isEnabled()) {
+
                 if (ChiTietPhieuMuon_DAO.getInstance().update(chiTietPhieuMuon)>0){
                     JOptionPane.showMessageDialog(null, "Sửa phiếu chi tiết mượn thành công!");
                 }else{

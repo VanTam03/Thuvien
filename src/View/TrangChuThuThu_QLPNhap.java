@@ -1106,7 +1106,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Năm xuất bản, số lượng nhập, giá nhập: Vui lòng điền đúng định dạng số.");
             }
             if (comboBoxMaPNhap.getSelectedItem().equals("") || maSachField.getText().equals("") || maTGiaFiedl.getText().equals("") || soLuongField.getText().equals("") ||
-                    tenSachField.getText().equals("") || tenTGiaField.getText().equals("") || GNhapField.getText().equals("") || nxbField.getText().equals("") || namXBField.getText().equals("")){
+                    tenSachField.getText().equals("") || GNhapField.getText().equals("") || nxbField.getText().equals("") || namXBField.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin.");
             } else{
                 ChiTietPhieuNhap_DAO chiTietPhieuNhap_dao = new ChiTietPhieuNhap_DAO();
@@ -1119,14 +1119,14 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
                 chiTietPhieuNhapSach.setMaTheLoai(maTLoaiField.getText());
                 chiTietPhieuNhapSach.setNXB(nxbField.getText());
 
-                if (btnK_themPN.isEnabled()) {
+                if (btnK_themMaSach.isEnabled()) {
                     if (ChiTietPhieuNhap_DAO.getInstance().add(chiTietPhieuNhapSach) > 0) {
                         JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thành công!");
                         chiTietPhieuNhap_dao.themVaoThongTinSach(maSachField.getText(), tenSachField.getText(), maTGiaFiedl.getText(), tenTGiaField.getText(), maTLoaiField.getText(), nxbField.getText(), Integer.parseInt(namXBField.getText()));
                     } else {
                         JOptionPane.showMessageDialog(null, "Thêm chi tiết phiếu nhập thất bại!");
                     }
-                } else if (btnK_suaPN.isEnabled()) {
+                } else if (btnK_suaPN1.isEnabled()) {
                     if (ChiTietPhieuNhap_DAO.getInstance().update(chiTietPhieuNhapSach) > 0) {
                         JOptionPane.showMessageDialog(null, "Sửa chi tiết phiếu nhập thành công!");
                     } else {
@@ -1136,7 +1136,7 @@ public class TrangChuThuThu_QLPNhap extends javax.swing.JFrame {
             }
         }
         loadChiTietTPhieuNhap();
-        DelBtnActionPerformed (evt);
+        btnK_lamMoiPNActionPerformed (evt);
     }//GEN-LAST:event_btnK_luuMaSachActionPerformed
 
     private void btnK_suaPN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPN1ActionPerformed
