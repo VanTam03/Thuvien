@@ -52,6 +52,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     DefaultTableModel defaultTableModel_TL;
     DefaultTableModel defaultTableModel_TG;
     DefaultTableModel defaultTableModel_Sach;
+    DefaultTableModel defaultTableModel_CTPM;
+    DefaultTableModel defaultTableModel_CTPN;
     /**
      * Creates new form TrangChuThuThu
      */
@@ -63,7 +65,48 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         loadmaTheLoai();
         loadmaTacGia();
         loadThongTinSach();
+        loadChiTietPhieuMuon();
+        loadChiTietTPhieuNhap();
     }
+    public void loadChiTietTPhieuNhap() {
+        defaultTableModel_CTPN = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable1.setModel(defaultTableModel_CTPN);
+        defaultTableModel_CTPN.addColumn("Mã phiếu nhập");
+        defaultTableModel_CTPN.addColumn("Mã sách");
+        defaultTableModel_CTPN.addColumn("Tên sách");
+        defaultTableModel_CTPN.addColumn("Mã tác giả");
+        defaultTableModel_CTPN.addColumn("Mã thể loại");
+        defaultTableModel_CTPN.addColumn("Nhà xuất bản");
+        defaultTableModel_CTPN.addColumn("Năm xuất bản");
+        defaultTableModel_CTPN.addColumn("Số lượng");
+        defaultTableModel_CTPN.addColumn("Giá nhập");
+        List<ChiTietPhieuNhapSach> chiTietPhieuNhapSaches = ChiTietPhieuNhap_DAO.getInstance().selectAll();
+        for (ChiTietPhieuNhapSach ctpns : chiTietPhieuNhapSaches) {
+            defaultTableModel_CTPN.addRow(new Object[] { ctpns.getMaPhieuNhap(), ctpns.getMaSach(), ctpns.getTenSach(), ctpns.getMaTacGia(), ctpns.getMaTheLoai(), ctpns.getNXB(), ctpns.getNamXuatBan(), ctpns.getSoLuongNhap(), ctpns.getGiaNhap()});
+        }
+    }
+    public void loadChiTietPhieuMuon() {
+        defaultTableModel_CTPM = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable4.setModel(defaultTableModel_CTPM);
+        defaultTableModel_CTPM.addColumn("Mã phiếu mượn");
+        defaultTableModel_CTPM.addColumn("Mã sách");
+        defaultTableModel_CTPM.addColumn("Tình trạng sách");
+        List<ChiTietPhieuMuon> chiTietPhieuNhapSaches = ChiTietPhieuMuon_DAO.getInstance().selectAll();
+        for (ChiTietPhieuMuon ctpns : chiTietPhieuNhapSaches) {
+            defaultTableModel_CTPM.addRow(new Object[] { ctpns.getMaPhieumuon(), ctpns.getMaSach(), ctpns.getTinhTrangSach()});
+        }
+    }
+
     private void loadComboBoxDanhMuc() {
         List <DanhMucSach> DanhMuc = DanhMucSach_DAO.getInstance().selectAll();
         for (DanhMucSach dm : DanhMuc){
@@ -1459,6 +1502,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 tbl_DMSach5MouseClicked(evt);
             }
         });
+        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLTGiaTableMouseClicked(evt);
+            }
+        });
         jScrollPane20.setViewportView(tbl_DMSach5);
 
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
@@ -2591,7 +2639,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
+//        H_tenSach2.setEnabled(false);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2794,9 +2842,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void btnH_themSach2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnH_themSach2ActionPerformed
         // TODO add your handling code here:
-        if (H_tenSach2.getText().trim().equals("") || H_tenSach3.getText().trim().equals("")
+        if (H_tenSach3.getText().trim().equals("")
                 || H_tenTheLoai2.getText().trim().equals("") || H_tenDM2.getText().trim().equals("")
-                || H_soLuongCon2.getText().trim().equals("")) {
+                || H_soLuongCon2.getText().trim().equals("") || H_tacGia4.getText().trim().equals("") ) {
             JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin!");
         } else {
             int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
@@ -2805,10 +2853,28 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             } else {
                 Sach sach = new Sach();
                 sach.setMaSach(H_tenSach2.getText());
+                KhoSach khoSach = KhoSach_DAO.getInstance().selectById(H_tenSach2.getText());
+                if (khoSach.getMaSach().equals("")){
+                    khoSach.setMaSach(H_tenSach2.getText());
+                    khoSach.setSoLuongSachHong(0);
+                    khoSach.setSoLuongCon(0);
+                    khoSach.setTongSoLuong(0);
+                    KhoSach_DAO.getInstance().add(khoSach);
+                }
                 sach.setTenSach(H_tenSach3.getText());
                 sach.setMaDMSach(Hc_maDM2.getItemAt(Hc_maDM2.getSelectedIndex()));
                 sach.setMaTheLoai(Hc_maTheLoai2.getItemAt(Hc_maTheLoai2.getSelectedIndex()));
-                sach.setTacGia(H_tacGia5.getText());
+                TacGia tacGia = TacGia_DAO.getInstance().selectById(H_tacGia4.getText());
+                if (tacGia.getMaTacGia().equals("")){
+                    if (H_tacGia5.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Mã tác giả mới, vui lòng nhập tên tác giả!");
+                    }else {
+//                        tacGia.setMaTacGia(H_tacGia4.getText());
+                        tacGia.setTenTacGia(H_tacGia5.getText());
+                        TacGia_DAO.getInstance().add(tacGia);
+                    }
+                }
+                sach.setTenTacGia(tacGia.getTenTacGia());
                 sach.setMaTacGia(H_tacGia4.getText());
                 sach.setNXB(H_nhaXB2.getText());
                 sach.setNamXuatBan(Integer.parseInt(H_namXB2.getText()));
@@ -2816,8 +2882,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 sach.setGiaTienSach(Double.parseDouble(H_soLuongCon2.getText()));
                 sach.setTomTatND(H_tomTat2.getText());
                 // sach.setAnh(H_linkAnh.getText());
-                KhoSach khoSach = new KhoSach(H_tenSach2.getText(), 0, 0, 0);
-                KhoSach_DAO.getInstance().add(khoSach);
                 if (Sach_DAO.getInstance().add(sach) > 0) {
                     JOptionPane.showMessageDialog(null, "Đã thêm dữ liệu của sách.");
                 } else {
@@ -2918,6 +2982,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 }
             }
         }
+        loadThongTinSach();
     }// GEN-LAST:event_khoatk10ActionPerformed
 
     private void khoatk11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk11ActionPerformed
@@ -3019,7 +3084,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private void QLTGiaTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
         // TODO add your handling code here:
         int selectedRow = QLTGiaTable.getSelectedRow();
-
         txt_tenDMSach14.setText((String) QLTGiaTable.getValueAt(selectedRow, 0));
         txt_tenDMSach13.setText((String) QLTGiaTable.getValueAt(selectedRow, 1));
         txt_tenDMSach12.setText(String.valueOf(QLTGiaTable.getValueAt(selectedRow, 2)));
@@ -3235,6 +3299,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void txt_timkiemDMSach25txt_timkiemDMSach3KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach25txt_timkiemDMSach3KeyReleased
         // TODO add your handling code here:
+        String query = txt_timkiemDMSach25.getText();
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<DefaultTableModel>(defaultTableModel_CTPN);
+        jTable1.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach25txt_timkiemDMSach3KeyReleased
 
     private void btnQLPNbtnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQLPNbtnK_themPM2ActionPerformed
@@ -3345,6 +3413,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void btnK_themPM38btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM38btnK_themPM2ActionPerformed
         // TODO add your handling code here:
+
     }// GEN-LAST:event_btnK_themPM38btnK_themPM2ActionPerformed
 
     private void btnK_themPM39btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM39btnK_themPM1ActionPerformed
@@ -3353,10 +3422,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void txt_timkiemDMSach28txt_timkiemDMSach3KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach28txt_timkiemDMSach3KeyReleased
         // TODO add your handling code here:
+        String query = txt_timkiemDMSach28.getText();
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<DefaultTableModel>(defaultTableModel_CTPM);
+        jTable4.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach28txt_timkiemDMSach3KeyReleased
 
     private void btnK_themPM40btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM40btnK_themPM2ActionPerformed
         // TODO add your handling code here:
+        new TrangChuThuThu_QLPM_1().setVisible(true);
+        this.setVisible(false);
     }// GEN-LAST:event_btnK_themPM40btnK_themPM2ActionPerformed
 
     private void jTP_main2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTP_main2MouseClicked

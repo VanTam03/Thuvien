@@ -1,17 +1,20 @@
 package DTO;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class ChiTietPhieuMuon {
     private String maPhieumuon;
     private String maSach;
-    private String ngayThuctra;
-    private String tienPhat;
+    private LocalDate ngayThuctra;
+    private double tienPhat;
     private String tinhTrangSach;
 
     public ChiTietPhieuMuon() {
 
     }
 
-    public ChiTietPhieuMuon(String maPhieumuon, String maSach, String ngayThuctra, String tienPhat,
+    public ChiTietPhieuMuon(String maPhieumuon, String maSach, LocalDate ngayThuctra, double tienPhat,
             String tinhTrangSach) {
         this.maPhieumuon = maPhieumuon;
         this.maSach = maSach;
@@ -36,19 +39,19 @@ public class ChiTietPhieuMuon {
         this.maSach = maSach;
     }
 
-    public String getNgayThuctra() {
+    public LocalDate getNgayThuctra() {
         return ngayThuctra;
     }
 
-    public void setNgayThuctra(String ngayThuctra) {
+    public void setNgayThuctra(LocalDate ngayThuctra) {
         this.ngayThuctra = ngayThuctra;
     }
 
-    public String getTienPhat() {
+    public Double getTienPhat() {
         return tienPhat;
     }
 
-    public void setTienPhat(String tienPhat) {
+    public void setTienPhat(double tienPhat) {
         this.tienPhat = tienPhat;
     }
 
