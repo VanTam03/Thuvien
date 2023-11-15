@@ -77,10 +77,10 @@ public class khosach_DAL {
         try {
             try (Statement statement = connection.createStatement()) {
                 String query = "SELECT thongtinsach.maSach, thongtinsach.tensach, khosach.tongSoLuong, khosach.soLuongCon, khosach.soLuongSachHong\n" +
-                        "FROM thongtinsach\n" +
-                        "JOIN khosach ON thongtinsach.maSach = khosach.maSach\n" +
-                        "WHERE thongtinsach.maSach LIKE '%"+search+"%'" +
-                        "    OR thongtinsach.tensach LIKE '%"+search+"%'";
+                                "FROM thongtinsach\n" +
+                                "JOIN khosach ON thongtinsach.maSach = khosach.maSach\n" +
+                                "WHERE thongtinsach.maSach COLLATE utf8_general_ci LIKE N'%\"+search+\"%'\n" +
+                                "    OR thongtinsach.tensach COLLATE utf8_general_ci LIKE N'%\"+search+\"%'\"";
                 System.out.println(query);
                 
                 try (ResultSet rss = statement.executeQuery(query)) {
