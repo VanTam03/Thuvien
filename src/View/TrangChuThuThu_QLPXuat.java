@@ -1,4 +1,5 @@
 /*
+
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -25,6 +26,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
 
         jPK_tieuDe = new javax.swing.JPanel();
         lbK_tieuDe = new javax.swing.JLabel();
@@ -95,6 +97,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
             .addGroup(jPK_tieuDeLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(btnK_veTrangTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addGap(329, 329, 329)
                 .addComponent(lbK_tieuDe)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,6 +107,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_tieuDeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPK_tieuDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+
                     .addComponent(lbK_tieuDe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnK_veTrangTruoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -131,6 +135,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
         jPK_themPMLayout.setHorizontalGroup(
             jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themPMLayout.createSequentialGroup()
+
                 .addGap(53, 53, 53)
                 .addGroup(jPK_themPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ngayXuatLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,6 +285,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
 
         jPK_button.setBackground(new java.awt.Color(255, 255, 204));
 
+
         javax.swing.GroupLayout jPK_buttonLayout = new javax.swing.GroupLayout(jPK_button);
         jPK_button.setLayout(jPK_buttonLayout);
         jPK_buttonLayout.setHorizontalGroup(
@@ -294,6 +300,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
         jPK_btnQLPM.setBackground(new java.awt.Color(204, 204, 255));
         jPK_btnQLPM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPK_btnQLPM.setPreferredSize(new java.awt.Dimension(520, 84));
+
 
         btnK_themPX.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPX.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -480,6 +487,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
             .addGroup(jPK_btnQLSLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+
                     .addComponent(btnK_themMaSach)
                     .addComponent(btnK_suaPX1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -521,6 +529,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
         jPK_qlPMLayout.setHorizontalGroup(
             jPK_qlPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_qlPMLayout.createSequentialGroup()
+
                 .addComponent(jPK_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1293, 1293, 1293))
             .addGroup(jPK_qlPMLayout.createSequentialGroup()
@@ -544,6 +553,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
             jPK_qlPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_qlPMLayout.createSequentialGroup()
                 .addContainerGap()
+
                 .addGroup(jPK_qlPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPK_themPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPK_themMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -568,6 +578,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPK_tieuDe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
                     .addComponent(jPK_qlPM, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -576,6 +587,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPK_tieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
                 .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -652,6 +664,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
+
             java.util.logging.Logger.getLogger(TrangChuThuThu_QLPXuat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TrangChuThuThu_QLPXuat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -665,12 +678,14 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new TrangChuThuThu_QLPXuat().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton DelBtn;
     private javax.swing.JButton DelBtnXuat;
     private javax.swing.JLabel LabelTongtien;
@@ -691,6 +706,7 @@ public class TrangChuThuThu_QLPXuat extends javax.swing.JFrame {
     private javax.swing.JPanel jPK_themMaSach;
     private javax.swing.JPanel jPK_themPM;
     private javax.swing.JPanel jPK_tieuDe;
+
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
