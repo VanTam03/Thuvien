@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.ChiTietPhieuMuon;
+import DTO.KhoSach;
 import DTO.PhieuMuon;
 
 import java.sql.*;
@@ -22,7 +23,10 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, chiTietPhieuMuon.getMaPhieumuon());
             pst.setString(2, chiTietPhieuMuon.getMaSach());
-            pst.setDate(3, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            if (chiTietPhieuMuon.getNgayThuctra() != null) pst.setDate(3, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            else{
+                pst.setNull(3, Types.DATE);
+            }
             pst.setDouble(4, chiTietPhieuMuon.getTienPhat());
             pst.setString(5, chiTietPhieuMuon.getTinhTrangSach());
             rowsAffected = pst.executeUpdate();
@@ -32,6 +36,9 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
         PhieuMuon phieuMuon = PhieuMuon_DAO.getInstance().selectById(chiTietPhieuMuon.getMaPhieumuon());
         phieuMuon.setSoLuongSach(phieuMuon.getSoLuongSach()+1);
         PhieuMuon_DAO.getInstance().update(phieuMuon);
+        KhoSach khoSach = KhoSach_DAO.getInstance().selectById(chiTietPhieuMuon.getMaSach());
+        khoSach.setSoLuongCon(khoSach.getSoLuongCon()-1);
+        KhoSach_DAO.getInstance().update(khoSach);
         return rowsAffected;
     }
 
