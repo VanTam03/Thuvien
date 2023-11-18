@@ -253,7 +253,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         Panel_DanhSachPM15 = new javax.swing.JPanel();
         K_tieuDe16 = new javax.swing.JLabel();
         btnChiTietView = new javax.swing.JButton();
-        btnK_themPM34 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_PhieuTra = new javax.swing.JTable();
         textboxsearch4 = new javax.swing.JTextField();
@@ -1864,16 +1863,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnK_themPM34.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_themPM34.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnK_themPM34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plus.png"))); // NOI18N
-        btnK_themPM34.setText("Quản lý phiếu trả");
-        btnK_themPM34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_themPM34btnK_themPM2ActionPerformed(evt);
-            }
-        });
-
         table_PhieuTra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -1925,9 +1914,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
-                            .addGap(657, 657, 657)
-                            .addComponent(btnK_themPM34, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addGap(923, 923, 923)
                             .addComponent(btnChiTietView))
                         .addGroup(Panel_DanhSachPM15Layout.createSequentialGroup()
                             .addGap(340, 340, 340)
@@ -1952,9 +1939,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addGroup(Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnK_themPM34)
-                    .addComponent(btnChiTietView)))
+                .addComponent(btnChiTietView))
         );
 
         jTPK_QuanLyPM4.addTab("Danh sách phiếu trả", Panel_DanhSachPM15);
@@ -4012,7 +3997,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnH_themSach2;
     private javax.swing.JButton btnK_themPM31;
     private javax.swing.JButton btnK_themPM32;
-    private javax.swing.JButton btnK_themPM34;
     private javax.swing.JButton btn_LuuDMSach6;
     private javax.swing.JButton btn_LuuDMSach7;
     private javax.swing.JButton btn_LuuDMSach8;
