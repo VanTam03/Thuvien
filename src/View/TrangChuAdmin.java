@@ -424,6 +424,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
             }
         ));
+        String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
+                "Ngày sinh", "Email", "Giới tính", "Số Lượng Mượn", "Trạng Thái" };
+        tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(columnNames, 0));;
+        loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
         tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia2MouseClicked(evt);
@@ -458,17 +462,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         gioitinhnu16.setText("Nữ");
 
         sdt2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        sdt2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                sdt2KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                sdt2KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                sdt2KeyTyped(evt);
-            }
-        });
 
         matKhauField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
@@ -537,12 +530,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             }
         });
 
+        String[] tenTheLoai = {"Cán Bộ Giảng Viên", "Học Sinh - Sinh Viên"};
+        Hc_maTheLoai3 = new JComboBox<>(tenTheLoai);
         Hc_maTheLoai3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        Hc_maTheLoai3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Hc_maTheLoai3ActionPerformed(evt);
-            }
-        });
 
         jLabel127.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel127.setText("Email:");
@@ -689,6 +679,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
 
         quanlyttdg2.addTab("Quản lý Độc giả", jPanel29);
+        quanlyttdg2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
+                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+            }
+        });
+        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ", "Ngày mở thẻ", "Hạn dùng thẻ",
+                "Số sách được mượn", "Thời gian mượn", "Giá tiền mở thẻ" };
+        tableDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        tableDocgia3.setModel(new javax.swing.table.DefaultTableModel(nameColumnLoaiThe, 0));
+        tableDocgia3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDocgia3MouseClicked(evt);
+            }
+        });
+        loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
+
 
         jPanel40.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -781,12 +788,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel140.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel140.setText("Hạn dùng thẻ:");
 
-        tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tenLoaiField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tenLoaiField2ActionPerformed(evt);
+        tenLoaiField2.addKeyListener(new java.awt.event.KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
             }
-        });
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
+            }
+        }
+        );
+
+        tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel141.setText("Giá tiền mở thẻ:");
@@ -2303,10 +2321,16 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             new Object [][] {
 
             },
-            new String [] {
-                "Mã độc giả", "Tên độc giả", "Mật khẩu", "Trạng thái", "Hạn dùng","Phí duy trì"}
-        ));
+            new String [] {"Mã Quản Lý", "Mật Khẩu", "Tên Quản Lý", "Số Điện Thoại", "Giới Tính", "Ngày Sinh", "Email",
+            "Địa Chỉ", "Trạng thái", "Quyền"}));
         jScrollPane30.setViewportView(tableSearchSach7);
+            tableSearchSach7.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    tableSearchSach7MouseClicked(evt);
+                }
+            });
+        loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy(new QuanLy_DAO().dsAllTaiKhoan()));
+
 
         themmoidg6.setBackground(new java.awt.Color(255, 204, 204));
         themmoidg6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -2389,6 +2413,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         gioitinhnu22.setText("Nữ");
 
         Hc_maTheLoai6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        String[] nameQL = {"ADMIN", "THỦ THƯ"};
+        Hc_maTheLoai6 = new JComboBox<>(nameQL); 
         Hc_maTheLoai6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Hc_maTheLoai6ActionPerformed(evt);
@@ -2396,13 +2422,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         jLabel175.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel175.setText("Tên quản lý:");
+        jLabel175.setText("Loại quản lý:");
 
         jLabel174.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel174.setText("Mật khẩu:");
 
         jLabel173.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel173.setText("Mã độc giả:");
+        jLabel173.setText("Mã quản lý:");
 
         textboxsearch14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
