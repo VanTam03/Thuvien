@@ -203,6 +203,16 @@ public class DangNhap extends javax.swing.JFrame {
         }
         else{
             String user = txt_tenDangNhap.getText();
+            if (user.length() < 10) {
+                StringBuilder stringBuilder = new StringBuilder(user);
+    
+                while (stringBuilder.length() < 10) {
+                    stringBuilder.append(' '); // Thêm khoảng trắng
+                }
+
+                user = stringBuilder.toString();
+            
+            }
             String pass = new String(txt_matKhau.getPassword()).trim();
             String pos = (String) txt_chucVu.getSelectedItem();
             System.err.println(user);

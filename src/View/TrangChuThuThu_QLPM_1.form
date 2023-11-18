@@ -461,19 +461,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbK_maPM3" max="32767" attributes="0"/>
-                              <Component id="labelTinhtrangsach" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lbK_maPM3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbK_maSach" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtK_maSach" min="-2" pref="165" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cbbK_maPM" max="32767" attributes="0"/>
-                              <Component id="fieldTinhtrangsach" min="-2" pref="165" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cbbK_maPM" min="-2" pref="165" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
                   </Group>
@@ -492,35 +486,12 @@
                           <Component id="txtK_maSach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="lbK_maSach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labelTinhtrangsach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="fieldTinhtrangsach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="fieldTinhtrangsach">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="labelTinhtrangsach">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="T&#xec;nh tr&#x1ea1;ng s&#xe1;ch:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="txtK_maSach">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -617,21 +588,24 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnK_themPM" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnK_suaPM" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnXoa" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnK_lamMoiPM" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnK_luuPM" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnK_themPM" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnK_suaPM" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="360" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnXoa" max="32767" attributes="0"/>
+                              <Component id="btnXuatPhieuMuon" pref="110" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="338" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -648,6 +622,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnK_luuPM" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnK_lamMoiPM" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnXuatPhieuMuon" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
@@ -755,6 +730,26 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JButton" name="btnXuatPhieuMuon">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="20" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/R_pixian_ai.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatPhieuMuonActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPK_btnQLS">
@@ -791,10 +786,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnK_xoaMaSach" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="btnXuatPhieuMuon" min="-2" pref="110" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btnK_xoaMaSach" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -812,7 +804,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnK_luuMaSach" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnK_lamMoiSach" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnXuatPhieuMuon" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -918,26 +909,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnK_suaPM1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnXuatPhieuMuon">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="20" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/R_pixian_ai.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatPhieuMuonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
