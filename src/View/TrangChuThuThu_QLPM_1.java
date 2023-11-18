@@ -824,13 +824,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         int selectedRow = jTable2.getSelectedRow();
         cbbK_maPM.setSelectedItem((String) jTable2.getValueAt(selectedRow, 0));
         txtK_maSach.setText((String) jTable2.getValueAt(selectedRow, 1));
-        //fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
-//        txtK_maSach.setEnabled(true);
-//        fieldTinhtrangsach.setEnabled(true);
-//        btnK_luuPM.setEnabled(true);
-//        btnK_themMaSach.setEnabled(false);
-//        // btnK_suaPM1.setEnabled(false);
-//        btnK_xoaMaSach.setEnabled(false);
     }
 
     private void btnK_themPMActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPMActionPerformed
@@ -925,10 +918,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themMaSachActionPerformed
         txtK_maSach.setEnabled(true);
-        // fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(true);
-        // btnK_themMaSach.setEnabled(false);
-        btnK_suaPM1.setEnabled(false);
         btnK_xoaMaSach.setEnabled(false);
     }// GEN-LAST:event_btnK_themMaSachActionPerformed
 
@@ -950,13 +940,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Thêm phiếu chi tiết mượn thành công!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Thêm phiếu chi tiết mượn thất bại!");
-                }
-            } else if (btnK_suaPM1.isEnabled()) {
-
-                if (ChiTietPhieuMuon_DAO.getInstance().update(chiTietPhieuMuon) > 0) {
-                    JOptionPane.showMessageDialog(null, "Sửa phiếu chi tiết mượn thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Sửa phiếu chi tiết mượn thất bại!");
                 }
             } else if (btnK_xoaMaSach.isEnabled()) {
                 int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xác nhận xóa",
@@ -1043,17 +1026,11 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         txtK_maSach.setText("");
         // fieldTinhtrangsach.setText("");
         // fieldTinhtrangsach.setEnabled(false);
-        btnK_xoaMaSach.setEnabled(false);
+        btnK_xoaMaSach.setEnabled(true);
     }// GEN-LAST:event_btnK_xoaMaSachActionPerformed
 
     private void btnK_suaPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_suaPM1ActionPerformed
         // TODO add your handling code here:
-        txtK_maSach.setEnabled(true);
-        // fieldTinhtrangsach.setEnabled(true);
-        btnK_luuMaSach.setEnabled(true);
-        btnK_themMaSach.setEnabled(false);
-        // btnK_suaPM1.setEnabled(false);
-        btnK_xoaMaSach.setEnabled(false);
     }// GEN-LAST:event_btnK_suaPM1ActionPerformed
 
     private void btnXuatPhieuMuonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnXuatPhieuMuonActionPerformed
