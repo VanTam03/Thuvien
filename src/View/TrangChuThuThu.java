@@ -1527,7 +1527,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
         jScrollPane20.setViewportView(tbl_DMSach5);
-
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
         jLabel109.setForeground(new java.awt.Color(0, 0, 0));
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
@@ -1770,6 +1769,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 "Mã tác giả", "Tên tác giả", "Số lượng sách"
             }
         ));
+        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLTGiaTableMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(QLTGiaTable);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
