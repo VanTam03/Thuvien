@@ -1,6 +1,4 @@
-﻿--CREATE DATABASE [QuanLyThuVien]
---USE [QuanLyThuVien]
---Go
+﻿--create database [QuanLyThuVien]
 ALTER DATABASE [QuanLyThuVien] SET COMPATIBILITY_LEVEL = 150
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -91,9 +89,8 @@ CREATE TABLE [dbo].[ThongTinSach](
     [maSach] [varchar](5) NOT NULL,
     [tenSach] [nvarchar](100) NULL,
     [maDMSach] [char](10) NULL,
-    [maTheLoai] [char](10) NULL,
+    [maTheLoai] [char](10) NOT NULL,
     [maTacGia] [nvarchar](100) NOT NULL,
-    [tenTacGia] [nvarchar](100) NOT NULL,
     [NXB] [nvarchar](100) NOT NULL,
     [namXuatBan] [int] NULL,
     [giaTienSach] [money] NOT NULL,
@@ -107,7 +104,7 @@ ALTER TABLE [dbo].[ThongTinSach] WITH CHECK ADD FOREIGN KEY([maSach])
 REFERENCES [dbo].[KhoSach] ([maSach])
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /********************* TÁC GIẢ ***********************/
-CREATE TABLE [dbo].[TacGia](
+CREATE TABLE [dbo].[TacGia] (
 	[maTacGia] [nvarchar](100) NOT NULL,
 	[tenTacGia] [nvarchar](100) NOT NULL,
 	[soSach] [int] NOT NULL,
@@ -163,14 +160,15 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TaiKhoan](
-	[maTaiKhoan] [char](13) NOT NULL,
+	[maTaiKhoan] [char](10) NOT NULL,
 	[matKhau] [varchar](20) NULL,
     [loaiTaiKhoan] [nvarchar](100) NULL,
 	[tenNguoiDung] [nvarchar](100) NULL,
 	[ngaySinh] [date] NULL,
 	[gioiTinh] [nvarchar](3) NULL,
 	[email] [varchar](100) NULL,
-	[sdt] [char](10) NULL,
+	[sdt] [char](11) NULL,
+	[diaChi] [nvarchar](100) NULL,
 	[trangThai] [int] NOT NULL,
 	[soLuongMuon] [int] NULL,
 PRIMARY KEY CLUSTERED 
@@ -185,7 +183,7 @@ ALTER TABLE [dbo].[TaiKhoan] ADD CONSTRAINT CK_TaiKhoan_trangThai CHECK (trangTh
 /*********** LOẠI THẺ **********/
 -- Tạo bảng LoaiThe
 CREATE TABLE [dbo].[LoaiThe](
-    [maLoaiThe] [char](13) NOT NULL,  
+    [maLoaiThe] [char](10) NOT NULL,  
     [tenLoaiThe] [nvarchar](100) NOT NULL, 
     [ngayMoThe] [date] NOT NULL,
     [hanSuDung] [date] NOT NULL, 
@@ -201,6 +199,24 @@ GO
 -- Tạo ràng buộc khóa ngoại
 ALTER TABLE [dbo].[LoaiThe] ADD CONSTRAINT FK_LoaiThe_maLoaiThe FOREIGN KEY (maLoaiThe) REFERENCES [dbo].[TaiKhoan] (maTaiKhoan);
 GO
+----------------------------/* NÀY MỚI THÊM */----------------------------------
+DECLARE @SoCuoiHSSV INT;
+DECLARE @SoCuoiCBGV INT;
+SELECT @SoCuoiHSSV = ISNULL(MAX(CASE WHEN [loaiTaiKhoan] = 'Học Sinh - Sinh Viên' THEN CAST(RIGHT([maTaiKhoan], 4) AS INT) END), 0),
+       @SoCuoiCBGV = ISNULL(MAX(CASE WHEN [loaiTaiKhoan] = 'Cán Bộ - Giáo Viên' THEN CAST(RIGHT([maTaiKhoan], 4) AS INT) END), 0)
+FROM [dbo].[TaiKhoan];
+BEGIN TRAN;
+
+UPDATE [dbo].[TaiKhoan]
+SET [maTaiKhoan] = CASE 
+    WHEN [loaiTaiKhoan] = 'Học Sinh - Sinh Viên ' THEN '3121' + RIGHT('0000' + CAST(@SoCuoiHSSV + 1 AS VARCHAR(4)), 4)
+    WHEN [loaiTaiKhoan] = 'Cán Bộ - Giáo Viên' THEN '3120' + RIGHT('0000' + CAST(@SoCuoiCBGV + 1 AS VARCHAR(4)), 4)
+    ELSE [maTaiKhoan] 
+END
+WHERE [loaiTaiKhoan] IN ('Học Sinh - Sinh Viên', 'Cán Bộ - Giáo Viên');
+
+COMMIT TRAN;
+--------------------------------------------
 --Check số sách được mượn 
 SET ANSI_NULLS ON
 GO
@@ -240,16 +256,15 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[PhanLoaiSach](
     [maTheLoai] [char](10) NOT NULL,
-    [NXB] [nvarchar](100) NOT NULL,
-	[maTacGia] [nvarchar](100) NOT NULL,
-    [tenTacGia] [nvarchar](100) NOT NULL,
-    [tenTheLoai] [nvarchar](100) NULL,
-    PRIMARY KEY CLUSTERED ([maTacGia]),
-    FOREIGN KEY ([maTacGia]) REFERENCES [dbo].[TacGia]([maTacGia])
-);
-ALTER TABLE [dbo].[PhanLoaiSach]
-ADD CONSTRAINT [UQ_PhanLoaiSach_maTheLoai] UNIQUE ([maTheLoai], [NXB], [maTacGia]);
-GO
+    [tenTheLoai] [nvarchar](100) NOT NULL,
+    PRIMARY KEY CLUSTERED 
+    (
+        [maTheLoai] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO 
+ALTER TABLE [dbo].[ThongTinSach] ADD CONSTRAINT FK_LoaiThe_maTheLoai
+FOREIGN KEY (maTheLoai) REFERENCES [dbo].[PhanLoaiSach](maTheLoai);
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /****** PHIẾU MƯỢN   ******/
@@ -263,7 +278,7 @@ CREATE TABLE [dbo].[PhieuMuon](
 	[soNgayMuon] [int] NULL,
 	[hanTraSach] [date] NULL,
 	[soLuongSach] [int] NULL,
-	[maTaiKhoan] [char](13) NULL,
+	[maTaiKhoan] [char](10) NULL,
 	[maQuanLy] [char](10) NULL,
 	[ghiChu] [nvarchar](max) NULL,
 	[trangThai] [nvarchar](100) NULL,
@@ -295,20 +310,21 @@ CREATE TABLE [dbo].[ChiTietPhieuMuon](
 PRIMARY KEY CLUSTERED 
 (
 	[maPhieuMuon] ASC,
-	[maSach] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+    [maSach] ASC
+)  WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[ChiTietPhieuMuon] WITH CHECK ADD FOREIGN KEY([maPhieuMuon])
 REFERENCES [dbo].[PhieuMuon] ([maPhieuMUon])
 GO
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /******* PHIẾU NHẬP SÁCH ******/
 CREATE TABLE [dbo].[PhieuNhapSach](
     [maPhieuNhap] [char](13) NOT NULL,
     [ngayNhap] [date] NULL,
-    [maNhaCungCap] [char](10) NULL,
+    [nhaCungCap] [char](10) NULL,
     PRIMARY KEY CLUSTERED
     (
         [maPhieuNhap] ASC
@@ -330,11 +346,10 @@ CREATE TABLE ChiTietPhieuNhapSach(
     PRIMARY KEY CLUSTERED
     (
         [maPhieuNhap] ASC,
-        [maSach] ASC
+		[maSach] ASC 
     )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
 -- Tạo ràng buộc khóa ngoại maPhieuNhap tham chiếu đến PhieuNhapSach
 ALTER TABLE [dbo].[ChiTietPhieuNhapSach] WITH CHECK ADD FOREIGN KEY([maPhieuNhap])
 REFERENCES [dbo].[PhieuNhapSach] ([maPhieuNhap])
@@ -344,7 +359,6 @@ REFERENCES [dbo].[PhieuNhapSach] ([maPhieuNhap])
 ALTER TABLE [dbo].[ChiTietPhieuNhapSach]
 ADD CONSTRAINT CK_ChiTietPhieuNhapSach_soLuongNhap
 CHECK (soLuongNhap >= 0);
-
 -- Thêm index cho cột `maSach` trong bảng `ChiTietPhieuNhapSach`
 CREATE INDEX IX_ChiTietPhieuNhapSach_maSach ON [dbo].[ChiTietPhieuNhapSach] (maSach);
 GO 
@@ -362,11 +376,12 @@ BEGIN
     -- Thêm một sách mới vào bảng `Kho Sach`
     INSERT INTO [dbo].[KhoSach] ([maSach], [tongSoLuong]) VALUES (@maSach, @soLuongNhap)
 	-- Thêm một sách mới vào bảng `Thông Tin Sách`
-	INSERT INTO [dbo].[ThongTinSach] ([maSach], [tenSach], [tenTacGia], [maTheLoai], [NXB], [namXuatBan])VALUES (@maSach, @tenSach, @maTacGia, @maTheLoai, @NXB, @namXuatBan)
+	INSERT INTO [dbo].[ThongTinSach] ([maSach], [tenSach], [maTacGia], [maTheLoai], [NXB], [namXuatBan])VALUES (@maSach, @tenSach, @maTacGia, @maTheLoai, @NXB, @namXuatBan)
     -- Trả về mã sách của sách mới được thêm vào
     SELECT @maSach AS maSach;
 END;
 GO
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /***** THANH LÝ SÁCH *****/
 CREATE TABLE [dbo].[ThanhLySach] (
@@ -379,10 +394,10 @@ CREATE TABLE [dbo].[ThanhLySach] (
     [tongTienThanhLy] [money] NOT NULL,
     PRIMARY KEY CLUSTERED (
         [maThanhLySach] ASC
-    ),
-    CONSTRAINT FK_ThanhLySach_ThongTinSach FOREIGN KEY ([maSach]) REFERENCES [dbo].[ThongTinSach] ([maSach]),
-	CONSTRAINT FK_ThanhLySach_KhoSach FOREIGN KEY ([maSach]) REFERENCES [dbo].[KhoSach] ([maSach])
-) ON [PRIMARY];
+    )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+ALTER TABLE [dbo].[ThanhLySach] WITH CHECK ADD FOREIGN KEY([maSach])
+REFERENCES [dbo].[KhoSach] ([maSach])
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /****** TỰ ĐỘNG TĂNG MÃ SÁCH  ******/
 SET ANSI_NULLS ON
@@ -446,7 +461,7 @@ BEGIN
     DECLARE @maPhieuMuon varchar(5)
     DECLARE @ngayMuon date
     DECLARE @soNgayMuon int
-    DECLARE @maTaiKhoan char(13)
+    DECLARE @maTaiKhoan char(10)
     DECLARE @maQuanLy char(10)
     DECLARE @ghiChu nvarchar(max)
     DECLARE @trangThai nvarchar(100)
@@ -568,63 +583,98 @@ GO
 GO
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /************************* IN PHIẾU TRẢ ,CẬP NHẬT SỐ LƯỢNG SÁCH VÀ TÌNH TRẠNG SÁCH ****************/
-CREATE TRIGGER tr_traSach
-ON ChiTietPhieuMuon
-FOR UPDATE
+CREATE TRIGGER UpdateTienPhat
+ON dbo.ChiTietPhieuMuon
+AFTER UPDATE
 AS
 BEGIN
-    -- Tạo phiếu trả sách
-    DECLARE @maPhieuTraSach varchar(5)
-    DECLARE @ngayTraSach date
-    DECLARE @maPhieuMuon varchar(5)
-    DECLARE @maSach varchar(5)
-    DECLARE @tinhTrangSach nvarchar(100)
+    SET NOCOUNT ON;
 
-    SELECT @maPhieuTraSach = dbo.func_nextID('', 'PT', 5),
-           @ngayTraSach = GETDATE(),
-           @maPhieuMuon = i.maPhieuMuon,
-           @maSach = i.maSach
+    DECLARE @maPhieuMuon varchar(5), @maSach varchar(5), @ngayThucTra date, @tinhTrangSach nvarchar(100), @tinhTrangSachHienTai nvarchar(100);
+    DECLARE @giaTienSach money, @tienPhat money, @tienboithuong money, @soLuongMuon int, @soNgayTre  int;
+
+    -- Lấy thông tin từ bảng Inserted
+    SELECT @maPhieuMuon = i.maPhieuMuon, @maSach = i.maSach, @ngayThucTra = i.ngayThucTra, @tinhTrangSach = i.tinhTrangSach
     FROM inserted i;
 
-    -- Kiểm tra tình trạng sách
-    IF EXISTS (SELECT 1 FROM inserted i WHERE i.tinhTrangSach = 'Mất sách')
-    BEGIN
-        -- Cập nhật tình trạng sách thành `Mất sách`
-        SET @tinhTrangSach = 'Mất sách'
-    END
-    ELSE
-    BEGIN
-        -- Cập nhật tình trạng sách thành `Hư hỏng'
-        SET @tinhTrangSach = 'Hư hỏng'
-    END;
-
-    -- Cập nhật số lượng và tình trạng sách
-    UPDATE KhoSach
-    SET soLuongCon = soLuongCon + 1
-    WHERE maSach = @maSach;
-
-    UPDATE ThongTinSach
-    SET tinhTrangSach = @tinhTrangSach
-    WHERE maSach = @maSach;
-
-    -- Tính tiền phạt
-    DECLARE @tienPhat money;
-    EXEC sp_TinhTienPhatHuuSachVaTre @maPhieuTraSach, @ngayTraSach,@maPhieuMuon,@maSach, @tinhTrangSach;
+    -- Lấy giá tiền sách từ bảng ThongTinSach
+    SELECT @giaTienSach = ts.giaTienSach
+    FROM dbo.ThongTinSach ts
+    WHERE ts.maSach = @maSach;
     
-    -- Cập nhật tiền phạt vào phiếu trả sách
-    UPDATE [ChiTietPhieuMuon]
-    SET tienPhat = @tienPhat
-    WHERE maPhieuMuon = @maPhieuMuon;
+    IF UPDATE(ngayThucTra) and update (tinhTrangSach)
+	BEGIN
+		-- Tính toán số ngày trễ hạn
+		SET @soNgayTre = DATEDIFF(day, (SELECT hanTraSach FROM dbo.PhieuMuon WHERE maPhieuMuon = @maPhieuMuon), @ngayThucTra);
+		-- Tính tiền trễ hạn
+		IF @soNgayTre > 0
+		BEGIN
+			
+				SET @tienPhat = @soNgayTre * 10000;   
+		END
+		ELSE
+		BEGIN
+			SET @tienPhat = 0;
+		END
+		-- Tính toán tiền phạt dựa trên điều kiện và số ngày trễ hạn
+		IF @tinhTrangSach = N'Mất sách'
+			SET @tienboithuong = @giaTienSach * 1.4 ;
+		ELSE IF @tinhTrangSach = N'Bị hỏng'
+			SET @tienboithuong = @giaTienSach * 0.5 ; 
+		ELSE
+			SET @tienboithuong = 0;
 
-    -- In phiếu trả sách
-    PRINT 'Mã phiếu trả sách: ' + @maPhieuTraSach
-    PRINT 'Ngày trả sách: ' + CONVERT(varchar, @ngayTraSach, 103) -- Định dạng ngày tháng
-    PRINT 'Mã phiếu mượn: ' + @maPhieuMuon
-    PRINT 'Mã sách: ' + @maSach
-    PRINT 'Tình trạng sách: ' + @tinhTrangSach
-    PRINT 'Tiền phạt: ' + CONVERT(varchar, @tienPhat, 2) -- Định dạng tiền phạt
+		-- Cập nhật tienPhat trong bảng ChiTietPhieuMuon
+		UPDATE dbo.ChiTietPhieuMuon
+		SET tienPhat = @tienPhat + @tienboithuong
+		WHERE maPhieuMuon = @maPhieuMuon AND maSach = @maSach;
+
+		-- Cập nhật soLuongMuon trong bảng TaiKhoan
+		UPDATE dbo.TaiKhoan
+		SET soLuongMuon = soLuongMuon - 1
+		WHERE maTaiKhoan = (SELECT maTaiKhoan FROM dbo.PhieuMuon WHERE maPhieuMuon = @maPhieuMuon);
+
+		-- Cập nhật KhoSach
+		IF @tinhTrangSach IN ('Bị hỏng')
+			UPDATE dbo.KhoSach
+			SET soLuongSachHong = soLuongSachHong + 1
+			WHERE maSach = @maSach;
+		ELSE IF @tinhTrangSach = N'không hỏng'
+			UPDATE dbo.KhoSach
+			SET soLuongCon = soLuongCon + 1
+			WHERE maSach = @maSach;
+	end
+	IF update (tinhTrangSach)
+	BEGIN
+		--lấy tình trạng hiện tại
+		SELECT @tinhTrangSachHienTai = i.tinhTrangSach
+		FROM inserted i;
+		SET @soNgayTre = DATEDIFF(day, (SELECT hanTraSach FROM dbo.PhieuMuon WHERE maPhieuMuon = @maPhieuMuon), @ngayThucTra);
+		-- Tính tiền trễ hạn
+		IF @soNgayTre > 0
+		BEGIN
+			
+			SET @tienPhat = @soNgayTre * 10000;   
+		END
+		ELSE
+		BEGIN
+			SET @tienPhat = 0;
+		END
+		-- Tính toán tiền phạt dựa trên điều kiện và số ngày trễ hạn
+		IF @tinhTrangSach = N'Mất sách'
+			SET @tienboithuong = @giaTienSach * 1.4 ;
+		ELSE IF @tinhTrangSach = N'Bị hỏng'
+			SET @tienboithuong = @giaTienSach * 0.5 ; 
+		ELSE
+			SET @tienboithuong = 0;
+
+		-- Cập nhật tienPhat trong bảng ChiTietPhieuMuon
+		UPDATE dbo.ChiTietPhieuMuon
+		SET tienPhat = @tienPhat + @tienboithuong
+		WHERE maPhieuMuon = @maPhieuMuon AND maSach = @maSach;
+	end
 END
-GO
+go
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /**************** TỰ ĐỘNG TẠO PHIẾU NHẬP MỚI VÀ CẬP NHẬT SỐ LƯỢNG SÁCH TRONG KHO ****************/
 CREATE TRIGGER tr_nextMaPhieuNhap ON dbo.PhieuNhapSach
@@ -655,29 +705,82 @@ BEGIN
     WHERE maSach = @maSach
 END
 GO 
+/******************************* TỰ ĐỘNG TĂNG MÃ Thanh lý *******************/
+CREATE TABLE ThanhLySachCounter (
+    Counter INT
+);
+
+INSERT INTO ThanhLySachCounter (Counter) VALUES (1);
+
+Go
+CREATE TRIGGER tr_ThanhLySach_Insert
+ON [dbo].[ThanhLySach]
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Counter INT;
+    DECLARE @Prefix NVARCHAR(2) = 'TL';
+
+    SELECT @Counter = Counter FROM ThanhLySachCounter;
+
+    INSERT INTO [dbo].[ThanhLySach] (
+        [maThanhLySach],
+        [maSach],
+        [soLuongSachHong],
+        [lyDoThanhLy],
+        [ngayThanhLy],
+        [ghiChu],
+        [tongTienThanhLy]
+    )
+    SELECT
+        @Prefix + RIGHT('000' + CAST(@Counter AS NVARCHAR(3)), 3),
+        [maSach],
+        [soLuongSachHong],
+        [lyDoThanhLy],
+        [ngayThanhLy],
+        [ghiChu],
+        [tongTienThanhLy]
+    FROM inserted;
+
+    SET @Counter = @Counter + 1;
+
+    UPDATE ThanhLySachCounter SET Counter = @Counter;
+END;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/********************** TỰ ĐỘNG TĂNG SỐ LƯỢNG SÁCH HƯ *******************/
+/******************************* TỰ ĐỘNG TĂNG SỐ LƯỢNG SÁCH HƯ *******************
 CREATE TRIGGER tr_updateSoLuongSachHong ON dbo.KhoSach
 FOR INSERT, UPDATE, DELETE
 AS
 BEGIN
     DECLARE @maSach varchar(5)
     DECLARE @soLuongSachHong int 
+    DECLARE @soLuongSachHongCu int 
 
     SELECT @maSach = i.maSach, @soLuongSachHong = i.soLuongSachHong
     FROM inserted i
 
+    SELECT @soLuongSachHongCu = KhoSach.soLuongSachHong
+    FROM KhoSach
+    WHERE maSach = @maSach
+
     UPDATE KhoSach
-    SET soLuongSachHong = soLuongSachHong + @soLuongSachHong
+    SET soLuongSachHong = ISNULL(@soLuongSachHongCu, 0) + @soLuongSachHong
     WHERE maSach = @maSach
 
     SELECT @maSach = d.maSach, @soLuongSachHong = d.soLuongSachHong
     FROM deleted d
 
+    SELECT @soLuongSachHongCu = KhoSach.soLuongSachHong
+    FROM KhoSach
+    WHERE maSach = @maSach
+
     UPDATE KhoSach
-    SET soLuongSachHong = soLuongSachHong + @soLuongSachHong
+    SET soLuongSachHong = ISNULL(@soLuongSachHongCu, 0) + @soLuongSachHong
     WHERE maSach = @maSach
 END
+*/
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 GO
 /**************** DANH MỤC ****************/
@@ -707,24 +810,12 @@ INSERT INTO [dbo].[TacGia]([maTacGia], [tenTacGia], [soSach]) VALUES ('TG015', '
 INSERT INTO [dbo].[TacGia]([maTacGia], [tenTacGia], [soSach]) VALUES ('TG016', 'GS.TS.Phạm Văn Hội', 1)
 INSERT INTO [dbo].[TacGia]([maTacGia], [tenTacGia], [soSach]) VALUES ('TG017', 'Phan Quang Minh', 1)
 
-/**************** PHÂN LOẠI *************[tenTheLoai],*******/
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL001', N'Giáo trình công nghệ ', N'NXB Công nghệ thông tin',N'TG002 ',  N'Nguyễn Linh Nam')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL001', N'Giáo trình công nghệ ', N'NXB Công nghệ thông tin',N'TG003 ',  N'Lê Văn Sung ')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL001', N'Giáo trình công nghệ ', N'NXB Công nghệ thông tin',N'TG001 ', N'Hoàng Thị Mỹ Lệ')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL002', N'Giáo trình kỹ thuật', N'NXB Cơ Khí',N'TG004 ', N'Nguyễn Đức Lợi')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL002', N'Giáo trình kỹ thuật', N'NXB Cơ Khí',N'TG005 ', N'Võ Huy Hoàng')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL003', N'Ngôn ngữ', N'NXB Ngoại ngữ',N'TG006 ', N'Nguyễn Như Hiền')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL003', N'Ngôn ngữ', N'NXB Ngoại ngữ',N'TG007 ', N'Nguyễn Đức Trí')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL004', N'Điện - Điện tử', N'NXB Điện-Điện Tử',N'TG008 ',N'Phạm Ngọc Thắng')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL004', N'Điện - Điện tử', N'NXB Điện-Điện Tử',N'TG009 ',N'Đặng Văn Tuệ')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL004', N'Điện - Điện tử', N'NXB Điện-Điện Tử',N'TG010 ',N'Nguyễn Xuân Phú')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL004', N'Điện - Điện tử', N'NXB Điện-Điện Tử',N'TG011 ',N'Tăng Văn Mùi - Trần Duy Nam')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL004', N'Điện - Điện tử', N'NXB Điện-Điện Tử',N'TG012 ',N'Nguyễn Công Phương')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL005', N'Cơ sở hạ tầng', N'NXB Xây dựng',N'TG013 ',N'Lưu Bá Thuận')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL005', N'Cơ sở hạ tầng', N'NXB Xây dựng',N'TG014 ',N'Nguyễn Thái')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL005', N'Cơ sở hạ tầng', N'NXB Xây dựng',N'TG015 ',N'Bộ Xây dựng')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL005', N'Cơ sở hạ tầng', N'NXB Xây dựng',N'TG016',N'GS.TS.Phạm Văn Hội ')
-INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai],[NXB],[maTacGia], [tenTacGia]) VALUES (N'TL005', N'Cơ sở hạ tầng', N'NXB Xây dựng',N'TG017 ',N'Phan Quang Minh')
+/**************** PHÂN LOẠI ********************/
+INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai]) VALUES (N'TL001', N'Giáo trình công nghệ ')
+INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai]) VALUES (N'TL002', N'Giáo trình kỹ thuật')
+INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai]) VALUES (N'TL003', N'Ngôn ngữ')
+INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai]) VALUES (N'TL004', N'Điện - Điện tử')
+INSERT [dbo].[PhanLoaiSach] ([maTheLoai],[tenTheLoai]) VALUES (N'TL005', N'Cơ sở hạ tầng')
 /******************* KHO SÁCH ****************************/
 INSERT [dbo].[KhoSach] ([maSach], [tongSoLuong], [soLuongCon], [soLuongSachHong]) VALUES (N'S0003',7,5,0)
 INSERT [dbo].[KhoSach] ([maSach], [tongSoLuong], [soLuongCon], [soLuongSachHong]) VALUES (N'S0001',10,7,0)
@@ -752,61 +843,61 @@ INSERT [dbo].[KhoSach] ([maSach], [tongSoLuong], [soLuongCon], [soLuongSachHong]
 INSERT [dbo].[KhoSach] ([maSach], [tongSoLuong], [soLuongCon], [soLuongSachHong]) VALUES (N'S0024',7,5,0)
 INSERT [dbo].[KhoSach] ([maSach], [tongSoLuong], [soLuongCon], [soLuongSachHong]) VALUES (N'S0025',3,2,0)
 /******************* THÔNG TIN SÁCH ***********************/
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0001', N'Giáo trình kỹ thuật xung số và ứng dụng', N'DM003', N'TL001',N'TG002', N'Nguyễn Linh Nam', N'NXB Công nghệ thông tin', 2016, 125000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0002', N'Lập trình cơ bản với C', N'DM003', N'TL001',N'TG001', N'Hoàng Thị Mỹ Lệ', N'NXB Công nghệ thông tin', 2016, 110000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0003', N'Trường điện từ - Lý thuyết và bài tập', N'DM003', N'TL001',N'TG003', N'Lê Văn Sung', N'NXB Công nghệ thông tin', 2016, 90000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0004', N'Cơ sở dữ liệu', N'DM003', N'TL001',N'TG001', N'Hoàng Thị Mỹ Lệ', N'NXB Công nghệ thông tin', 2016, 135000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0005', N'Tin học văn phòng', N'DM003', N'TL001',N'TG001', N'Hoàng Thị Mỹ Lệ', N'NXB Công nghệ thông tin', 2016, 73000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0006', N'Bơm nhiệt', N'DM002', N'TL002',N'TG004', N'Nguyễn Đức Lợi', N'NXB Cơ Khí', 2018, 95000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0007', N'Cơ sở thiết kế máy', N'DM002', N'TL002',N'TG004', N'Nguyễn Đức Lợi', N'NXB Cơ Khí', 2018,100000 ,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0008', N'Đo lường nhiệt', N'DM002', N'TL002',N'TG005', N'Võ Huy Hoàng', N'NXB Cơ Khí', 2018, 58000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0009', N'Nhiên liệu sạch', N'DM002', N'TL002',N'TG004', N'Nguyễn Đức Lợi', N'NXB Cơ Khí', 2018,60000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0010', N'Giáo trình kỹ thuật nhiệt', N'DM002', N'TL002',N'TG004', N'Nguyễn Đức Lợi', N'NXB Cơ Khí', 2018, 112000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0011', N'Ngoại ngữ 1', N'DM005', N'TL003',N'TG006', N'Nguyễn Như Hiền', N'NXB Ngoại ngữ', 2010, 145000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0012', N'Grammar in use', N'DM005', N'TL003',N'TG007', N'Nguyễn Đức Trí', N'NXB Ngoại ngữ', 2018, 123000, N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0013', N'Listen carefully', N'DM005', N'TL003',N'TG006', N'Nguyễn Như Hiền', N'NXB Ngoại ngữ', 2018, 123000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0014', N'Ngoại ngữ cơ bản', N'DM005', N'TL003',N'TG006', N'Nguyễn Như Hiền', N'NXB Ngoại ngữ', 2018, 105000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0015', N'Ngoại ngữ 2', N'DM005', N'TL003',N'TG006', N'Nguyễn Như Hiền', N'NXB Ngoại ngữ', 2018, 145000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0016', N'Kỹ thuật xử lý tín hiệu điều khiển', N'DM001', N'TL004',N'TG008', N'	Phạm Ngọc Thắng', N'NXB Điện-Điện Tử', 2014, 598000 ,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0017', N'Bài tập vi điều khiển và PLC', N'DM001', N'TL004',N'TG009', N'Đặng Văn Tuệ', N'NXB Điện-Điện Tử', 2014, 78000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0018', N'Khí cụ điện - kết cấu, sử dụng và sửa chữa', N'DM001', N'TL004',N'TG010', N'Nguyễn Xuân Phú', N'NXB Điện-Điện Tử', 2014, 132000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0019', N'Sổ tay chuyên ngành điện', N'DM001', N'TL004',N'TG011',N'Tăng Văn Mùi - Trần Duy Nam', N'NXB Điện-Điện Tử', 2013, 54000 ,N' Bình thường ',N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0020', N'Bài tập điều khiển tự động', N'DM001', N'TL004',N'TG012', N'	Nguyễn Công Phương', N'NXB Điện-Điện Tử', 2013,97000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0021', N'Sổ tay máy làm đất và làm đường', N'DM004', N'TL005',N'TG013', N'Lưu Bá Thuận', N'NXB Xây dựng', 2015, 54000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0022', N'Móng cọc phân tích và thiết kế', N'DM004', N'TL005',N'TG014', N'Nguyễn Thái', N'NXB Xây dựng', 2014, 92000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0023', N'Cấu tạo bê tông cốt thép', N'DM004', N'TL005',N'TG015', N'Bộ Xây dựng', N'NXB Xây dựng', 2014, 167000,N' Bình thường ', N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0024', N'Kết cấu thép - Công trình đặc biệt', N'DM004', N'TL005',N'TG016', N'GS.TS.Phạm Văn Hội ', N'NXB Xây dựng', 2013, 127000,N' Bình thường ',  N'')
-INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [tenTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0025', N'Kết cấu bê tông cốt thép - Phần cấu kiện cơ bản', N'DM004', N'TL005',N'TG017', N'Phan Quang Minh', N'NXB Xây dựng', 2013, 125000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0001', N'Giáo trình kỹ thuật xung số và ứng dụng', N'DM003', N'TL001',N'TG002',N'NXB Công nghệ thông tin', 2016, 125000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0002', N'Lập trình cơ bản với C', N'DM003', N'TL001',N'TG001', N'NXB Công nghệ thông tin', 2016, 110000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0003', N'Trường điện từ - Lý thuyết và bài tập', N'DM003', N'TL001',N'TG003', N'NXB Công nghệ thông tin', 2016, 90000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0004', N'Cơ sở dữ liệu', N'DM003', N'TL001',N'TG001', N'NXB Công nghệ thông tin', 2016, 135000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0005', N'Tin học văn phòng', N'DM003', N'TL001',N'TG001',  N'NXB Công nghệ thông tin', 2016, 73000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0006', N'Bơm nhiệt', N'DM002', N'TL002',N'TG004',  N'NXB Cơ Khí', 2018, 95000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0007', N'Cơ sở thiết kế máy', N'DM002', N'TL002',N'TG004',  N'NXB Cơ Khí', 2018,100000 ,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0008', N'Đo lường nhiệt', N'DM002', N'TL002',N'TG005',  N'NXB Cơ Khí', 2018, 58000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0009', N'Nhiên liệu sạch', N'DM002', N'TL002',N'TG004',  N'NXB Cơ Khí', 2018,60000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0010', N'Giáo trình kỹ thuật nhiệt', N'DM002', N'TL002',N'TG004', N'NXB Cơ Khí', 2018, 112000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0011', N'Ngoại ngữ 1', N'DM005', N'TL003',N'TG006',  N'NXB Ngoại ngữ', 2010, 145000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0012', N'Grammar in use', N'DM005', N'TL003',N'TG007', N'NXB Ngoại ngữ', 2018, 123000, N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0013', N'Listen carefully', N'DM005', N'TL003',N'TG006',  N'NXB Ngoại ngữ', 2018, 123000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0014', N'Ngoại ngữ cơ bản', N'DM005', N'TL003',N'TG006',  N'NXB Ngoại ngữ', 2018, 105000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0015', N'Ngoại ngữ 2', N'DM005', N'TL003',N'TG006',  N'NXB Ngoại ngữ', 2018, 145000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0016', N'Kỹ thuật xử lý tín hiệu điều khiển', N'DM001', N'TL004',N'TG008',  N'NXB Điện-Điện Tử', 2014, 598000 ,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0017', N'Bài tập vi điều khiển và PLC', N'DM001', N'TL004',N'TG009',  N'NXB Điện-Điện Tử', 2014, 78000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0018', N'Khí cụ điện - kết cấu, sử dụng và sửa chữa', N'DM001', N'TL004',N'TG010',  N'NXB Điện-Điện Tử', 2014, 132000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0019', N'Sổ tay chuyên ngành điện', N'DM001', N'TL004',N'TG011',N'NXB Điện-Điện Tử', 2013, 54000 ,N' Bình thường ',N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0020', N'Bài tập điều khiển tự động', N'DM001', N'TL004',N'TG012',  N'NXB Điện-Điện Tử', 2013,97000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0021', N'Sổ tay máy làm đất và làm đường', N'DM004', N'TL005',N'TG013',  N'NXB Xây dựng', 2015, 54000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0022', N'Móng cọc phân tích và thiết kế', N'DM004', N'TL005',N'TG014',  N'NXB Xây dựng', 2014, 92000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0023', N'Cấu tạo bê tông cốt thép', N'DM004', N'TL005',N'TG015', N'NXB Xây dựng', 2014, 167000,N' Bình thường ', N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0024', N'Kết cấu thép - Công trình đặc biệt', N'DM004', N'TL005',N'TG016', N'NXB Xây dựng', 2013, 127000,N' Bình thường ',  N'')
+INSERT [dbo].[ThongTinSach] ([maSach], [tenSach], [maDMSach], [maTheLoai],[maTacGia], [NXB], [namXuatBan],[giaTienSach],[tinhTrangSach], [tomTatND]) VALUES (N'S0025', N'Kết cấu bê tông cốt thép - Phần cấu kiện cơ bản', N'DM004', N'TL005',N'TG017',  N'NXB Xây dựng', 2013, 125000,N' Bình thường ', N'')
 /************************** TÀI KHOẢN *************************/
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312141001', N'abc123', N'Học Sinh - Sinh Viên', N'Phạm Văn Tâm', CAST(N'2001-09-02' AS Date), N'Nam', N'phamvantam@gmail.com', N'0776155064', 1, 3)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312141002', N'abc123', N'Học Sinh - Sinh Viên', N'Hà Nguyễn Yến Vy', CAST(N'2001-07-09' AS Date), N'Nữ', N'hanguyenyenvy@gmail.com', N'0777443873', 1, 1)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312141003', N'abc123', N'Cán Bộ Giảng Viên', N'Nguyễn Bá Sĩ Trâm', CAST(N'2001-07-09' AS Date), N'Nam', N'nguyenbasitram@gmail.com', N'0795841141', 1, 0)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312141004', N'abc123', N'Học Sinh - Sinh Viên', N'Phan Thị Anh Thư', CAST(N'2001-07-09' AS Date), N'Nữ', N'phanthianhthu@gmail.com', N'0375141345', 1, 0)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312141005', N'abc123', N'Cán Bộ Giảng Viên', N'Nguyễn Thanh Tiến', CAST(N'2001-07-09' AS Date), N'Nam', N'thanhtien123@gmail.com', N'0779997865', 1, 3)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312041006', N'abc123', N'Học Sinh - Sinh Viên', N'Trương Tiến Anh', CAST(N'2001-07-09' AS Date), N'Nam', N'tienanh7723@gmail.com', N'0901345667', 1, 3)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312241007', N'abc123', N'Học Sinh - Sinh Viên', N'Nguyễn Quang Tuấn Nghĩa', CAST(N'2001-07-09' AS Date), N'Nam', N'tuannghia@gmail.com', N'0366123421', 1, 3)
-INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [trangThai], [soLuongMuon]) VALUES (N'312241008', N'abc123', N'Học Sinh - Sinh Viên', N'Trần Hồng Quang', CAST(N'2001-07-09' AS Date), N'Nam', N'hongquang@gmail.com', N'0789901451', 1, 3)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141001', N'abc123', N'Học Sinh - Sinh Viên', N'Phạm Văn Tâm', CAST(N'2001-09-02' AS Date), N'Nam', N'phamvantam@gmail.com', N'0776155064', N'495/18 Tô Hiến Thành, Phường 14 , Quận 10 ', 1, 3)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141002', N'abc123', N'Học Sinh - Sinh Viên', N'Hà Nguyễn Yến Vy', CAST(N'2001-07-09' AS Date), N'Nữ', N'hanguyenyenvy@gmail.com', N'0777443873',N' 336 Trần Xuân Soạn, Tân Hưng , Quận 7' ,1, 1)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312041001', N'abc123', N'Cán Bộ Giảng Viên', N'Nguyễn Bá Sĩ Trâm', CAST(N'2001-07-09' AS Date), N'Nam', N'nguyenbasitram@gmail.com', N'0795841141',N' 793 Trần Xuân Soạn, Tân Hưng , Quận 7 ', 1, 0)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141003', N'abc123', N'Học Sinh - Sinh Viên', N'Phan Thị Anh Thư', CAST(N'2001-07-09' AS Date), N'Nữ', N'phanthianhthu@gmail.com', N'0375141345',N'628/12 Phan Văn Trị ,Phường 10, Gò Vấp', 1, 0)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312041002', N'abc123', N'Cán Bộ Giảng Viên', N'Nguyễn Thanh Tiến', CAST(N'2001-07-09' AS Date), N'Nam', N'thanhtien123@gmail.com', N'0779997865', N'235/2 Nguyễn Văn Cừ, Phường Nguyễn Cư Trinh , Quận 1', 1, 3)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141004', N'abc123', N'Học Sinh - Sinh Viên', N'Trương Tiến Anh', CAST(N'2001-07-09' AS Date), N'Nam', N'tienanh7723@gmail.com', N'0901345667', N' 1050 Tạ Quang Bửu, Phường 6 , Quận 8',1, 3)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141005', N'abc123', N'Học Sinh - Sinh Viên', N'Nguyễn Quang Tuấn Nghĩa', CAST(N'2001-07-09' AS Date), N'Nam', N'tuannghia@gmail.com', N'0366123421',N' 74 Trần Hưng Đạo, Phường 7, Quận 5', 1, 3)
+INSERT [dbo].[TaiKhoan] ([maTaiKhoan], [matKhau], [loaiTaiKhoan], [tenNguoiDung], [ngaySinh], [gioiTinh], [email], [sdt], [diaChi], [trangThai], [soLuongMuon]) VALUES (N'312141006', N'abc123', N'Học Sinh - Sinh Viên', N'Trần Hồng Quang', CAST(N'2001-07-09' AS Date), N'Nam', N'hongquang@gmail.com', N'0789901451', N'1001 Đường Cách Mạng Tháng 8 , Phường 5, Quận Tân Bình', 1, 3)
 /************************** LOẠI THẺ ***************************/
 INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141001', N'Học Sinh - Sinh Viên', CAST(N'2023-01-01' AS Date), CAST(N'2023-12-31' AS Date ), 10, 20, 100000)
 INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141002', N'Học Sinh - Sinh Viên', CAST(N'2023-01-05' AS Date), CAST(N'2023-12-31' AS Date ), 10, 20, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141003', N'Cán Bộ Giảng Viên', CAST(N'2023-01-13' AS Date), CAST(N'2023-12-31' AS Date ), 25, 90, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141004', N'Học Sinh - Sinh Viên', CAST(N'2023-02-03' AS Date), CAST(N'2024-02-03' AS Date ), 10, 20, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141005', N'Cán Bộ Giảng Viên', CAST(N'2023-02-10' AS Date), CAST(N'2024-02-10' AS Date ), 25, 90, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312041006', N'Học Sinh - Sinh Viên', CAST(N'2023-01-20' AS Date), CAST(N'2023-12-31' AS Date ), 10, 20, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312241007', N'Học Sinh - Sinh Viên', CAST(N'2023-03-18' AS Date), CAST(N'2024-03-30' AS Date ), 10, 20, 100000)
-INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312241008', N'Học Sinh - Sinh Viên', CAST(N'2023-09-05' AS Date), CAST(N'2024-09-30' AS Date ), 10, 20, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312041001', N'Cán Bộ Giảng Viên', CAST(N'2023-01-13' AS Date), CAST(N'2023-12-31' AS Date ), 25, 90, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141003', N'Học Sinh - Sinh Viên', CAST(N'2023-02-03' AS Date), CAST(N'2024-02-03' AS Date ), 10, 20, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312041002', N'Cán Bộ Giảng Viên', CAST(N'2023-02-10' AS Date), CAST(N'2024-02-10' AS Date ), 25, 90, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141004', N'Học Sinh - Sinh Viên', CAST(N'2023-01-20' AS Date), CAST(N'2023-12-31' AS Date ), 10, 20, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141005', N'Học Sinh - Sinh Viên', CAST(N'2023-03-18' AS Date), CAST(N'2024-03-30' AS Date ), 10, 20, 100000)
+INSERT INTO [dbo].[LoaiThe] ([maLoaiThe], [tenLoaiThe], [ngayMoThe], [hanSuDung], [soSachDuocMuon], [thoiGianDuocMuonToiDa], [giaTienGiaHan]) VALUES (N'312141006', N'Học Sinh - Sinh Viên', CAST(N'2023-09-05' AS Date), CAST(N'2024-09-30' AS Date ), 10, 20, 100000)
 /************************** QUẢN LÝ ***************************/
 INSERT [dbo].[QuanLy] ([maQuanLy], [matKhau], [tenQuanLy], [ngaySinh], [gioiTinh], [diaChi], [sdt], [email], [trangThai]) VALUES (N'101010', N'abc123', N'ADMIN', CAST(N'1990-07-02' AS Date), N'Nam', N'TP.Hồ Chí Minh', N'0773123889', N'admin@gmail.com', 1)
 INSERT [dbo].[QuanLy] ([maQuanLy], [matKhau], [tenQuanLy], [ngaySinh], [gioiTinh], [diaChi], [sdt], [email], [trangThai]) VALUES (N'101011', N'abc123', N'THỦ THƯ', CAST(N'1997-02-28' AS Date), N'Nữ', N'TP.Hồ Chí Minh', N'0795841141', N'thuthu@gmail.com', 1)
 /************************** PHIẾU MƯỢN ****************************/
 INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM001', CAST(N'2023-08-10' AS Date), 7, CAST(N'2023-08-17' AS Date), 1 , N'312141002', N'101010 ', N'', N'Chưa trả')
 INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM002', CAST(N'2023-08-11' AS Date), 7, CAST(N'2023-08-18' AS Date), 1 , N'312141004', N'101010 ', N'', N'Chưa trả')
-INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM003', CAST(N'2023-08-12' AS Date),12, CAST(N'2023-08-24' AS Date), 1 , N'312041006', N'101010 ', N'', N'Chưa trả')
+INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM003', CAST(N'2023-08-12' AS Date),12, CAST(N'2023-08-24' AS Date), 1 , N'312141006', N'101010 ', N'', N'Chưa trả')
 INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM004', CAST(N'2023-08-24' AS Date), 7, CAST(N'2023-08-31' AS Date), 1 , N'312141001', N'101010 ', N'', N'Đã trả')
-INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM005', CAST(N'2023-08-24' AS Date), 7, CAST(N'2023-08-31' AS Date), 1 , N'312141003', N'101010 ', N'', N'Chưa trả')
-INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM006', CAST(N'2023-08-24' AS Date), 7, CAST(N'2023-08-31' AS Date), 1 , N'312141005', N'101010 ', N'', N'Đã trả')
-INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM007', CAST(N'2023-08-25' AS Date), 7, CAST(N'2023-09-01' AS Date), 1 , N'312241007', N'101010 ', N'Không', N'Chưa trả')
-INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM008', CAST(N'2023-08-20' AS Date), 7, CAST(N'2023-08-17' AS Date), 1 , N'312241008', N'101010 ', N'', N'Chưa trả')
+INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM005', CAST(N'2023-08-24' AS Date), 7, CAST(N'2023-08-31' AS Date), 1 , N'312041001', N'101010 ', N'', N'Chưa trả')
+INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM006', CAST(N'2023-08-24' AS Date), 7, CAST(N'2023-08-31' AS Date), 1 , N'312141004', N'101010 ', N'', N'Đã trả')
+INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM007', CAST(N'2023-08-25' AS Date), 7, CAST(N'2023-09-01' AS Date), 1 , N'312141005', N'101010 ', N'Không', N'Chưa trả')
+INSERT [dbo].[PhieuMuon] ([maPhieuMuon], [ngayMuon], [soNgayMuon], [hanTraSach], [soLuongSach], [maTaiKhoan], [maQuanLy], [ghiChu], [trangThai]) VALUES (N'PM008', CAST(N'2023-08-20' AS Date), 7, CAST(N'2023-08-17' AS Date), 1 , N'312141006', N'101010 ', N'', N'Chưa trả')
 /******************** CHI TIẾT PHIẾU MƯỢN ******************/
 INSERT [dbo].[ChiTietPhieuMuon] ([maPhieuMuon], [maSach], [ngayThucTra], [tienPhat], [tinhTrangSach]) VALUES (N'PM001', N'S0001', CAST(N'2023-08-17' AS Date), 137500.0000, N'Mất sách')
 INSERT [dbo].[ChiTietPhieuMuon] ([maPhieuMuon], [maSach], [ngayThucTra], [tienPhat], [tinhTrangSach]) VALUES (N'PM001', N'S0002', CAST(N'2022-08-20' AS Date), 10000.0000, 1)
@@ -827,12 +918,12 @@ INSERT [dbo].[ChiTietPhieuMuon] ([maPhieuMuon], [maSach], [ngayThucTra], [tienPh
 INSERT [dbo].[ChiTietPhieuMuon] ([maPhieuMuon], [maSach], [ngayThucTra], [tienPhat], [tinhTrangSach]) VALUES (N'PM008', N'S0007', CAST(N'2023-09-10' AS Date), 70000.0000, N'Trễ hạn')
 INSERT [dbo].[ChiTietPhieuMuon] ([maPhieuMuon], [maSach], [ngayThucTra], [tienPhat], [tinhTrangSach]) VALUES (N'PM008', N'S0010', CAST(N'2023-09-10' AS Date), 70000.0000, N'Trễ hạn')
 /**************************** PHIẾU NHẬP SÁCH ************************/
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN001', CAST(N'2023-08-01' AS Date), 'NCC001')
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN002', CAST(N'2023-08-08' AS Date), 'NCC002')
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN003', CAST(N'2023-08-09' AS Date), 'NCC003')
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN004', CAST(N'2023-08-10' AS Date), 'NCC004')
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN005', CAST(N'2023-08-11' AS Date), 'NCC005')
-INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [maNhaCungCap]) VALUES ('PN006', CAST(N'2023-08-12' AS Date), 'NCC006')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN001', CAST(N'2023-08-01' AS Date), 'NCC001')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN002', CAST(N'2023-08-08' AS Date), 'NCC002')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN003', CAST(N'2023-08-09' AS Date), 'NCC003')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN004', CAST(N'2023-08-10' AS Date), 'NCC004')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN005', CAST(N'2023-08-11' AS Date), 'NCC005')
+INSERT INTO [dbo].[PhieuNhapSach] ([maPhieuNhap], [ngayNhap], [nhaCungCap]) VALUES ('PN006', CAST(N'2023-08-12' AS Date), 'NCC006')
 /**************************** CHI TIẾT PHIẾU NHẬP SÁCH ************************/
 INSERT INTO [dbo].[ChiTietPhieuNhapSach] ([maPhieuNhap],[maSach],[tenSach],[maTacGia],[maTheLoai],[NXB],[namXuatBan],[soLuongNhap],[giaNhap]) VALUES ('PN001',N'S0025','Lập trình Python nâng cao','TG001','TL001','NXB Công nghệ thông tin',2023,10,175000)
 INSERT INTO [dbo].[ChiTietPhieuNhapSach] ([maPhieuNhap],[maSach],[tenSach],[maTacGia],[maTheLoai],[NXB],[namXuatBan],[soLuongNhap],[giaNhap]) VALUES ('PN001',N'S0026','Lập trình Java nâng cao','TG001','TL002','NXB Giáo dục',2023,20,20600)
@@ -842,11 +933,11 @@ INSERT INTO [dbo].[ChiTietPhieuNhapSach] ([maPhieuNhap],[maSach],[tenSach],[maTa
 INSERT INTO [dbo].[ChiTietPhieuNhapSach] ([maPhieuNhap],[maSach],[tenSach],[maTacGia],[maTheLoai],[NXB],[namXuatBan],[soLuongNhap],[giaNhap]) VALUES ('PN002',N'S0030','Hóa học đại cương','TG012','TL003','NXB Giáo dục',2023,15, 97000)
 
 /************************** THANH LÝ SÁCH ********************************/
-INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL002', 'S0001', 2, 'Sách bị cũ', '2023-08-13', 'Không có',20000)
-INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL003', 'S0002', 3, 'Sách bị mốc', '2023-08-14', 'Không có',525000)
-INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL004', 'S0003', 4, 'Sách bị mất trang', '2023-08-15', 'Không có',150000)
-INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL005', 'S0004', 5, 'Sách bị lỗi in', '2023-08-16', 'Không có',224000)
-INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL006', 'S0005', 6, 'Sách bị cháy', '2023-08-17', 'Không có',632000)
+INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL002', 'S0001', 2, N'Sách bị cũ', '2023-08-13', 'Không có',20000)
+INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL003', 'S0002', 3, N'Sách bị mốc', '2023-08-14', 'Không có',525000)
+INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL004', 'S0003', 4, N'Sách bị mất trang', '2023-08-15', 'Không có',150000)
+INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL005', 'S0004', 5, N'Sách bị lỗi in', '2023-08-16', 'Không có',224000)
+INSERT INTO [dbo].[ThanhLySach] ([maThanhLySach], [maSach], [soLuongSachHong], [lyDoThanhLy], [ngayThanhLy], [ghiChu],[tongTienThanhLy]) VALUES ('TL006', 'S0005', 6, N'Sách bị cháy', '2023-08-17', 'Không có',632000)
 
 
 ALTER TABLE [dbo].[QuanLy] ADD  DEFAULT ('1') FOR [trangThai]
@@ -888,3 +979,4 @@ ALTER TABLE [dbo].[PhanLoaiSach]  WITH CHECK ADD CHECK  (([tenTheLoai] IS NOT NU
 GO
 ALTER DATABASE [QuanLyThuVien] SET  READ_WRITE 
 GO
+
