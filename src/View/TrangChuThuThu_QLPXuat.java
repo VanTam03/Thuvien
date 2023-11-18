@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.time.LocalDate;
 import java.util.AbstractMap;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,9 +26,12 @@ import javax.swing.table.DefaultTableModel;
      * Creates new form TrangChuThuThu_QLPXuat
      */
     ThanhLyBLL thanhLyBLL = new ThanhLyBLL();
+    private JFileChooser fileChooser;
     DefaultTableModel defaultTableModelXuat;
     public TrangChuThuThu_QLPXuat() {
         initComponents();
+        fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn đường dẫn lưu tệp Excel");
         loaddata(thanhLyBLL.loaddata());
     }
 
@@ -113,6 +117,8 @@ import javax.swing.table.DefaultTableModel;
         btnK_luuMaSach = new javax.swing.JButton();
         btnK_suaPX1 = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btn_back = new javax.swing.JButton();
+        btnExcel = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableTly = new javax.swing.JTable();
 
@@ -347,30 +353,55 @@ import javax.swing.table.DefaultTableModel;
             }
         });
 
+        btn_back.setBackground(new java.awt.Color(255, 204, 204));
+        btn_back.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btn_back.setText("Quay lại");
+        btn_back.setEnabled(false);
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+
+        btnExcel.setBackground(new java.awt.Color(255, 204, 204));
+        btnExcel.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnExcel.setText("Xuất Excel");
+        btnExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPK_btnQLSLayout = new javax.swing.GroupLayout(jPK_btnQLS);
         jPK_btnQLS.setLayout(jPK_btnQLSLayout);
         jPK_btnQLSLayout.setHorizontalGroup(
             jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_btnQLSLayout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+            .addGroup(jPK_btnQLSLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnK_themMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addGap(18, 18, 18)
                 .addComponent(btnK_luuMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
                 .addComponent(btnK_suaPX1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcel)
+                .addContainerGap())
         );
         jPK_btnQLSLayout.setVerticalGroup(
             jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLSLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnK_themMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnK_luuMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnK_themMaSach)
                     .addComponent(btnK_suaPX1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExcel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -429,7 +460,7 @@ import javax.swing.table.DefaultTableModel;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPK_tieuDe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPK_qlPM, javax.swing.GroupLayout.PREFERRED_SIZE, 884, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -445,7 +476,9 @@ import javax.swing.table.DefaultTableModel;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-
+        TrangChuAdmin trangChuAdmin = new TrangChuAdmin(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+        trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+        this.dispose();
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themMaSachActionPerformed
@@ -461,6 +494,7 @@ import javax.swing.table.DefaultTableModel;
         btnK_themMaSach.setEnabled(false);
         btnK_suaPX1.setEnabled(false);
         btnDelete.setEnabled(false);
+        btn_back.setEnabled(true);
         
     }//GEN-LAST:event_btnK_themMaSachActionPerformed
 
@@ -479,8 +513,8 @@ import javax.swing.table.DefaultTableModel;
             btnK_themMaSach.setEnabled(true);
             btnK_suaPX1.setEnabled(true);
             btnDelete.setEnabled(true);
+            btn_back.setEnabled(false);
             loaddata(thanhLyBLL.loaddata());
-            thanhLyBLL.UpdateKhoAfterAction(thanhLySach);
         }else{
             JOptionPane.showMessageDialog(null, "Thênm mới thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -497,7 +531,6 @@ import javax.swing.table.DefaultTableModel;
         if(thanhLyBLL.Update(thanhLySach)){
             JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             loaddata(thanhLyBLL.loaddata());
-            thanhLyBLL.UpdateKhoAfterAction(thanhLySach);
         }else{
             JOptionPane.showMessageDialog(null, "Cập nhật thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -505,6 +538,14 @@ import javax.swing.table.DefaultTableModel;
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
+        String id = txt_Id.getText();
+        if(thanhLyBLL.delete(id)){
+           JOptionPane.showMessageDialog(null, "Xóa thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            loaddata(thanhLyBLL.loaddata());
+        }else{
+            JOptionPane.showMessageDialog(null, "Xóa thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txt_IdBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdBookActionPerformed
@@ -536,6 +577,31 @@ import javax.swing.table.DefaultTableModel;
     private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        btnK_luuMaSach.setEnabled(false);
+        btnK_themMaSach.setEnabled(true);
+        btnK_suaPX1.setEnabled(true);
+        btnDelete.setEnabled(true);
+        btn_back.setEnabled(false);
+
+    }//GEN-LAST:event_btn_backActionPerformed
+
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+        int result = fileChooser.showSaveDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String duongDanTep = fileChooser.getSelectedFile().getAbsolutePath() + ".xlsx";
+            AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> danhSachThanhLy = thanhLyBLL.loaddata();
+
+            if (thanhLyBLL.exportToExcel(danhSachThanhLy, duongDanTep)) {
+                // Hiển thị hộp thoại thông báo giống như khi tải xuống
+                JOptionPane.showMessageDialog(this, "Tệp đã được lưu tại:\n" + duongDanTep, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Xuất Excel thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnExcelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -577,10 +643,12 @@ import javax.swing.table.DefaultTableModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelTongtien;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnK_luuMaSach;
     private javax.swing.JButton btnK_suaPX1;
     private javax.swing.JButton btnK_themMaSach;
     private javax.swing.JButton btnK_veTrangTruoc;
+    private javax.swing.JButton btn_back;
     private javax.swing.JPanel jPK_btnQLS;
     private javax.swing.JPanel jPK_button;
     private javax.swing.JPanel jPK_qlPM;

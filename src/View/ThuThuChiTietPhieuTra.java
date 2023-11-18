@@ -4,6 +4,15 @@
  */
 package View;
 
+import DTO.ChiTietPhieuMuon;
+import DTO.Sach;
+import Model.PhieuTra_BLL;
+import java.util.AbstractMap;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 1
@@ -13,9 +22,61 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     /**
      * Creates new form ThuThuChiTietPhieuTra
      */
-    public ThuThuChiTietPhieuTra() {
+    PhieuTra_BLL phieuTra_BLL = new PhieuTra_BLL();
+    DefaultTableModel defaultTableModelPTr;
+    private String id; 
+    private JFileChooser fileChooser;
+    public ThuThuChiTietPhieuTra(String id) {
         initComponents();
+        fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn đường dẫn lưu tệp Excel");
+        this.id = id;
+        loaddata(phieuTra_BLL.loaddataCT(id));
+        
+//        btnK_luuChiTiet.setEnabled(tinhtrang);
+        
+          
+        
     }
+    
+    
+    
+    private void loaddata(AbstractMap.SimpleEntry<List<Sach>, List<ChiTietPhieuMuon>> data) {
+        List<Sach> processedBooks = data.getKey();
+        List<ChiTietPhieuMuon> processedExports = data.getValue();
+        
+        defaultTableModelPTr = new DefaultTableModel();
+        tblK_ChiTiet.setModel(defaultTableModelPTr);
+        defaultTableModelPTr.addColumn("Mã sách");
+        defaultTableModelPTr.addColumn("Tên sách");
+        defaultTableModelPTr.addColumn("Ngày thực trả");
+	defaultTableModelPTr.addColumn("Tiền phạt");
+        defaultTableModelPTr.addColumn("Tình trạng sách");
+
+        // Duyệt qua danh sách sách và thanh lý sách đã xử lý
+        for (ChiTietPhieuMuon chiTietPhieuMuon : processedExports) {
+            // Tìm sách tương ứng trong danh sách đã xử lý
+            Sach book = findBookByMaSach(processedBooks, chiTietPhieuMuon.getMaSach());
+
+            // Kiểm tra nếu sách không null
+            if (book != null) {
+                // Thêm thông tin vào bảng
+                defaultTableModelPTr.addRow(new Object[] {chiTietPhieuMuon.getMaSach(), book.getTenSach() ,chiTietPhieuMuon.getNgayThuctra(), chiTietPhieuMuon.getTienPhat(), chiTietPhieuMuon.getTinhTrangSach()});
+
+            }
+        }
+    }
+
+    private Sach findBookByMaSach(List<Sach> books, String maSach) {
+        for (Sach book : books) {
+            if (book.getMaSach().equals(maSach)) {
+                return book;
+            }
+        }
+        return null;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,24 +92,18 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         K_tieuDe = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        textboxsearch5 = new javax.swing.JTextField();
-        textboxsearch6 = new javax.swing.JTextField();
+        txtMaSach = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        textboxsearch7 = new javax.swing.JTextField();
-        textboxsearch8 = new javax.swing.JTextField();
-        textboxsearch9 = new javax.swing.JTextField();
-        textboxsearch10 = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        textboxsearch11 = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        textboxsearch12 = new javax.swing.JTextField();
+        txtTienPhat = new javax.swing.JTextField();
+        cb_tinhtrang = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
         btnK_suaChiTiet = new javax.swing.JButton();
         btnK_luuChiTiet = new javax.swing.JButton();
-        btnK_lamMoi = new javax.swing.JButton();
+        BTN_EXCEL = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblK_ChiTiet = new javax.swing.JTable();
         btnK_veTrangTruoc = new javax.swing.JButton();
@@ -75,35 +130,33 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("Mã sách:");
 
-        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel34.setText("Số lượng mượn:");
-
-        textboxsearch5.addActionListener(new java.awt.event.ActionListener() {
+        txtMaSach.setEditable(false);
+        txtMaSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch5ActionPerformed(evt);
+                txtMaSachActionPerformed(evt);
             }
         });
-        textboxsearch5.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtMaSach.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch5KeyReleased(evt);
+                txtMaSachKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch5KeyTyped(evt);
+                txtMaSachKeyTyped(evt);
             }
         });
 
-        textboxsearch6.addActionListener(new java.awt.event.ActionListener() {
+        txtname.setEditable(false);
+        txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch6ActionPerformed(evt);
+                txtnameActionPerformed(evt);
             }
         });
-        textboxsearch6.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch6KeyReleased(evt);
+                txtnameKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch6KeyTyped(evt);
+                txtnameKeyTyped(evt);
             }
         });
 
@@ -111,59 +164,18 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Tình trạng:");
 
-        textboxsearch7.addActionListener(new java.awt.event.ActionListener() {
+        txtDate.setEditable(false);
+        txtDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch7ActionPerformed(evt);
+                txtDateActionPerformed(evt);
             }
         });
-        textboxsearch7.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch7KeyReleased(evt);
+                txtDateKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch7KeyTyped(evt);
-            }
-        });
-
-        textboxsearch8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch8ActionPerformed(evt);
-            }
-        });
-        textboxsearch8.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch8KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch8KeyTyped(evt);
-            }
-        });
-
-        textboxsearch9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch9ActionPerformed(evt);
-            }
-        });
-        textboxsearch9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch9KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch9KeyTyped(evt);
-            }
-        });
-
-        textboxsearch10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch10ActionPerformed(evt);
-            }
-        });
-        textboxsearch10.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch10KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch10KeyTyped(evt);
+                txtDateKeyTyped(evt);
             }
         });
 
@@ -171,45 +183,26 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setText("Ngày trả:");
 
-        jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel30.setText("Ngày mượn:");
-
-        jLabel31.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel31.setText("Khoảng phạt:");
-
-        textboxsearch11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch11ActionPerformed(evt);
-            }
-        });
-        textboxsearch11.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch11KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch11KeyTyped(evt);
-            }
-        });
-
         jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Tiền phạt:");
 
-        textboxsearch12.addActionListener(new java.awt.event.ActionListener() {
+        txtTienPhat.setEditable(false);
+        txtTienPhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxsearch12ActionPerformed(evt);
+                txtTienPhatActionPerformed(evt);
             }
         });
-        textboxsearch12.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtTienPhat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                textboxsearch12KeyReleased(evt);
+                txtTienPhatKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                textboxsearch12KeyTyped(evt);
+                txtTienPhatKeyTyped(evt);
             }
         });
+
+        cb_tinhtrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Không hỏng", "Mất sách", "Bị hỏng" }));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -222,80 +215,52 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                         .addComponent(K_tieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMaSach, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                    .addComponent(txtname)))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_tinhtrang, 0, 270, Short.MAX_VALUE)))
+                        .addGap(86, 86, 86)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textboxsearch8, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                                .addComponent(textboxsearch7, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(textboxsearch5, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                        .addComponent(textboxsearch6))))
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(95, 95, 95)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textboxsearch11, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(textboxsearch9)
-                                        .addComponent(textboxsearch10, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textboxsearch12, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addComponent(K_tieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel29)
-                            .addComponent(textboxsearch5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26)
-                            .addComponent(textboxsearch6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel30)
-                            .addComponent(textboxsearch9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28)
-                            .addComponent(textboxsearch10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(txtMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(textboxsearch7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(textboxsearch11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel32)
-                        .addComponent(textboxsearch12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel34)
-                        .addComponent(textboxsearch8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(jLabel32)
+                    .addComponent(txtTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tinhtrang, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
@@ -333,14 +298,14 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
             }
         });
 
-        btnK_lamMoi.setBackground(new java.awt.Color(255, 204, 204));
-        btnK_lamMoi.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnK_lamMoi.setForeground(new java.awt.Color(0, 0, 0));
-        btnK_lamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eraser.png"))); // NOI18N
-        btnK_lamMoi.setText("Làm mới");
-        btnK_lamMoi.addActionListener(new java.awt.event.ActionListener() {
+        BTN_EXCEL.setBackground(new java.awt.Color(255, 204, 204));
+        BTN_EXCEL.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        BTN_EXCEL.setForeground(new java.awt.Color(0, 0, 0));
+        BTN_EXCEL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer.png"))); // NOI18N
+        BTN_EXCEL.setText("Xuất Excel");
+        BTN_EXCEL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_lamMoiActionPerformed(evt);
+                BTN_EXCELActionPerformed(evt);
             }
         });
 
@@ -393,7 +358,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnK_suaChiTiet)
                         .addGap(18, 18, 18)
-                        .addComponent(btnK_lamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTN_EXCEL, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(440, Short.MAX_VALUE))))
         );
         Panel_ChiTietPMLayout.setVerticalGroup(
@@ -404,7 +369,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                 .addGroup(Panel_ChiTietPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnK_luuChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnK_suaChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnK_lamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTN_EXCEL, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Panel_ChiTietPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_ChiTietPMLayout.createSequentialGroup()
@@ -442,182 +407,155 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblK_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblK_ChiTietMouseClicked
+        int row = tblK_ChiTiet.getSelectedRow();
+        txtMaSach.setText(tblK_ChiTiet.getValueAt(row, 0).toString());
+        txtname.setText(tblK_ChiTiet.getValueAt(row, 1).toString());
+        Object dateValue = tblK_ChiTiet.getValueAt(row, 2);
+        if (dateValue != null) {
+            txtDate.setText(dateValue.toString());
+        } 
+        else {
+            txtDate.setText("");
+        }
+        
+        
+        txtTienPhat.setText(tblK_ChiTiet.getValueAt(row, 3).toString());
+        cb_tinhtrang.setSelectedItem(tblK_ChiTiet.getValueAt(row, 4).toString());
+        
+        if(tblK_ChiTiet.getValueAt(row, 2) == null){
+            btnK_luuChiTiet.setEnabled(true);
+            btnK_suaChiTiet.setEnabled(false);
+        }else{
+            btnK_luuChiTiet.setEnabled(false);
+            btnK_suaChiTiet.setEnabled(true);
 
+        }
+        
     }//GEN-LAST:event_tblK_ChiTietMouseClicked
 
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-
+        TrangChuAdmin trangChuAdmin = new TrangChuAdmin(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+        trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+        this.dispose();
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     private void btnK_suaChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaChiTietActionPerformed
-
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn cập nhật?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    
+        if (confirm == JOptionPane.YES_OPTION) {
+            String idsach = txtMaSach.getText();
+            String tinhtrang = (String) cb_tinhtrang.getSelectedItem();
+            // Thực hiện các công việc cập nhật khác nếu cầnh(id);
+            if(!phieuTra_BLL.updateChiTietPhieuMuon(id, idsach, tinhtrang)){
+                JOptionPane.showMessageDialog(null, "Hãy thay đổi tình trạng sách khác so với ban đầu!", "Cập nhật thất bại!", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "", "Cập nhật thành công!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            loaddata(phieuTra_BLL.loaddataCT(id));
+        }
     }//GEN-LAST:event_btnK_suaChiTietActionPerformed
 
     private void btnK_luuChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuChiTietActionPerformed
-
+        int confirm = JOptionPane.showConfirmDialog(this, "Cập nhật trả sach!", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    
+        if (confirm == JOptionPane.YES_OPTION) {
+            String idsach = txtMaSach.getText();
+            String tinhtrang = (String) cb_tinhtrang.getSelectedItem();
+            // Thực hiện các công việc cập nhật khác nếu cầnh(id);
+            phieuTra_BLL.updateTraSach(id, idsach, tinhtrang);
+            loaddata(phieuTra_BLL.loaddataCT(id));
+        }
     }//GEN-LAST:event_btnK_luuChiTietActionPerformed
 
-    private void btnK_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiActionPerformed
+    private void BTN_EXCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EXCELActionPerformed
+        int result = fileChooser.showSaveDialog(this);
 
-    }//GEN-LAST:event_btnK_lamMoiActionPerformed
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String duongDanTep = fileChooser.getSelectedFile().getAbsolutePath() + ".xlsx";
+            AbstractMap.SimpleEntry<List<Sach>, List<ChiTietPhieuMuon>> danhsachCTphieutra = phieuTra_BLL.loaddataCT(id);
 
-    private void textboxsearch5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch5ActionPerformed
+            if (phieuTra_BLL.exportToExcel(danhsachCTphieutra, duongDanTep, id)) {
+                // Hiển thị hộp thoại thông báo giống như khi tải xuống
+                JOptionPane.showMessageDialog(this, "Tệp đã được lưu tại:\n" + duongDanTep, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Xuất Excel thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_BTN_EXCELActionPerformed
+
+    private void txtMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSachActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch5ActionPerformed
+    }//GEN-LAST:event_txtMaSachActionPerformed
 
-    private void textboxsearch5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch5KeyReleased
+    private void txtMaSachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaSachKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch5KeyReleased
+    }//GEN-LAST:event_txtMaSachKeyReleased
 
-    private void textboxsearch5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch5KeyTyped
+    private void txtMaSachKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaSachKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch5KeyTyped
+    }//GEN-LAST:event_txtMaSachKeyTyped
 
-    private void textboxsearch6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch6ActionPerformed
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch6ActionPerformed
+    }//GEN-LAST:event_txtnameActionPerformed
 
-    private void textboxsearch6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch6KeyReleased
+    private void txtnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnameKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch6KeyReleased
+    }//GEN-LAST:event_txtnameKeyReleased
 
-    private void textboxsearch6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch6KeyTyped
+    private void txtnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnameKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch6KeyTyped
+    }//GEN-LAST:event_txtnameKeyTyped
 
-    private void textboxsearch7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch7ActionPerformed
+    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch7ActionPerformed
+    }//GEN-LAST:event_txtDateActionPerformed
 
-    private void textboxsearch7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch7KeyReleased
+    private void txtDateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDateKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch7KeyReleased
+    }//GEN-LAST:event_txtDateKeyReleased
 
-    private void textboxsearch7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch7KeyTyped
+    private void txtDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDateKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch7KeyTyped
+    }//GEN-LAST:event_txtDateKeyTyped
 
-    private void textboxsearch8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch8ActionPerformed
+    private void txtTienPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienPhatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch8ActionPerformed
+    }//GEN-LAST:event_txtTienPhatActionPerformed
 
-    private void textboxsearch8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch8KeyReleased
+    private void txtTienPhatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienPhatKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch8KeyReleased
+    }//GEN-LAST:event_txtTienPhatKeyReleased
 
-    private void textboxsearch8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch8KeyTyped
+    private void txtTienPhatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienPhatKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch8KeyTyped
-
-    private void textboxsearch9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch9ActionPerformed
-
-    private void textboxsearch9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch9KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch9KeyReleased
-
-    private void textboxsearch9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch9KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch9KeyTyped
-
-    private void textboxsearch10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch10ActionPerformed
-
-    private void textboxsearch10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch10KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch10KeyReleased
-
-    private void textboxsearch10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch10KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch10KeyTyped
-
-    private void textboxsearch11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch11ActionPerformed
-
-    private void textboxsearch11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch11KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch11KeyReleased
-
-    private void textboxsearch11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch11KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch11KeyTyped
-
-    private void textboxsearch12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxsearch12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch12ActionPerformed
-
-    private void textboxsearch12KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch12KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch12KeyReleased
-
-    private void textboxsearch12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearch12KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxsearch12KeyTyped
+    }//GEN-LAST:event_txtTienPhatKeyTyped
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThuThuChiTietPhieuTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThuThuChiTietPhieuTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThuThuChiTietPhieuTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThuThuChiTietPhieuTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThuThuChiTietPhieuTra().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_EXCEL;
     private javax.swing.JLabel K_tieuDe;
     private javax.swing.JPanel Panel_ChiTietPM;
-    private javax.swing.JButton btnK_lamMoi;
     private javax.swing.JButton btnK_luuChiTiet;
     private javax.swing.JButton btnK_suaChiTiet;
     private javax.swing.JButton btnK_veTrangTruoc;
+    private javax.swing.JComboBox<String> cb_tinhtrang;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tblK_ChiTiet;
-    private javax.swing.JTextField textboxsearch10;
-    private javax.swing.JTextField textboxsearch11;
-    private javax.swing.JTextField textboxsearch12;
-    private javax.swing.JTextField textboxsearch5;
-    private javax.swing.JTextField textboxsearch6;
-    private javax.swing.JTextField textboxsearch7;
-    private javax.swing.JTextField textboxsearch8;
-    private javax.swing.JTextField textboxsearch9;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtMaSach;
+    private javax.swing.JTextField txtTienPhat;
+    private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }
