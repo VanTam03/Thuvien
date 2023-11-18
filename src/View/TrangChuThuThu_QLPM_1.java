@@ -121,8 +121,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         labelSoluongsach = new javax.swing.JLabel();
         fieldSoluongsach = new javax.swing.JTextField();
         jPK_themMaSach = new javax.swing.JPanel();
-        fieldTinhtrangsach = new javax.swing.JTextField();
-        labelTinhtrangsach = new javax.swing.JLabel();
         txtK_maSach = new javax.swing.JTextField();
         lbK_maSach = new javax.swing.JLabel();
         lbK_maPM3 = new javax.swing.JLabel();
@@ -134,13 +132,13 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         btnK_lamMoiPM = new javax.swing.JButton();
         btnK_luuPM = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        btnXuatPhieuMuon = new javax.swing.JButton();
         jPK_btnQLS = new javax.swing.JPanel();
         btnK_themMaSach = new javax.swing.JButton();
         btnK_lamMoiSach = new javax.swing.JButton();
         btnK_xoaMaSach = new javax.swing.JButton();
         btnK_luuMaSach = new javax.swing.JButton();
         btnK_suaPM1 = new javax.swing.JButton();
-        btnXuatPhieuMuon = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -322,12 +320,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         jPK_themMaSach.setBackground(new java.awt.Color(204, 204, 255));
         jPK_themMaSach.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        fieldTinhtrangsach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
-        labelTinhtrangsach.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        labelTinhtrangsach.setForeground(new java.awt.Color(0, 0, 0));
-        labelTinhtrangsach.setText("Tình trạng sách:");
-
         txtK_maSach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         lbK_maSach.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -350,11 +342,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 cbbK_maPMActionPerformed(evt);
             }
         });
-        cbbK_soNgayMuon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbK_soNgayMuonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPK_themMaSachLayout = new javax.swing.GroupLayout(jPK_themMaSach);
         jPK_themMaSach.setLayout(jPK_themMaSachLayout);
@@ -363,16 +350,12 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbK_maPM3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelTinhtrangsach))
+                    .addComponent(lbK_maPM3)
                     .addComponent(lbK_maSach))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cbbK_maPM, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldTinhtrangsach, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cbbK_maPM, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(209, 209, 209))
         );
         jPK_themMaSachLayout.setVerticalGroup(
@@ -386,10 +369,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbK_maSach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTinhtrangsach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldTinhtrangsach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -454,24 +433,37 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
             }
         });
 
+        btnXuatPhieuMuon.setBackground(new java.awt.Color(255, 204, 204));
+        btnXuatPhieuMuon.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnXuatPhieuMuon.setForeground(new java.awt.Color(0, 0, 0));
+        btnXuatPhieuMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/R_pixian_ai.png"))); // NOI18N
+        btnXuatPhieuMuon.setText("Xuất");
+        btnXuatPhieuMuon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatPhieuMuonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPK_btnQLPMLayout = new javax.swing.GroupLayout(jPK_btnQLPM);
         jPK_btnQLPM.setLayout(jPK_btnQLPMLayout);
         jPK_btnQLPMLayout.setHorizontalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
-                        .addComponent(btnK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnK_suaPM, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
                         .addComponent(btnK_lamMoiPM)
                         .addGap(18, 18, 18)
-                        .addComponent(btnK_luuPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(360, Short.MAX_VALUE))
+                        .addComponent(btnK_luuPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPK_btnQLPMLayout.createSequentialGroup()
+                        .addComponent(btnK_themPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnK_suaPM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXuatPhieuMuon, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         jPK_btnQLPMLayout.setVerticalGroup(
             jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +476,8 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_btnQLPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnK_luuPM)
-                    .addComponent(btnK_lamMoiPM))
+                    .addComponent(btnK_lamMoiPM)
+                    .addComponent(btnXuatPhieuMuon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(88, 88, 88))
         );
 
@@ -547,17 +540,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
             }
         });
 
-        btnXuatPhieuMuon.setBackground(new java.awt.Color(255, 204, 204));
-        btnXuatPhieuMuon.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnXuatPhieuMuon.setForeground(new java.awt.Color(0, 0, 0));
-        btnXuatPhieuMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/R_pixian_ai.png"))); // NOI18N
-        btnXuatPhieuMuon.setText("Xuất");
-        btnXuatPhieuMuon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXuatPhieuMuonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPK_btnQLSLayout = new javax.swing.GroupLayout(jPK_btnQLS);
         jPK_btnQLS.setLayout(jPK_btnQLSLayout);
         jPK_btnQLSLayout.setHorizontalGroup(
@@ -575,9 +557,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnK_lamMoiSach)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnK_xoaMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXuatPhieuMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnK_xoaMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(296, 296, 296))
         );
         jPK_btnQLSLayout.setVerticalGroup(
@@ -591,8 +571,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_btnQLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnK_luuMaSach)
-                    .addComponent(btnK_lamMoiSach)
-                    .addComponent(btnXuatPhieuMuon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnK_lamMoiSach))
                 .addContainerGap())
         );
 
@@ -646,16 +625,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 "Mã phiếu mượn", "Mã tài khoản", "Số ngày mượn", "Mã cán bộ", "Ngày mượn", "Ngày trả", "Số lượng sách", "Trạng thái"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -930,7 +899,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         loadChiTietPhieuMuon(phieuMuon.getMaPhieuMuon());
 
     }//GEN-LAST:event_cbbK_maPMActionPerformed
-    private void cbbK_soNgayMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbK_maPMActionPerformed
+    private void cbbK_soNgayMuonActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         Date currentDate = txtK_ngayMuon.getDate();
         if (currentDate==null){
@@ -1068,7 +1037,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbbK_trangThai;
     private javax.swing.JTextField fieldNgayTra;
     private javax.swing.JTextField fieldSoluongsach;
-    private javax.swing.JTextField fieldTinhtrangsach;
     private javax.swing.JPanel jPK_btnQLPM;
     private javax.swing.JPanel jPK_btnQLS;
     private javax.swing.JPanel jPK_button;
@@ -1082,7 +1050,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelNgayTra;
     private javax.swing.JLabel labelSoluongsach;
-    private javax.swing.JLabel labelTinhtrangsach;
     private javax.swing.JLabel lbK_maCB;
     private javax.swing.JLabel lbK_maPM1;
     private javax.swing.JLabel lbK_maPM3;
