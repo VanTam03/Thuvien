@@ -229,6 +229,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -565,11 +566,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel91.setText("Ngày sinh");
 
         gioitinhnam16.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(gioitinhnam16);
         gioitinhnam16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnam16.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnam16.setText("Nam");
 
         gioitinhnu16.setBackground(new java.awt.Color(255, 255, 204));
+        buttonGroup1.add(gioitinhnu16);
         gioitinhnu16.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         gioitinhnu16.setForeground(new java.awt.Color(0, 0, 0));
         gioitinhnu16.setText("Nữ");
@@ -1527,6 +1530,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
         jScrollPane20.setViewportView(tbl_DMSach5);
+
         jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
         jLabel109.setForeground(new java.awt.Color(0, 0, 0));
         jLabel109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
@@ -1769,11 +1773,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 "Mã tác giả", "Tên tác giả", "Số lượng sách"
             }
         ));
-        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                QLTGiaTableMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(QLTGiaTable);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
@@ -2657,7 +2656,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
         jPK_QuanLyPhieuMuon5Layout.setVerticalGroup(
             jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.PREFERRED_SIZE, 515, Short.MAX_VALUE)
         );
 
         jTP_main2.addTab(" QUẢN LÝ MƯỢN TRẢ ", new javax.swing.ImageIcon(getClass().getResource("/Images/exchange.png")), jPK_QuanLyPhieuMuon5); // NOI18N
@@ -2668,7 +2667,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTP_main2, javax.swing.GroupLayout.PREFERRED_SIZE, 1435, Short.MAX_VALUE)
+                .addComponent(jTP_main2, javax.swing.GroupLayout.DEFAULT_SIZE, 1435, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -3625,6 +3624,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JButton btn_lammoi6;
     private javax.swing.JButton btn_lammoi7;
     private javax.swing.JButton btn_lammoi8;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe6;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
