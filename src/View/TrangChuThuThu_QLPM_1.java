@@ -71,10 +71,9 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         jTable2.setModel(defaultTableModel_CTPM);
         defaultTableModel_CTPM.addColumn("Mã phiếu mượn");
         defaultTableModel_CTPM.addColumn("Mã sách");
-        defaultTableModel_CTPM.addColumn("Tình trạng sách");
         List<ChiTietPhieuMuon> chiTietPhieuNhapSaches = ChiTietPhieuMuon_DAO.getInstance().selectAllById(id);
         for (ChiTietPhieuMuon ctpns : chiTietPhieuNhapSaches) {
-            defaultTableModel_CTPM.addRow(new Object[] { ctpns.getMaPhieumuon(), ctpns.getMaSach(), ctpns.getTinhTrangSach()});
+            defaultTableModel_CTPM.addRow(new Object[] { ctpns.getMaPhieumuon(), ctpns.getMaSach()});
         }
     }
     public void loadComboBoxMaCanBo(){
@@ -666,7 +665,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Mã phiếu mượn", "Mã sách", "Tình trạng sách"
+                "Mã phiếu mượn", "Mã sách"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -739,7 +738,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         int selectedRow = jTable2.getSelectedRow();
         cbbK_maPM.setSelectedItem((String) jTable2.getValueAt(selectedRow, 0));
         txtK_maSach.setText((String) jTable2.getValueAt(selectedRow, 1));
-        fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
 //        txtK_maSach.setEnabled(true);
 //        fieldTinhtrangsach.setEnabled(true);
 //        btnK_luuPM.setEnabled(true);
@@ -839,10 +837,8 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
 
     private void btnK_themMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_themMaSachActionPerformed
         txtK_maSach.setEnabled(true);
-        fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(true);
         //btnK_themMaSach.setEnabled(false);
-        btnK_suaPM1.setEnabled(false);
         btnK_xoaMaSach.setEnabled(false);
     }//GEN-LAST:event_btnK_themMaSachActionPerformed
 
@@ -858,7 +854,6 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         }else{
             ChiTietPhieuMuon chiTietPhieuMuon = new ChiTietPhieuMuon();
             chiTietPhieuMuon.setMaSach(txtK_maSach.getText());
-            chiTietPhieuMuon.setTinhTrangSach(fieldTinhtrangsach.getText());
             chiTietPhieuMuon.setMaPhieumuon((String) cbbK_maPM.getSelectedItem());
             if (btnK_themMaSach.isEnabled()){
                 if (ChiTietPhieuMuon_DAO.getInstance().add(chiTietPhieuMuon)>0){
@@ -866,14 +861,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "Thêm phiếu chi tiết mượn thất bại!");
                 }
-            } else if (btnK_suaPM1.isEnabled()) {
-
-                if (ChiTietPhieuMuon_DAO.getInstance().update(chiTietPhieuMuon)>0){
-                    JOptionPane.showMessageDialog(null, "Sửa phiếu chi tiết mượn thành công!");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Sửa phiếu chi tiết mượn thất bại!");
-                }
-            }else if (btnK_xoaMaSach.isEnabled()){
+            } else if (btnK_xoaMaSach.isEnabled()){
                 int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
                     if (ChiTietPhieuMuon_DAO.getInstance().delete(chiTietPhieuMuon.getMaPhieumuon(), chiTietPhieuMuon.getMaSach())>0){
@@ -887,18 +875,17 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
             }
             btnK_lamMoiSachActionPerformed(evt);
             loadChiTietPhieuMuon((String) cbbK_maPM.getSelectedItem());
+            loadmaPhieuMuon();
         }
       
     }//GEN-LAST:event_btnK_luuMaSachActionPerformed
 
     private void btnK_lamMoiSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_lamMoiSachActionPerformed
         txtK_maSach.setText("");
-        fieldTinhtrangsach.setText("");
         txtK_maSach.setEnabled(true);
-        fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(false);
         btnK_themMaSach.setEnabled(true);
-        btnK_suaPM1.setEnabled(true);
+
         btnK_xoaMaSach.setEnabled(true);
     }//GEN-LAST:event_btnK_lamMoiSachActionPerformed
 
@@ -948,24 +935,14 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
 
     private void btnK_xoaMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_xoaMaSachActionPerformed
         txtK_maSach.setEnabled(true);
-        fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
-        btnK_suaPM1.setEnabled(false);
         txtK_maSach.setText("");
-        fieldTinhtrangsach.setText("");
-        fieldTinhtrangsach.setEnabled(false);
         //btnK_xoaMaSach.setEnabled(false);
     }//GEN-LAST:event_btnK_xoaMaSachActionPerformed
 
     private void btnK_suaPM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPM1ActionPerformed
         // TODO add your handling code here:
-        txtK_maSach.setEnabled(true);
-        fieldTinhtrangsach.setEnabled(true);
-        btnK_luuMaSach.setEnabled(true);
-        btnK_themMaSach.setEnabled(false);
-        //btnK_suaPM1.setEnabled(false);
-        btnK_xoaMaSach.setEnabled(false);
     }//GEN-LAST:event_btnK_suaPM1ActionPerformed
 
     private void btnXuatPhieuMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPhieuMuonActionPerformed

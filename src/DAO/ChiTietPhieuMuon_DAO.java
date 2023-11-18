@@ -33,12 +33,14 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        PhieuMuon phieuMuon = PhieuMuon_DAO.getInstance().selectById(chiTietPhieuMuon.getMaPhieumuon());
-        phieuMuon.setSoLuongSach(phieuMuon.getSoLuongSach()+1);
-        PhieuMuon_DAO.getInstance().update(phieuMuon);
-        KhoSach khoSach = KhoSach_DAO.getInstance().selectById(chiTietPhieuMuon.getMaSach());
-        khoSach.setSoLuongCon(khoSach.getSoLuongCon()-1);
-        KhoSach_DAO.getInstance().update(khoSach);
+        if (rowsAffected>0){
+            PhieuMuon phieuMuon = PhieuMuon_DAO.getInstance().selectById(chiTietPhieuMuon.getMaPhieumuon());
+            phieuMuon.setSoLuongSach(phieuMuon.getSoLuongSach()+1);
+            PhieuMuon_DAO.getInstance().update(phieuMuon);
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(chiTietPhieuMuon.getMaSach());
+            khoSach.setSoLuongCon(khoSach.getSoLuongCon()-1);
+            KhoSach_DAO.getInstance().update(khoSach);
+        }
         return rowsAffected;
     }
 
