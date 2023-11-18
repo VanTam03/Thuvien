@@ -773,6 +773,16 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                                                 Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -814,7 +824,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         int selectedRow = jTable2.getSelectedRow();
         cbbK_maPM.setSelectedItem((String) jTable2.getValueAt(selectedRow, 0));
         txtK_maSach.setText((String) jTable2.getValueAt(selectedRow, 1));
-        fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
+        //fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
 //        txtK_maSach.setEnabled(true);
 //        fieldTinhtrangsach.setEnabled(true);
 //        btnK_luuPM.setEnabled(true);
