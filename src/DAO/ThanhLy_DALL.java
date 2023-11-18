@@ -87,23 +87,31 @@ public class ThanhLy_DALL {
 
         try {
             // The SQL query with placeholders (?)
-            String query = "INSERT INTO ThanhLySach (maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            
-            // Create a PreparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            String query = "INSERT INTO ThanhLySach (maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy) VALUES (?, ?, ?, ?, ?, ?)";
+
+            // Create a PreparedStatement with RETURN_GENERATED_KEYS option
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             // Set values for the placeholders
-            preparedStatement.setString(2, thanhly.getMaSach());
-            preparedStatement.setInt(3, thanhly.getSoLuongSachHong());
-            preparedStatement.setString(4, thanhly.getLyDoThanhLy());
-            preparedStatement.setDate(5, java.sql.Date.valueOf(thanhly.getNgayThanhLy())); // Assuming ngayThanhLy is of LocalDate type
-            preparedStatement.setString(6, thanhly.getGhiChu());
-            preparedStatement.setDouble(7, thanhly.getTongTienThanhLy());
+            preparedStatement.setString(1, thanhly.getMaSach()); // Assuming maSach is the first column
+            preparedStatement.setInt(2, thanhly.getSoLuongSachHong());
+            preparedStatement.setString(3, thanhly.getLyDoThanhLy());
+            preparedStatement.setDate(4, java.sql.Date.valueOf(thanhly.getNgayThanhLy()));
+            preparedStatement.setString(5, thanhly.getGhiChu());
+            preparedStatement.setDouble(6, thanhly.getTongTienThanhLy());
 
             // Execute the query
             preparedStatement.executeUpdate();
-            
-            // Close the PreparedStatement
+
+            // Retrieve the generated keys (maThanhLySach)
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int maThanhLySach = generatedKeys.getInt(1);
+                thanhly.setMaThanhLySach(String.valueOf(maThanhLySach));
+            }
+
+            // Close the ResultSet and PreparedStatement
+            generatedKeys.close();
             preparedStatement.close();
             connection.close();
             return true;
@@ -113,6 +121,7 @@ public class ThanhLy_DALL {
         }
         return false;
     }
+
     
     public boolean Update(ThanhLySach thanhly){
         Connection connection = KetNoiSQL.getConnection();
@@ -121,8 +130,8 @@ public class ThanhLy_DALL {
             // The SQL query with placeholders (?)
             String query = "UPDATE ThanhLySach "+
 			    "SET maSach=?, soLuongSachHong=?, lyDoThanhLy=?, ghiChu= ?, tongTienThanhLy = ?"+
-			    "WHERE maThanhLySach=?";
-            
+			    " WHERE maThanhLySach= ?";
+            System.out.println(query);
             // Create a PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -148,73 +157,19 @@ public class ThanhLy_DALL {
         return false;
     }
     
-    public int GetSoLuongSachHongByIdBook(String id){
-        int Soluong = 0;
-        Connection connection = KetNoiSQL.getConnection();
-        try {
-            Statement statement = connection.createStatement();
-            String query = "select soLuongSachHong "
-                    + "from khoSach "
-                    + "where maSach = "+id;
-            System.out.println(query);
-			
-            ResultSet rss =  statement.executeQuery(query);
-			
-            while(rss.next()) {
-                Soluong= rss.getInt("soLuongSachHong");
-            }
-            rss.close();
-            statement.close();
-            connection.close();
-            return Soluong;
-			
-        } catch (SQLException e) {
-		System.out.println(e);
-        }
-        return Soluong;
-    }
-    
-    public int GetSoLuongSachHongByIdThanhLy(String id){
-        int Soluong = 0;
-        Connection connection = KetNoiSQL.getConnection();
-        try {
-            Statement statement = connection.createStatement();
-            String query = "select soLuongSachHong "
-                    + "from ThanhLySach "
-                    + "where maSach = "+id;
-            System.out.println(query);
-			
-            ResultSet rss =  statement.executeQuery(query);
-			
-            while(rss.next()) {
-                Soluong= rss.getInt("soLuongSachHong");
-            }
-            rss.close();
-            statement.close();
-            connection.close();
-            return Soluong;
-			
-        } catch (SQLException e) {
-		System.out.println(e);
-        }
-        return Soluong;
-    }
-    
-    public void UpdateKhoAfterAction(ThanhLySach thanhly){
+    public boolean delete (String id){
         Connection connection = KetNoiSQL.getConnection();
 
         try {
             // The SQL query with placeholders (?)
-            String query = "UPDATE khoSach "+
-			    "SET soLuongSachHong = soLuongSachHong - ?"+
-			    "WHERE maThanhLySach=?";
-            
+            String query = "DElete ThanhLySach "+
+			    " WHERE maThanhLySach= ?";
+            System.out.println(query);
             // Create a PreparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             // Set values for the placeholders
-            preparedStatement.setInt(1, thanhly.getSoLuongSachHong());
-            preparedStatement.setString(2, thanhly.getMaThanhLySach());
+            preparedStatement.setString(1, id);
             
 
             // Execute the query
@@ -223,10 +178,90 @@ public class ThanhLy_DALL {
             // Close the PreparedStatement
             preparedStatement.close();
             connection.close();
+            return true;
 
         } catch (SQLException e) {
             e.printStackTrace(); // Handle exceptions appropriately in your application
         }
+        return false;
+    }
+    
+    public int GetSoLuongSachHongByIdBook(ThanhLySach thanhly){
+        int Soluong = 0;
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM khoSach WHERE maSach = '" + thanhly.getMaSach() + "'";
+            System.out.println(query);
+			
+            ResultSet rss =  statement.executeQuery(query);
+			
+            while(rss.next()) {
+                Soluong= rss.getInt("soLuongSachHong");
+            }
+            rss.close();
+            statement.close();
+            connection.close();
+            return Soluong;
+			
+        } catch (SQLException e) {
+		System.out.println(e);
+        }
+        return Soluong;
+    }
+    
+    public int GetSoLuongSachHongByIdThanhLy(ThanhLySach thanhly){
+        int Soluong = 0;
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM ThanhLySach WHERE maThanhLySach = '" + thanhly.getMaThanhLySach() + "'";
+            System.out.println(query);
+			
+            ResultSet rss =  statement.executeQuery(query);
+			
+            while(rss.next()) {
+                Soluong= rss.getInt("soLuongSachHong");
+            }
+            rss.close();
+            statement.close();
+            connection.close();
+            return Soluong;
+			
+        } catch (SQLException e) {
+		System.out.println(e);
+        }
+        return Soluong;
+    }
+    
+        public void UpdateKhoAfterAction(ThanhLySach thanhly){
+            Connection connection = KetNoiSQL.getConnection();
+            try {
+                // The SQL query with placeholders (?)
+                String query = "UPDATE khoSach "+
+                                "SET soLuongSachHong = soLuongSachHong - ? "+
+                                "WHERE maSach = ?";
+                System.out.println(query);
+                // Create a PreparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+                // Set values for the placeholders
+                preparedStatement.setInt(1, thanhly.getSoLuongSachHong());
+                preparedStatement.setString(2, thanhly.getMaSach());
+
+
+                // Execute the query
+                preparedStatement.executeUpdate();
+
+                // Close the PreparedStatement
+                preparedStatement.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle exceptions appropriately in your application
+            }
         
     }
+    
+    
 }

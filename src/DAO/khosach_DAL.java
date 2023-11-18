@@ -71,28 +71,28 @@ public class khosach_DAL {
 	}
     }
     
-    public List<LoadKhoDTO> getKhobysearch(String search){
+    public List<LoadKhoDTO> getKhobysearch(String search) {
         List<LoadKhoDTO> loadKhoDTOs = new ArrayList<>();
         Connection connection = KetNoiSQL.getConnection();
+
         try {
             try (Statement statement = connection.createStatement()) {
-                String query = "SELECT thongtinsach.maSach, thongtinsach.tensach, khosach.tongSoLuong, khosach.soLuongCon, khosach.soLuongSachHong\n" +
-                                "FROM thongtinsach\n" +
-                                "JOIN khosach ON thongtinsach.maSach = khosach.maSach\n" +
-                                "WHERE thongtinsach.maSach COLLATE utf8_general_ci LIKE N'%\"+search+\"%'\n" +
-                                "    OR thongtinsach.tensach COLLATE utf8_general_ci LIKE N'%\"+search+\"%'\"";
+                String query = "SELECT thongtinsach.maSach, thongtinsach.tensach, khosach.tongSoLuong, khosach.soLuongCon, khosach.soLuongSachHong " +
+                               "FROM thongtinsach " +
+                               "JOIN khosach ON thongtinsach.maSach = khosach.maSach " +
+                               "WHERE thongtinsach.maSach LIKE N'%" + search + "%' " +
+                               "OR thongtinsach.tensach LIKE N'%" + search + "%'";
                 System.out.println(query);
-                
+
                 try (ResultSet rss = statement.executeQuery(query)) {
-                    while(rss.next()) {
-                        String Masach = rss.getString("maSach");
+                    while (rss.next()) {
+                        String masach = rss.getString("maSach");
                         String tensach = rss.getString("tensach");
                         int tongsoluong = rss.getInt("tongSoLuong");
                         int soluongcon = rss.getInt("soLuongCon");
                         int sachhong = rss.getInt("soLuongSachHong");
-                        
-                        
-                        LoadKhoDTO loadKhoDTO = new LoadKhoDTO(Masach, tensach,tongsoluong, soluongcon, sachhong );
+
+                        LoadKhoDTO loadKhoDTO = new LoadKhoDTO(masach, tensach, tongsoluong, soluongcon, sachhong);
                         loadKhoDTOs.add(loadKhoDTO);
                     }
                 }
@@ -100,10 +100,11 @@ public class khosach_DAL {
             connection.close();
             return loadKhoDTOs;
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return loadKhoDTOs;
     }
+
     
     public List<LoadKhoDTO> loadKho_into(String conditon, String sortOder){
         List<LoadKhoDTO> loadKhoDTOs = new ArrayList<>();

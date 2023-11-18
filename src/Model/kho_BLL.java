@@ -5,6 +5,7 @@
 package Model;
 
 import DAO.Sach_DAO;
+import DAO.ThanhLy_DALL;
 import DAO.khosach_DAL;
 import DTO.KhoSach;
 import DTO.LoadKhoDTO;
@@ -20,11 +21,11 @@ import java.util.Map;
  * @author tiena
  */
 public class kho_BLL {
-    Sach_DAO sachdao = new Sach_DAO();
     khosach_DAL khodal = new khosach_DAL();
+    ThanhLy_DALL thanhly_DALL = new ThanhLy_DALL();
     public List<LoadKhoDTO> loadKho() {
         List<KhoSach> khoSachList = khodal.getAllKhoSach();
-        List<Sach> thongTinSachList = sachdao.selectAll();
+        List<Sach> thongTinSachList = thanhly_DALL.selectidBook();
         List<LoadKhoDTO> sachList = new ArrayList<>();
 
     // Tạo một Map để lưu thông tin sách dựa trên mã sách
