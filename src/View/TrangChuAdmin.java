@@ -5,6 +5,7 @@
 package View;
 
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -416,14 +417,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
 
         tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
                 "Ngày sinh", "Email", "Giới tính", "Số Lượng Mượn", "Trạng Thái" };
         tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(columnNames, 0));;
@@ -784,6 +777,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 tenLoaiField1ActionPerformed(evt);
             }
         });
+        tenLoaiField1.setText(LocalDate.now()+"");
+        tenLoaiField1.setEditable(false);
 
         jLabel140.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel140.setText("Hạn dùng thẻ:");
@@ -3362,7 +3357,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void resetLoaiThe() {
         maLoaiField.setText("");
         tenLoaiField.setText("");
-        tenLoaiField1.setText("");
+        tenLoaiField1.setText(LocalDate.now()+"");
         tenLoaiField3.setText("");
         soLuongField.setText("");
         thoiGianField.setText("");
@@ -3409,7 +3404,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         }
     }
 
-    // thêm loại thẻ
+    // sửa loại thẻ
     private void updatedg3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themmoidg3ActionPerformed
         if (maLoaiField.getText().equals("") || soLuongField.getText().equals("")
                 || thoiGianField.getText().equals("")) {

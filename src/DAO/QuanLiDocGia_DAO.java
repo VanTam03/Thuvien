@@ -14,6 +14,7 @@ public class QuanLiDocGia_DAO {
   KetNoiSQL connect = new KetNoiSQL();
   private ArrayList<TaiKhoan> dsDG = new ArrayList<>();
   
+  DanhSachLoaiThe dsThe = new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe());
 
   // kiểm tra mã tài khoản đã tồn tại chưa
   public boolean checkMaTaiKhoan(String maTaiKhoan) {
@@ -64,7 +65,6 @@ public class QuanLiDocGia_DAO {
 
   //danh sách độc giả
   public ArrayList dsDOCGIA() {
-    DanhSachLoaiThe dsThe = new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe());
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -228,5 +228,34 @@ public class QuanLiDocGia_DAO {
       e.printStackTrace();
     }
     return false;
+  }
+
+  public ArrayList timKiem(String ndung){
+    ArrayList<TaiKhoan> dsTK = new ArrayList<>();
+    try{
+      String sql= "SELECT * FROM TaiKhoan WHERE maTaiKhoan LIKE '%"+ndung+"%' or tenNguoiDung LIKE '%"+ndung+"%' or sdt LIKE '%"+ndung+"%'";
+      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+        TaiKhoan dg = new TaiKhoan();
+        String maDG=rs.getString("maTaiKhoan");
+        dg.setTenTaiKhoan(maDG);
+        dg.setTenNguoiDung(rs.getString("tenNguoiDung"));
+
+        dg.setLoaiTK(selectTenLoaiThe(maDG, dsThe));
+
+        dg.setMatKhau(rs.getString("matKhau"));
+        dg.setGioiTinh(rs.getString("gioiTinh"));
+        dg.setEmail(rs.getString("email"));
+        dg.setNgaySinh(rs.getString("ngaySinh"));
+        dg.setSdt(rs.getString("sdt"));
+        dg.setSoLuongMuon(rs.getInt("soLuongMuon"));
+        dg.setTrangThai(rs.getInt("trangThai"));
+        dsTK.add(dg);
+      }
+    }catch (Exception e) {
+      e.printStackTrace();
+    }
+    return dsTK;
   }
 }
