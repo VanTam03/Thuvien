@@ -76,11 +76,9 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         jTable2.setModel(defaultTableModel_CTPM);
         defaultTableModel_CTPM.addColumn("Mã phiếu mượn");
         defaultTableModel_CTPM.addColumn("Mã sách");
-        defaultTableModel_CTPM.addColumn("Tình trạng sách");
         List<ChiTietPhieuMuon> chiTietPhieuNhapSaches = ChiTietPhieuMuon_DAO.getInstance().selectAllById(id);
         for (ChiTietPhieuMuon ctpns : chiTietPhieuNhapSaches) {
-            defaultTableModel_CTPM
-                    .addRow(new Object[] { ctpns.getMaPhieumuon(), ctpns.getMaSach(), ctpns.getTinhTrangSach() });
+            defaultTableModel_CTPM.addRow(new Object[] { ctpns.getMaPhieumuon(), ctpns.getMaSach(), ctpns.getTinhTrangSach()});
         }
     }
 
@@ -728,15 +726,16 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null },
-                        { null, null, null },
-                        { null, null, null },
-                        { null, null, null }
-                },
-                new String[] {
-                        "Mã phiếu mượn", "Mã sách", "Tình trạng sách"
-                }));
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Mã phiếu mượn", "Mã sách", "Tình trạng sách"
+            }
+        ));
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -774,6 +773,16 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                                                 Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -815,13 +824,13 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         int selectedRow = jTable2.getSelectedRow();
         cbbK_maPM.setSelectedItem((String) jTable2.getValueAt(selectedRow, 0));
         txtK_maSach.setText((String) jTable2.getValueAt(selectedRow, 1));
-        // fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
-        // txtK_maSach.setEnabled(true);
-        // fieldTinhtrangsach.setEnabled(true);
-        // btnK_luuPM.setEnabled(true);
-        // btnK_themMaSach.setEnabled(false);
-        // // btnK_suaPM1.setEnabled(false);
-        // btnK_xoaMaSach.setEnabled(false);
+        //fieldTinhtrangsach.setText((String) jTable2.getValueAt(selectedRow, 2));
+//        txtK_maSach.setEnabled(true);
+//        fieldTinhtrangsach.setEnabled(true);
+//        btnK_luuPM.setEnabled(true);
+//        btnK_themMaSach.setEnabled(false);
+//        // btnK_suaPM1.setEnabled(false);
+//        btnK_xoaMaSach.setEnabled(false);
     }
 
     private void btnK_themPMActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPMActionPerformed
@@ -965,6 +974,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
             }
             btnK_lamMoiSachActionPerformed(evt);
             loadChiTietPhieuMuon((String) cbbK_maPM.getSelectedItem());
+            loadmaPhieuMuon();
         }
 
     }// GEN-LAST:event_btnK_luuMaSachActionPerformed
@@ -976,7 +986,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         // fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(false);
         btnK_themMaSach.setEnabled(true);
-        btnK_suaPM1.setEnabled(true);
+
         btnK_xoaMaSach.setEnabled(true);
     }// GEN-LAST:event_btnK_lamMoiSachActionPerformed
 
@@ -1030,11 +1040,10 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         // fieldTinhtrangsach.setEnabled(true);
         btnK_luuMaSach.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
-        btnK_suaPM1.setEnabled(false);
         txtK_maSach.setText("");
         // fieldTinhtrangsach.setText("");
         // fieldTinhtrangsach.setEnabled(false);
-        // btnK_xoaMaSach.setEnabled(false);
+        btnK_xoaMaSach.setEnabled(false);
     }// GEN-LAST:event_btnK_xoaMaSachActionPerformed
 
     private void btnK_suaPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_suaPM1ActionPerformed
