@@ -143,9 +143,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     }
 
     private void loadComboBoxTheLoai() {
-        List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectTheLoaiAll();
+        List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectAll();
         for (PhanLoaiSach tl : theLoais) {
-            Hc_maTheLoai2.addItem(tl.getMaTheloai());
+            Hc_maTheLoai2.addItem(tl.getMaTheLoai());
         }
     }
 
@@ -191,9 +191,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         tbl_DMSach5.setModel(defaultTableModel_TL);
         defaultTableModel_TL.addColumn("Mã thể loại");
         defaultTableModel_TL.addColumn("Tên thể loại");
-        List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectTheLoaiAll();
+        List<PhanLoaiSach> theLoais = PhanLoaiSach_DAO.getInstance().selectAll();
         for (PhanLoaiSach tl : theLoais) {
-            defaultTableModel_TL.addRow(new Object[] {tl.getMaTheloai(), tl.getTenTheloai() });
+            defaultTableModel_TL.addRow(new Object[] {tl.getMaTheLoai(), tl.getTenTheLoai() });
         }
     }
     public void loadThongTinSach(){
@@ -1554,6 +1554,12 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         tbl_DMSach5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_DMSach5MouseClicked(evt);
+            }
+        });
+
+        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLTGiaTableMouseClicked(evt);
             }
         });
         jScrollPane20.setViewportView(tbl_DMSach5);
@@ -3301,7 +3307,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private void Hc_maTheLoai2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maTheLoai2ActionPerformed
         // TODO add your handling code here:
         PhanLoaiSach phanLoaiSach = PhanLoaiSach_DAO.getInstance().selectById((String) Hc_maTheLoai2.getSelectedItem());
-        H_tenTheLoai2.setText(phanLoaiSach.getTenTheloai());
+        H_tenTheLoai2.setText(phanLoaiSach.getTenTheLoai());
     }// GEN-LAST:event_Hc_maTheLoai2ActionPerformed
 
     private void Hc_maDM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Hc_maDM2ActionPerformed
@@ -3488,8 +3494,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 return;
             } else {
                 PhanLoaiSach theLoai = new PhanLoaiSach();
-                theLoai.setMaTheloai(txt_maDMSach5.getText());
-                theLoai.setTenTheloai(txt_tenDMSach11.getText());
+                theLoai.setMaTheLoai(txt_maDMSach5.getText());
+                theLoai.setTenTheLoai(txt_tenDMSach11.getText());
                 if (PhanLoaiSach_DAO.getInstance().add(theLoai) > 0) {
                     JOptionPane.showMessageDialog(null, "Thêm thành công!");
                 } else {
@@ -3511,8 +3517,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 return;
             } else {
                 PhanLoaiSach theLoai = new PhanLoaiSach();
-                theLoai.setMaTheloai(txt_maDMSach5.getText());
-                theLoai.setTenTheloai(txt_tenDMSach11.getText());
+                theLoai.setMaTheLoai(txt_maDMSach5.getText());
+                theLoai.setTenTheLoai(txt_tenDMSach11.getText());
                 if (PhanLoaiSach_DAO.getInstance().update(theLoai) > 0)  {
                     JOptionPane.showMessageDialog(null, "Sửa thành công!");
                 } else {

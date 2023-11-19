@@ -657,6 +657,16 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
 
         pack();
         setLocationRelativeTo(null);
@@ -718,7 +728,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         if (txtK_maPM_1.getText().equals("") && (btnK_suaPM.isEnabled() || btnXoa.isEnabled())) {
             JOptionPane.showMessageDialog(null, "Bạn chưa điền mã phiếu mượn.");
         } else {
-            if (btnXoa.isEnabled()) {
+            if (btnXoa.isEnabled() && !btnK_suaPM.isEnabled()) {
                 int result = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xác nhận xóa",
                         JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
@@ -742,13 +752,13 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
                 phieuMuon.setMaTaikhoan(txtK_maTK.getText());
                 phieuMuon.setMaQuanly((String) cbbK_maCB.getSelectedItem());
                 phieuMuon.setTrangThai((String) cbbK_trangThai.getSelectedItem());
-                if (btnK_themPM.isEnabled()) {
+                if (btnK_themPM.isEnabled() && !btnK_suaPM.isEnabled()) {
                     if (PhieuMuon_DAO.getInstance().add(phieuMuon) > 0) {
                         JOptionPane.showMessageDialog(null, "Thêm phiếu mượn thành công!");
                     } else {
                         JOptionPane.showMessageDialog(null, "Thêm phiếu mượn thất bại!");
                     }
-                } else if (btnK_suaPM.isEnabled()) {
+                } else if (btnK_suaPM.isEnabled() && !btnK_themPM.isEnabled()) {
                     if (PhieuMuon_DAO.getInstance().update(phieuMuon) > 0) {
                         JOptionPane.showMessageDialog(null, "Sửa phiếu mượn thành công!");
                     } else {
@@ -899,7 +909,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         btnK_luuMaSach.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
         txtK_maSach.setText("");
-        // fieldTinhtrangsach.setText("");
+        //fieldTinhtrangsach.setText("");
         // fieldTinhtrangsach.setEnabled(false);
         btnK_xoaMaSach.setEnabled(true);
     }// GEN-LAST:event_btnK_xoaMaSachActionPerformed
