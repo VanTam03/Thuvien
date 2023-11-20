@@ -61,9 +61,9 @@ public class QLDG_PhanLoai_DAO {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, loaiThe.getMaLoaiThe());
       ps.setString(2, loaiThe.getTenLoaiThe());
-      ps.setInt(5, loaiThe.getSoLuongSachMuon());
-      ps.setInt(6, loaiThe.getThoiGianMuonToiDa());
-      ps.setString(7, loaiThe.getGiaTienGiaHan());
+      ps.setInt(3, loaiThe.getSoLuongSachMuon());
+      ps.setInt(4, loaiThe.getThoiGianMuonToiDa());
+      ps.setString(5, loaiThe.getGiaTienGiaHan());
 
       return ps.executeUpdate()>0;
     }catch(Exception e){
@@ -77,10 +77,10 @@ public class QLDG_PhanLoai_DAO {
     try{
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, loaiThe.getTenLoaiThe());
-      ps.setInt(4, loaiThe.getSoLuongSachMuon());
-      ps.setInt(5, loaiThe.getThoiGianMuonToiDa());
-      ps.setString(6, loaiThe.getGiaTienGiaHan());
-      ps.setString(7, loaiThe.getMaLoaiThe());
+      ps.setInt(2, loaiThe.getSoLuongSachMuon());
+      ps.setInt(3, loaiThe.getThoiGianMuonToiDa());
+      ps.setString(4, loaiThe.getGiaTienGiaHan());
+      ps.setString(5, loaiThe.getMaLoaiThe());
 
       return ps.executeUpdate()>0;
     }catch(Exception e){

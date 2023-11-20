@@ -275,7 +275,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         hanDungField1 = new javax.swing.JTextField();
         ngayMotheLabel = new javax.swing.JLabel();
         ngayMotheField = new javax.swing.JTextField();
-        Hc_maTheLoai3 = new javax.swing.JComboBox<>();
+        String[] dsTenLoaiThe = new QuanLiDocGia_DAO().tenLoaiThe();
+        Hc_maTheLoai3 = new javax.swing.JComboBox<>(dsTenLoaiThe);
         updatedg4 = new javax.swing.JButton();
         jPanel40 = new javax.swing.JPanel();
         jScrollPane25 = new javax.swing.JScrollPane();
@@ -531,19 +532,23 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
 
         tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
+                "Ngày sinh", "Email", "Giới tính", "Địa Chỉ", "Ngày Mở Thẻ", "Hạn Sử Dụng", "SoLuongMuon", "Trạng Thái" };
+        
         tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
-            new String [] {
-
-            }
+            columnNames
         ));
         tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia2MouseClicked(evt);
             }
         });
+        loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+        new QuanLiDocGia_DAO().khoaQuaHan();
+
         jScrollPane17.setViewportView(tableDocgia2);
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -677,9 +682,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel143.setText("Tìm kiếm:");
 
         timKiemDG.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        timKiemDG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timKiemDGActionPerformed(evt);
+        timKiemDG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().timKiem(timKiemDG.getText())));
             }
         });
 
@@ -695,12 +700,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel129.setText("Hạn dùng:");
 
         hanDungField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-
+        hanDungField1.setEditable(false);
+        hanDungField1.setText(LocalDate.now().plusYears(1)+"");
         ngayMotheLabel.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         ngayMotheLabel.setForeground(new java.awt.Color(0, 0, 0));
         ngayMotheLabel.setText("Ngày mở thẻ:");
 
         ngayMotheField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        ngayMotheField.setEditable(false);
+        ngayMotheField.setText(LocalDate.now()+"");
 
         updatedg4.setBackground(new java.awt.Color(255, 204, 204));
         updatedg4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -841,23 +849,30 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
 
         quanlyttdg2.addTab("Quản lý Độc giả", jPanel29);
-
+        quanlyttdg2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
+                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+            }
+        });
         jPanel40.setBackground(new java.awt.Color(255, 255, 204));
 
         tableDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        
+        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ",
+                "Số sách được mượn", "Thời gian mượn", "Giá tiền mở thẻ" };
         tableDocgia3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
-            new String [] {
-
-            }
+            nameColumnLoaiThe
         ));
         tableDocgia3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia3MouseClicked(evt);
             }
         });
+        loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -921,9 +936,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         });
 
         tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tenLoaiField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tenLoaiField2ActionPerformed(evt);
+        tenLoaiField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
             }
         });
 
@@ -2741,10 +2756,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailDocgia4ActionPerformed
 
-    private void updatedg4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatedg4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updatedg4ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new DangNhap().setVisible(true);
@@ -2777,15 +2788,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     }// GEN-LAST:event_emailDocgia3ActionPerformed
 
     private void timKiemDGActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_timKiemDGActionPerformed
-        // TODO add your handling code here:
-        int lineSelect = tableDocgia3.getSelectedRow();
-        maLoaiField.setText(tableDocgia3.getValueAt(lineSelect, 0).toString());
-        tenLoaiField.setText(tableDocgia3.getValueAt(lineSelect, 1).toString());
-        tenLoaiField1.setText(tableDocgia3.getValueAt(lineSelect, 2).toString());
-        tenLoaiField3.setText(tableDocgia3.getValueAt(lineSelect, 3).toString());
-        soLuongField.setText(tableDocgia3.getValueAt(lineSelect, 4).toString());
-        thoiGianField.setText(tableDocgia3.getValueAt(lineSelect, 5).toString());
-        thoiGianField1.setText(tableDocgia3.getValueAt(lineSelect, 6).toString());
     }// GEN-LAST:event_timKiemDGActionPerformed
 
     // click bảng phân loại thẻ
@@ -2793,16 +2795,14 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         int lineSelect = tableDocgia3.getSelectedRow();
         maLoaiField.setText(tableDocgia3.getValueAt(lineSelect, 0).toString().trim());
         tenLoaiField.setText(tableDocgia3.getValueAt(lineSelect, 1).toString());
-        tenLoaiField1.setText(tableDocgia3.getValueAt(lineSelect, 2).toString().trim());
-        tenLoaiField3.setText(tableDocgia3.getValueAt(lineSelect, 3).toString());
-        soLuongField.setText(tableDocgia3.getValueAt(lineSelect, 4).toString());
-        thoiGianField.setText(tableDocgia3.getValueAt(lineSelect, 5).toString());
-        thoiGianField1.setText(tableDocgia3.getValueAt(lineSelect, 6).toString());
-    
+        soLuongField.setText(tableDocgia3.getValueAt(lineSelect, 2).toString());
+        thoiGianField.setText(tableDocgia3.getValueAt(lineSelect, 3).toString());
+        thoiGianField1.setText(tableDocgia3.getValueAt(lineSelect, 4).toString());
+        maLoaiField.setEditable(false);
     }
     // load dữ liệu lên bảng phân loại thẻ
     private void loadTableLoaiThe(JTable tb, DanhSachLoaiThe dslt) {
-        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ", "Ngày mở thẻ", "Hạn dùng thẻ",
+        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ",
                 "Số sách được mượn", "Thời gian mượn", "Giá tiền mở thẻ" };
         DefaultTableModel fault = new DefaultTableModel();
         for (String col : nameColumnLoaiThe) {
@@ -2825,12 +2825,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     // làm mới loại thẻ
     private void resetLoaiThe() {
         maLoaiField.setText("");
-        tenLoaiField.setText("");        
-        tenLoaiField1.setText(LocalDate.now()+"");
-        tenLoaiField3.setText("");
+        tenLoaiField.setText("");
         soLuongField.setText("");
         thoiGianField.setText("");
         thoiGianField1.setText("");
+        maLoaiField.setEditable(true);
     }
 
     private void mokhoa4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_mokhoa4ActionPerformed
@@ -2842,14 +2841,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         if (maLoaiField.getText().equals("") || soLuongField.getText().equals("")
                 || thoiGianField.getText().equals("")) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đủ Thông Tin!");
-        } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maLoaiField.getText().toString())) {
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Người Dùng Hiện Chưa Có Tài Khoản!");
         } else if (!new QLDG_PhanLoai_DAO().checkMaThe(maLoaiField.getText().toString())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Thẻ Đã Tồn Tại!!");
-        } else if (!new check().isDateValid(tenLoaiField1.getText())
-                || !new check().isDateValid(tenLoaiField3.getText())) {
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
-                    "Vui Lòng Nhập Ngày Theo Định Dạng 'yyyy-mm-dd'!");
         } else {
             int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắn Chắc Thêm Loại Thẻ!");
             if (x == JOptionPane.NO_OPTION)
@@ -2878,10 +2871,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (new QLDG_PhanLoai_DAO().checkMaThe(maLoaiField.getText().toString())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Thẻ Đã Tồn Tại!!");
-        } else if (!new check().isDateValid(tenLoaiField1.getText())
-                || !new check().isDateValid(tenLoaiField3.getText())) {
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
-                    "Vui Lòng Nhập Ngày Theo Định Dạng 'yyyy-mm-dd'!");
         } else {
             int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắn Chắc Sửa Loại Thẻ!");
             if (x == JOptionPane.NO_OPTION)
@@ -2913,8 +2902,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     // bảng độc giả
     public void loadTableDocGia(JTable tb, DanhSachTaiKhoan dg) {
         String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
-                "Ngày sinh", "Email",
-                "Giới tính", "SoLuongMuon", "Trạng Thái" };
+                "Ngày sinh", "Email", "Giới tính", "Địa Chỉ", "Ngày Mở Thẻ", "Hạn Sử Dụng", "SoLuongMuon", "Trạng Thái" };
         DefaultTableModel fault = new DefaultTableModel();
         for (String col : columnNames) {
             fault.addColumn(col);
@@ -2932,6 +2920,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             t.add(tk.getNgaySinh());
             t.add(tk.getEmail());
             t.add(tk.getGioiTinh());
+            t.add(tk.getDiaChi());
+            t.add(tk.getNgayMoThe());
+            t.add(tk.getHanSuDung());
             t.add(tk.getSoLuongMuon());
             t.add(tk.getTrangThai());
             fault.addRow(t);
@@ -2941,31 +2932,37 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     // sự kiện click bảng độc giả
     private void tableDocgia2MouseClicked(java.awt.event.MouseEvent evt) {
-        tableDocgia2.setRowSelectionAllowed(true);
+        // tableDocgia2.setRowSelectionAllowed(true);
         int lineSelect = tableDocgia2.getSelectedRow();
 
         maDocGiaField.setText(tableDocgia2.getValueAt(lineSelect, 0).toString().trim());
         tenDocGiaField.setText(tableDocgia2.getValueAt(lineSelect, 1).toString());
-        Hc_maTheLoai3.setSelectedItem(tableDocgia2.getValueAt(lineSelect, 2).toString());
+        Hc_maTheLoai3.setSelectedItem(new QuanLiDocGia_DAO().tenLoai(tableDocgia2.getValueAt(lineSelect, 2).toString()));
 
         matKhauField.setText((String) tableDocgia2.getValueAt(lineSelect, 3));
         sdt2.setText(tableDocgia2.getValueAt(lineSelect, 4).toString().trim());
         ngaysinh2.setText((String) tableDocgia2.getValueAt(lineSelect, 5));
-        Hc_maTheLoai3.setText(tableDocgia2.getValueAt(lineSelect, 6).toString().trim());
 
+        emailDocgia4.setText(tableDocgia2.getValueAt(lineSelect, 6).toString().trim());
         String gioiTinh = tableDocgia2.getValueAt(lineSelect, 7).toString();
         if (gioiTinh.equals("Nam")) {
             gioitinhnam16.setSelected(true);
         } else
             gioitinhnu16.setSelected(true);
-        soLuongmuonField.setText(new QuanLiDocGia_DAO().hanDungThe(maDocGiaField.getText()));
-        //số lượng mượn column 8
-        if (Integer.parseInt(tableDocgia2.getValueAt(lineSelect, 9).toString()) == 0){
+
+        //địa chỉ col 8
+
+        ngayMotheField.setText(tableDocgia2.getValueAt(lineSelect, 9).toString().trim());
+        hanDungField1.setText(tableDocgia2.getValueAt(lineSelect, 10).toString().trim());
+        // soLuongmuonField.setText(new QuanLiDocGia_DAO().hanDungThe(maDocGiaField.getText()));
+        //số lượng mượn column 11
+        if (Integer.parseInt(tableDocgia2.getValueAt(lineSelect, 12).toString()) == 0){
                 khoatk8.setEnabled(false);
         }else{
                 khoatk8.setEnabled(true);
         }
     }
+    
     // làm mới độc giả
     private void resetDG() {
         maDocGiaField.setText("");
@@ -2974,9 +2971,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
         sdt2.setText("");
         ngaysinh2.setText("");
-        Hc_maTheLoai3.setText("");
         Hc_maTheLoai3.setSelectedItem("");
         soLuongmuonField.setText("");
+        emailDocgia4.setText("");
+        ngayMotheField.setText("");
+        hanDungField1.setText("");
 
         khoatk8.setEnabled(true);
     }
@@ -2989,13 +2988,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     // thêm độc giả
     private void themmoidg2ActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || Hc_maTheLoai3.getText().equals("") || sdt2.getText().equals("")) {
+                || Hc_maTheLoai3.getSelectedItem().equals("") || sdt2.getText().equals("")) {
             JOptionPane.showMessageDialog((JOptionPane.getRootFrame()), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (!new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Đã Tồn Tại!");
-        } else if (!new check().isDateValid(ngaysinh2.getText()) || !new check().isDateValid(soLuongmuonField.getText())) {
+        } else if (!new check().isDateValid(ngaysinh2.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dàng Ngày yyyy-mm-dd!");
-        } else if (!new check().isValidGmail(Hc_maTheLoai3.getText())) {
+        } else if (!new check().isValidGmail(emailDocgia4.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
                     "Vui Lòng Nhập Đúng Định Dạng Email!");
         } else if (!new check().isValidPhoneNumber(sdt2.getText())) {
@@ -3009,8 +3008,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setTenTaiKhoan(maDocGiaField.getText());
             dg.setMatKhau(matKhauField.getText());
             dg.setTenNguoiDung(tenDocGiaField.getText());
-            dg.setLoaiTK(Hc_maTheLoai3.getSelectedItem().toString());
-            dg.setEmail(Hc_maTheLoai3.getText());
+            dg.setLoaiTK(new QuanLiDocGia_DAO().maLoaiThe(Hc_maTheLoai3.getSelectedItem().toString()));
+            dg.setEmail(emailDocgia4.getText());
             if (gioitinhnam16.isSelected()) {
                 dg.setGioiTinh("Nam");
             } else if (gioitinhnu16.isSelected()) {
@@ -3022,6 +3021,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
             dg.setSoLuongMuon(0);
+            dg.setNgayMoThe(ngayMotheField.getText());
+            dg.setHanSuDung(hanDungField1.getText());
+            //địa chỉ
 
             if (new QuanLiDocGia_DAO().Add_DG(dg)) {
                 loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
@@ -3036,13 +3038,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     // Cập nhật độc giả
     private void updatedg2ActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("") || matKhauField.getText().equals("")
-                || Hc_maTheLoai3.getText().equals("") || sdt2.getText().equals("")) {
+                || emailDocgia4.getText().equals("") || sdt2.getText().equals("")) {
             JOptionPane.showMessageDialog((JOptionPane.getRootFrame()), "Vui Lòng Nhập Đủ Thông Tin!");
         } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
-        } else if (!new check().isDateValid(ngaysinh2.getText()) || !new check().isDateValid(soLuongmuonField.getText())) {
+        } else if (!new check().isDateValid(ngaysinh2.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Nhập Đúng Định Dàng Ngày yyy-mm-dd!");
-        } else if (!new check().isValidGmail(Hc_maTheLoai3.getText())) {
+        } else if (!new check().isValidGmail(emailDocgia4.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
                     "Vui Lòng Nhập Đúng Định Dạng Email!");
         } else if (!new check().isValidPhoneNumber(sdt2.getText())) {
@@ -3057,8 +3059,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setTenTaiKhoan(maDocGiaField.getText());
             dg.setMatKhau(matKhauField.getText());
             dg.setTenNguoiDung(tenDocGiaField.getText());
-            dg.setLoaiTK(Hc_maTheLoai3.getSelectedItem().toString());
-            dg.setEmail(Hc_maTheLoai3.getText());
+            // String[] dsTenThe = new QuanLiDocGia_DAO().tenLoaiThe();
+            // // dg.setLoaiTK(dsTenThe[Hc_maTheLoai3.getSelectedIndex()]);           
+            // System.out.print(dsTenThe[Hc_maTheLoai3.getSelectedIndex()]);
+            dg.setLoaiTK(new QuanLiDocGia_DAO().maLoaiThe(Hc_maTheLoai3.getSelectedItem().toString()));
+
+            // dg.setLoaiTK("3000");
+            dg.setEmail(emailDocgia4.getText());
             if (gioitinhnam16.isSelected()) {
                 dg.setGioiTinh("Nam");
             } else if (gioitinhnu16.isSelected()) {
@@ -3070,6 +3077,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
             dg.setSoLuongMuon(0);
+            // dg.setDiaChi();
+            dg.setNgayMoThe(ngayMotheField.getText());
+            dg.setHanSuDung(hanDungField1.getText());
 
             if (new QuanLiDocGia_DAO().update_DG(dg)) {
                 loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
@@ -3102,20 +3112,19 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     }
     
     //gia hạn loại thẻ độc giả
-    private void khoatk9ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void updatedg4ActionPerformed(java.awt.event.ActionEvent evt) {
         if (maDocGiaField.getText().equals("")) {
             JOptionPane.showMessageDialog((rootPane), "Vui Lòng Nhập Mã Độc Giả!");
         } else if (new QuanLiDocGia_DAO().checkMaTaiKhoan(maDocGiaField.getText())) {
             JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Mã Độc Giả Không Tồn Tại!");
-        } else if(new QLDG_PhanLoai_DAO().checkMaThe(maDocGiaField.getText())) {
-                JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Vui Lòng Tạo Thẻ Độc Giả!");
         } else {
             int x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Có Chắn Chắn Gia Hạn Thẻ Độc Giả!");
             if (x == JOptionPane.NO_OPTION) return;
-            x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Chắn Chắn Đã Thu Phí Gia Hạn Thẻ: " + new QuanLiDocGia_DAO().phiGiaHan(maDocGiaField.getText()));
+            String maThe = new QuanLiDocGia_DAO().maLoaiThe(Hc_maTheLoai3.getSelectedItem().toString());
+            x = JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Bạn Chắn Chắn Đã Thu Phí Gia Hạn Thẻ: " + new QuanLiDocGia_DAO().phiGiaHan(maThe));
             if (x == JOptionPane.NO_OPTION)
                 return;
-            if (new QuanLiDocGia_DAO().giaHan_DG(maDocGiaField.getText()) && new QuanLiDocGia_DAO().giaHan_DG_LoaiThe(maDocGiaField.getText())) {
+            if (new QuanLiDocGia_DAO().giaHan_DG(maDocGiaField.getText())) {
                 loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Gia Hạn Thành Công!");
                 resetDG();
