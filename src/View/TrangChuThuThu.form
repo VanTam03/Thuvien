@@ -3273,12 +3273,80 @@
                             <Component class="javax.swing.JTable" name="tabletksach2">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="4" rowCount="4">
-                                    <Column editable="true" title="STT" type="java.lang.Object"/>
-                                    <Column editable="true" title="M&#xe3; s&#xe1;ch" type="java.lang.Object"/>
-                                    <Column editable="true" title="T&#xea;n s&#xe1;ch" type="java.lang.Object"/>
-                                    <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
+                                  <Table columnCount="4" rowCount="10">
+                                    <Column editable="true" title="STT" type="java.lang.Object">
+                                      <Data value="1"/>
+                                      <Data value="2"/>
+                                      <Data value="3"/>
+                                      <Data value="4"/>
+                                      <Data value="5"/>
+                                      <Data value="6"/>
+                                      <Data value="7"/>
+                                      <Data value="8"/>
+                                      <Data value="9"/>
+                                      <Data value="10"/>
+                                    </Column>
+                                    <Column editable="true" title="M&#xe3; s&#xe1;ch" type="java.lang.Object">
+                                      <Data value="S001"/>
+                                      <Data value="S002"/>
+                                      <Data value="S003"/>
+                                      <Data value="S004"/>
+                                      <Data value="S005"/>
+                                      <Data value="S006"/>
+                                      <Data value="S007"/>
+                                      <Data value="S008"/>
+                                      <Data value="S009"/>
+                                      <Data value="S010"/>
+                                    </Column>
+                                    <Column editable="true" title="T&#xea;n s&#xe1;ch" type="java.lang.Object">
+                                      <Data value="Gi&#xe1;o tr&#xec;nh k&#x1ef9; thu&#x1ead;t xung s&#x1ed1; v&#xe0; &#x1ee9;ng d&#x1ee5;ng"/>
+                                      <Data value="L&#x1ead;p tr&#xec;nh c&#x1a1; b&#x1ea3;n v&#x1edb;i C"/>
+                                      <Data value="Tr&#x1b0;&#x1edd;ng &#x111;i&#x1ec7;n t&#x1eeb; - L&#xfd; thuy&#x1ebf;t v&#xe0; b&#xe0;i t&#x1ead;p"/>
+                                      <Data value="C&#x1a1; s&#x1edf; d&#x1eef; li&#x1ec7;u"/>
+                                      <Data value="Tin h&#x1ecd;c v&#x103;n ph&#xf2;ng"/>
+                                      <Data value="B&#x1a1;m nhi&#x1ec7;t"/>
+                                      <Data value="C&#x1a1; s&#x1edf; thi&#x1ebf;t k&#x1ebf; m&#xe1;y"/>
+                                      <Data value="&#x110;o l&#x1b0;&#x1edd;ng nhi&#x1ec7;t"/>
+                                      <Data value="Nhi&#xea;n li&#x1ec7;u s&#x1ea1;ch"/>
+                                      <Data value="null"/>
+                                    </Column>
+                                    <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object">
+                                      <Data value="7"/>
+                                      <Data value="15"/>
+                                      <Data value="5"/>
+                                      <Data value="9"/>
+                                      <Data value="2"/>
+                                      <Data value="3"/>
+                                      <Data value="4"/>
+                                      <Data value="2"/>
+                                      <Data value="3"/>
+                                      <Data value="0"/>
+                                    </Column>
                                   </Table>
+                                </Property>
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                  <TableColumnModel selectionModel="0">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                  </TableColumnModel>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>

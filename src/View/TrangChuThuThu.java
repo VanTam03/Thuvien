@@ -2156,10 +2156,16 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         tabletksach2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"1", "S001", "Giáo trình kỹ thuật xung số và ứng dụng", "7"},
+                {"2", "S002", "Lập trình cơ bản với C", "15"},
+                {"3", "S003", "Trường điện từ - Lý thuyết và bài tập", "5"},
+                {"4", "S004", "Cơ sở dữ liệu", "9"},
+                {"5", "S005", "Tin học văn phòng", "2"},
+                {"6", "S006", "Bơm nhiệt", "3"},
+                {"7", "S007", "Cơ sở thiết kế máy", "4"},
+                {"8", "S008", "Đo lường nhiệt", "2"},
+                {"9", "S009", "Nhiên liệu sạch", "3"},
+                {"10", "S010", null, "0"}
             },
             new String [] {
                 "STT", "Mã sách", "Tên sách", "Số lượng"
