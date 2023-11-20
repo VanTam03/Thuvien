@@ -33,13 +33,14 @@ public class ThanhLy_DALL {
 			
             while(rs.next()) {
                 String maThanhLySach = rs.getString("maThanhLySach");
+                String maQuanLy = rs.getString("maQuanLy");
                 String maSach = rs.getString("maSach");
                 int soLuongSachHong = rs.getInt("soLuongSachHong");
                 String lyDoThanhLy = rs.getString("lyDoThanhLy");
                 LocalDate ngayThanhLy = rs.getDate("ngayThanhLy").toLocalDate();
                 String ghiChu = rs.getString("ghiChu");
                 double tongTienThanhLy = rs.getDouble("tongTienThanhLy");
-                ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
+                ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maQuanLy, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
                 thanhLySachs.add(thanhLySach);
             }
             rs.close();
@@ -87,18 +88,19 @@ public class ThanhLy_DALL {
 
         try {
             // The SQL query with placeholders (?)
-            String query = "INSERT INTO ThanhLySach (maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO ThanhLySach (maQuanLy, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             // Create a PreparedStatement with RETURN_GENERATED_KEYS option
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             // Set values for the placeholders
-            preparedStatement.setString(1, thanhly.getMaSach()); // Assuming maSach is the first column
-            preparedStatement.setInt(2, thanhly.getSoLuongSachHong());
-            preparedStatement.setString(3, thanhly.getLyDoThanhLy());
-            preparedStatement.setDate(4, java.sql.Date.valueOf(thanhly.getNgayThanhLy()));
-            preparedStatement.setString(5, thanhly.getGhiChu());
-            preparedStatement.setDouble(6, thanhly.getTongTienThanhLy());
+            preparedStatement.setString(1, thanhly.getMaQuanLy());
+            preparedStatement.setString(2, thanhly.getMaSach()); // Assuming maSach is the first column
+            preparedStatement.setInt(3, thanhly.getSoLuongSachHong());
+            preparedStatement.setString(4, thanhly.getLyDoThanhLy());
+            preparedStatement.setDate(5, java.sql.Date.valueOf(thanhly.getNgayThanhLy()));
+            preparedStatement.setString(6, thanhly.getGhiChu());
+            preparedStatement.setDouble(7, thanhly.getTongTienThanhLy());
 
             // Execute the query
             preparedStatement.executeUpdate();
@@ -263,5 +265,54 @@ public class ThanhLy_DALL {
         
     }
     
+    public double getprincebook(String idbook){
+        double prince = 0;
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "select giaTienSach from ThongTinSach";
+            System.out.println(query);
+			
+            ResultSet rs =  statement.executeQuery(query);
+			
+            while(rs.next()) {
+                prince = rs.getDouble("giaTienSach");              
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+            System.out.println(prince);
+            return prince;
+			
+        } catch (SQLException e) {
+		System.out.println(e);
+        }
+        return prince;
+    }
     
+    public List<String> getIdQuanLy(){
+        List<String> IDQLys = new ArrayList<>();
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "select maQuanLy from QuanLy ";
+            System.out.println(query);
+			
+            ResultSet rs =  statement.executeQuery(query);
+			
+            while(rs.next()) {
+                String maQuanLy = rs.getString("maQuanLy");
+                
+                IDQLys.add(maQuanLy);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+            return IDQLys;
+			
+        } catch (SQLException e) {
+		System.out.println(e);
+        }
+        return IDQLys;
+    }
 }

@@ -11,6 +11,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -323,13 +326,19 @@
             <Component class="javax.swing.JComboBox" name="cb_tinhtrang">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Kh&#xf4;ng h&#x1ecf;ng"/>
-                    <StringItem index="1" value="M&#x1ea5;t s&#xe1;ch"/>
-                    <StringItem index="2" value="B&#x1ecb; h&#x1ecf;ng"/>
+                  <StringArray count="6">
+                    <StringItem index="0" value="B&#xec;nh th&#x1b0;&#x1edd;ng"/>
+                    <StringItem index="1" value="M&#x1ea5;t"/>
+                    <StringItem index="2" value="H&#x1b0; h&#x1ecf;ng m&#x1ee9;c &#xed;t"/>
+                    <StringItem index="3" value="H&#x1b0; h&#x1ecf;ng m&#x1ee9;c v&#x1eeb;a"/>
+                    <StringItem index="4" value="H&#x1b0; h&#x1ecf;ng m&#x1ee9;c nhi&#x1ec1;u"/>
+                    <StringItem index="5" value="H&#x1b0; h&#x1ecf;ng m&#x1ee9;c nghi&#xea;m tr&#x1ecd;ng"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_tinhtrangActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -437,6 +446,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblK_ChiTietMouseClicked"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblK_ChiTietKeyTyped"/>
               </Events>
             </Component>
           </SubComponents>

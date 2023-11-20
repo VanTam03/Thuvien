@@ -100,13 +100,14 @@ public class ThanhLyBLL {
             // Tạo hàng đầu tiên (tiêu đề)
             Row headerRow = sheet.createRow(0);
             headerRow.createCell(0).setCellValue("Mã Thanh Lý Sách");
-            headerRow.createCell(1).setCellValue("Mã Sách");
-            headerRow.createCell(2).setCellValue("Tên Sách");
-            headerRow.createCell(3).setCellValue("Số lượng");
-            headerRow.createCell(4).setCellValue("Lý do");
-            headerRow.createCell(5).setCellValue("Ngày thanh lý");
-            headerRow.createCell(6).setCellValue("Ghi chú");
-            headerRow.createCell(7).setCellValue("Tổng tiền");
+            headerRow.createCell(1).setCellValue("Mã Quản Lý");
+            headerRow.createCell(2).setCellValue("Mã Sách");
+            headerRow.createCell(3).setCellValue("Tên Sách");
+            headerRow.createCell(4).setCellValue("Số lượng");
+            headerRow.createCell(5).setCellValue("Lý do");
+            headerRow.createCell(6).setCellValue("Ngày thanh lý");
+            headerRow.createCell(7).setCellValue("Ghi chú");
+            headerRow.createCell(8).setCellValue("Tổng tiền");
 
             // Duyệt danh sách và thêm dữ liệu vào bảng Excel
             int rowNum = 1;
@@ -117,21 +118,22 @@ public class ThanhLyBLL {
             for (ThanhLySach thanhLy : thanhLyList) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(thanhLy.getMaThanhLySach());
-                row.createCell(1).setCellValue(thanhLy.getMaSach());
+                row.createCell(1).setCellValue(thanhLy.getMaQuanLy());
+                row.createCell(2).setCellValue(thanhLy.getMaSach());
 
                 // Find the corresponding Sach
                 Sach correspondingSach = findCorrespondingSach(thanhLy.getMaSach(), sachList);
                 if (correspondingSach != null) {
-                    row.createCell(2).setCellValue(correspondingSach.getTenSach());
+                    row.createCell(3).setCellValue(correspondingSach.getTenSach());
                     // Add more data for Sach if needed
                 }
 
-                row.createCell(3).setCellValue(thanhLy.getSoLuongSachHong());
-                row.createCell(4).setCellValue(thanhLy.getLyDoThanhLy());
+                row.createCell(4).setCellValue(thanhLy.getSoLuongSachHong());
+                row.createCell(5).setCellValue(thanhLy.getLyDoThanhLy());
                 String ngayThanhLyString = thanhLy.getNgayThanhLy().format(formatter);
-                row.createCell(5).setCellValue(ngayThanhLyString);
-                row.createCell(6).setCellValue(thanhLy.getGhiChu());
-                row.createCell(7).setCellValue(thanhLy.getTongTienThanhLy());
+                row.createCell(6).setCellValue(ngayThanhLyString);
+                row.createCell(7).setCellValue(thanhLy.getGhiChu());
+                row.createCell(8).setCellValue(thanhLy.getTongTienThanhLy());
                 // Add more data for ThanhLySach
 
                 // Continue with other columns...
@@ -165,5 +167,34 @@ public class ThanhLyBLL {
         for (int i = 0; i < numberOfColumns; i++) {
             sheet.autoSizeColumn(i);
         }
+    }
+    
+    public double tinhtienthanhly(ThanhLySach thanhLySach){
+        double prince = 0;
+        double princebook = thanhLy_DALL.getprincebook(thanhLySach.getMaSach());  
+        float phantramthanhtoan = 0;
+            switch (thanhLySach.getLyDoThanhLy()) {
+                case "Hư hỏng mức ít":
+                    phantramthanhtoan = 0.95f;
+                    break;
+                case "Hư hỏng mức vừa":
+                    phantramthanhtoan = 0.85f;
+                    break;
+                case "Hư hỏng mức nhiều":
+                    phantramthanhtoan = 0.65f;
+                    break;
+                default:
+                    phantramthanhtoan = 0.15f;
+                    break;
+            }
+        
+        prince = princebook*phantramthanhtoan*thanhLySach.getSoLuongSachHong();
+        System.out.println(phantramthanhtoan);
+        System.out.println(prince);
+        return prince;
+    }
+    
+    public List<String> getIdQuanLy(){
+        return thanhLy_DALL.getIdQuanLy();
     }
 }

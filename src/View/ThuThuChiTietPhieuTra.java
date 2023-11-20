@@ -110,6 +110,11 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1430, 645));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         Panel_ChiTietPM.setBackground(new java.awt.Color(255, 255, 204));
         Panel_ChiTietPM.setPreferredSize(new java.awt.Dimension(1080, 740));
@@ -202,7 +207,12 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
             }
         });
 
-        cb_tinhtrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Không hỏng", "Mất sách", "Bị hỏng" }));
+        cb_tinhtrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bình thường", "Mất", "Hư hỏng mức ít", "Hư hỏng mức vừa", "Hư hỏng mức nhiều", "Hư hỏng mức nghiêm trọng" }));
+        cb_tinhtrang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_tinhtrangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -323,6 +333,11 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                 tblK_ChiTietMouseClicked(evt);
             }
         });
+        tblK_ChiTiet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tblK_ChiTietKeyTyped(evt);
+            }
+        });
         jScrollPane6.setViewportView(tblK_ChiTiet);
 
         btnK_veTrangTruoc.setBackground(new java.awt.Color(255, 204, 204));
@@ -418,9 +433,16 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
             txtDate.setText("");
         }
         
+        String tinhtrangsachs = tblK_ChiTiet.getValueAt(row, 4).toString();
+        
+        int commaIndex = tinhtrangsachs.indexOf(',');
+        if(commaIndex != -1){
+            String tinhtrangsach = tinhtrangsachs.substring(0, commaIndex);
+            cb_tinhtrang.setSelectedItem(tinhtrangsach);
+        }
         
         txtTienPhat.setText(tblK_ChiTiet.getValueAt(row, 3).toString());
-        cb_tinhtrang.setSelectedItem(tblK_ChiTiet.getValueAt(row, 4).toString());
+        
         
         if(tblK_ChiTiet.getValueAt(row, 2) == null){
             btnK_luuChiTiet.setEnabled(true);
@@ -456,6 +478,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     }//GEN-LAST:event_btnK_suaChiTietActionPerformed
 
     private void btnK_luuChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuChiTietActionPerformed
+        
         int confirm = JOptionPane.showConfirmDialog(this, "Cập nhật trả sach!", "Xác nhận", JOptionPane.YES_NO_OPTION);
     
         if (confirm == JOptionPane.YES_OPTION) {
@@ -530,6 +553,18 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     private void txtTienPhatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienPhatKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTienPhatKeyTyped
+
+    private void cb_tinhtrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tinhtrangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_tinhtrangActionPerformed
+
+    private void tblK_ChiTietKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblK_ChiTietKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblK_ChiTietKeyTyped
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

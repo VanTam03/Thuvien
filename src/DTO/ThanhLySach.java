@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class ThanhLySach {
     private String maThanhLySach;
+    private String maQuanLy;
     private String maSach;
     private int soLuongSachHong;
     private String lyDoThanhLy;
@@ -14,14 +15,23 @@ public class ThanhLySach {
     public ThanhLySach() {
     }
 
-    public ThanhLySach(String maThanhLySach, String maSach, int soLuongSachHong, String lyDoThanhLy, LocalDate ngayThanhLy, String ghiChu, double tongTienThanhLy) {
+    public ThanhLySach(String maThanhLySach, String maQuanLy, String maSach, int soLuongSachHong, String lyDoThanhLy, LocalDate ngayThanhLy, String ghiChu, double tongTienThanhLy) {
         this.maThanhLySach = maThanhLySach;
+        this.maQuanLy = maQuanLy;
         this.maSach = maSach;
         this.soLuongSachHong = soLuongSachHong;
         this.lyDoThanhLy = lyDoThanhLy;
         this.ngayThanhLy = ngayThanhLy;
         this.ghiChu = ghiChu;
         this.tongTienThanhLy = tongTienThanhLy;
+    }
+
+    public String getMaQuanLy() {
+        return maQuanLy;
+    }
+
+    public void setMaQuanLy(String maQuanLy) {
+        this.maQuanLy = maQuanLy;
     }
 
     public String getMaThanhLySach() {
