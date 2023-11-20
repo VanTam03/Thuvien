@@ -134,8 +134,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         sdt2 = new javax.swing.JTextField();
         ngaysinh2 = new javax.swing.JTextField();
         emailDocgia4 = new javax.swing.JTextField();
-        String[] dsTenLoaiThe = new QuanLiDocGia_DAO().tenLoaiThe();
-        Hc_maTheLoai3 = new javax.swing.JComboBox<>(dsTenLoaiThe);
+        Hc_maTheLoai3 = new javax.swing.JComboBox<>();
         soLuongmuonLabel = new javax.swing.JLabel();
         ngayMotheLabel = new javax.swing.JLabel();
         jLabel135 = new javax.swing.JLabel();
@@ -305,8 +304,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel179 = new javax.swing.JLabel();
         gioitinhnam22 = new javax.swing.JRadioButton();
         gioitinhnu22 = new javax.swing.JRadioButton();
-        String[] tenQL={"ADMIN", "THỦ THƯ"};
-        Hc_maTheLoai6 = new javax.swing.JComboBox<>(tenQL);
+        Hc_maTheLoai6 = new javax.swing.JComboBox<>();
         jLabel175 = new javax.swing.JLabel();
         jLabel174 = new javax.swing.JLabel();
         jLabel173 = new javax.swing.JLabel();
@@ -418,22 +416,21 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         quanlyttdg2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
-        String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
-        "Ngày sinh", "Email", "Giới tính", "Địa Chỉ", "Ngày Mở Thẻ", "Hạn Sử Dụng", "SoLuongMuon", "Trạng Thái" };
 
         tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
-            },columnNames
+            },
+            new String [] {
+
+            }
         ));
         tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia2MouseClicked(evt);
             }
         });
-        loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
-        new QuanLiDocGia_DAO().khoaQuaHan();
         jScrollPane17.setViewportView(tableDocgia2);
 
         gioitinhnam16.setBackground(new java.awt.Color(255, 255, 204));
@@ -587,11 +584,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel135.setText("Hạn dùng:");
 
         hanDungField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        hanDungField1.setEditable(false);
-        hanDungField1.setText(LocalDate.now().plusYears(1)+"");
+
         ngayMotheField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        ngayMotheField.setEditable(false);
-        ngayMotheField.setText(LocalDate.now()+"");
+
         soLuongmuonField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
 
         tenDocGiaField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -722,28 +717,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
 
         quanlyttdg2.addTab("Quản lý Độc giả", jPanel29);
-        quanlyttdg2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
-                loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
-            }
-        });
+
         jPanel40.setBackground(new java.awt.Color(255, 255, 204));
-        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ",
-        "Số sách được mượn", "Thời gian mượn", "Giá tiền mở thẻ" };
 
         tableDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         tableDocgia3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
-            },nameColumnLoaiThe
+            },
+            new String [] {
+
+            }
         ));
         tableDocgia3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia3MouseClicked(evt);
             }
         });
-        loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -807,11 +797,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         });
 
         tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tenLoaiField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
+        tenLoaiField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenLoaiField2ActionPerformed(evt);
             }
         });
+
         jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel141.setText("Giá tiền mở thẻ:");
 
@@ -859,7 +850,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane25, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel40Layout.createSequentialGroup()
-                                .addGap(0, 12, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel142)
                                 .addGap(18, 18, 18)
                                 .addComponent(tenLoaiField2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2309,14 +2300,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Quản Lý", "Tên Quản Lý", "Mật khẩu", "Ngày Sinh", "Giới Tính","Địa Chỉ", "SDT", "Email", "Trạng Thái"}
+                "Mã độc giả", "Tên độc giả", "Mật khẩu", "Trạng thái", "Hạn dùng","Phí duy trì"}
         ));
-        tableSearchSach7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableSearchSach7MouseClicked(evt);
-            }
-        });;
-        loadTaiKhoanQuanLy(tableSearchSach7, new DanhSachQuanLy( new QuanLy_DAO().dsAllTaiKhoan()));
         jScrollPane30.setViewportView(tableSearchSach7);
 
         themmoidg6.setBackground(new java.awt.Color(255, 204, 204));
@@ -2883,7 +2868,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTP_main2, javax.swing.GroupLayout.PREFERRED_SIZE, 1431, Short.MAX_VALUE)
+                .addComponent(jTP_main2, javax.swing.GroupLayout.DEFAULT_SIZE, 1431, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
