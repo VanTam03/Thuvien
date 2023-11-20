@@ -2843,8 +2843,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             Vector t = new Vector<>();
             t.add(the.getMaLoaiThe());
             t.add(the.getTenLoaiThe());
-            t.add(the.getNgayMoThe());
-            t.add(the.getHanDungThe());
             t.add(the.getSoLuongSachMuon());
             t.add(the.getThoiGianMuonToiDa());
             t.add(the.getGiaTienGiaHan());
@@ -2888,8 +2886,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             PhanLoaiThe loaiThe = new PhanLoaiThe();
             loaiThe.setMaLoaiThe(maLoaiField.getText());
             loaiThe.setTenLoaiThe(tenLoaiField.getText());
-            loaiThe.setNgayMoThe(tenLoaiField1.getText());
-            loaiThe.setHanDungThe(tenLoaiField3.getText());
             loaiThe.setSoLuongSachMuon(Integer.parseInt(soLuongField.getText()));
             loaiThe.setThoiGianMuonToiDa(Integer.parseInt(thoiGianField.getText()));
             loaiThe.setGiaTienGiaHan(thoiGianField1.getText());
@@ -2922,8 +2918,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             PhanLoaiThe loaiThe = new PhanLoaiThe();
             loaiThe.setMaLoaiThe(maLoaiField.getText());
             loaiThe.setTenLoaiThe(tenLoaiField.getText());
-            loaiThe.setNgayMoThe(tenLoaiField1.getText());
-            loaiThe.setHanDungThe(tenLoaiField3.getText());
             loaiThe.setSoLuongSachMuon(Integer.parseInt(soLuongField.getText()));
             loaiThe.setThoiGianMuonToiDa(Integer.parseInt(thoiGianField.getText()));
             loaiThe.setGiaTienGiaHan(thoiGianField1.getText());

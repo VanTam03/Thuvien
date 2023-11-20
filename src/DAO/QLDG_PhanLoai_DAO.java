@@ -43,8 +43,6 @@ public class QLDG_PhanLoai_DAO {
         PhanLoaiThe loaiThe = new PhanLoaiThe();
         loaiThe.setMaLoaiThe(rs.getString("maLoaiThe"));
         loaiThe.setTenLoaiThe(rs.getString("tenLoaiThe"));
-        loaiThe.setNgayMoThe(rs.getString("ngayMoThe"));
-        loaiThe.setHanDungThe(rs.getString("hanSuDung"));
         loaiThe.setSoLuongSachMuon(rs.getInt("soSachDuocMuon"));
         loaiThe.setThoiGianMuonToiDa(rs.getInt("thoiGianDuocMuonToiDa"));
         loaiThe.setGiaTienGiaHan(rs.getString("giaTienGiaHan"));
@@ -58,13 +56,11 @@ public class QLDG_PhanLoai_DAO {
   }
 
   public boolean Add_LoaiThe(PhanLoaiThe loaiThe){
-    String sql = "insert into LoaiThe values(?,?,?,?,?,?,?)";
+    String sql = "insert into LoaiThe values(?,?,?,?,?)";
     try{
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, loaiThe.getMaLoaiThe());
       ps.setString(2, loaiThe.getTenLoaiThe());
-      ps.setString(3, loaiThe.getNgayMoThe());
-      ps.setString(4, loaiThe.getHanDungThe());
       ps.setInt(5, loaiThe.getSoLuongSachMuon());
       ps.setInt(6, loaiThe.getThoiGianMuonToiDa());
       ps.setString(7, loaiThe.getGiaTienGiaHan());
@@ -77,12 +73,10 @@ public class QLDG_PhanLoai_DAO {
   }
 
   public boolean update_LoaiThe(PhanLoaiThe loaiThe){
-    String sql = "update LoaiThe set tenLoaiThe=?,  ngayMoThe=?, hanSuDung=?, soSachDuocMuon=?, thoiGianDuocMuonToiDa=?, giaTienGiaHan=? where maLoaiThe=?";
+    String sql = "update LoaiThe set tenLoaiThe=?, soSachDuocMuon=?, thoiGianDuocMuonToiDa=?, giaTienGiaHan=? where maLoaiThe=?";
     try{
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, loaiThe.getTenLoaiThe());
-      ps.setString(2, loaiThe.getNgayMoThe());
-      ps.setString(3, loaiThe.getHanDungThe());
       ps.setInt(4, loaiThe.getSoLuongSachMuon());
       ps.setInt(5, loaiThe.getThoiGianMuonToiDa());
       ps.setString(6, loaiThe.getGiaTienGiaHan());
@@ -117,8 +111,6 @@ public class QLDG_PhanLoai_DAO {
          PhanLoaiThe loaiThe = new PhanLoaiThe();
         loaiThe.setMaLoaiThe(rs.getString("maLoaiThe"));
         loaiThe.setTenLoaiThe(rs.getString("tenLoaiThe"));
-        loaiThe.setNgayMoThe(rs.getString("ngayMoThe"));
-        loaiThe.setHanDungThe(rs.getString("hanSuDung"));
         loaiThe.setSoLuongSachMuon(rs.getInt("soSachDuocMuon"));
         loaiThe.setThoiGianMuonToiDa(rs.getInt("thoiGianDuocMuonToiDa"));
         loaiThe.setGiaTienGiaHan(rs.getString("giaTienGiaHan"));

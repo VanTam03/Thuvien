@@ -75,17 +75,17 @@ public class QuanLiDocGia_DAO {
 
       while (rs.next()) {
         TaiKhoan dg = new TaiKhoan();
-        String maDG=rs.getString("maTaiKhoan");
-        dg.setTenTaiKhoan(maDG);
+        dg.setTenTaiKhoan(rs.getString("maTaiKhoan"));
         dg.setTenNguoiDung(rs.getString("tenNguoiDung"));
-
-        dg.setLoaiTK(selectTenLoaiThe(maDG, dsThe));
-
+        dg.setLoaiTK(rs.getString("loaiTaiKhoan"));
         dg.setMatKhau(rs.getString("matKhau"));
         dg.setGioiTinh(rs.getString("gioiTinh"));
         dg.setEmail(rs.getString("email"));
         dg.setNgaySinh(rs.getString("ngaySinh"));
         dg.setSdt(rs.getString("sdt"));
+        dg.setDiaChi(rs.getString("diaChi"));
+        dg.setNgayMoThe(rs.getString("ngayMoThe"));
+        dg.setHanSuDung(rs.getString("hanSuDung"));
         dg.setSoLuongMuon(rs.getInt("soLuongMuon"));
         dg.setTrangThai(rs.getInt("trangThai"));
         dsDG.add(dg);
@@ -98,19 +98,22 @@ public class QuanLiDocGia_DAO {
 
   //thêm độc giả
   public boolean Add_DG(TaiKhoan tk) {
-    String sql = "insert into TAIKHOAN values (?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into TAIKHOAN values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, tk.getTenTaiKhoan());
       ps.setString(2, tk.getMatKhau());
-      // ps.setString(3, tk.getLoaiTK());
+      ps.setString(3, tk.getLoaiTK());
       ps.setString(4, tk.getTenNguoiDung());
       ps.setString(5, tk.getNgaySinh());
       ps.setString(6, tk.getGioiTinh());
       ps.setString(7, tk.getEmail());
       ps.setString(8, tk.getSdt());
-      ps.setInt(9, tk.getTrangThai());
-      ps.setInt(10, tk.getSoLuongMuon());
+      ps.setString(9, tk.getDiaChi());
+      ps.setString(10, tk.getNgayMoThe());
+      ps.setString(11, tk.getHanSuDung());
+      ps.setInt(12, tk.getTrangThai());
+      ps.setInt(13, tk.getSoLuongMuon());
 
       return ps.executeUpdate() > 0;
     } catch (Exception e) {
@@ -121,18 +124,21 @@ public class QuanLiDocGia_DAO {
 
   //cập nhật độc giả
   public boolean update_DG(TaiKhoan tk) {
-    String sql = "update TAIKHOAN set matKhau=?, tenNguoiDung=?, ngaySinh=?, gioiTinh=?, email=?, sdt=?, soLuongMuon=? where maTaiKhoan=?";
+    String sql = "update TAIKHOAN set matKhau=?, tenNguoiDung=?, ngaySinh=?, gioiTinh=?, email=?, sdt=?, soLuongMuon=?, loaiTaiKhoan=?, diaChi=?, ngayMoThe=?, hanSuDung=? where maTaiKhoan=?";
     try {
       PreparedStatement ps = connect.getConnection().prepareStatement(sql);
       ps.setString(1, tk.getMatKhau());
-      // ps.setString(2, tk.getLoaiTK());
       ps.setString(2, tk.getTenNguoiDung());
       ps.setString(3, tk.getNgaySinh());
       ps.setString(4, tk.getGioiTinh());
       ps.setString(5, tk.getEmail());
       ps.setString(6, tk.getSdt());
       ps.setInt(7, tk.getSoLuongMuon());
-      ps.setString(8, tk.getTenTaiKhoan());
+      ps.setString(8, tk.getLoaiTK());
+      ps.setString(9, tk.getDiaChi());
+      ps.setString(10, tk.getNgayMoThe());
+      ps.setString(11, tk.getHanSuDung());
+      ps.setString(12, tk.getTenTaiKhoan());
 
       return ps.executeUpdate() > 0;
     } catch (Exception e) {
@@ -153,22 +159,22 @@ public class QuanLiDocGia_DAO {
     return false;
   }
 
-  //lấy hạn dùng của mã thẻ từ bảng LoaiThe
-  public String hanDungThe(String maLoaiThe) {
-    String sql = "select hanSuDung from LoaiThe where maLoaiThe=" + maLoaiThe;
-    try {
-      PreparedStatement ps = connect.getConnection().prepareStatement(sql);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        return rs.getString("hanSuDung");
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return "";
-  }
+  // //lấy hạn dùng của mã thẻ từ bảng LoaiThe
+  // public String hanDungThe(String maLoaiThe) {
+  //   String sql = "select hanSuDung from LoaiThe where maLoaiThe=" + maLoaiThe;
+  //   try {
+  //     PreparedStatement ps = connect.getConnection().prepareStatement(sql);
+  //     ResultSet rs = ps.executeQuery();
+  //     if (rs.next()) {
+  //       return rs.getString("hanSuDung");
+  //     }
+  //   } catch (Exception e) {
+  //     e.printStackTrace();
+  //   }
+  //   return "";
+  // }
 
-  //lấy hạn dùng của mã thẻ từ bảng LoaiThe
+  //lấy phí gia hạn của mã thẻ từ bảng LoaiThe
   public String phiGiaHan(String maLoaiThe) {
     String sql = "select giaTienGiaHan from LoaiThe where maLoaiThe=" + maLoaiThe;
     try {
@@ -238,20 +244,20 @@ public class QuanLiDocGia_DAO {
       ResultSet rs = ps.executeQuery();
       while(rs.next()){
         TaiKhoan dg = new TaiKhoan();
-        String maDG=rs.getString("maTaiKhoan");
-        dg.setTenTaiKhoan(maDG);
+        dg.setTenTaiKhoan(rs.getString("maTaiKhoan"));
         dg.setTenNguoiDung(rs.getString("tenNguoiDung"));
-
-        dg.setLoaiTK(selectTenLoaiThe(maDG, dsThe));
-
+        dg.setLoaiTK(rs.getString("loaiTaiKhoan"));
         dg.setMatKhau(rs.getString("matKhau"));
         dg.setGioiTinh(rs.getString("gioiTinh"));
         dg.setEmail(rs.getString("email"));
         dg.setNgaySinh(rs.getString("ngaySinh"));
         dg.setSdt(rs.getString("sdt"));
+        dg.setDiaChi(rs.getString("diaChi"));
+        dg.setNgayMoThe(rs.getString("ngayMoThe"));
+        dg.setHanSuDung(rs.getString("hanSuDung"));
         dg.setSoLuongMuon(rs.getInt("soLuongMuon"));
         dg.setTrangThai(rs.getInt("trangThai"));
-        dsTK.add(dg);
+        dsDG.add(dg);
       }
     }catch (Exception e) {
       e.printStackTrace();
