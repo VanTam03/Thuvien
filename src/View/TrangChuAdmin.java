@@ -268,11 +268,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         tabletkbandoc2 = new javax.swing.JTable();
         jLabel119 = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
-        jLabel120 = new javax.swing.JLabel();
+        labelSoluongthongkeSach = new javax.swing.JLabel();
         cbb_chucNangThongKe7 = new javax.swing.JComboBox<>();
-        jScrollPane22 = new javax.swing.JScrollPane();
-        tabletksach2 = new javax.swing.JTable();
         jLabel121 = new javax.swing.JLabel();
+        jLabel128 = new javax.swing.JLabel();
+        fieldSoluongthongkesach = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel38 = new javax.swing.JPanel();
         jLabel122 = new javax.swing.JLabel();
         cbb_chucNangThongKe8 = new javax.swing.JComboBox<>();
@@ -611,7 +613,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                 .addComponent(khoatk8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(68, 68, 68)
                                 .addComponent(khoatk9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                                 .addComponent(mokhoa3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(89, 89, 89))
                             .addComponent(jScrollPane17))))
@@ -1921,7 +1923,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         Panel_DanhSachPM15Layout.setVerticalGroup(
             Panel_DanhSachPM15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2026,62 +2028,79 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel120.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel120.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
-        jLabel120.setText("Lựa chọn:");
+        labelSoluongthongkeSach.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelSoluongthongkeSach.setText("Số lượng:");
 
         cbb_chucNangThongKe7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         cbb_chucNangThongKe7.setForeground(new java.awt.Color(0, 0, 153));
-        cbb_chucNangThongKe7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sách được mượn nhiều nhất theo ngày", "Tổng số sách đượn mượn theo từng tháng" }));
+        cbb_chucNangThongKe7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Số lượng sách còn", "Số lượng sách hỏng", "Tổng số lượng" }));
         cbb_chucNangThongKe7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbb_chucNangThongKe7ItemStateChanged(evt);
             }
         });
 
-        tabletksach2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        tabletksach2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane22.setViewportView(tabletksach2);
-
         jLabel121.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel121.setForeground(new java.awt.Color(204, 0, 0));
         jLabel121.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/open-book.png"))); // NOI18N
         jLabel121.setText("Lựa chọn thông tin bạn muốn thống kê!");
+
+        jLabel128.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel128.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
+        jLabel128.setText("Lựa chọn:");
+
+        fieldSoluongthongkesach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "STT", "Mã sách", "Tên sách", "Số lượng"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel37Layout.createSequentialGroup()
-                        .addComponent(jLabel120)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbb_chucNangThongKe7, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel37Layout.createSequentialGroup()
+                                .addComponent(jLabel128)
+                                .addGap(22, 22, 22)
+                                .addComponent(cbb_chucNangThongKe7, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelSoluongthongkeSach)
+                                .addGap(18, 18, 18)
+                                .addComponent(fieldSoluongthongkesach, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbb_chucNangThongKe7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbb_chucNangThongKe7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel128, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSoluongthongkeSach, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldSoluongthongkesach))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jLabel121)
-                .addGap(123, 123, 123))
+                .addGap(96, 96, 96))
         );
 
         jTabbedPane7.addTab("Thống Kê Sách", jPanel37);
@@ -2125,7 +2144,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel122)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbb_chucNangThongKe8, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2138,7 +2157,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel123)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane7.addTab("Thông Kê Tiền Phạt", jPanel38);
@@ -2784,7 +2803,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                 .addGroup(timkiem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(timkiem3Layout.createSequentialGroup()
                                         .addComponent(btnH_luuSach3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                         .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(radioTang)
@@ -2849,7 +2868,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         QuanLyKho.setLayout(QuanLyKhoLayout);
         QuanLyKhoLayout.setHorizontalGroup(
             QuanLyKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+            .addGap(0, 1126, Short.MAX_VALUE)
             .addGroup(QuanLyKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(timkiem3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -3073,6 +3092,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void emailDocgia4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailDocgia4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailDocgia4ActionPerformed
+
+    private void cbb_chucNangThongKe7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_chucNangThongKe7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbb_chucNangThongKe7ItemStateChanged
 
     // ======================== Tài Khoản Quản Lý Header ======================
 
@@ -4019,6 +4042,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_chucNangThongKe7;
     private javax.swing.JComboBox<String> cbb_chucNangThongKe8;
     private javax.swing.JTextField emailDocgia4;
+    private javax.swing.JTextField fieldSoluongthongkesach;
     private javax.swing.JRadioButton gioitinhnam16;
     private javax.swing.JRadioButton gioitinhnam17;
     private javax.swing.JRadioButton gioitinhnam18;
@@ -4056,7 +4080,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
-    private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -4064,6 +4087,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel127;
+    private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
@@ -4124,7 +4148,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
-    private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
     private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane25;
@@ -4132,6 +4155,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane30;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
@@ -4139,6 +4163,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTP_main2;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
@@ -4147,6 +4172,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton khoatk20;
     private javax.swing.JButton khoatk8;
     private javax.swing.JButton khoatk9;
+    private javax.swing.JLabel labelSoluongthongkeSach;
     private javax.swing.JTextField maDocGiaField;
     private javax.swing.JTextField maLoaiField;
     private javax.swing.JTextField matKhauField;
@@ -4170,7 +4196,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tableSearchSach7;
     private javax.swing.JTable table_PhieuTra;
     private javax.swing.JTable tabletkbandoc2;
-    private javax.swing.JTable tabletksach2;
     private javax.swing.JTable tabletktienphat2;
     private javax.swing.JTable tblH_Sach2;
     private javax.swing.JTable tbl_DMSach4;
