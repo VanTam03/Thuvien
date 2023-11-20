@@ -274,7 +274,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel128 = new javax.swing.JLabel();
         fieldSoluongthongkesach = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabletksach2 = new javax.swing.JTable();
         jPanel38 = new javax.swing.JPanel();
         jLabel122 = new javax.swing.JLabel();
         cbb_chucNangThongKe8 = new javax.swing.JComboBox<>();
@@ -2051,7 +2051,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         fieldSoluongthongkesach.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabletksach2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2062,7 +2062,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 "STT", "Mã sách", "Tên sách", "Số lượng"
             }
         ));
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(tabletksach2);
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -4163,7 +4163,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTP_main2;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane7;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
@@ -4196,6 +4195,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tableSearchSach7;
     private javax.swing.JTable table_PhieuTra;
     private javax.swing.JTable tabletkbandoc2;
+    private javax.swing.JTable tabletksach2;
     private javax.swing.JTable tabletktienphat2;
     private javax.swing.JTable tblH_Sach2;
     private javax.swing.JTable tbl_DMSach4;

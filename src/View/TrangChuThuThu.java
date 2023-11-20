@@ -404,7 +404,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel37 = new javax.swing.JPanel();
         jLabel121 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tabletksach2 = new javax.swing.JTable();
         jLabel128 = new javax.swing.JLabel();
         cbb_chucNangThongKe7 = new javax.swing.JComboBox<>();
         labelSoluongthongkeSach = new javax.swing.JLabel();
@@ -2154,7 +2154,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel121.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/open-book.png"))); // NOI18N
         jLabel121.setText("Lựa chọn thông tin bạn muốn thống kê!");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tabletksach2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2165,7 +2165,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 "STT", "Mã sách", "Tên sách", "Số lượng"
             }
         ));
-        jScrollPane7.setViewportView(jTable3);
+        jScrollPane7.setViewportView(tabletksach2);
 
         jLabel128.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel128.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/book.png"))); // NOI18N
@@ -3971,7 +3971,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JButton khoatk10;
     private javax.swing.JButton khoatk11;
@@ -3995,6 +3994,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTable tableSearchSach2;
     private javax.swing.JTable table_PhieuTra;
     private javax.swing.JTable tabletkbandoc2;
+    private javax.swing.JTable tabletksach2;
     private javax.swing.JTable tabletktienphat2;
     private javax.swing.JTable tblH_Sach2;
     private javax.swing.JTable tbl_DMSach4;
