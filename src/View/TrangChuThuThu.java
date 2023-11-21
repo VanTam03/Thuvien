@@ -3333,7 +3333,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn mã sách muốn xóa!");
         } else {
             int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa ?");
-            if (x == JOptionPane.NO_OPTION) {
+            if (x == JOptionPane.NO_OPTION || x==JOptionPane.CANCEL_OPTION) {
                 return;
             } else {
                 if (Sach_DAO.getInstance().delete(H_tenSach2.getText()) > 0) {
