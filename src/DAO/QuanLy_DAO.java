@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
 
 import DTO.QuanLy;
 

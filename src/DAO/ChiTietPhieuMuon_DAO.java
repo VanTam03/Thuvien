@@ -1,8 +1,8 @@
 package DAO;
 
-import DTO.ChiTietPhieuMuon;
-import DTO.PhieuMuon;
+import DTO.*;
 
+import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,23 +17,48 @@ public class ChiTietPhieuMuon_DAO implements DAO_Interface<ChiTietPhieuMuon> {
     @Override
     public int add(ChiTietPhieuMuon chiTietPhieuMuon) {
         int rowsAffected = 0;
+        PhieuMuon phieuMuon = PhieuMuon_DAO.getInstance().selectById(chiTietPhieuMuon.getMaPhieumuon());
         String sql = "INSERT INTO dbo.[ChiTietPhieuMuon] (maPhieuMuon, maSach, ngayThucTra, tienPhat, tinhTrangSach) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = KetNoiSQL.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, chiTietPhieuMuon.getMaPhieumuon());
             pst.setString(2, chiTietPhieuMuon.getMaSach());
-            pst.setDate(3, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            if (chiTietPhieuMuon.getNgayThuctra() != null) pst.setDate(3, java.sql.Date.valueOf(chiTietPhieuMuon.getNgayThuctra()));
+            else{
+                pst.setNull(3, Types.DATE);
+            }
             pst.setDouble(4, chiTietPhieuMuon.getTienPhat());
             pst.setString(5, chiTietPhieuMuon.getTinhTrangSach());
+            if (kiemTraTaiKhoan(phieuMuon.getMaTaikhoan())<0){
+                JOptionPane.showMessageDialog(null,"Vượt số lượng sách được mượn");
+                return 0;
+            }
             rowsAffected = pst.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        PhieuMuon phieuMuon = PhieuMuon_DAO.getInstance().selectById(chiTietPhieuMuon.getMaPhieumuon());
-        phieuMuon.setSoLuongSach(phieuMuon.getSoLuongSach()+1);
-        PhieuMuon_DAO.getInstance().update(phieuMuon);
+        if (rowsAffected>0){
+            phieuMuon.setSoLuongSach(phieuMuon.getSoLuongSach()+1);
+            PhieuMuon_DAO.getInstance().update(phieuMuon);
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(chiTietPhieuMuon.getMaSach());
+            khoSach.setSoLuongCon(khoSach.getSoLuongCon()-1);
+            KhoSach_DAO.getInstance().update(khoSach);
+//            TaiKhoan taiKhoan = TaiKhoan_DAO.getInstance().selectById(phieuMuon.getMaTaikhoan());
+//            taiKhoan.setSoLuongmuon(taiKhoan.getSoLuongmuon()+1);
+//            TaiKhoan_DAO.getInstance().update(taiKhoan);
+        }
         return rowsAffected;
     }
+
+    int kiemTraTaiKhoan(String maTaiKhoan){
+        TaiKhoan taiKhoan = TaiKhoan_DAO.getInstance().selectById(maTaiKhoan);
+        LoaiThe loaiThe = LoaiThe_DAO.getInstance().selectById(taiKhoan.getLoaitaikhoan());
+        if (taiKhoan.getSoLuongmuon()>=loaiThe.getSoSachDuocMuon()){
+            return 0;
+        }
+        return 1;
+    }
+
 
     @Override
     public int update(ChiTietPhieuMuon chiTietPhieuMuon) {
