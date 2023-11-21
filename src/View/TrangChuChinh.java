@@ -6,10 +6,17 @@
 package View;
 
 import DAO.KetNoiSQL;
+import DAO.KhoSach_DAO;
+import DAO.Sach_DAO;
+import DTO.KhoSach;
+import DTO.Sach;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
@@ -535,11 +542,41 @@ public class TrangChuChinh extends javax.swing.JFrame {
 
     private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
         // TODO add your handling code here:
+        String TL = "TL00";
+        int index = jComboBox4.getSelectedIndex();
+        if (index == 0)
+            return;
+        TL += Integer.toString(index);
+        List<Sach> sachBytheloai = Sach_DAO.getInstance().selectByGenre(TL);
+        DefaultTableModel sachtb = (DefaultTableModel) tableSearchSach.getModel();
+        sachtb.setRowCount(0);
+        int i = 0;
+        for (Sach s : sachBytheloai) {
+            i++;
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+            sachtb.addRow(new Object[] { i, s.getTenSach(), s.getTenTacGia(), s.getNXB(),
+                    khoSach.getSoLuongCon() });
+        }
         
     }//GEN-LAST:event_jComboBox4ItemStateChanged
 
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
-        
+        String DM = "DM00";
+        int index = jComboBox3.getSelectedIndex();
+        if (index == 0)
+            return;
+        DM += Integer.toString(index);
+        // List<sach_th> sachByCate = getSach.getSachByCategory(DM);
+        List<Sach> sachByCate = Sach_DAO.getInstance().selectByCategory(DM);
+        DefaultTableModel sachtb = (DefaultTableModel) tableSearchSach.getModel();
+        sachtb.setRowCount(0);
+        int i = 0;
+        for (Sach s : sachByCate) {
+            i++;
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+            sachtb.addRow(new Object[] { i, s.getTenSach(), s.getTenTacGia(), s.getNXB(),
+                    khoSach.getSoLuongCon() });
+        }
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -547,7 +584,22 @@ public class TrangChuChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void textboxsearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearchKeyTyped
-
+        String textSearch = textboxsearch.getText();
+        List<Sach> searchSach = Sach_DAO.getInstance().selectAll();
+        List<Sach> resultSearch = new ArrayList<>();
+        DefaultTableModel sachtb = (DefaultTableModel) tableSearchSach.getModel();
+        sachtb.setRowCount(0);
+        int i = 0;
+        for (Sach s : searchSach) {
+            if (s.getTenSach().toLowerCase().contains(textSearch.toLowerCase()))
+                resultSearch.add(s);
+        }
+        for (Sach s : resultSearch) {
+            i++;
+            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+            sachtb.addRow(new Object[] { i, s.getTenSach(), s.getTenTacGia(), s.getNXB(),
+                    khoSach.getSoLuongCon() });
+        }
     }//GEN-LAST:event_textboxsearchKeyTyped
 
     private void textboxsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textboxsearchKeyReleased
