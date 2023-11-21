@@ -3,8 +3,6 @@ package Model;
 public class PhanLoaiThe {
   private String maLoaiThe;
   private String tenLoaiThe;
-  private String ngayMoThe;
-  private String hanDungThe;
   private int soLuongSachMuon;
   private int thoiGianMuonToiDa;
   private String giaTienGiaHan;
@@ -12,12 +10,10 @@ public class PhanLoaiThe {
   public PhanLoaiThe() {
   }
 
-  public PhanLoaiThe(String maLoaiThe, String tenLoaiThe, String ngayMoThe, String hanDungThe, int soLuongSachMuon,
+  public PhanLoaiThe(String maLoaiThe, String tenLoaiThe, int soLuongSachMuon,
       int thoiGianMuonToiDa, String giaTienGiaHan) {
     this.maLoaiThe = maLoaiThe;
     this.tenLoaiThe = tenLoaiThe;
-    this.ngayMoThe = ngayMoThe;
-    this.hanDungThe = hanDungThe;
     this.soLuongSachMuon = soLuongSachMuon;
     this.thoiGianMuonToiDa = thoiGianMuonToiDa;
     this.giaTienGiaHan = giaTienGiaHan;
@@ -37,22 +33,6 @@ public class PhanLoaiThe {
 
   public void setTenLoaiThe(String tenLoaiThe) {
     this.tenLoaiThe = tenLoaiThe;
-  }
-
-  public String getNgayMoThe() {
-    return ngayMoThe;
-  }
-
-  public void setNgayMoThe(String ngayMoThe) {
-    this.ngayMoThe = ngayMoThe;
-  }
-
-  public String getHanDungThe() {
-    return hanDungThe;
-  }
-
-  public void setHanDungThe(String hanDungThe) {
-    this.hanDungThe = hanDungThe;
   }
 
   public int getSoLuongSachMuon() {

@@ -11,12 +11,15 @@ public class TaiKhoan {
   private String sdt;
   private int trangThai;
   private int soLuongMuon;
+  private String ngayMoThe;
+  private String hanSuDung;
+  private String diaChi;
 
   public TaiKhoan() {
   }
 
   public TaiKhoan(String tenTaiKhoan, String matKhau, String tenNguoiDung, String ngaySinh, String gioiTinh,
-      String email, String sdt, int trangThai, int soLuongMuon, String loaiTK) {
+      String email, String sdt, int trangThai, int soLuongMuon, String loaiTK, String diaChi, String ngayMoThe, String hanSuDung) {
     this.tenTaiKhoan = tenTaiKhoan;
     this.matKhau = matKhau;
     this.tenNguoiDung = tenNguoiDung;
@@ -27,6 +30,33 @@ public class TaiKhoan {
     this.trangThai = trangThai;
     this.soLuongMuon = soLuongMuon;
     this.loaiTK = loaiTK;
+    this.diaChi = diaChi; 
+    this.ngayMoThe = ngayMoThe;
+    this.hanSuDung = hanSuDung;
+  }
+  
+  public String getNgayMoThe() {
+    return ngayMoThe;
+  }
+
+  public void setNgayMoThe(String ngayMoThe) {
+    this.ngayMoThe = ngayMoThe;
+  }
+
+  public String getHanSuDung() {
+    return hanSuDung;
+  }
+
+  public void setHanSuDung(String hanSuDung) {
+    this.hanSuDung = hanSuDung;
+  }
+
+  public String getDiaChi() {
+    return diaChi;
+  }
+
+  public void setDiaChi(String diaChi) {
+    this.diaChi = diaChi;
   }
 
   public String getTenTaiKhoan() {
