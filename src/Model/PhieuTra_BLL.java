@@ -77,29 +77,48 @@ public class PhieuTra_BLL {
     }
     
     public boolean updateChiTietPhieuMuon(String id, String idbook, String tinhtrang){
-        String tinhtrangsach = phieuTra_DAL.getTinhTrangNow(id, idbook);
+        System.out.println("-----------------------------------------------------------");
+        System.out.println(tinhtrang);
+        String tinhtrangsachs = phieuTra_DAL.getTinhTrangNow(id, idbook);
+        int commaIndex = tinhtrangsachs.indexOf(',');
+        String tinhtrangsach = tinhtrangsachs.substring(0, commaIndex);
         if(tinhtrangsach.equals(tinhtrang)){
             return false;
         }else{
             phieuTra_DAL.updateTinhTrang(id, idbook, tinhtrang);
             System.out.println(tinhtrangsach);
-            if (tinhtrangsach.equals("Không hỏng")){
-                if(tinhtrang.equals("Mất sách")){
+            int matDoHai = 0;
+            if ("Mất".equals(tinhtrangsach)) {
+                matDoHai = -1;
+            } else if ("Hư hỏng mức ít".equals(tinhtrangsach)) {
+                matDoHai = 1;
+            } else if ("Hư hỏng mức vừa".equals(tinhtrangsach)) {
+                matDoHai = 2;
+            } else if ("Hư hỏng mức nhiều".equals(tinhtrangsach)) {
+                matDoHai = 3;
+            } else if ("Hư hỏng mức nghiêm trọng".equals(tinhtrangsach)) {
+                matDoHai = 4;
+            } else {
+                matDoHai = 0;
+            }
+            System.out.println(matDoHai);
+            if (matDoHai == 0){
+                if(tinhtrang.equals("Mất")){
                     phieuTra_DAL.updateKho(-1, 0, idbook);
                 }else{
                     phieuTra_DAL.updateKho(-1, 1, idbook);
                 }
-            }else if(tinhtrangsach.equals("Bị hỏng")){
-                if(tinhtrang.equals("Không hỏng")){
-                    phieuTra_DAL.updateKho(1, -1, idbook);
-                }else{
-                    phieuTra_DAL.updateKho(0, -1, idbook);
-                }
-            }else{
-                if(tinhtrang.equals("Không hỏng")){
+            }else if(matDoHai <0){
+                if(tinhtrang.equals("Bình thường")){
                     phieuTra_DAL.updateKho(1, 0, idbook);
                 }else{
                     phieuTra_DAL.updateKho(0, 1, idbook);
+                }
+            }else{
+                if(tinhtrang.equals("Mất")){
+                    phieuTra_DAL.updateKho(0, -1, idbook);
+                }else if(tinhtrang.equals("Bình thường")){
+                    phieuTra_DAL.updateKho(1, -1, idbook);
                 }
             }
             

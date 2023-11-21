@@ -11,7 +11,10 @@ import Model.ThanhLyBLL;
 import java.awt.Font;
 import java.time.LocalDate;
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +31,10 @@ import javax.swing.table.DefaultTableModel;
     ThanhLyBLL thanhLyBLL = new ThanhLyBLL();
     private JFileChooser fileChooser;
     DefaultTableModel defaultTableModelXuat;
+    private static String idQuanLy;
+    public static void setidQuanLy(String tenDangNhapMoi) {
+        idQuanLy = tenDangNhapMoi;
+    }
     public TrangChuThuThu_QLPXuat() {
         initComponents();
         fileChooser = new JFileChooser();
@@ -35,6 +42,8 @@ import javax.swing.table.DefaultTableModel;
         loaddata(thanhLyBLL.loaddata());
     }
 
+    
+    
     private void loaddata(AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> data) {
         List<Sach> processedBooks = data.getKey();
         List<ThanhLySach> processedExports = data.getValue();
@@ -42,6 +51,7 @@ import javax.swing.table.DefaultTableModel;
         defaultTableModelXuat = new DefaultTableModel();
         tableTly.setModel(defaultTableModelXuat);
         defaultTableModelXuat.addColumn("Mã phiếu xuất");
+        defaultTableModelXuat.addColumn("Mã quản lý");
         defaultTableModelXuat.addColumn("Mã sách");
         defaultTableModelXuat.addColumn("Tên sách");
         defaultTableModelXuat.addColumn("Số Lượng");
@@ -60,6 +70,7 @@ import javax.swing.table.DefaultTableModel;
                 // Thêm thông tin vào bảng
                 defaultTableModelXuat.addRow(new Object[]{
                         thanhLySach.getMaThanhLySach(),
+                        thanhLySach.getMaQuanLy(),
                         thanhLySach.getMaSach(),
                         book.getTenSach(),  // Sử dụng tên sách từ danh sách sách
                         thanhLySach.getSoLuongSachHong(),
@@ -100,17 +111,19 @@ import javax.swing.table.DefaultTableModel;
         txt_Id = new javax.swing.JTextField();
         labelMasach = new javax.swing.JLabel();
         labelSoluong = new javax.swing.JLabel();
-        txt_GhiChu = new javax.swing.JTextField();
         labelGia = new javax.swing.JLabel();
         txt_SLg = new javax.swing.JTextField();
         labelMaphieuxuat = new javax.swing.JLabel();
-        txt_Lydo = new javax.swing.JTextField();
+        txt_ghichu = new javax.swing.JTextField();
         LabelTongtien = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         labelGhichu = new javax.swing.JLabel();
         txtNameBook = new javax.swing.JTextField();
         labelGhichu1 = new javax.swing.JLabel();
         txt_Total = new javax.swing.JTextField();
+        cb_lydo = new javax.swing.JComboBox<>();
+        labelGia1 = new javax.swing.JLabel();
+        txt_idqly = new javax.swing.JTextField();
         jPK_button = new javax.swing.JPanel();
         jPK_btnQLS = new javax.swing.JPanel();
         btnK_themMaSach = new javax.swing.JButton();
@@ -123,6 +136,11 @@ import javax.swing.table.DefaultTableModel;
         tableTly = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPK_tieuDe.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -184,8 +202,6 @@ import javax.swing.table.DefaultTableModel;
         labelSoluong.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelSoluong.setText("Ngày xuất:");
 
-        txt_GhiChu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
         labelGia.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelGia.setText("Số lượng:");
 
@@ -194,7 +210,7 @@ import javax.swing.table.DefaultTableModel;
         labelMaphieuxuat.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelMaphieuxuat.setText("Lý do:");
 
-        txt_Lydo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_ghichu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         LabelTongtien.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         LabelTongtien.setText("Tên sách:");
@@ -221,6 +237,7 @@ import javax.swing.table.DefaultTableModel;
         labelGhichu1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         labelGhichu1.setText("Tổng tiền:");
 
+        txt_Total.setEditable(false);
         txt_Total.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_Total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,54 +245,69 @@ import javax.swing.table.DefaultTableModel;
             }
         });
 
+        cb_lydo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hư hỏng mức ít", "Hư hỏng mức vừa", "Hư hỏng mức nhiều", "Hư hỏng mức nghiêm trọng" }));
+        cb_lydo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_lydoActionPerformed(evt);
+            }
+        });
+
+        labelGia1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        labelGia1.setText("Mã quản lý:");
+
+        txt_idqly.setEditable(false);
+        txt_idqly.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPK_themMaSachLayout = new javax.swing.GroupLayout(jPK_themMaSach);
         jPK_themMaSach.setLayout(jPK_themMaSachLayout);
         jPK_themMaSachLayout.setHorizontalGroup(
             jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPK_themMaSachLayout.createSequentialGroup()
+                        .addComponent(labelGia1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_idqly))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_themMaSachLayout.createSequentialGroup()
                         .addComponent(labelMasach)
                         .addGap(18, 18, 18)
                         .addComponent(txt_Id))
-                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPK_themMaSachLayout.createSequentialGroup()
                         .addComponent(labelTensach)
                         .addGap(26, 26, 26)
                         .addComponent(txt_IdBook, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPK_themMaSachLayout.createSequentialGroup()
+                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                         .addComponent(labelGia)
                         .addGap(21, 21, 21)
                         .addComponent(txt_SLg))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPK_themMaSachLayout.createSequentialGroup()
+                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
                         .addComponent(labelSoluong)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtDate)))
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelMaphieuxuat)
-                            .addComponent(labelGhichu1)
-                            .addComponent(LabelTongtien))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_Total)
-                            .addComponent(txt_GhiChu)
-                            .addComponent(txtNameBook)
-                            .addComponent(txt_Lydo)))
+                    .addComponent(labelMaphieuxuat)
+                    .addComponent(labelGhichu1)
+                    .addComponent(LabelTongtien)
                     .addComponent(labelGhichu))
+                .addGap(23, 23, 23)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_lydo, 0, 444, Short.MAX_VALUE)
+                    .addComponent(txt_Total, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                    .addComponent(txtNameBook)
+                    .addComponent(txt_ghichu))
                 .addGap(40, 40, 40))
         );
         jPK_themMaSachLayout.setVerticalGroup(
             jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_themMaSachLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(46, 46, 46)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMasach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelMaphieuxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelTensach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,8 +319,8 @@ import javax.swing.table.DefaultTableModel;
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelGhichu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_GhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSoluong))
+                    .addComponent(labelSoluong)
+                    .addComponent(txt_ghichu, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelGia)
@@ -296,7 +328,11 @@ import javax.swing.table.DefaultTableModel;
                         .addComponent(txt_SLg, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelGhichu1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
+                .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelGia1)
+                    .addComponent(txt_idqly, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPK_button.setBackground(new java.awt.Color(255, 255, 204));
@@ -441,13 +477,12 @@ import javax.swing.table.DefaultTableModel;
         jPK_qlPMLayout.setVerticalGroup(
             jPK_qlPMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPK_qlPMLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPK_themMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jPK_btnQLS, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(444, 444, 444)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(459, 459, 459)
                 .addComponent(jPK_button, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -486,10 +521,10 @@ import javax.swing.table.DefaultTableModel;
         txt_IdBook.setText("");
         txtNameBook.setText("");
         txt_SLg.setText("");
-        txt_Lydo.setText("");
+        txt_ghichu.setText("");
         txtDate.setText("");
-        txt_GhiChu.setText("");
         txt_Total.setText("");
+        txt_idqly.setText(idQuanLy);
         btnK_luuMaSach.setEnabled(true);
         btnK_themMaSach.setEnabled(false);
         btnK_suaPX1.setEnabled(false);
@@ -501,12 +536,15 @@ import javax.swing.table.DefaultTableModel;
     private void btnK_luuMaSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_luuMaSachActionPerformed
         ThanhLySach thanhLySach = new ThanhLySach();
         thanhLySach.setMaThanhLySach(txt_Id.getText());
+        thanhLySach.setMaQuanLy(idQuanLy);
         thanhLySach.setMaSach(txt_IdBook.getText());
-        thanhLySach.setGhiChu(txt_GhiChu.getText());
-        thanhLySach.setLyDoThanhLy(txt_Lydo.getText());
+        thanhLySach.setGhiChu(txt_ghichu.getText());
+        thanhLySach.setLyDoThanhLy((String)cb_lydo.getSelectedItem());
         thanhLySach.setSoLuongSachHong(Integer.parseInt(txt_SLg.getText()));
-        thanhLySach.setTongTienThanhLy(Double.parseDouble(txt_Total.getText()));
         thanhLySach.setNgayThanhLy(LocalDate.now());
+        double price = thanhLyBLL.tinhtienthanhly(thanhLySach);
+        thanhLySach.setTongTienThanhLy(price);
+        
         if(thanhLyBLL.Add(thanhLySach)){
             JOptionPane.showMessageDialog(null, "Thênm mới thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             btnK_luuMaSach.setEnabled(false);
@@ -520,14 +558,19 @@ import javax.swing.table.DefaultTableModel;
         }
     }//GEN-LAST:event_btnK_luuMaSachActionPerformed
 
+    
+    
     private void btnK_suaPX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaPX1ActionPerformed
         ThanhLySach thanhLySach = new ThanhLySach();
         thanhLySach.setMaThanhLySach(txt_Id.getText());
+        thanhLySach.setMaQuanLy(idQuanLy);
         thanhLySach.setMaSach(txt_IdBook.getText());
-        thanhLySach.setGhiChu(txt_GhiChu.getText());
-        thanhLySach.setLyDoThanhLy(txt_Lydo.getText());
+        thanhLySach.setGhiChu(txt_ghichu.getText());
+        thanhLySach.setLyDoThanhLy((String)cb_lydo.getSelectedItem());
         thanhLySach.setSoLuongSachHong(Integer.parseInt(txt_SLg.getText()));
-        thanhLySach.setTongTienThanhLy(Double.parseDouble(txt_Total.getText()));
+        thanhLySach.setNgayThanhLy(LocalDate.now());
+        double price = thanhLyBLL.tinhtienthanhly(thanhLySach);
+        thanhLySach.setTongTienThanhLy(price);
         if(thanhLyBLL.Update(thanhLySach)){
             JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             loaddata(thanhLyBLL.loaddata());
@@ -555,13 +598,14 @@ import javax.swing.table.DefaultTableModel;
     private void tableTlyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTlyMouseClicked
         int row = tableTly.getSelectedRow();
         txt_Id.setText(tableTly.getValueAt(row, 0).toString());
-        txt_IdBook.setText(tableTly.getValueAt(row, 1).toString());
-        txtNameBook.setText(tableTly.getValueAt(row, 2).toString());
-        txt_SLg.setText(tableTly.getValueAt(row, 3).toString());
-        txt_Lydo.setText(tableTly.getValueAt(row, 4).toString());
-        txtDate.setText(tableTly.getValueAt(row, 5).toString());
-        txt_GhiChu.setText(tableTly.getValueAt(row, 6).toString());
-        txt_Total.setText(tableTly.getValueAt(row, 7).toString());
+        txt_idqly.setText(tableTly.getValueAt(row, 1).toString());
+        txt_IdBook.setText(tableTly.getValueAt(row, 2).toString());
+        txtNameBook.setText(tableTly.getValueAt(row, 3).toString());
+        txt_SLg.setText(tableTly.getValueAt(row, 4).toString());
+        cb_lydo.setSelectedItem(tableTly.getValueAt(row, 5).toString());
+        txtDate.setText(tableTly.getValueAt(row, 6).toString());
+        txt_ghichu.setText(tableTly.getValueAt(row, 7).toString());
+        txt_Total.setText(tableTly.getValueAt(row, 8).toString());
     }//GEN-LAST:event_tableTlyMouseClicked
 
     
@@ -603,6 +647,14 @@ import javax.swing.table.DefaultTableModel;
         }
     }//GEN-LAST:event_btnExcelActionPerformed
 
+    private void cb_lydoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lydoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_lydoActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -634,7 +686,6 @@ import javax.swing.table.DefaultTableModel;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
                 new TrangChuThuThu_QLPXuat().setVisible(true);
             }
         });
@@ -649,6 +700,7 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JButton btnK_themMaSach;
     private javax.swing.JButton btnK_veTrangTruoc;
     private javax.swing.JButton btn_back;
+    private javax.swing.JComboBox<String> cb_lydo;
     private javax.swing.JPanel jPK_btnQLS;
     private javax.swing.JPanel jPK_button;
     private javax.swing.JPanel jPK_qlPM;
@@ -658,6 +710,7 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JLabel labelGhichu;
     private javax.swing.JLabel labelGhichu1;
     private javax.swing.JLabel labelGia;
+    private javax.swing.JLabel labelGia1;
     private javax.swing.JLabel labelMaphieuxuat;
     private javax.swing.JLabel labelMasach;
     private javax.swing.JLabel labelSoluong;
@@ -666,11 +719,11 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JTable tableTly;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtNameBook;
-    private javax.swing.JTextField txt_GhiChu;
     private javax.swing.JTextField txt_Id;
     private javax.swing.JTextField txt_IdBook;
-    private javax.swing.JTextField txt_Lydo;
     private javax.swing.JTextField txt_SLg;
     private javax.swing.JTextField txt_Total;
+    private javax.swing.JTextField txt_ghichu;
+    private javax.swing.JTextField txt_idqly;
     // End of variables declaration//GEN-END:variables
 }
