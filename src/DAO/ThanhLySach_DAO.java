@@ -77,13 +77,14 @@ public class ThanhLySach_DAO implements DAO_Interface <ThanhLySach> {
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 String maThanhLySach = rs.getString("maThanhLySach");
+                String maQuanLy = rs.getString("maQuanLy");
                 String maSach = rs.getString("maSach");
                 int soLuongSachHong = rs.getInt("soLuongSachHong");
                 String lyDoThanhLy = rs.getString("lyDoThanhLy");
                 LocalDate ngayThanhLy = rs.getDate("ngayThanhLy").toLocalDate();
                 String ghiChu = rs.getString("ghiChu");
                 double tongTienThanhLy = rs.getDouble("tongTienThanhLy");
-                ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
+                ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maQuanLy,maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
                 rowSelected.add(thanhLySach);
             }
         } catch (SQLException e) {

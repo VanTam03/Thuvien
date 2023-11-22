@@ -29,7 +29,6 @@
                   <Component id="jPK_tieuDe" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPK_qlPM" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,25 +123,19 @@
                   <EmptySpace min="-2" pref="1293" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPK_btnQLPM" alignment="0" pref="435" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jScrollPane3" alignment="1" pref="0" max="32767" attributes="0"/>
-                              <Component id="jPK_themPM" alignment="1" pref="429" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jPK_btnQLPM" alignment="0" pref="460" max="32767" attributes="0"/>
+                      <Component id="jPK_themPM" alignment="0" min="-2" pref="460" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPK_btnQLS" alignment="1" pref="1128" max="32767" attributes="0"/>
-                      <Component id="jPK_themMaSach" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane4" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jPK_themMaSach" min="-2" pref="815" max="-2" attributes="0"/>
+                      <Component id="jPK_btnQLS" alignment="1" pref="815" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -188,13 +181,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ngayNhạpLabel" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="maPhieunhapLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ngayXuatCungCap" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ngayNhạpLabel" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="maPhieunhapLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="ngayXuatCungCap" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="ngayXuatField" alignment="0" pref="210" max="32767" attributes="0"/>
                           <Component id="maPhieuXuatField" alignment="0" max="32767" attributes="0"/>
@@ -310,7 +303,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="labelMasach" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
@@ -318,57 +311,55 @@
                                               <Component id="maSachField" min="-2" pref="173" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="labelTensach" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelMaTGia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelSoLuong" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="soLuongField" min="-2" pref="173" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="labelGiaNhap" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="maTGiaFiedl" min="-2" pref="173" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="labelTenTGia" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="separate" pref="25" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="labelMaTLoai" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="maTLoaiField" min="-2" pref="173" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="GNhapField" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tenSachField" alignment="0" pref="173" max="32767" attributes="0"/>
-                                              <Component id="tenTGiaField" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="tenTGiaField" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelMaTGia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="labelSoLuong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="soLuongField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="maTGiaFiedl" min="-2" pref="173" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="labelTensach" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Component id="labelTenTGia" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelNXuatBan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="labelNgayXBan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="nxbField" min="-2" pref="173" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                                      <Component id="labelGiaNhap" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="namXBField" min="-2" pref="173" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="labelMaTLoai" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelNXuatBan" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="labelNgayXBan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="maTLoaiField" min="-2" pref="173" max="-2" attributes="0"/>
+                                          <Component id="tenSachField" min="-2" pref="173" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="namXBField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <Component id="nxbField" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                              <EmptySpace min="294" pref="294" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -381,35 +372,41 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="maPhieuNhapLabelIcon" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="comboBoxMaPNhap" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="labelMaTLoai" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="maTLoaiField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelMasach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="maSachField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="labelTensach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="tenSachField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="labelNgayXBan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="nxbField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="labelMaTLoai" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="maTLoaiField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelMaTGia" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="maTGiaFiedl" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="labelTenTGia" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="tenTGiaField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="labelNXuatBan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="namXBField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="labelTensach" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="tenSachField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelSoLuong" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="soLuongField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="labelTenTGia" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="tenTGiaField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelNgayXBan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="nxbField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="labelGiaNhap" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="GNhapField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labelNXuatBan" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="namXBField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -647,7 +644,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -859,19 +856,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="btnK_themMaSach" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnK_suaPN1" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="DelBtn" min="-2" pref="110" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnK_luuMaSach" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnK_lamMoiPN" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="DelBtnImport" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnK_luuMaSach" min="-2" pref="119" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnK_lamMoiPN" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="DelBtnImport" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnK_themMaSach" min="-2" pref="119" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnK_suaPN1" min="-2" pref="115" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="DelBtn" min="-2" pref="110" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -884,11 +886,14 @@
                           <Component id="btnK_themMaSach" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnK_suaPN1" alignment="3" max="32767" attributes="0"/>
                           <Component id="DelBtn" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnK_luuMaSach" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnK_lamMoiPN" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="DelBtnImport" alignment="3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

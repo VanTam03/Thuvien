@@ -47,8 +47,16 @@ public class DangNhap extends javax.swing.JFrame {
         txt_matKhau = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Đăng nhập vào hệ thống");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -202,6 +210,7 @@ public class DangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin!");
         }
         else{
+            String idQLy = txt_tenDangNhap.getText();
             String user = txt_tenDangNhap.getText();
             if (user.length() < 10) {
                 StringBuilder stringBuilder = new StringBuilder(user);
@@ -215,6 +224,7 @@ public class DangNhap extends javax.swing.JFrame {
             }
             String pass = new String(txt_matKhau.getPassword()).trim();
             String pos = (String) txt_chucVu.getSelectedItem();
+            
             System.err.println(user);
             System.err.println(pass);
             System.err.println(pos);
@@ -222,11 +232,15 @@ public class DangNhap extends javax.swing.JFrame {
             if(loginBLL.checkUser(user, pass, pos)){
                 JOptionPane.showMessageDialog(rootPane, "Bạn đã đăng nhập thành công!");
                 if("Admin".equals(pos)){
+                    TrangChuThuThu_QLPXuat.setidQuanLy(idQLy);
+
                     TrangChuAdmin frameAdmin = new TrangChuAdmin();
                     frameAdmin.setVisible(true);
                     
                     dispose();
                 }else if("Thủ thư".equals(pos)){
+                    TrangChuThuThu_QLPXuat.setidQuanLy(idQLy);
+                    
                     TrangChuThuThu frameThuthu = new TrangChuThuThu();
                     frameThuthu.setVisible(true);
                     dispose();
@@ -240,6 +254,16 @@ public class DangNhap extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_DangNhapActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        TrangChuChinh trangChuAdmin = new TrangChuChinh(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+        trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
 
 
