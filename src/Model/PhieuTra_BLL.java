@@ -17,9 +17,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
@@ -128,10 +133,65 @@ public class PhieuTra_BLL {
     
     public boolean exportToExcel(AbstractMap.SimpleEntry<List<Sach>, List<ChiTietPhieuMuon>> danhSachThanhLy, String filePath, String id) {
         try (Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("Phiếu mượn "+id);
+            Sheet sheet = workbook.createSheet("Phiếu xuất "+id);
+            
+             Font titleFont = workbook.createFont();
+            titleFont.setBold(true);
+            titleFont.setFontHeightInPoints((short) 16);
 
+            CellStyle titleStyle = workbook.createCellStyle();
+            titleStyle.setAlignment(HorizontalAlignment.CENTER);
+            titleStyle.setFont(titleFont);
+            sheet.addMergedRegion(new CellRangeAddress(0, 0, 2, 4));
+            
+            
+            
+            // Tạo Font và CellStyle cho nội dung
+            Font contentFont = workbook.createFont();
+            contentFont.setFontHeightInPoints((short) 8);
+
+            CellStyle contentStyle = workbook.createCellStyle();
+            contentStyle.setFont(contentFont);
+
+            // Tạo tiêu đề
+            Row titleRow = sheet.createRow(0);
+            Cell titleCell = titleRow.createCell(2);
+            titleCell.setCellValue("PHIẾU XUẤT");
+            titleCell.setCellStyle(titleStyle);
+
+            // Tạo các ô chứa thông tin
+            for (int i = 1; i <= 4; i++) {
+                Row row = sheet.createRow(i);
+                Cell cell = row.createCell(0);
+                cell.setCellStyle(contentStyle);
+                switch (i) {
+                    case 1:
+                        
+                        cell.setCellValue("TRUNG TÂM HỌC LIỆU TRƯỜNG ĐẠI HỌC SÀI GÒN");
+                        sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 1));
+                        break;
+                    case 2:
+                        
+                        cell.setCellValue("Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5,Thành phố Hồ Chí Minh");
+                        sheet.addMergedRegion(new CellRangeAddress(2, 2, 0, 1));
+            
+                        break;
+                    case 3:
+                        
+                        cell.setCellValue("Điện thoại: (028)38354004");
+                        sheet.addMergedRegion(new CellRangeAddress(3, 3, 0, 1));
+            
+                        break;
+                    case 4:
+                        
+                        cell.setCellValue("Email: tt_hoclieu@sgu.edu.vn");
+                        sheet.addMergedRegion(new CellRangeAddress(4, 4, 0, 1));
+                        break;
+                }
+            }
+            
             // Tạo hàng đầu tiên (tiêu đề)
-            Row headerRow = sheet.createRow(0);
+            Row headerRow = sheet.createRow(6);
             headerRow.createCell(0).setCellValue("Mã Sách");
             headerRow.createCell(1).setCellValue("Tên Sách");
             headerRow.createCell(2).setCellValue("Ngày thực trả");
@@ -139,12 +199,14 @@ public class PhieuTra_BLL {
             headerRow.createCell(4).setCellValue("Tình trạng sách");
 
             // Duyệt danh sách và thêm dữ liệu vào bảng Excel
-            int rowNum = 1;
+            int rowNum = 7;
             List<Sach> sachList = danhSachThanhLy.getKey();
             List<ChiTietPhieuMuon> thanhLyList = danhSachThanhLy.getValue();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            double total = 0;
 
             for (ChiTietPhieuMuon chiTietPhieuMuon : thanhLyList) {
+                total = total + chiTietPhieuMuon.getTienPhat();
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(chiTietPhieuMuon.getMaSach());
 
@@ -154,8 +216,14 @@ public class PhieuTra_BLL {
                     row.createCell(1).setCellValue(correspondingSach.getTenSach());
                     // Add more data for Sach if needed
                 }
-                String ngayThanhLyString = chiTietPhieuMuon.getNgayThuctra().format(formatter);
-                row.createCell(2).setCellValue(ngayThanhLyString);
+                if(chiTietPhieuMuon.getNgayThuctra() != null){
+                    String ngayThanhLyString = chiTietPhieuMuon.getNgayThuctra().format(formatter);
+                    row.createCell(2).setCellValue(ngayThanhLyString);
+                }else{
+                    String ngayThanhLyString = "Chưa trả";
+                    row.createCell(2).setCellValue(ngayThanhLyString);
+                }
+                
                 row.createCell(3).setCellValue(chiTietPhieuMuon.getTienPhat());
                 row.createCell(4).setCellValue(chiTietPhieuMuon.getTinhTrangSach());
                 
@@ -163,6 +231,10 @@ public class PhieuTra_BLL {
 
                 // Continue with other columns...
             }
+            Row row = sheet.createRow(rowNum);
+            row.createCell(3).setCellValue("Tổng tiền phạt");
+            row.createCell(4).setCellValue(total);
+            
              // Tự động điều chỉnh chiều rộng của các cột
             autoSizeColumns(sheet);
 
@@ -188,8 +260,12 @@ public class PhieuTra_BLL {
     }
     
     private static void autoSizeColumns(Sheet sheet) {
-        int numberOfColumns = sheet.getRow(0).getPhysicalNumberOfCells();
-        for (int i = 0; i < numberOfColumns; i++) {
+        int numberOfColumns7 = sheet.getRow(6).getPhysicalNumberOfCells();
+        for (int i = 0; i < numberOfColumns7; i++) {
+            sheet.autoSizeColumn(i);
+        }
+        int numberOfColumns8 = sheet.getRow(7).getPhysicalNumberOfCells();
+        for (int i = 0; i < numberOfColumns8; i++) {
             sheet.autoSizeColumn(i);
         }
     }

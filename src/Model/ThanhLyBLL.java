@@ -254,7 +254,7 @@ public class ThanhLyBLL {
                 row.createCell().setText("Tổng tiền");
                 row.createCell().setText(String.valueOf(thanhLy.getTongTienThanhLy()));
             }
-
+            
             // Tự động điều chỉnh chiều rộng của các cột
             
 
