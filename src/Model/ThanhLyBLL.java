@@ -18,6 +18,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 /**
  *
@@ -72,8 +79,15 @@ public class ThanhLyBLL {
     
     public boolean Update(ThanhLySach thanhly){
         int total = thanhLy_DALL.GetSoLuongSachHongByIdBook(thanhly)+ thanhLy_DALL.GetSoLuongSachHongByIdThanhLy(thanhly);
+        List<ThanhLySach> thanhlynow = thanhLy_DALL.loaddatatoExport(thanhly.getMaThanhLySach());
+        ThanhLySach thanhly1 = thanhlynow.get(0);
         System.out.println(total);
         if(thanhly.getSoLuongSachHong() <= 0){
+            return false;
+        }else if(thanhly.getMaSach().equals(thanhly1.getMaSach()) 
+                && thanhly1.getSoLuongSachHong() == thanhly.getSoLuongSachHong() 
+                && thanhly1.getLyDoThanhLy().equals(thanhly.getLyDoThanhLy()) 
+                && thanhly1.getGhiChu().equals(thanhly.getGhiChu())){
             return false;
         }
         List<Sach> books = thanhLy_DALL.selectidBook();
@@ -86,6 +100,8 @@ public class ThanhLyBLL {
         return false;
     }
     
+    
+    
     public boolean delete (String id){
         if(thanhLy_DALL.delete(id)){
             return true;
@@ -93,57 +109,160 @@ public class ThanhLyBLL {
         return false;
     }
     
-    public boolean exportToExcel(AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> danhSachThanhLy, String filePath) {
-        try (Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("DanhSachThanhLy");
+//    public boolean exportToExcel(AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> danhSachThanhLy, String filePath) {
+//        try (Workbook workbook = new XSSFWorkbook()) {
+//            Sheet sheet = workbook.createSheet("DanhSachThanhLy");
+//
+//            // Tạo hàng đầu tiên (tiêu đề)
+//            Row headerRow = sheet.createRow(0);
+//            headerRow.createCell(0).setCellValue("Mã Thanh Lý Sách");
+//            headerRow.createCell(1).setCellValue("Mã Quản Lý");
+//            headerRow.createCell(2).setCellValue("Mã Sách");
+//            headerRow.createCell(3).setCellValue("Tên Sách");
+//            headerRow.createCell(4).setCellValue("Số lượng");
+//            headerRow.createCell(5).setCellValue("Lý do");
+//            headerRow.createCell(6).setCellValue("Ngày thanh lý");
+//            headerRow.createCell(7).setCellValue("Ghi chú");
+//            headerRow.createCell(8).setCellValue("Tổng tiền");
+//
+//            // Duyệt danh sách và thêm dữ liệu vào bảng Excel
+//            int rowNum = 1;
+//            List<Sach> sachList = danhSachThanhLy.getKey();
+//            List<ThanhLySach> thanhLyList = danhSachThanhLy.getValue();
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//
+//            for (ThanhLySach thanhLy : thanhLyList) {
+//                Row row = sheet.createRow(rowNum++);
+//                row.createCell(0).setCellValue(thanhLy.getMaThanhLySach());
+//                row.createCell(1).setCellValue(thanhLy.getMaQuanLy());
+//                row.createCell(2).setCellValue(thanhLy.getMaSach());
+//
+//                // Find the corresponding Sach
+//                Sach correspondingSach = findCorrespondingSach(thanhLy.getMaSach(), sachList);
+//                if (correspondingSach != null) {
+//                    row.createCell(3).setCellValue(correspondingSach.getTenSach());
+//                    // Add more data for Sach if needed
+//                }
+//
+//                row.createCell(4).setCellValue(thanhLy.getSoLuongSachHong());
+//                row.createCell(5).setCellValue(thanhLy.getLyDoThanhLy());
+//                String ngayThanhLyString = thanhLy.getNgayThanhLy().format(formatter);
+//                row.createCell(6).setCellValue(ngayThanhLyString);
+//                row.createCell(7).setCellValue(thanhLy.getGhiChu());
+//                row.createCell(8).setCellValue(thanhLy.getTongTienThanhLy());
+//                // Add more data for ThanhLySach
+//
+//                // Continue with other columns...
+//            }
+//             // Tự động điều chỉnh chiều rộng của các cột
+//            autoSizeColumns(sheet);
+//
+//            // Ghi workbook vào một file
+//            try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+//                workbook.write(fileOut);
+//            }
+//
+//            return true;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
+    
+    public AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> loaddatatoExport(String id) {
+        List<Sach> books = thanhLy_DALL.selectidBook();
+        List<ThanhLySach> thanhLySachs = thanhLy_DALL.loaddatatoExport(id);
+        return processLists(books, thanhLySachs);
+    }
+    
+    public boolean exportToWord(AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> danhSachThanhLy, String filePath) {
+        try (XWPFDocument document = new XWPFDocument()) {
+            
+            XWPFParagraph logo = document.createParagraph();
+            XWPFRun logoRun = logo.createRun();
+            logoRun.setFontSize(8);
+            logoRun.setText("TRUNG TÂM HỌC LIỆU TRƯỜNG ĐẠI HỌC SÀI GÒN");
+            logoRun.addBreak();
+            logoRun.setText("Địa chỉ: 273 An Dương Vương, Phường 3, Quận 5,Thành phố Hồ Chí Minh");
+            logoRun.addBreak();
+            logoRun.setText("Điện thoại: (028)38354004");
+            logoRun.addBreak();
+            logoRun.setText("Email: tt_hoclieu@sgu.edu.vn");
+            logoRun.addBreak();
 
-            // Tạo hàng đầu tiên (tiêu đề)
-            Row headerRow = sheet.createRow(0);
-            headerRow.createCell(0).setCellValue("Mã Thanh Lý Sách");
-            headerRow.createCell(1).setCellValue("Mã Quản Lý");
-            headerRow.createCell(2).setCellValue("Mã Sách");
-            headerRow.createCell(3).setCellValue("Tên Sách");
-            headerRow.createCell(4).setCellValue("Số lượng");
-            headerRow.createCell(5).setCellValue("Lý do");
-            headerRow.createCell(6).setCellValue("Ngày thanh lý");
-            headerRow.createCell(7).setCellValue("Ghi chú");
-            headerRow.createCell(8).setCellValue("Tổng tiền");
+            //title
+            XWPFParagraph title = document.createParagraph();
+            title.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun titleRun = title.createRun();
+            titleRun.setBold(true);
+            titleRun.setFontSize(16);
+            titleRun.setText("PHIẾU XUẤT");
+            
 
-            // Duyệt danh sách và thêm dữ liệu vào bảng Excel
-            int rowNum = 1;
             List<Sach> sachList = danhSachThanhLy.getKey();
             List<ThanhLySach> thanhLyList = danhSachThanhLy.getValue();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-            for (ThanhLySach thanhLy : thanhLyList) {
-                Row row = sheet.createRow(rowNum++);
-                row.createCell(0).setCellValue(thanhLy.getMaThanhLySach());
-                row.createCell(1).setCellValue(thanhLy.getMaQuanLy());
-                row.createCell(2).setCellValue(thanhLy.getMaSach());
+            XWPFTable table = document.createTable();
 
-                // Find the corresponding Sach
+            for (int i = 0; i < thanhLyList.size(); i++) {
+                ThanhLySach thanhLy = thanhLyList.get(i);
+
+                
+                
+                XWPFTableRow row = table.createRow();
+                row.getCell(0).setText("Mã Thanh Lý Sách");
+                row.getCell(1).setText(thanhLy.getMaThanhLySach());
+
+                // Set values for the second row
+                row = table.createRow();
+                row.getCell(0).setText("Mã Quản Lý");
+                row.getCell(1).setText(thanhLy.getMaQuanLy());
+
+                
+                row = table.createRow();
+                row.getCell(0).setText("Mã Sách");
+                
+                
+                row.getCell(1).setText(thanhLy.getMaSach());
+                    
+                
                 Sach correspondingSach = findCorrespondingSach(thanhLy.getMaSach(), sachList);
+                row = table.createRow();
+                row.getCell(0).setText("Tên Sách");
                 if (correspondingSach != null) {
-                    row.createCell(3).setCellValue(correspondingSach.getTenSach());
+                    row.getCell(1).setText(correspondingSach.getTenSach());
                     // Add more data for Sach if needed
                 }
 
-                row.createCell(4).setCellValue(thanhLy.getSoLuongSachHong());
-                row.createCell(5).setCellValue(thanhLy.getLyDoThanhLy());
+                row = table.createRow();
+                row.getCell(0).setText("Số lượng");
+                row.getCell(1).setText(String.valueOf(thanhLy.getSoLuongSachHong()));
+
+                row = table.createRow();
+                row.getCell(0).setText("Lý do");
+                row.getCell(1).setText(thanhLy.getLyDoThanhLy());
+
+                row = table.createRow();
+                row.getCell(0).setText("Ngày thanh lý");
                 String ngayThanhLyString = thanhLy.getNgayThanhLy().format(formatter);
-                row.createCell(6).setCellValue(ngayThanhLyString);
-                row.createCell(7).setCellValue(thanhLy.getGhiChu());
-                row.createCell(8).setCellValue(thanhLy.getTongTienThanhLy());
-                // Add more data for ThanhLySach
+                row.getCell(1).setText(ngayThanhLyString);
 
-                // Continue with other columns...
+                row = table.createRow();
+                row.getCell(0).setText("Ghi chú");
+                row.getCell(1).setText(thanhLy.getGhiChu());
+
+                row = table.createRow();
+                row.getCell(0).setText("Tổng tiền");
+                row.getCell(1).setText(String.valueOf(thanhLy.getTongTienThanhLy()));
             }
-             // Tự động điều chỉnh chiều rộng của các cột
-            autoSizeColumns(sheet);
 
-            // Ghi workbook vào một file
+            // Tự động điều chỉnh chiều rộng của các cột
+            
+
+            // Ghi document vào một file Word
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-                workbook.write(fileOut);
+                document.write(fileOut);
             }
 
             return true;
@@ -152,6 +271,7 @@ public class ThanhLyBLL {
             return false;
         }
     }
+    
 
     private Sach findCorrespondingSach(String maSach, List<Sach> sachList) {
         for (Sach sach : sachList) {
@@ -162,12 +282,6 @@ public class ThanhLyBLL {
         return null; // If no corresponding Sach is found
     }
     
-    private static void autoSizeColumns(Sheet sheet) {
-        int numberOfColumns = sheet.getRow(0).getPhysicalNumberOfCells();
-        for (int i = 0; i < numberOfColumns; i++) {
-            sheet.autoSizeColumn(i);
-        }
-    }
     
     public double tinhtienthanhly(ThanhLySach thanhLySach){
         double prince = 0;
@@ -196,5 +310,11 @@ public class ThanhLyBLL {
     
     public List<String> getIdQuanLy(){
         return thanhLy_DALL.getIdQuanLy();
+    }
+    
+    public AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> search(String id) {
+        List<Sach> books = thanhLy_DALL.selectidBook();
+        List<ThanhLySach> thanhLySachs = thanhLy_DALL.search(id);
+        return processLists(books, thanhLySachs);
     }
 }

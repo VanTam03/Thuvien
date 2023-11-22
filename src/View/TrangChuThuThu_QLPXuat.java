@@ -124,6 +124,7 @@ import javax.swing.table.DefaultTableModel;
         cb_lydo = new javax.swing.JComboBox<>();
         labelGia1 = new javax.swing.JLabel();
         txt_idqly = new javax.swing.JTextField();
+        txt_Lydo = new javax.swing.JTextField();
         jPK_button = new javax.swing.JPanel();
         jPK_btnQLS = new javax.swing.JPanel();
         btnK_themMaSach = new javax.swing.JButton();
@@ -135,7 +136,7 @@ import javax.swing.table.DefaultTableModel;
         jScrollPane4 = new javax.swing.JScrollPane();
         tableTly = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -258,6 +259,8 @@ import javax.swing.table.DefaultTableModel;
         txt_idqly.setEditable(false);
         txt_idqly.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
+        txt_Lydo.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPK_themMaSachLayout = new javax.swing.GroupLayout(jPK_themMaSach);
         jPK_themMaSach.setLayout(jPK_themMaSachLayout);
         jPK_themMaSachLayout.setHorizontalGroup(
@@ -293,10 +296,13 @@ import javax.swing.table.DefaultTableModel;
                     .addComponent(labelGhichu))
                 .addGap(23, 23, 23)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_lydo, 0, 444, Short.MAX_VALUE)
                     .addComponent(txt_Total, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                     .addComponent(txtNameBook)
-                    .addComponent(txt_ghichu))
+                    .addComponent(txt_ghichu)
+                    .addGroup(jPK_themMaSachLayout.createSequentialGroup()
+                        .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_Lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         jPK_themMaSachLayout.setVerticalGroup(
@@ -307,7 +313,8 @@ import javax.swing.table.DefaultTableModel;
                     .addComponent(labelMasach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelMaphieuxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Lydo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPK_themMaSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelTensach, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -401,7 +408,7 @@ import javax.swing.table.DefaultTableModel;
 
         btnExcel.setBackground(new java.awt.Color(255, 204, 204));
         btnExcel.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        btnExcel.setText("Xuất Excel");
+        btnExcel.setText("Xuất File");
         btnExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcelActionPerformed(evt);
@@ -421,7 +428,7 @@ import javax.swing.table.DefaultTableModel;
                 .addComponent(btnK_suaPX1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExcel)
@@ -602,7 +609,7 @@ import javax.swing.table.DefaultTableModel;
         txt_IdBook.setText(tableTly.getValueAt(row, 2).toString());
         txtNameBook.setText(tableTly.getValueAt(row, 3).toString());
         txt_SLg.setText(tableTly.getValueAt(row, 4).toString());
-        cb_lydo.setSelectedItem(tableTly.getValueAt(row, 5).toString());
+        txt_Lydo.setText(tableTly.getValueAt(row, 5).toString());
         txtDate.setText(tableTly.getValueAt(row, 6).toString());
         txt_ghichu.setText(tableTly.getValueAt(row, 7).toString());
         txt_Total.setText(tableTly.getValueAt(row, 8).toString());
@@ -632,13 +639,14 @@ import javax.swing.table.DefaultTableModel;
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+        String idtly = txt_Id.getText();
         int result = fileChooser.showSaveDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION) {
-            String duongDanTep = fileChooser.getSelectedFile().getAbsolutePath() + ".xlsx";
-            AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> danhSachThanhLy = thanhLyBLL.loaddata();
+            String duongDanTep = fileChooser.getSelectedFile().getAbsolutePath() + ".docx";
+            AbstractMap.SimpleEntry<List<Sach>, List<ThanhLySach>> export = thanhLyBLL.loaddatatoExport(idtly);
 
-            if (thanhLyBLL.exportToExcel(danhSachThanhLy, duongDanTep)) {
+            if (thanhLyBLL.exportToWord(export, duongDanTep)) {
                 // Hiển thị hộp thoại thông báo giống như khi tải xuống
                 JOptionPane.showMessageDialog(this, "Tệp đã được lưu tại:\n" + duongDanTep, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -721,6 +729,7 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JTextField txtNameBook;
     private javax.swing.JTextField txt_Id;
     private javax.swing.JTextField txt_IdBook;
+    private javax.swing.JTextField txt_Lydo;
     private javax.swing.JTextField txt_SLg;
     private javax.swing.JTextField txt_Total;
     private javax.swing.JTextField txt_ghichu;
