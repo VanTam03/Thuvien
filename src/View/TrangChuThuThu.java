@@ -2908,6 +2908,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         } else {
             khoatk8.setEnabled(true);
         }
+
+        maDocGiaField.setEditable(false);
     }
 
     // làm mới độc giả
@@ -2925,6 +2927,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         hanDungField1.setText("");
 
         khoatk8.setEnabled(true);
+        maDocGiaField.setEditable(true);
     }
 
     // làm mới độc gải
@@ -2967,7 +2970,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setNgaySinh(ngaysinh2.getText());
             dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
-            dg.setSoLuongMuon(Integer.parseInt(soLuongField.getText().trim()));
+            dg.setSoLuongMuon(Integer.parseInt(soLuongmuonField.getText().trim()));
             dg.setNgayMoThe(ngayMotheField.getText());
             dg.setHanSuDung(hanDungField1.getText());
             // địa chỉ
@@ -3023,7 +3026,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setNgaySinh(ngaysinh2.getText());
             dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);            
-            dg.setSoLuongMuon(Integer.parseInt(soLuongField.getText().trim()));
+            dg.setSoLuongMuon(Integer.parseInt(soLuongmuonField.getText().trim()));
             // dg.setDiaChi();
             dg.setNgayMoThe(ngayMotheField.getText());
             dg.setHanSuDung(hanDungField1.getText());
