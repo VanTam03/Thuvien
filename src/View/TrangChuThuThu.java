@@ -3152,7 +3152,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     if (H_tacGia5.getText().equals("")) {
                         JOptionPane.showMessageDialog(null, "Mã tác giả mới, vui lòng nhập tên tác giả!");
                     } else {
-                        // tacGia.setMaTacGia(H_tacGia4.getText());
+                        tacGia.setMaTacGia(H_tacGia4.getText());
                         tacGia.setTenTacGia(H_tacGia5.getText());
                         TacGia_DAO.getInstance().add(tacGia);
                     }
