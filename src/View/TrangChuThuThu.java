@@ -62,6 +62,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     PhieuTra_BLL phieuTra_BLL = new PhieuTra_BLL();
 
     DefaultTableModel defaultTableModel_CTPN;
+    DefaultTableModel defaultTableModelTraCuu;
 
     /**
      * Creates new form TrangChuThuThu
@@ -2085,8 +2086,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 new String[] {
                         "Mã tác giả", "Tên tác giả", "Số lượng sách"
                 }));
-        jScrollPane3.setViewportView(QLTGiaTable);
 
+        jScrollPane3.setViewportView(QLTGiaTable);
+        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLTGiaTableMouseClicked(evt);
+            }
+        });
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
         jPanel34Layout.setHorizontalGroup(
@@ -3233,6 +3239,45 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void cbb_chucNangThongKe7ItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_cbb_chucNangThongKe7ItemStateChanged
         // TODO add your handling code here:
+        int index = cbb_chucNangThongKe7.getSelectedIndex();
+        DefaultTableModel sachtb = (DefaultTableModel) tabletksach2.getModel();
+        sachtb.setRowCount(0);
+        List<KhoSach> sachByCate;
+        int soluong =0;
+        if (index==0){
+            sachByCate = ThongKeDao.getInstance().SachCon();
+            soluong = ThongKeDao.getInstance().SoLuongSachCon();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getSoLuongCon() });
+            }
+        }else if(index==1){
+            sachByCate = ThongKeDao.getInstance().SachHong();
+            soluong = ThongKeDao.getInstance().SoLuongSachHong();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+//            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getSoLuongSachHong() });
+            }
+        }else{
+            sachByCate = ThongKeDao.getInstance().ToanBoSach();
+            soluong = ThongKeDao.getInstance().SoLuongTong();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+//            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getTongSoLuong() });
+            }
+
+        }
+        // List<sach_th> sachByCate = getSach.getSachByCategory(DM);
+        fieldSoluongthongkesach.setText(String.valueOf(soluong));
+
     }// GEN-LAST:event_cbb_chucNangThongKe7ItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
@@ -3809,7 +3854,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void khoatk11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk11ActionPerformed
         // TODO add your handling code here:
-        new TrangChuThuThu_TimKiem().setVisible(true);
+        new TrangChuThuThu_TimKiem(2).setVisible(true);
         this.setVisible(false);
     }// GEN-LAST:event_khoatk11ActionPerformed
 
@@ -4085,11 +4130,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void txt_timkiemDMSach23KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach23KeyReleased
         // TODO add your handling code here:
-        // String query = txt_timkiemDMSach22.getText();
-        // TableRowSorter<DefaultTableModel> tbl = new
-        // TableRowSorter<DefaultTableModel>(defaultTableModel_TL);
-        // tbl_DMSach5.setRowSorter(tbl);
-        // tbl.setRowFilter(RowFilter.regexFilter(query));
+         String query = txt_timkiemDMSach23.getText();
+         TableRowSorter<DefaultTableModel> tbl = new
+         TableRowSorter<DefaultTableModel>(defaultTableModel_TG);
+         QLTGiaTable.setRowSorter(tbl);
+         tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach23KeyReleased
 
     private void btn_lammoi8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_lammoi8ActionPerformed
@@ -4160,6 +4205,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void textboxsearch2KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_textboxsearch2KeyReleased
         // TODO add your handling code here:
+//        String query = textboxsearch2.getText();
+//        TableRowSorter<DefaultTableModel> tbl = new
+//                TableRowSorter<DefaultTableModel>(defaultTableModelTraCuu);
+//        tableSearchSach2.setRowSorter(tbl);
+//        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_textboxsearch2KeyReleased
 
     private void textboxsearch2KeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_textboxsearch2KeyTyped
@@ -4253,7 +4303,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void btnK_themPM40btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM40btnK_themPM2ActionPerformed
         // TODO add your handling code here:
-        new TrangChuThuThu_QLPM_1().setVisible(true);
+        new TrangChuThuThu_QLPM_1(2).setVisible(true);
         this.setVisible(false);
     }// GEN-LAST:event_btnK_themPM40btnK_themPM2ActionPerformed
 

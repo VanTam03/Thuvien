@@ -3,9 +3,13 @@ package DAO;
 import DTO.KhoSach;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ThongKeDao {
+    public static ThongKeDao getInstance() {
+        return new ThongKeDao();
+    }
     public int SoLuongSachCon(){
         int dem=0;
         List<KhoSach> rowSelected = KhoSach_DAO.getInstance().selectAll();
@@ -32,18 +36,24 @@ public class ThongKeDao {
     }
     public List<KhoSach> SachHong(){
         List<KhoSach> rowSelected = KhoSach_DAO.getInstance().selectAll();
-        for (KhoSach khoSach : rowSelected){
-            if (khoSach.getSoLuongSachHong()==0){
-                rowSelected.remove(khoSach);
+        // Use iterator to safely remove elements
+        Iterator<KhoSach> iterator = rowSelected.iterator();
+        while (iterator.hasNext()) {
+            KhoSach khoSach = iterator.next();
+            if (khoSach.getSoLuongSachHong() == 0) {
+                iterator.remove();
             }
         }
         return rowSelected;
     }
     public List<KhoSach> SachCon(){
         List<KhoSach> rowSelected = KhoSach_DAO.getInstance().selectAll();
-        for (KhoSach khoSach : rowSelected){
-            if (khoSach.getSoLuongCon()==0){
-                rowSelected.remove(khoSach);
+        // Use iterator to safely remove elements
+        Iterator<KhoSach> iterator = rowSelected.iterator();
+        while (iterator.hasNext()) {
+            KhoSach khoSach = iterator.next();
+            if (khoSach.getSoLuongCon() == 0) {
+                iterator.remove();
             }
         }
         return rowSelected;
