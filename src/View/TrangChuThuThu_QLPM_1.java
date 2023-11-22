@@ -35,8 +35,8 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
     /**
      * Creates new form QuanLyPhieuMuon
      */
-    public TrangChuThuThu_QLPM_1() {
-        initComponents();
+    public TrangChuThuThu_QLPM_1(int quayVe) {
+        initComponents(quayVe);
         loadmaPhieuMuon();
         loadComboBoxMaCanBo();
         loadComboBoxmaPhieuMuon();
@@ -104,7 +104,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(int quayVe) {
 
         jPK_tieuDe = new javax.swing.JPanel();
         lbK_tieuDe = new javax.swing.JLabel();
@@ -166,7 +166,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         btnK_veTrangTruoc.setToolTipText("");
         btnK_veTrangTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnK_veTrangTruocActionPerformed(evt);
+                btnK_veTrangTruocActionPerformed(evt, quayVe);
             }
         });
 
@@ -858,9 +858,16 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         btnK_xoaMaSach.setEnabled(true);
     }// GEN-LAST:event_btnK_lamMoiSachActionPerformed
 
-    private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-        new TrangChuThuThu().setVisible(true);
-        this.setVisible(false);
+    private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt, int quayVe) {// GEN-FIRST:event_btnK_veTrangTruocActionPerformed
+        if (quayVe==1){
+            new TrangChuAdmin().setVisible(true);
+            this.setVisible(false);
+        }
+        else{
+            new TrangChuThuThu().setVisible(true);
+            this.setVisible(false);
+        }
+
     }// GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     private void cbbK_maPMActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cbbK_maPMActionPerformed
@@ -1002,7 +1009,7 @@ public class TrangChuThuThu_QLPM_1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChuThuThu_QLPM_1().setVisible(true);
+                new TrangChuThuThu_QLPM_1(1).setVisible(true);
             }
         });
     }

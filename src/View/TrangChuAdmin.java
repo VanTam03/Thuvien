@@ -9,10 +9,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import DAO.*;
 import DTO.*;
@@ -55,6 +54,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         loadkho(khobll.loadKho());
         loadPhieuTra(phieuTra_BLL.loaddata());
+        loadmaDanhMuc();
         loadComboBoxTheLoai();
         loadComboBoxDanhMuc();
         loadmaTheLoai();
@@ -2056,8 +2056,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 new String[] {
                         "Mã tác giả", "Tên tác giả", "Số lượng sách"
                 }));
-        jScrollPane3.setViewportView(QLTGiaTable);
 
+        jScrollPane3.setViewportView(QLTGiaTable);
+        QLTGiaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QLTGiaTableMouseClicked(evt);
+            }
+        });
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
         jPanel34Layout.setHorizontalGroup(
@@ -3686,6 +3691,44 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     private void cbb_chucNangThongKe7ItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_cbb_chucNangThongKe7ItemStateChanged
         // TODO add your handling code here:
+        int index = cbb_chucNangThongKe7.getSelectedIndex();
+        DefaultTableModel sachtb = (DefaultTableModel) tabletksach2.getModel();
+        sachtb.setRowCount(0);
+        List<KhoSach> sachByCate;
+        int soluong =0;
+        if (index==0){
+            sachByCate = ThongKeDao.getInstance().SachCon();
+            soluong = ThongKeDao.getInstance().SoLuongSachCon();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getSoLuongCon() });
+            }
+        }else if(index==1){
+            sachByCate = ThongKeDao.getInstance().SachHong();
+            soluong = ThongKeDao.getInstance().SoLuongSachHong();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+//            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getSoLuongSachHong() });
+            }
+        }else{
+            sachByCate = ThongKeDao.getInstance().ToanBoSach();
+            soluong = ThongKeDao.getInstance().SoLuongTong();
+            int i = 0;
+            for (KhoSach ks : sachByCate) {
+                i++;
+//            KhoSach khoSach = KhoSach_DAO.getInstance().selectById(s.getMaSach());
+                Sach s = Sach_DAO.getInstance().selectById(ks.getMaSach());
+                sachtb.addRow(new Object[] { i, s.getMaSach(), s.getTenSach(), ks.getTongSoLuong() });
+            }
+
+        }
+        // List<sach_th> sachByCate = getSach.getSachByCategory(DM);
+        fieldSoluongthongkesach.setText(String.valueOf(soluong));
     }// GEN-LAST:event_cbb_chucNangThongKe7ItemStateChanged
 
     // ======================== Tài Khoản Quản Lý Header ======================
@@ -4319,7 +4362,30 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     private void tblH_Sach2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tblH_Sach2MouseClicked
         // TODO add your handling code here:
+        int selectedRow = tblH_Sach2.getSelectedRow();
+        H_tenSach2.setText((String) tblH_Sach2.getValueAt(selectedRow, 0));
+        H_tenSach3.setText((String) tblH_Sach2.getValueAt(selectedRow, 1));
+        Hc_maDM2.setSelectedItem((String) tblH_Sach2.getValueAt(selectedRow, 2));
+        Hc_maTheLoai2.setSelectedItem((String) tblH_Sach2.getValueAt(selectedRow, 3));
+        H_tacGia4.setText((String) tblH_Sach2.getValueAt(selectedRow, 4));
+        H_tacGia5.setText((String) tblH_Sach2.getValueAt(selectedRow, 5));
+        H_nhaXB2.setText((String) tblH_Sach2.getValueAt(selectedRow, 6));
+        H_namXB2.setText(String.valueOf(tblH_Sach2.getValueAt(selectedRow, 7)));
+        H_soLuongCon2.setText(String.valueOf(tblH_Sach2.getValueAt(selectedRow, 8)));
+        H_tomTat2.setText((String) tblH_Sach2.getValueAt(selectedRow, 10));
     }// GEN-LAST:event_tblH_Sach2MouseClicked
+
+    private void QLTGiaTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_QLTGiaTableMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = QLTGiaTable.getSelectedRow();
+        txt_tenDMSach14.setText((String) QLTGiaTable.getValueAt(selectedRow, 0));
+        txt_tenDMSach13.setText((String) QLTGiaTable.getValueAt(selectedRow, 1));
+        txt_tenDMSach12.setText(String.valueOf(QLTGiaTable.getValueAt(selectedRow, 2)));
+        btn_SuaDMSach8.setEnabled(true);
+        btn_ThemDMSach8.setEnabled(false);
+        btn_LuuDMSach8.setEnabled(false);
+        btn_lammoi8.setEnabled(true);
+    }// GEN-LAST:event_QLTGiaTableMouseClicked
 
     private void btnH_themSach2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnH_themSach2ActionPerformed
         // TODO add your handling code here:
@@ -4458,7 +4524,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     private void khoatk11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_khoatk11ActionPerformed
         // TODO add your handling code here:
-        new TrangChuThuThu_TimKiem().setVisible(true);
+        new TrangChuThuThu_TimKiem(1).setVisible(true);
         this.setVisible(false);
     }// GEN-LAST:event_khoatk11ActionPerformed
 
@@ -4468,70 +4534,280 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     private void tbl_DMSach4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbl_DMSach4MouseClicked
         // TODO add your handling code here:
+        int selectedRow = tbl_DMSach4.getSelectedRow();
+
+        txt_maDMSach4.setText((String) tbl_DMSach4.getValueAt(selectedRow, 0));
+        txt_tenDMSach10.setText((String) tbl_DMSach4.getValueAt(selectedRow, 1));
+
+        txt_maDMSach4.setEnabled(false);
+        btn_SuaDMSach6.setEnabled(true);
+        btn_ThemDMSach6.setEnabled(false);
+        btn_LuuDMSach6.setEnabled(false);
+        btn_lammoi6.setEnabled(true);
     }// GEN-LAST:event_tbl_DMSach4MouseClicked
 
     private void btn_ThemDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_ThemDMSach6ActionPerformed
         // TODO add your handling code here:
+        txt_tenDMSach10.requestFocus();
+        txt_maDMSach4.setEnabled(true);
+        txt_tenDMSach10.setEnabled(true);
+        btn_ThemDMSach6.setEnabled(false);
+        btn_LuuDMSach6.setEnabled(true);
+        btn_lammoi6.setEnabled(true);
+        btn_SuaDMSach6.setEnabled(false);
+
+        txt_maDMSach4.setText("");
+        txt_tenDMSach10.setText("");
     }// GEN-LAST:event_btn_ThemDMSach6ActionPerformed
 
     private void btn_LuuDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_LuuDMSach6ActionPerformed
         // TODO add your handling code here:
+        if (txt_maDMSach4.getText().trim().equals("") || txt_tenDMSach10.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin!");
+
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                DanhMucSach danhmuc = new DanhMucSach();
+                danhmuc.setMaDM(txt_maDMSach4.getText());
+                danhmuc.setTenDM(txt_tenDMSach10.getText());
+
+                if (DanhMucSach_DAO.getInstance().add(danhmuc) > 0) {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại!");
+                }
+            }
+            loadmaDanhMuc();
+            btn_lammoi6ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_LuuDMSach6ActionPerformed
 
     private void btn_SuaDMSach6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_SuaDMSach6ActionPerformed
         // TODO add your handling code here:
+        if (txt_maDMSach4.getText().trim().equals("") || txt_tenDMSach10.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin danh mục muốn sửa muốn sửa!");
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                DanhMucSach danhmuc = new DanhMucSach();
+                danhmuc.setMaDM(txt_maDMSach4.getText());
+                danhmuc.setTenDM(txt_tenDMSach10.getText());
+                DanhMucSach_DAO.getInstance().update(danhmuc);
+            }
+            loadmaDanhMuc();
+            btn_lammoi6ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_SuaDMSach6ActionPerformed
 
     private void txt_timkiemDMSach21KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach21KeyReleased
         // TODO add your handling code here:
+        String query = txt_timkiemDMSach21.getText();
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<DefaultTableModel>(defaultTableModel_DM);
+        tbl_DMSach4.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach21KeyReleased
 
     private void btn_lammoi6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_lammoi6ActionPerformed
         // TODO add your handling code here:
+        txt_maDMSach4.setEnabled(false);
+        txt_maDMSach4.setText("");
+        txt_tenDMSach10.setText("");
+        btn_SuaDMSach6.setEnabled(true);
+        btn_ThemDMSach6.setEnabled(true);
+        btn_LuuDMSach6.setEnabled(false);
     }// GEN-LAST:event_btn_lammoi6ActionPerformed
 
     private void tbl_DMSach5MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tbl_DMSach5MouseClicked
         // TODO add your handling code here:
+        int selectedRow = tbl_DMSach5.getSelectedRow();
+
+        txt_maDMSach5.setText((String) tbl_DMSach5.getValueAt(selectedRow, 0));
+        txt_tenDMSach11.setText((String) tbl_DMSach5.getValueAt(selectedRow, 1));
+
+        txt_maDMSach5.setEnabled(false);
+        txt_tenDMSach11.setEnabled(true);
+        btn_SuaDMSach7.setEnabled(true);
+        btn_ThemDMSach7.setEnabled(false);
+        btn_LuuDMSach7.setEnabled(false);
+        btn_lammoi7.setEnabled(true);
     }// GEN-LAST:event_tbl_DMSach5MouseClicked
 
     private void btn_ThemDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_ThemDMSach7ActionPerformed
         // TODO add your handling code here:
+        txt_tenDMSach11.requestFocus();
+        txt_maDMSach5.setEnabled(true);
+        txt_tenDMSach11.setEnabled(true);
+        btn_ThemDMSach7.setEnabled(false);
+        btn_LuuDMSach7.setEnabled(true);
+        btn_lammoi7.setEnabled(true);
+        btn_SuaDMSach7.setEnabled(false);
+
+        txt_maDMSach5.setText("");
+        txt_tenDMSach11.setText("");
     }// GEN-LAST:event_btn_ThemDMSach7ActionPerformed
 
     private void btn_LuuDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_LuuDMSach7ActionPerformed
         // TODO add your handling code here:
+        if (txt_maDMSach5.getText().trim().equals("") || txt_tenDMSach11.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin!");
+
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                PhanLoaiSach theLoai = new PhanLoaiSach();
+                theLoai.setMaTheLoai(txt_maDMSach5.getText());
+                theLoai.setTenTheLoai(txt_tenDMSach11.getText());
+                if (PhanLoaiSach_DAO.getInstance().add(theLoai) > 0) {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại!");
+                }
+            }
+            loadmaTheLoai();
+            btn_lammoi7ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_LuuDMSach7ActionPerformed
 
     private void btn_SuaDMSach7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_SuaDMSach7ActionPerformed
         // TODO add your handling code here:
+        if (txt_maDMSach5.getText().trim().equals("") || txt_tenDMSach11.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin danh mục muốn sửa muốn sửa!");
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                PhanLoaiSach theLoai = new PhanLoaiSach();
+                theLoai.setMaTheLoai(txt_maDMSach5.getText());
+                theLoai.setTenTheLoai(txt_tenDMSach11.getText());
+                if (PhanLoaiSach_DAO.getInstance().update(theLoai) > 0) {
+                    JOptionPane.showMessageDialog(null, "Sửa thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Sửa thất bại!");
+                }
+            }
+            loadmaTheLoai();
+            btn_lammoi7ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_SuaDMSach7ActionPerformed
 
     private void txt_timkiemDMSach22KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach22KeyReleased
         // TODO add your handling code here:
+        String query = txt_timkiemDMSach22.getText();
+        TableRowSorter<DefaultTableModel> tbl = new TableRowSorter<DefaultTableModel>(defaultTableModel_TL);
+        tbl_DMSach5.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach22KeyReleased
 
     private void btn_lammoi7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_lammoi7ActionPerformed
         // TODO add your handling code here:
+        txt_maDMSach5.setEnabled(false);
+        txt_tenDMSach11.setEnabled(false);
+        txt_maDMSach5.setText("");
+        txt_tenDMSach11.setText("");
+        btn_SuaDMSach7.setEnabled(true);
+        btn_ThemDMSach7.setEnabled(true);
+        btn_LuuDMSach7.setEnabled(false);
     }// GEN-LAST:event_btn_lammoi7ActionPerformed
 
     private void btn_ThemDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_ThemDMSach8ActionPerformed
         // TODO add your handling code here:
+        txt_tenDMSach13.requestFocus();
+        txt_tenDMSach14.setEnabled(true);
+        txt_tenDMSach13.setEnabled(true);
+        txt_tenDMSach12.setEnabled(true);
+        btn_ThemDMSach8.setEnabled(false);
+        btn_LuuDMSach8.setEnabled(true);
+        btn_lammoi8.setEnabled(true);
+        btn_SuaDMSach8.setEnabled(false);
+
+        txt_tenDMSach12.setText("");
+        txt_tenDMSach13.setText("");
+        txt_tenDMSach14.setText("");
     }// GEN-LAST:event_btn_ThemDMSach8ActionPerformed
 
     private void btn_LuuDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_LuuDMSach8ActionPerformed
         // TODO add your handling code here:
+        if (txt_tenDMSach14.getText().trim().equals("") || txt_tenDMSach13.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập đủ thông tin!");
+
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                TacGia tacGia = new TacGia();
+                tacGia.setMaTacGia(txt_tenDMSach14.getText());
+                tacGia.setTenTacGia(txt_tenDMSach13.getText());
+                if (txt_tenDMSach12.getText().equals("")) {
+                    tacGia.setSoSach(0);
+                } else {
+                    tacGia.setSoSach(Integer.parseInt(txt_tenDMSach12.getText()));
+                }
+                if (TacGia_DAO.getInstance().add(tacGia) > 0) {
+                    JOptionPane.showMessageDialog(null, "Thêm thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại!");
+                }
+            }
+            loadmaTacGia();
+            btn_lammoi8ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_LuuDMSach8ActionPerformed
 
     private void btn_SuaDMSach8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_SuaDMSach8ActionPerformed
         // TODO add your handling code here:
+        if (txt_tenDMSach14.getText().trim().equals("") || txt_tenDMSach13.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin danh mục muốn sửa muốn sửa!");
+        } else {
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thay đổi không?");
+            if (x == JOptionPane.NO_OPTION) {
+                return;
+            } else {
+                TacGia tacGia = new TacGia();
+                tacGia.setMaTacGia(txt_tenDMSach14.getText());
+                tacGia.setTenTacGia(txt_tenDMSach13.getText());
+                if (txt_tenDMSach12.getText().equals("")) {
+                    tacGia.setSoSach(0);
+                } else {
+                    tacGia.setSoSach(Integer.parseInt(txt_tenDMSach12.getText()));
+                }
+                if (TacGia_DAO.getInstance().update(tacGia) > 0) {
+                    JOptionPane.showMessageDialog(null, "Sửa thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Sửa thất bại!");
+                }
+            }
+            loadmaTacGia();
+            btn_lammoi8ActionPerformed(evt);
+        }
     }// GEN-LAST:event_btn_SuaDMSach8ActionPerformed
 
     private void txt_timkiemDMSach23KeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_timkiemDMSach23KeyReleased
         // TODO add your handling code here:
+        String query = txt_timkiemDMSach23.getText();
+        TableRowSorter<DefaultTableModel> tbl = new
+                TableRowSorter<DefaultTableModel>(defaultTableModel_TG);
+        QLTGiaTable.setRowSorter(tbl);
+        tbl.setRowFilter(RowFilter.regexFilter(query));
     }// GEN-LAST:event_txt_timkiemDMSach23KeyReleased
 
     private void btn_lammoi8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btn_lammoi8ActionPerformed
         // TODO add your handling code here:
+        txt_tenDMSach14.setEnabled(false);
+        txt_tenDMSach14.setText("");
+        txt_tenDMSach13.setText("");
+        txt_tenDMSach12.setText("");
+        btn_SuaDMSach8.setEnabled(true);
+        btn_ThemDMSach8.setEnabled(true);
+        btn_LuuDMSach8.setEnabled(false);
     }// GEN-LAST:event_btn_lammoi8ActionPerformed
 
     private void btnK_themPM31btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM31btnK_themPM1ActionPerformed
@@ -4544,6 +4820,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
     private void btnK_themPM32btnK_themPM2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM32btnK_themPM2ActionPerformed
         // TODO add your handling code here:
+        new TrangChuThuThu_QLPM_1(1).setVisible(true);
+        this.setVisible(false);
     }// GEN-LAST:event_btnK_themPM32btnK_themPM2ActionPerformed
 
     private void btnK_themPM33btnK_themPM1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnK_themPM33btnK_themPM1ActionPerformed

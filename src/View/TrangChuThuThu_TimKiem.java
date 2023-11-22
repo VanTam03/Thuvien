@@ -28,8 +28,8 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
     DefaultTableModel defaultTableModel_Sach;
     // Sach_Service sachService;
 
-    public TrangChuThuThu_TimKiem() {
-        initComponents();
+    public TrangChuThuThu_TimKiem(int quayVe) {
+        initComponents(quayVe);
         // sachService = new Sach_Service();
         defaultTableModel_Sach = new DefaultTableModel() {
             @Override
@@ -71,7 +71,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(int quayVe) {
 
         jPK_tieuDe = new javax.swing.JPanel();
         lbK_tieuDe = new javax.swing.JLabel();
@@ -107,7 +107,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         jButton1.setText("Trở về");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed(evt, quayVe);
             }
         });
 
@@ -347,9 +347,15 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
 
     }// GEN-LAST:event_btnK_refreshBanDocActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        new TrangChuThuThu().setVisible(true);
-        this.setVisible(false);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt, int quayVe) {// GEN-FIRST:event_jButton1ActionPerformed
+        if (quayVe==2){
+            new TrangChuThuThu().setVisible(true);
+            this.setVisible(false);
+        }
+        else {
+            new TrangChuAdmin().setVisible(true);
+            this.setVisible(false);
+        }
     }// GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -393,7 +399,7 @@ public class TrangChuThuThu_TimKiem extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChuThuThu_TimKiem().setVisible(true);
+                new TrangChuThuThu_TimKiem(1).setVisible(true);
             }
         });
     }
