@@ -2612,29 +2612,20 @@
                                           <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
                                           <Component id="K_tieuDe15" min="-2" pref="432" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnK_themPM32" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Component id="btnK_themPM31" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jScrollPane2" alignment="0" min="-2" pref="984" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txt_timkiemDMSach24" min="-2" pref="345" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                                      <Component id="gioitinhnam17" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                                      <Component id="gioitinhnu17" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jScrollPane2" alignment="0" min="-2" pref="984" max="-2" attributes="0"/>
+                                              <Component id="txt_timkiemDMSach24" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="61" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnK_themPM32" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2644,18 +2635,11 @@
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="K_tieuDe15" min="-2" pref="46" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt_timkiemDMSach24" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="gioitinhnam17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="gioitinhnu17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txt_timkiemDMSach24" min="-2" pref="37" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" pref="218" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnK_themPM32" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnK_themPM31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnK_themPM32" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2673,23 +2657,6 @@
                             <Property name="text" type="java.lang.String" value="C&#xc1;C PHI&#x1ebe;U M&#x1af;&#x1ee2;N &#x110;&#xc3; &#x110;&#x102;NG K&#xdd;"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnK_themPM31">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Times New Roman" size="18" style="1"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Images/plus.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnK_themPM31btnK_themPM1ActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JTextField" name="txt_timkiemDMSach24">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -2700,28 +2667,6 @@
                           <Events>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_timkiemDMSach24txt_timkiemDMSach3KeyReleased"/>
                           </Events>
-                        </Component>
-                        <Component class="javax.swing.JRadioButton" name="gioitinhnam17">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Times New Roman" size="20" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Theo t&#xea;n &#x111;&#x1ed9;c gi&#x1ea3;"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JRadioButton" name="gioitinhnu17">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="cc" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Times New Roman" size="20" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Theo m&#xe3; phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
-                          </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnK_themPM32">
                           <Properties>

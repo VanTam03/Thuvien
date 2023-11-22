@@ -468,8 +468,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         Panel_DanhSachPM18 = new javax.swing.JPanel();
         K_tieuDe19 = new javax.swing.JLabel();
         txt_timkiemDMSach28 = new javax.swing.JTextField();
-        gioitinhnam21 = new javax.swing.JRadioButton();
-        gioitinhnu21 = new javax.swing.JRadioButton();
         btnK_themPM40 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
@@ -2229,16 +2227,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
-        gioitinhnam21.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhnam21.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnam21.setForeground(new java.awt.Color(0, 0, 0));
-        gioitinhnam21.setText("Theo tên độc giả");
-
-        gioitinhnu21.setBackground(new java.awt.Color(255, 255, 204));
-        gioitinhnu21.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        gioitinhnu21.setForeground(new java.awt.Color(0, 0, 0));
-        gioitinhnu21.setText("Theo mã phiếu mượn");
-
         btnK_themPM40.setBackground(new java.awt.Color(255, 204, 204));
         btnK_themPM40.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnK_themPM40.setForeground(new java.awt.Color(0, 0, 0));
@@ -2278,11 +2266,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                         .addComponent(K_tieuDe19, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_DanhSachPM18Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addComponent(txt_timkiemDMSach28, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(gioitinhnam21)
-                        .addGap(32, 32, 32)
-                        .addComponent(gioitinhnu21))
+                        .addComponent(txt_timkiemDMSach28, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_DanhSachPM18Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2294,10 +2278,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(K_tieuDe19, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Panel_DanhSachPM18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_timkiemDMSach28, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gioitinhnam21)
-                    .addComponent(gioitinhnu21))
+                .addComponent(txt_timkiemDMSach28, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
@@ -2315,7 +2296,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
         jPK_QuanLyPhieuMuon5Layout.setVerticalGroup(
             jPK_QuanLyPhieuMuon5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addComponent(jTPK_QuanLyPM5, javax.swing.GroupLayout.PREFERRED_SIZE, 515, Short.MAX_VALUE)
         );
 
         jTP_main2.addTab(" QUẢN LÝ MƯỢN TRẢ ", new javax.swing.ImageIcon(getClass().getResource("/Images/exchange.png")), jPK_QuanLyPhieuMuon5); // NOI18N
@@ -2562,7 +2543,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTP_main2, javax.swing.GroupLayout.PREFERRED_SIZE, 1435, Short.MAX_VALUE)
+                .addComponent(jTP_main2, javax.swing.GroupLayout.DEFAULT_SIZE, 1435, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -3829,9 +3810,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTextField emailDocgia4;
     private javax.swing.JTextField fieldSoluongthongkesach;
     private javax.swing.JRadioButton gioitinhnam16;
-    private javax.swing.JRadioButton gioitinhnam21;
     private javax.swing.JRadioButton gioitinhnu16;
-    private javax.swing.JRadioButton gioitinhnu21;
     private javax.swing.JTextField hanDungField1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
