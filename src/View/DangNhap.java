@@ -233,6 +233,8 @@ public class DangNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Bạn đã đăng nhập thành công!");
                 if("Admin".equals(pos)){
                     TrangChuThuThu_QLPXuat.setidQuanLy(idQLy);
+                    ThuThuQuanLyPhieuXuat.setidQuanLy(idQLy);
+                    ThuThuChiTietPhieuTra.setcheckadmin(true);
 
                     TrangChuAdmin frameAdmin = new TrangChuAdmin();
                     frameAdmin.setVisible(true);
@@ -240,6 +242,8 @@ public class DangNhap extends javax.swing.JFrame {
                     dispose();
                 }else if("Thủ thư".equals(pos)){
                     TrangChuThuThu_QLPXuat.setidQuanLy(idQLy);
+                    ThuThuQuanLyPhieuXuat.setidQuanLy(idQLy);
+                    ThuThuChiTietPhieuTra.setcheckadmin(false);
                     
                     TrangChuThuThu frameThuthu = new TrangChuThuThu();
                     frameThuthu.setVisible(true);

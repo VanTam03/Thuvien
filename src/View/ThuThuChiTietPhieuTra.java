@@ -26,6 +26,10 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     DefaultTableModel defaultTableModelPTr;
     private String id; 
     private JFileChooser fileChooser;
+    private static boolean checkadmin;
+    public static void setcheckadmin(boolean checkadminmoi) {
+        checkadmin = checkadminmoi;
+    }
     public ThuThuChiTietPhieuTra(String id) {
         initComponents();
         fileChooser = new JFileChooser();
@@ -108,9 +112,15 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         tblK_ChiTiet = new javax.swing.JTable();
         btnK_veTrangTruoc = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 752));
-
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         Panel_ChiTietPM.setBackground(new java.awt.Color(255, 255, 204));
         Panel_ChiTietPM.setPreferredSize(new java.awt.Dimension(1080, 740));
@@ -266,7 +276,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
                     .addComponent(jLabel32)
                     .addComponent(txtTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_tinhtrang, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
@@ -279,7 +289,7 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         btnK_suaChiTiet.setBackground(new java.awt.Color(255, 204, 204));
@@ -446,9 +456,16 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     }//GEN-LAST:event_tblK_ChiTietMouseClicked
 
     private void btnK_veTrangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_veTrangTruocActionPerformed
-        TrangChuAdmin trangChuAdmin = new TrangChuAdmin(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
-        trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
-        this.dispose();
+        if(checkadmin){
+            TrangChuAdmin trangChuAdmin = new TrangChuAdmin(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+            trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+            this.dispose();
+        }else{
+            TrangChuThuThu trangChuAdmin = new TrangChuThuThu(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+            trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_btnK_veTrangTruocActionPerformed
 
     private void btnK_suaChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnK_suaChiTietActionPerformed
@@ -555,6 +572,18 @@ public class ThuThuChiTietPhieuTra extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if(checkadmin){
+            TrangChuAdmin trangChuAdmin = new TrangChuAdmin(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+            trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+            this.dispose();
+        }else{
+            TrangChuThuThu trangChuAdmin = new TrangChuThuThu(); // Tạo mới JFrame TrangChuAdmin (nếu chưa được tạo)
+            trangChuAdmin.setVisible(true); // Hiển thị lại JFrame TrangChuAdmin
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

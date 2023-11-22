@@ -315,4 +315,72 @@ public class ThanhLy_DALL {
         }
         return IDQLys;
     }
+    
+    
+    public List<ThanhLySach> loaddatatoExport(String id) {
+        List<ThanhLySach> thanhLySachs = new ArrayList<>();
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "select * from ThanhLySach where maThanhLySach = '" +id + "'";
+            System.out.println(query);
+			
+            ResultSet rs =  statement.executeQuery(query);
+			
+            while(rs.next()) {
+                String maThanhLySach = rs.getString("maThanhLySach");
+                String maQuanLy = rs.getString("maQuanLy");
+                String maSach = rs.getString("maSach");
+                int soLuongSachHong = rs.getInt("soLuongSachHong");
+                String lyDoThanhLy = rs.getString("lyDoThanhLy");
+                LocalDate ngayThanhLy = rs.getDate("ngayThanhLy").toLocalDate();
+                String ghiChu = rs.getString("ghiChu");
+                double tongTienThanhLy = rs.getDouble("tongTienThanhLy");
+                ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maQuanLy, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
+                thanhLySachs.add(thanhLySach);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+            return thanhLySachs;
+			
+        } catch (SQLException e) {
+		System.out.println(e);
+        }
+        return thanhLySachs;
+    }
+    
+    public List<ThanhLySach> search(String searchTerm){
+        List<ThanhLySach> thanhLySachs = new ArrayList<>();
+        Connection connection = KetNoiSQL.getConnection();
+        try {
+            try (Statement statement = connection.createStatement()) {
+                String query = "SELECT * FROM thanhLySach " +
+                           " WHERE maThanhLySach LIKE '%" + searchTerm + "%' " +
+                           " OR maSach  LIKE '%" + searchTerm + "%'";
+                System.out.println(query);
+                
+                ResultSet rs =  statement.executeQuery(query);
+			
+                while(rs.next()) {
+                    String maThanhLySach = rs.getString("maThanhLySach");
+                    String maQuanLy = rs.getString("maQuanLy");
+                    String maSach = rs.getString("maSach");
+                    int soLuongSachHong = rs.getInt("soLuongSachHong");
+                    String lyDoThanhLy = rs.getString("lyDoThanhLy");
+                    LocalDate ngayThanhLy = rs.getDate("ngayThanhLy").toLocalDate();
+                    String ghiChu = rs.getString("ghiChu");
+                    double tongTienThanhLy = rs.getDouble("tongTienThanhLy");
+                    ThanhLySach thanhLySach = new ThanhLySach(maThanhLySach, maQuanLy, maSach, soLuongSachHong, lyDoThanhLy, ngayThanhLy, ghiChu, tongTienThanhLy);
+                    thanhLySachs.add(thanhLySach);
+                }
+            }
+            connection.close();
+            return thanhLySachs;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return thanhLySachs;
+    }
+    
 }
