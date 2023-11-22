@@ -341,7 +341,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         hanDungField1 = new javax.swing.JTextField();
         ngayMotheLabel = new javax.swing.JLabel();
         ngayMotheField = new javax.swing.JTextField();
-        Hc_maTheLoai3 = new javax.swing.JComboBox<>();
+        String[] dsTenLoaiThe = new QuanLiDocGia_DAO().tenLoaiThe();
+        Hc_maTheLoai3 = new javax.swing.JComboBox<>(dsTenLoaiThe);
         updatedg4 = new javax.swing.JButton();
         jPanel40 = new javax.swing.JPanel();
         jScrollPane25 = new javax.swing.JScrollPane();
@@ -575,21 +576,20 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         quanlyttdg2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
-
+        String[] columnNames = { "Mã độc giả", "Tên độc giả", "Loại Tài Khoản", "Mật khẩu", "Số điện thoại",
+        "Ngày sinh", "Email", "Giới tính", "Địa Chỉ", "Ngày Mở Thẻ", "Hạn Sử Dụng", "SoLuongMuon", "Trạng Thái" };
         tableDocgia2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         tableDocgia2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
-            },
-            new String [] {
-
-            }
+            },columnNames
         ));
         tableDocgia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia2MouseClicked(evt);
             }
         });
+        loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+        new QuanLiDocGia_DAO().khoaQuaHan();
         jScrollPane17.setViewportView(tableDocgia2);
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -723,10 +723,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel143.setText("Tìm kiếm:");
 
         timKiemDG.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        timKiemDG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timKiemDGActionPerformed(evt);
-            }
+        timKiemDG.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyReleased(java.awt.event.KeyEvent evt) {
+                    loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().timKiem(timKiemDG.getText())));
+                }
         });
 
         emailDocgia4.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
@@ -741,13 +741,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel129.setText("Hạn dùng:");
 
         hanDungField1.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-
+        hanDungField1.setEditable(false);
+        hanDungField1.setText(LocalDate.now().plusYears(1)+"");
         ngayMotheLabel.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         ngayMotheLabel.setForeground(new java.awt.Color(0, 0, 0));
         ngayMotheLabel.setText("Ngày mở thẻ:");
 
         ngayMotheField.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-
+        ngayMotheField.setEditable(false);
+        ngayMotheField.setText(LocalDate.now()+"");
         updatedg4.setBackground(new java.awt.Color(255, 204, 204));
         updatedg4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         updatedg4.setForeground(new java.awt.Color(0, 0, 0));
@@ -887,23 +889,25 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
 
         quanlyttdg2.addTab("Quản lý Độc giả", jPanel29);
-
+        quanlyttdg2.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
+                    loadTableDocGia(tableDocgia2, new DanhSachTaiKhoan(new QuanLiDocGia_DAO().dsDOCGIA()));
+                }
+            });
         jPanel40.setBackground(new java.awt.Color(255, 255, 204));
-
+        String[] nameColumnLoaiThe = { "Mã loại thẻ", "Tên loại thẻ",
+        "Số sách được mượn", "Thời gian mượn", "Giá tiền mở thẻ" };
         tableDocgia3.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         tableDocgia3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+            },nameColumnLoaiThe));
         tableDocgia3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDocgia3MouseClicked(evt);
             }
         });
+        loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().dsLoaiThe()));
         jScrollPane25.setViewportView(tableDocgia3);
 
         jLabel131.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -967,10 +971,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         });
 
         tenLoaiField2.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        tenLoaiField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tenLoaiField2ActionPerformed(evt);
-            }
+        tenLoaiField2.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyReleased(java.awt.event.KeyEvent evt) {
+                    loadTableLoaiThe(tableDocgia3, new DanhSachLoaiThe(new QLDG_PhanLoai_DAO().timKiem(tenLoaiField2.getText())));
+                }
         });
 
         jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -2896,9 +2900,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
         ngayMotheField.setText(tableDocgia2.getValueAt(lineSelect, 9).toString().trim());
         hanDungField1.setText(tableDocgia2.getValueAt(lineSelect, 10).toString().trim());
-        // soLuongmuonField.setText(new
-        // QuanLiDocGia_DAO().hanDungThe(maDocGiaField.getText()));
         // số lượng mượn column 11
+        soLuongmuonField.setText(tableDocgia2.getValueAt(lineSelect, 11).toString());
+
         if (Integer.parseInt(tableDocgia2.getValueAt(lineSelect, 12).toString()) == 0) {
             khoatk8.setEnabled(false);
         } else {
@@ -2963,7 +2967,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             dg.setNgaySinh(ngaysinh2.getText());
             dg.setSdt(sdt2.getText());
             dg.setTrangThai(1);
-            dg.setSoLuongMuon(0);
+            dg.setSoLuongMuon(Integer.parseInt(soLuongField.getText().trim()));
             dg.setNgayMoThe(ngayMotheField.getText());
             dg.setHanSuDung(hanDungField1.getText());
             // địa chỉ
@@ -3018,8 +3022,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
             dg.setNgaySinh(ngaysinh2.getText());
             dg.setSdt(sdt2.getText());
-            dg.setTrangThai(1);
-            dg.setSoLuongMuon(0);
+            dg.setTrangThai(1);            
+            dg.setSoLuongMuon(Integer.parseInt(soLuongField.getText().trim()));
             // dg.setDiaChi();
             dg.setNgayMoThe(ngayMotheField.getText());
             dg.setHanSuDung(hanDungField1.getText());
