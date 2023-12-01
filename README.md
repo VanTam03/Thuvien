@@ -34,4 +34,3 @@
 * Đăng nhập bằng tài khoản admin: Tên đăng nhập: 101010 | Mật khẩu: admin123
 * Đăng nhập bằng tài khoản thủ thư: Tên đăng nhập: 101011 | Mật khẩu: abc123
 * Đăng nhập bằng tài khoản sinh viên: Tên đăng nhập: Mã tài khoản | Mật khẩu: Tự đặt (Ví dụ: 312141002 | abc1232)
-
